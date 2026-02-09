@@ -1,0 +1,2 @@
+n_total_rows,n_duplicate_rows,pct_duplicate_rows,keep_policy,scope
+1700,0,0.0,keep='first',full_df
