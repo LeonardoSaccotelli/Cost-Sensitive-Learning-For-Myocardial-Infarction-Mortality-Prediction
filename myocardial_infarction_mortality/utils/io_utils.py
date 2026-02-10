@@ -2,9 +2,102 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Literal, Mapping, Union
+from typing import Any, Literal, Mapping, Optional, Union
+
+import numpy as np
+import pandas as pd
 
 PathLike = Union[str, Path]
+
+
+def load_dataset_with_schema(
+    file_path: Union[str, Path],
+    delimiter: str,
+    header: Optional[int],
+    index_col: Optional[Union[int, str]],
+    float_features: list[str],
+    int_features: list[str],
+    categorical_nominal_features: list[str],
+    categorical_ordinal_features: dict[str, list[int]],
+) -> pd.DataFrame:
+    """
+    Load a CSV dataset and enforce dtypes according to a predefined schema.
+
+    The function reads the dataset using `pandas.read_csv` and then enforces:
+    - float features -> `numpy.float64`
+    - integer features -> pandas nullable integer `"Int64"`
+    - nominal categorical features -> pandas `"category"` (unordered)
+    - ordinal categorical features -> pandas ordered `"category"` with explicit levels
+
+    Only columns that exist in the loaded DataFrame are cast; missing columns are
+    silently skipped.
+
+    Parameters
+    ----------
+    file_path : str or pathlib.Path
+        Path to the CSV file.
+    delimiter : str
+        Column delimiter passed to `pandas.read_csv` (`sep`).
+    header : int or None
+        Row number to use as column names. Use None if the file has no header row.
+    index_col : int, str, or None
+        Column to use as the row index (e.g., Patient ID). Use None to keep the
+        default RangeIndex.
+    float_features : list[str]
+        Column names to cast to float64.
+    int_features : list[str]
+        Column names to cast to pandas nullable integer `"Int64"`.
+    categorical_nominal_features : list[str]
+        Column names to cast to pandas `"category"` dtype (unordered).
+    categorical_ordinal_features : dict[str, list[int]]
+        Mapping: ordinal column name -> ordered list of integer categories.
+
+    Returns
+    -------
+    df : pandas.DataFrame
+        Loaded DataFrame with schema casts applied where possible.
+
+    Examples
+    --------
+    >>> df = load_dataset_with_schema(
+    ...     file_path="data/raw/dataset.csv",
+    ...     delimiter=",",
+    ...     header=0,
+    ...     index_col=0,
+    ...     float_features=["K_BLOOD"],
+    ...     int_features=["AGE"],
+    ...     categorical_nominal_features=["SEX"],
+    ...     categorical_ordinal_features={"FK_STENOK": [0, 1, 2, 3, 4]},
+    ... )
+    """
+    df: pd.DataFrame = pd.read_csv(
+        Path(file_path),
+        sep=delimiter,
+        header=header,
+        index_col=index_col,
+    )
+
+    # Floats
+    for col in float_features:
+        if col in df.columns:
+            df[col] = df[col].astype(np.float64)
+
+    # Integers (nullable, supports NA)
+    for col in int_features:
+        if col in df.columns:
+            df[col] = df[col].astype("Int64")
+
+    # Nominal categorical (unordered)
+    for col in categorical_nominal_features:
+        if col in df.columns:
+            df[col] = df[col].astype("category")
+
+    # Ordinal categorical (ordered)
+    for col, levels in categorical_ordinal_features.items():
+        if col in df.columns:
+            df[col] = pd.Categorical(df[col], categories=levels, ordered=True)
+
+    return df
 
 
 def save_dict_json(
