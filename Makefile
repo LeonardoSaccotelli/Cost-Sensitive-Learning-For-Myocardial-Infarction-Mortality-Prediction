@@ -74,10 +74,10 @@ format:
 dataset:
 	$(PYTHON_INTERPRETER) myocardial_infarction_mortality/dataset.py
 
-## Make dataset sampling (use 'make dataset_sampling' to sample a subset of data for modeling)
-.PHONY: dataset_sampling
-dataset_sampling:
-	$(PYTHON_INTERPRETER) myocardial_infarction_mortality/dataset_sampling.py
+## Make dataset construction (use 'make dataset_time_split_' to create a specific time slot dataset for modeling)
+.PHONY: dataset_time_split
+dataset_time_split:
+	$(PYTHON_INTERPRETER) myocardial_infarction_mortality/dataset_time_split.py
 
 ## Make cleaning (use 'make cleaning' to generate a cleaned interim dataset)
 .PHONY: cleaning
