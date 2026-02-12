@@ -76,6 +76,7 @@ def main(
             --dataset-id 579 \
             --force
     """
+
     logger.info("Running myocardial_infarction_mortality/dataset.py ...")
 
     # Check if the dataset already exists or the user request to force dataset download

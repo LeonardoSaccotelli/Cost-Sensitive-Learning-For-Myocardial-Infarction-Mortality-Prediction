@@ -138,23 +138,19 @@ def main(
         logger.info(
             f"Dropped {len(present_to_drop)} features for time slot '{selected_time_slot}'."
         )
-        logger.info(
-            f"Dropped features: {present_to_drop}."
-        )
+        logger.info(f"Dropped features: {present_to_drop}.")
 
     # Ensure RAW_DATA_DIR exists
     RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
     filename_output_path = RAW_DATA_DIR / f"{filename_base}_{selected_time_slot}.csv"
 
-    df.to_csv(filename_output_path, index=False, sep=",")
+    df.to_csv(filename_output_path, index=True, sep=",")
 
     # Store the sampling dataset
     logger.success(f"Wrote RAW dataset to path:\n\t{output_path}")
     logger.info(f"Output dataset shape: {df.shape} (rows, cols)")
 
-    logger.success(
-        "Running myocardial_infarction_mortality/dataset_time_split.py COMPLETED!"
-    )
+    logger.success("Running myocardial_infarction_mortality/dataset_time_split.py COMPLETED!")
 
 
 if __name__ == "__main__":
