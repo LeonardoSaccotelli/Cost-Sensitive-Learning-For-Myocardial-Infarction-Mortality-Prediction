@@ -9,12 +9,12 @@ import typer
 from ucimlrepo import fetch_ucirepo
 
 from myocardial_infarction_mortality.config import (
-    RAW_DATA_DIR,
-    RAW_DATASET_ID,
-    RAW_FILENAME,
-    RAW_FORCE_DOWNLOAD,
-    RAW_METADATA_FILENAME,
-    RAW_VARIABLES_FILENAME,
+    EXTERNAL_DATA_DIR,
+    EXTERNAL_DATASET_ID,
+    EXTERNAL_FILENAME,
+    EXTERNAL_FORCE_DOWNLOAD,
+    EXTERNAL_METADATA_FILENAME,
+    EXTERNAL_VARIABLES_FILENAME,
 )
 
 app = typer.Typer()
@@ -22,14 +22,14 @@ app = typer.Typer()
 
 @app.command()
 def main(
-    filename_output_path: Path = RAW_DATA_DIR / RAW_FILENAME,
-    metadata_output_path: Path = RAW_DATA_DIR / RAW_METADATA_FILENAME,
-    variable_output_path: Path = RAW_DATA_DIR / RAW_VARIABLES_FILENAME,
-    dataset_id: int = RAW_DATASET_ID,
-    force: bool = RAW_FORCE_DOWNLOAD,
+    filename_output_path: Path = EXTERNAL_DATA_DIR / EXTERNAL_FILENAME,
+    metadata_output_path: Path = EXTERNAL_DATA_DIR / EXTERNAL_METADATA_FILENAME,
+    variable_output_path: Path = EXTERNAL_DATA_DIR / EXTERNAL_VARIABLES_FILENAME,
+    dataset_id: int = EXTERNAL_DATASET_ID,
+    force: bool = EXTERNAL_FORCE_DOWNLOAD,
 ) -> None:
     """
-    Ensure the UCI dataset is available locally in RAW, downloading it if missing.
+    Ensure the UCI dataset is available locally in EXTERNAL, downloading it if missing.
 
     The script downloads the dataset via ``ucimlrepo.fetch_ucirepo(id=dataset_id)`` and writes:
     - the main dataset as CSV to ``filename_output_path`` using ``dataset.data.original``
@@ -40,18 +40,18 @@ def main(
     ----------
     filename_output_path : pathlib.Path, optional
         Destination path for the main dataset CSV. Defaults to
-        ``RAW_DATA_DIR / RAW_FILENAME``.
+        ``EXTERNAL_DATA_DIR / EXTERNAL_FILENAME``.
     metadata_output_path : pathlib.Path, optional
         Destination path for the metadata TXT. Defaults to
-        ``RAW_DATA_DIR / RAW_METADATA_FILENAME``.
+        ``EXTERNAL_DATA_DIR / EXTERNAL_METADATA_FILENAME``.
     variable_output_path : pathlib.Path, optional
         Destination path for the variables details CSV. Defaults to
-        ``RAW_DATA_DIR / RAW_VARIABLES_FILENAME``.
+        ``EXTERNAL_DATA_DIR / EXTERNAL_VARIABLES_FILENAME``.
     dataset_id : int, optional
-        UCI dataset ID to fetch. Defaults to ``RAW_DATASET_ID``.
+        UCI dataset ID to fetch. Defaults to ``EXTERNAL_DATASET_ID``.
     force : bool, optional
         If True, re-download and overwrite outputs even if they already exist. Defaults to
-        ``RAW_FORCE_DOWNLOAD``.
+        ``EXTERNAL_FORCE_DOWNLOAD``.
 
     Returns
     -------
@@ -70,9 +70,9 @@ def main(
     Run using the module script (paths shown as examples)::
 
         python myocardial_infarction_mortality/dataset.py \
-            --filename-output-path data/raw/myocardial_infarction.csv \
-            --metadata-output-path data/raw/METADATA.txt \
-            --variable-output-path data/raw/VARIABLES.csv \
+            --filename-output-path data/external/myocardial_infarction.csv \
+            --metadata-output-path data/external/METADATA.txt \
+            --variable-output-path data/external/VARIABLES.csv \
             --dataset-id 579 \
             --force
     """
@@ -96,8 +96,8 @@ def main(
 
     # If the dataset does not exist or user request to force dataset download
     try:
-        # Ensure RAW_DATA_DIR exists
-        RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
+        # Ensure EXTERNAL_DATA_DIR exists
+        EXTERNAL_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
         # Download the dataset from ucimlrepo
         logger.info(f"Downloading UCI dataset id={dataset_id} via ucimlrepo...")
