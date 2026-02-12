@@ -114,7 +114,7 @@ def main(
             )
 
         # Write main dataset
-        original.to_csv(filename_output_path, index=False)
+        original.to_csv(filename_output_path, index=False, sep=",")
         logger.success(f"Saved main dataset to:\n\t{filename_output_path}")
         logger.info(f"Main dataset shape: {original.shape} (rows, cols)")
 
@@ -128,7 +128,7 @@ def main(
         if not isinstance(variables_obj, pd.DataFrame) or variables_obj.empty:
             raise ValueError("Expected `dataset.variables` to be a non-empty pandas DataFrame.")
 
-        variables_obj.to_csv(variable_output_path, index=False)
+        variables_obj.to_csv(variable_output_path, index=False, sep=",")
         logger.success(f"Saved variables CSV to:\n\t{variable_output_path}")
 
     except Exception as e:
