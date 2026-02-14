@@ -17,6 +17,7 @@ from myocardial_infarction_mortality.config import (
     RAW_DATA_DIR,
     SELECTED_TIME_SLOT,
 )
+from myocardial_infarction_mortality.data_preparation.data_clean import remove_duplicates
 from myocardial_infarction_mortality.utils.io_utils import load_dataset_with_schema
 
 app = typer.Typer()
@@ -25,7 +26,7 @@ app = typer.Typer()
 @app.command()
 def main(
     input_path: Path = RAW_DATA_DIR / f"{FILENAME_BASE}_{SELECTED_TIME_SLOT}.csv",
-    output_path: Path = RAW_DATA_DIR,
+    output_path: Path = INTERIM_DATA_DIR,
     filename_base: str = FILENAME_BASE,
     selected_time_slot: str = SELECTED_TIME_SLOT,
     target: str = "LET_IS_BINARY",
@@ -33,71 +34,86 @@ def main(
     threshold_drop_missing_cols: float = 0.30,
 ) -> None:
     """
-    Clean the time-slot-specific dataset by removing high-missingness rows/columns and excluding extra targets.
+     Clean a time-slot-specific RAW dataset by filtering missingness, pruning extra targets, and removing duplicates.
 
-    This script loads the time-slot dataset produced by
-    ``myocardial_infarction_mortality/dataset_time_construction.py`` and applies:
+     This script loads the time-slot dataset created in RAW (e.g.,
+     ``RAW_DATA_DIR / f"{FILENAME_BASE}_{SELECTED_TIME_SLOT}.csv"``) and applies the following
+     operations in order:
 
-    1) Row filtering: drop rows whose missingness fraction is strictly greater than
-       ``threshold_drop_missing_rows``.
-    2) Column filtering: drop columns whose missingness fraction is strictly greater than
-       ``threshold_drop_missing_cols`` (the selected ``target`` is never dropped here).
-       The script logs both the number of dropped columns and their names.
-    3) Target pruning: drop any columns listed in ``EXCLUDE_TARGETS`` if present, except the
-       selected ``target``.
-    4) Save the cleaned dataset to ``INTERIM_DATA_DIR`` as:
-       ``{filename_base}_{selected_time_slot}_{target}_cleaned.csv``.
-    5) Log the final list of remaining columns.
+     1) Row filtering: drop rows whose missingness fraction is strictly greater than
+        ``threshold_drop_missing_rows``.
+     2) Column filtering: drop columns whose missingness fraction is strictly greater than
+        ``threshold_drop_missing_cols``. The selected ``target`` is never dropped here.
+        The script logs both the number of dropped columns and their names.
+     3) Target pruning: drop any columns listed in ``EXCLUDE_TARGETS`` if present, except the
+        selected ``target``.
+     4) Duplicate removal: remove duplicated rows using ``remove_duplicates`` with the current
+        policy ``subset=None`` and ``keep="first"``. The script logs how many rows were removed.
+     5) Save the cleaned dataset to ``output_path`` as:
+        ``{filename_base}_{selected_time_slot}_{target}_cleaned.csv``.
+     6) Log the final list of remaining columns.
 
-    Parameters
-    ----------
-    input_path : pathlib.Path, optional
-        Input time-slot dataset path. Defaults to
-        ``RAW_DATA_DIR / f"{FILENAME_BASE}_{SELECTED_TIME_SLOT}.csv"``.
-    output_path : pathlib.Path, optional
-        Unused path parameter kept for CLI compatibility with the current signature.
-        The cleaned dataset is always written to ``INTERIM_DATA_DIR``.
-    filename_base : str, optional
-        Base filename used to build the output filename.
-    selected_time_slot : str, optional
-        Selected time slot key used in the output filename.
-    target : str, optional
-        Target column that must exist and must be preserved. Default is ``"LET_IS_BINARY"``.
-    threshold_drop_missing_rows : float, optional
-        Drop rows with missingness strictly greater than this fraction. Default is ``0.20``.
-    threshold_drop_missing_cols : float, optional
-        Drop columns with missingness strictly greater than this fraction. Default is ``0.30``.
+     Parameters
+     ----------
+     input_path : pathlib.Path, optional
+         Input time-slot dataset path. Defaults to
+         ``RAW_DATA_DIR / f"{FILENAME_BASE}_{SELECTED_TIME_SLOT}.csv"``.
+     output_path : pathlib.Path, optional
+         Destination directory where the cleaned dataset will be written. Defaults to
+         ``INTERIM_DATA_DIR``.
+     filename_base : str, optional
+         Base filename used to build the output filename.
+     selected_time_slot : str, optional
+         Selected time slot key used in the output filename.
+     target : str, optional
+         Target column that must exist and must be preserved. Default is ``"LET_IS_BINARY"``.
+     threshold_drop_missing_rows : float, optional
+         Drop rows with missingness strictly greater than this fraction. Default is ``0.20``.
+     threshold_drop_missing_cols : float, optional
+         Drop columns with missingness strictly greater than this fraction. Default is ``0.30``.
 
-    Returns
-    -------
-    None
-        Side effects only (read, clean, write).
+     Returns
+     -------
+     None
+         Side effects only (read, clean, write).
 
-    Raises
-    ------
-    typer.Exit
-        Raised with exit code ``1`` if:
-        - ``input_path`` does not exist
-        - ``target`` is missing
-        - saving fails
-    ValueError
-        If thresholds are not in ``[0, 1]``.
+     Raises
+     ------
+     typer.Exit
+         Raised with exit code ``1`` if:
+         - ``input_path`` does not exist
+         - ``target`` is missing
+         - saving fails
+     ValueError
+         If thresholds are not in ``[0, 1]``.
 
-    Examples
-    --------
-    Clean the admission dataset with defaults::
+     Notes
+     -----
+     - Duplicate removal is performed after missingness/target pruning to ensure the duplicate
+       check is run on the final feature set.
+     - The current duplicate policy uses all columns (``subset=None``) and keeps the first
+       occurrence (``keep="first"``). Adjust those arguments in code if you later need a
+       patient-identifier-based rule.
 
-        python myocardial_infarction_mortality/cleaning.py \
-            --selected-time-slot admission
+     Examples
+     --------
+     Run with defaults (time slot taken from config)::
 
-    Clean and tune missingness thresholds::
+         python myocardial_infarction_mortality/dataset_time_split.py
 
-        python myocardial_infarction_mortality/cleaning.py \
-            --input-path data/raw/myocardial_infarction_admission.csv \
-            --threshold-drop-missing-rows 0.15 \
-            --threshold-drop-missing-cols 0.25 \
-            --target LET_IS_BINARY
-    """
+     Clean a specific time slot::
+
+         python myocardial_infarction_mortality/dataset_time_split.py \
+             --selected-time-slot admission
+
+     Tune missingness thresholds::
+
+         python myocardial_infarction_mortality/dataset_time_split.py \
+             --input-path data/raw/myocardial_infarction_admission.csv \
+             --threshold-drop-missing-rows 0.15 \
+             --threshold-drop-missing-cols 0.25 \
+             --target LET_IS_BINARY
+     """
 
     logger.info("Running myocardial_infarction_mortality/cleaning.py ...")
 
@@ -191,23 +207,36 @@ def main(
         )
         raise typer.Exit(code=1)
 
+    # Check and drop duplicated rows
+    n_rows_before = df.shape[0]
+    df = remove_duplicates(df=df, subset=None, keep="first", inplace=False, ignore_index=False)
+    n_rows_after = df.shape[0]
+    n_dups = n_rows_before - n_rows_after
+
+    if n_rows_before > 0:
+        pct = (n_dups * 100.0) / n_rows_before
+    else:
+        pct = 0.0
+
+    logger.info(f"Number of duplicate rows: {n_dups}/{n_rows_before} ({pct:.3f}%)")
+
     # Ensure INTERIM_DATA_DIR exists
-    INTERIM_DATA_DIR.mkdir(parents=True, exist_ok=True)
+    output_path.mkdir(parents=True, exist_ok=True)
     filename_output_path = (
-        INTERIM_DATA_DIR / f"{filename_base}_{selected_time_slot}_{target}_cleaned.csv"
+        output_path / f"{filename_base}_{selected_time_slot}_{target}_cleaned.csv"
     )
 
     df.to_csv(filename_output_path, index=True, sep=",")
 
     # Store the cleaned dataset
-    logger.success(f"Wrote INTERIM cleaned dataset to path:\n\t{output_path}")
+    logger.success(f"Wrote INTERIM cleaned dataset to path:\n\t{filename_output_path}")
     logger.info(f"Output dataset shape: {df.shape} (rows, cols)")
 
     # Log remaining columns
     remaining_cols = df.columns.tolist()
     logger.info(f"Remaining columns ({len(remaining_cols)}): {remaining_cols}")
 
-    logger.success("Running myocardial_infarction_mortality/dataset_time_split.py COMPLETED!")
+    logger.success("Running myocardial_infarction_mortality/cleaning.py COMPLETED!")
 
 
 if __name__ == "__main__":
