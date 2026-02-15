@@ -147,8 +147,8 @@ def main(
     df.to_csv(filename_output_path, index=True, sep=",")
 
     # Store the sampling dataset
-    logger.success(f"Wrote RAW dataset to path:\n\t{output_path}")
     logger.info(f"Output dataset shape: {df.shape} (rows, cols)")
+    logger.success(f"Wrote RAW dataset to path:\n\t{output_path}")
 
     logger.success("Running myocardial_infarction_mortality/dataset_time_split.py COMPLETED!")
 

@@ -229,8 +229,8 @@ def main(
     df.to_csv(filename_output_path, index=True, sep=",")
 
     # Store the cleaned dataset
-    logger.success(f"Wrote INTERIM cleaned dataset to path:\n\t{filename_output_path}")
     logger.info(f"Output dataset shape: {df.shape} (rows, cols)")
+    logger.success(f"Wrote INTERIM cleaned dataset to path:\n\t{filename_output_path}")
 
     # Log remaining columns
     remaining_cols = df.columns.tolist()
