@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, List
 
 from sklearn.feature_selection import SelectKBest, chi2, f_classif, mutual_info_classif
+from imblearn.pipeline import Pipeline as ImbPipeline
 
 
 def get_feature_selection(
@@ -75,3 +76,39 @@ def get_feature_selection(
         )
 
     return SelectKBest(score_func=score_func, k=k)
+
+
+def get_selected_feature_names(pipe: ImbPipeline) -> List[str]:
+    """
+    Return selected feature names from the fitted ``feature_selection_filter`` (SelectKBest) step.
+
+    Parameters
+    ----------
+    pipe : imblearn.pipeline.Pipeline
+        Fitted pipeline with a ``feature_selection_filter`` step.
+
+    Returns
+    -------
+    selected_feature_names : list[str]
+        Selected feature names in the post-preprocessing feature space.
+
+    Raises
+    ------
+    KeyError
+        If the step name is missing.
+    ValueError
+        If the selector is not fitted or feature names are unavailable.
+
+    Examples
+    --------
+    >>> # best_pipe = grid_search.best_estimator_
+    >>> # names = get_selected_feature_names(best_pipe)  # doctest: +SKIP
+    """
+    selector = pipe.named_steps["feature_selection_filter"]
+    try:
+        return [str(x) for x in selector.get_feature_names_out()]
+    except Exception as e:
+        raise ValueError(
+            "Cannot retrieve selected feature names. Ensure the pipeline is fitted and that "
+            "feature names are preserved (e.g., sklearn.set_config(transform_output='pandas'))."
+        ) from e
