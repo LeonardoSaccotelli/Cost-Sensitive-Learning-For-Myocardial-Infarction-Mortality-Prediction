@@ -8,30 +8,32 @@ from sklearn.feature_selection import SelectKBest, chi2, f_classif, mutual_info_
 def get_feature_selection(
     *,
     k: Union[int, str] = 20,
-    score: str = "f_classif",
+    score: str = "mutual_info_classif",
 ) -> SelectKBest:
     """
-    Build a filter-based feature selector using SelectKBest.
+    Build a filter-based feature selector using ``SelectKBest``.
 
-    This factory returns a :class:`sklearn.feature_selection.SelectKBest`
-    configured with the requested scoring function. It is designed to be used
-    as a pipeline step named ``"feature_selection_filter"`` so that ``k`` can be
-    tuned via ``feature_selection_filter__k`` in CV searches.
+    This factory returns a :class:`sklearn.feature_selection.SelectKBest` configured
+    with a chosen univariate scoring function. It is intended to be used as a pipeline
+    step named ``"feature_selection_filter"`` so the hyperparameter ``k`` can be tuned
+    via ``feature_selection_filter__k`` in cross-validation searches.
 
     Parameters
     ----------
     k : int or {'all'}, default 20
-        Number of top features to keep. Use ``'all'`` to keep all features.
-    score : {'f_classif', 'mutual_info_classif', 'chi2'}, default 'f_classif'
-        Scoring function used to rank features.
-        If ``'f_classif'``, use the ANOVA F-test.
-        If ``'mutual_info_classif'``, use mutual information.
-        If ``'chi2'``, use chi-square (requires non-negative features).
+        Number of top-ranked features to keep.
+        - If ``int``, keep the top-``k`` features.
+        - If ``'all'``, keep all features (no filtering).
+    score : {'f_classif', 'mutual_info_classif', 'chi2'}, default 'mutual_info_classif'
+        Scoring function used to rank features:
+        - ``'f_classif'``: ANOVA F-test (assumes linear separability to some extent).
+        - ``'mutual_info_classif'``: mutual information (non-linear dependency).
+        - ``'chi2'``: chi-square test (requires **non-negative** feature values).
 
     Returns
     -------
     sklearn.feature_selection.SelectKBest
-        A SelectKBest selector configured with the chosen scoring function and ``k``.
+        A ``SelectKBest`` selector configured with the chosen scoring function and ``k``.
 
     Raises
     ------
@@ -40,16 +42,24 @@ def get_feature_selection(
 
     Notes
     -----
-    When using ``score='chi2'``, ensure all input features are non-negative (e.g.,
-    by using MinMax scaling). Standardization around zero is typically incompatible
-    with chi-square feature selection.
+    - When using ``score='chi2'``, ensure all input features are non-negative (e.g., via
+      MinMax scaling). Standardization around zero is typically incompatible with chi-square
+      feature selection.
+    - ``mutual_info_classif`` is stochastic unless you pass a fixed ``random_state`` to the
+      scorer (not done here). If you need full determinism, consider wrapping MI with a
+      fixed random state or using a deterministic scorer.
 
     Examples
     --------
-    >>> skb = get_feature_selection(k=20, score="f_classif")
+    Create a selector and use it as a pipeline step::
 
-    >>> from sklearn.pipeline import Pipeline
-    >>> pipe = Pipeline([("feature_selection_filter", skb)])
+        >>> from sklearn.pipeline import Pipeline
+        >>> skb = get_feature_selection(k=20, score="f_classif")
+        >>> pipe = Pipeline([("feature_selection_filter", skb)])
+
+    Tune ``k`` via a parameter grid::
+
+        >>> param_grid = {"feature_selection_filter__k": [10, 20, "all"]}
     """
 
     if score == "chi2":
