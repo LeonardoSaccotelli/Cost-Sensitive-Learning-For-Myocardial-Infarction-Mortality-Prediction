@@ -78,13 +78,13 @@ def get_feature_selection(
     return SelectKBest(score_func=score_func, k=k)
 
 
-def get_selected_feature_names(pipe: ImbPipeline) -> List[str]:
+def get_selected_feature_names(pipeline: ImbPipeline) -> List[str]:
     """
     Return selected feature names from the fitted ``feature_selection_filter`` (SelectKBest) step.
 
     Parameters
     ----------
-    pipe : imblearn.pipeline.Pipeline
+    pipeline : imblearn.pipeline.Pipeline
         Fitted pipeline with a ``feature_selection_filter`` step.
 
     Returns
@@ -102,9 +102,9 @@ def get_selected_feature_names(pipe: ImbPipeline) -> List[str]:
     Examples
     --------
     >>> # best_pipe = grid_search.best_estimator_
-    >>> # names = get_selected_feature_names(best_pipe)  # doctest: +SKIP
+    >>> # names = get_selected_feature_names(best_pipeline)
     """
-    selector = pipe.named_steps["feature_selection_filter"]
+    selector = pipeline.named_steps["feature_selection_filter"]
     try:
         return [str(x) for x in selector.get_feature_names_out()]
     except Exception as e:
