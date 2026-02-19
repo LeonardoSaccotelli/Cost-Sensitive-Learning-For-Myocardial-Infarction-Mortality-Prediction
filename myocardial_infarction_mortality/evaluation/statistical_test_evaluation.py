@@ -1,20 +1,16 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Dict, Sequence
+from typing import Sequence
 
 import numpy as np
 import pandas as pd
-from scipy import stats
 from scipy.stats import t
 
 from myocardial_infarction_mortality.evaluation.visual_evaluation import (
     plot_ranking_with_significance,
     plot_significance_heatmap,
 )
-
-
-
 
 
 def corrected_resampled_ttest(
