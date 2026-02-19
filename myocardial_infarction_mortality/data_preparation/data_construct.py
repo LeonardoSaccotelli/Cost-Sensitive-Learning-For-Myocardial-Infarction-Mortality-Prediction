@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import Any, Literal
 
-import numpy as np
 from imblearn.pipeline import Pipeline
+import numpy as np
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import (
@@ -577,7 +577,11 @@ def get_preprocessing_pipeline(
             ),
             ("cat_nominal", pipeline_cat_nominal, config_cols["cat_nominal"]),
             ("cat_ordinal", pipeline_cat_ordinal, config_cols["cat_ordinal"]),
-            ("cat_partial_ordinal", pipeline_cat_partial_ordinal, config_cols["cat_partial_ordinal"]),
+            (
+                "cat_partial_ordinal",
+                pipeline_cat_partial_ordinal,
+                config_cols["cat_partial_ordinal"],
+            ),
             ("cat_binary", pipeline_cat_binary, config_cols["cat_binary"]),
         ],
         remainder=remainder,

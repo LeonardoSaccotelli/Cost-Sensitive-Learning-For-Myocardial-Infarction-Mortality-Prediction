@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from typing import Union, List
+from typing import List, Union
 
-from sklearn.feature_selection import SelectKBest, chi2, f_classif, mutual_info_classif
 from imblearn.pipeline import Pipeline as ImbPipeline
+from sklearn.feature_selection import SelectKBest, chi2, f_classif, mutual_info_classif
 
 
 def get_feature_selection(
