@@ -19,8 +19,10 @@ from myocardial_infarction_mortality.data_preparation.feature_selection import (
     get_selected_feature_names,
 )
 from myocardial_infarction_mortality.evaluation.metrics_evaluation import (
+    apply_decision_policy,
     collect_fold_reports,
     compute_classification_metrics,
+    get_avg_cost_scorer,
 )
 from myocardial_infarction_mortality.modeling.utils.models import (
     get_des_model,
@@ -45,6 +47,7 @@ def run_randomized_search_cv(
     scoring: str,
     random_state: int,
     n_jobs: int,
+    cost_matrix: Optional[np.ndarray] = None,
     verbose: int = 3,
 ) -> tuple[Union[ImbPipeline, Pipeline, BaseEstimator], Dict[str, Any]]:
     """
@@ -53,11 +56,17 @@ def run_randomized_search_cv(
     This helper runs :class:`sklearn.model_selection.RandomizedSearchCV` over
     ``search_space`` using an inner stratified K-fold splitter:
 
-    ``StratifiedKFold(n_splits=val_cv_split, shuffle=True, random_state=random_state)``
+    ``StratifiedKFold(n_splits=val_cv_split, shuffle=True, random_state=random_state)``.
 
     The search is fit on ``(X_train, y_train)`` and the best configuration is refit on the
     full training set (``refit=True``). A compact tuning summary is extracted from
     ``search.cv_results_`` at ``search.best_index_``.
+
+    The function supports both standard scikit-learn scorers (via their string identifiers)
+    and a project-specific cost-sensitive tuning mode triggered by ``scoring="Average_Cost"``.
+    In that mode, a custom scorer is created via :func:`get_avg_cost_scorer`, which wraps
+    :func:`average_cost_score` and minimizes the **average misclassification cost** computed
+    from a 2x2 cost matrix aligned with ``confusion_matrix(..., labels=[0, 1])``.
 
     Parameters
     ----------
@@ -74,17 +83,43 @@ def run_randomized_search_cv(
     X_train : pandas.DataFrame or numpy.ndarray
         Training features of shape ``(n_samples, n_features)``.
     y_train : pandas.Series or numpy.ndarray
-        Training labels of shape ``(n_samples,)``.
+        Training labels of shape ``(n_samples,)``. Expected binary values are ``0`` and ``1``.
     n_iter : int
         Number of hyperparameter configurations to sample. Must be >= 1.
     val_cv_split : int
         Number of folds for inner CV. Must be >= 2.
     scoring : str
-        Scikit-learn scoring identifier (e.g., ``"f1"``, ``"roc_auc"``, ``"average_precision"``).
+        Scoring identifier. Two modes are supported:
+
+        1. Any standard scikit-learn scoring name (e.g., ``"f1"``, ``"roc_auc"``,
+           ``"average_precision"``). In this case, ``scoring`` is passed directly to
+           RandomizedSearchCV.
+
+        2. ``"Average_Cost"`` to enable cost-sensitive tuning using
+           :func:`get_avg_cost_scorer` and the provided ``cost_matrix``. Lower average cost
+           is better.
     random_state : int
         Random seed used for CV shuffling and randomized hyperparameter sampling.
     n_jobs : int
         Number of parallel jobs used by RandomizedSearchCV. Use ``-1`` for all available cores.
+    cost_matrix : numpy.ndarray of shape (2, 2), optional
+        Misclassification cost matrix used **only** when ``scoring="Average_Cost"``.
+        The matrix must be aligned with ``confusion_matrix(..., labels=[0, 1])``:
+
+        ``[[TN, FP],``
+        `` [FN, TP]]``
+
+        With the project convention:
+        - ``0`` = ALIVE (negative / majority class)
+        - ``1`` = DEAD  (positive / minority class)
+
+        Therefore, it is interpreted as:
+        - ``cost_matrix[0, 0]``: cost of TN
+        - ``cost_matrix[0, 1]``: cost of FP
+        - ``cost_matrix[1, 0]``: cost of FN
+        - ``cost_matrix[1, 1]``: cost of TP
+
+        If ``scoring="Average_Cost"``, this parameter is required.
     verbose : int, default=3
         Verbosity level forwarded to RandomizedSearchCV.
 
@@ -96,10 +131,19 @@ def run_randomized_search_cv(
         Standardized tuning summary for the best candidate with keys:
 
         - ``"cv_tuning_mean_train_score"`` : float
+            Mean inner-CV training score for the best configuration.
+            If ``scoring="Average_Cost"``, this is returned as a **positive average cost**
+            (lower is better).
         - ``"cv_tuning_std_train_score"`` : float
+            Standard deviation of the inner-CV training score for the best configuration.
         - ``"cv_tuning_mean_val_score"`` : float
+            Mean inner-CV validation score for the best configuration.
+            If ``scoring="Average_Cost"``, this is returned as a **positive average cost**
+            (lower is better).
         - ``"cv_tuning_std_val_score"`` : float
+            Standard deviation of the inner-CV validation score for the best configuration.
         - ``"best_params"`` : dict[str, Any]
+            Best hyperparameter configuration found.
         - ``"tuning_time"`` : float
             Wall-clock time in seconds spent inside ``search.fit``.
 
@@ -107,6 +151,8 @@ def run_randomized_search_cv(
     ------
     ValueError
         If ``n_iter < 1`` or ``val_cv_split < 2``.
+    ValueError
+        If ``scoring="Average_Cost"`` and ``cost_matrix`` is ``None``.
     Exception
         Any exception raised during fitting is propagated. Because ``error_score="raise"``
         is set, failures during CV are not masked.
@@ -115,28 +161,54 @@ def run_randomized_search_cv(
     -----
     - The reported train/validation scores refer to the **inner** CV used by the randomized
       search (not the outer evaluation loop).
+    - When ``scoring="Average_Cost"``, the scorer returned by :func:`get_avg_cost_scorer`
+      is built with ``greater_is_better=False``. As a consequence, RandomizedSearchCV
+      stores **negative** values in ``cv_results_["mean_train_score"]`` and
+      ``cv_results_["mean_test_score"]`` (higher is better in scikit-learn’s convention).
+      This function converts them back to **positive costs** when filling ``tuning_results``.
+    - The custom cost scorer uses hard predictions from ``predict``. If you need
+      cost-sensitive threshold moving, you must implement a probability-based scorer
+      using ``predict_proba`` (or ``decision_function``) and an explicit threshold rule.
     - To avoid nested parallelism, keep estimator-level parallelism disabled (e.g., model
       ``n_jobs=1``) when RandomizedSearchCV runs with ``n_jobs > 1``.
-    - This function prints basic tuning settings and the best params to stdout. If you need
-      structured logging, wrap this function and redirect/replace prints with a logger.
 
     Examples
     --------
-    >>> clf, space = get_static_model_and_search_space("SVC", random_state=42)
-    >>> best_model, tuning = run_randomized_search_cv(
-    ...     estimator=clf,
-    ...     search_space=space,
-    ...     X_train=X_train,
-    ...     y_train=y_train,
-    ...     n_iter=30,
-    ...     val_cv_split=5,
-    ...     scoring="f1",
-    ...     random_state=42,
-    ...     n_jobs=-1,
-    ...     verbose=2,
-    ... )
-    >>> tuning["best_params"]  # doctest: +ELLIPSIS
-    {...}
+    Standard metric tuning::
+
+        >>> best_model, tuning = run_randomized_search_cv(
+        ...     estimator=clf,
+        ...     search_space=space,
+        ...     X_train=X_train,
+        ...     y_train=y_train,
+        ...     n_iter=30,
+        ...     val_cv_split=5,
+        ...     scoring="f1",
+        ...     random_state=42,
+        ...     n_jobs=-1,
+        ...     verbose=2,
+        ... )
+
+    Cost-sensitive tuning (Average_Cost)::
+
+        >>> import numpy as np
+        >>> cost = np.array([[0.0, 1.0],
+        ...                  [1000.0, 0.0]])
+        >>> best_model, tuning = run_randomized_search_cv(
+        ...     estimator=clf,
+        ...     search_space=space,
+        ...     X_train=X_train,
+        ...     y_train=y_train,
+        ...     n_iter=30,
+        ...     val_cv_split=5,
+        ...     scoring="Average_Cost",
+        ...     random_state=42,
+        ...     n_jobs=-1,
+        ...     cost_matrix=cost,
+        ...     verbose=2,
+        ... )
+        >>> tuning["cv_tuning_mean_val_score"] >= 0.0
+        True
     """
 
     if n_iter < 1:
@@ -144,9 +216,21 @@ def run_randomized_search_cv(
     if val_cv_split < 2:
         raise ValueError(f"val_cv_split must be >= 2. Got {val_cv_split}.")
 
-    print(
-        f"[RANDOMIZED SEARCH SETTINGS]: scoring: {scoring}, random_state: {random_state}, n_jobs: {n_jobs}"
-    )
+    # Fix the scoring function to be used during tuning phase
+    if scoring == "Average_Cost":
+        if cost_matrix is None:
+            raise ValueError("A 'cost_matrix' must be provided when scoring='Average_Cost'.")
+
+        print("[RANDOMIZED SEARCH SETTINGS]: Using custom Average_Cost scorer.")
+        print(f"                               Cost Matrix:\n{cost_matrix}")
+        print("                               Note: Optimization scores will appear negative.")
+
+        active_scorer = get_avg_cost_scorer(cost_matrix=cost_matrix)
+    else:
+        print(
+            f"[RANDOMIZED SEARCH SETTINGS]: scoring: {scoring}, random_state: {random_state}, n_jobs: {n_jobs}"
+        )
+        active_scorer = scoring
 
     splitter = StratifiedKFold(
         n_splits=val_cv_split,
@@ -158,7 +242,7 @@ def run_randomized_search_cv(
         estimator=estimator,
         param_distributions=search_space,
         n_iter=n_iter,
-        scoring=scoring,
+        scoring=active_scorer,
         n_jobs=n_jobs,
         refit=True,
         cv=splitter,
@@ -174,10 +258,21 @@ def run_randomized_search_cv(
 
     best_model = search.best_estimator_
 
+    tuning_train_mean = (
+        -search.cv_results_["mean_train_score"][search.best_index_]
+        if scoring == "Average_Cost"
+        else search.cv_results_["mean_train_score"][search.best_index_]
+    )
+    tuning_val_mean = (
+        -search.cv_results_["mean_test_score"][search.best_index_]
+        if scoring == "Average_Cost"
+        else search.cv_results_["mean_test_score"][search.best_index_]
+    )
+
     tuning_results = {
-        "cv_tuning_mean_train_score": search.cv_results_["mean_train_score"][search.best_index_],
+        "cv_tuning_mean_train_score": tuning_train_mean,
         "cv_tuning_std_train_score": search.cv_results_["std_train_score"][search.best_index_],
-        "cv_tuning_mean_val_score": search.cv_results_["mean_test_score"][search.best_index_],
+        "cv_tuning_mean_val_score": tuning_val_mean,
         "cv_tuning_std_val_score": search.cv_results_["std_test_score"][search.best_index_],
         "best_params": search.best_params_,
         "tuning_time": end_tuning_time - start_tuning_time,
@@ -189,6 +284,7 @@ def run_randomized_search_cv(
 
 
 def train_and_evaluate_one_fold_static_model(
+    experiment_setting: dict[str, Any],
     base_model: Union[ImbPipeline, Pipeline, BaseEstimator],
     search_space: Dict[str, Any],
     X_train: Union[pd.DataFrame, np.ndarray],
@@ -212,19 +308,83 @@ def train_and_evaluate_one_fold_static_model(
 
     The function performs inner-CV hyperparameter tuning on the provided outer training
     split using :func:`run_randomized_search_cv`, refits the best configuration on the
-    full outer training data, and then computes classification metrics on both the
-    training (resubstitution) and outer test (generalization) splits using
-    :func:`compute_classification_metrics`.
+    full outer training data, and then evaluates the refit model on both:
 
-    Test-time inference latency is measured on ``X_test`` around the prediction calls
-    and returned as ``"score_time"`` within the test metrics.
+    - the outer training split (resubstitution), and
+    - the outer test split (generalization),
+
+    using :func:`compute_classification_metrics`.
+
+    Decision policy (standard vs MEC)
+    ---------------------------------
+    Hard predictions used for metric computation are produced by :func:`apply_decision_policy`
+    using ``experiment_setting["decision_policy_mode"]``:
+
+    - ``"standard"``: uses the estimator's default decision rule via ``predict``.
+      If ``predict_proba`` is available, positive-class probabilities are also returned and
+      probability-based metrics (ROC-AUC / average precision) can be computed; otherwise
+      they are returned as ``None``.
+    - ``"mec"``: uses the **Minimum Expected Cost (MEC)** decision rule via
+      :func:`min_expected_cost_predict`, which requires ``predict_proba`` and a valid
+      ``experiment_setting["costs_matrix"]``. Hard labels are derived by minimizing expected
+      cost; returned probabilities remain the raw positive-class probability ``P(y=1|x)``.
+
+    Cost-sensitive tuning (Average_Cost)
+    ------------------------------------
+    When ``scoring="Average_Cost"``, tuning uses a custom scorer built from
+    ``experiment_setting["costs_matrix"]`` via :func:`get_avg_cost_scorer`. Because the scorer
+    is configured with ``greater_is_better=False``, scikit-learn stores negative scores in
+    ``cv_results_``; :func:`run_randomized_search_cv` converts them back to **positive costs**
+    in the returned ``tuning_results``.
+
+    Test-time inference latency is measured on ``X_test`` around the decision-policy calls
+    (prediction + probability extraction when applicable) and returned as ``"score_time"``
+    within the test metrics.
 
     Parameters
     ----------
+    experiment_setting : dict[str, Any]
+        Experiment configuration describing the approach, optional imbalance strategy, decision
+        policy, and misclassification costs. A typical schema includes::
+
+            {
+                "experiment_name": "baseline__mec_fp1_fn10",
+                "description": "...",
+                "approach": "baseline",  # baseline | cost_sensitive_learning | data_level
+                "tags": [...],
+                "class_weight": None,    # None | "balanced" | {0: w0, 1: w1}
+                "resampling_method": None,
+                "resampling_params": None,
+                "decision_policy_mode": "standard",  # standard | mec
+                "costs_matrix": COST_MATRIX,
+            }
+
+        This function uses:
+        - ``experiment_setting["decision_policy_mode"]`` to choose between standard vs MEC
+          hard-labeling (via :func:`apply_decision_policy`).
+        - ``experiment_setting["costs_matrix"]``:
+            * for tuning when ``scoring="Average_Cost"``,
+            * for MEC hard predictions when ``decision_policy_mode="mec"``,
+            * for reporting ``average_cost`` inside :func:`compute_classification_metrics`.
+
+        Cost matrix alignment (project convention):
+        - ``0`` = ALIVE (negative / majority class)
+        - ``1`` = DEAD  (positive / minority class)
+
+        The cost matrix is interpreted as ``costs_matrix[true_class, predicted_class]`` and
+        typically arranged as::
+
+            [[TN_cost, FP_cost],
+             [FN_cost, TP_cost]]
+
+        **Important:** MEC assumes the column order of ``predict_proba`` matches the class
+        indexing used by the cost matrix (in scikit-learn this is given by ``estimator.classes_``).
+
     base_model : imblearn.pipeline.Pipeline or sklearn.pipeline.Pipeline or sklearn.base.BaseEstimator
-        Estimator or pipeline to tune and evaluate. Must implement ``fit`` and
-        ``predict``. This implementation requires ``predict_proba`` to compute
-        probability-based metrics.
+        Estimator or pipeline to tune and evaluate. Must implement ``fit`` and ``predict``.
+        If ``experiment_setting["decision_policy_mode"] == "mec"``, it must also implement
+        ``predict_proba``. Under the standard policy, ``predict_proba`` is optional; when absent,
+        probability-based metrics are returned as ``None``.
     search_space : dict[str, Any]
         Hyperparameter search space passed to the tuning routine. Keys must match valid
         parameter names of ``base_model`` (e.g., ``"classifier__C"`` for a pipeline
@@ -245,6 +405,11 @@ def train_and_evaluate_one_fold_static_model(
         Number of inner stratified CV folds used during tuning.
     scoring : str, default="f1"
         Scoring identifier used to select the best configuration during tuning.
+
+        - If a standard scikit-learn scorer name is provided (e.g., ``"f1"``, ``"roc_auc"``,
+          ``"average_precision"``), it is passed directly to RandomizedSearchCV.
+        - If ``"Average_Cost"``, the tuning objective is the **average misclassification cost**
+          computed with ``experiment_setting["costs_matrix"]`` (lower is better).
     random_state : int, default=42
         Random seed forwarded to the tuning routine (inner splitter and parameter sampling).
     n_jobs : int, default=-1
@@ -257,22 +422,28 @@ def train_and_evaluate_one_fold_static_model(
         Best estimator found by tuning, refit on the full outer training split.
     tuning_results : dict[str, Any]
         Standardized tuning summary returned by :func:`run_randomized_search_cv`
-        (e.g., inner-CV mean/std scores, best params, tuning time).
+        (e.g., inner-CV mean/std scores, best params, tuning time). If ``scoring="Average_Cost"``,
+        the reported mean train/val scores are **positive costs** (lower is better).
     resubstitution_metrics : dict[str, float | int | None]
-        Metrics computed on the outer training split via
-        :func:`compute_classification_metrics`.
+        Metrics computed on the outer training split via :func:`compute_classification_metrics`.
+        If a cost matrix is provided, includes ``"average_cost"``; if probabilities are not
+        available (standard policy without ``predict_proba``), ROC-AUC and average precision
+        are returned as ``None``.
     test_metrics : dict[str, float | int | None]
-        Metrics computed on the outer test split via
-        :func:`compute_classification_metrics`, with an additional key:
+        Metrics computed on the outer test split via :func:`compute_classification_metrics`,
+        with an additional key:
 
         - ``"score_time"`` : float
-          Wall-clock time in seconds measured around ``predict`` and ``predict_proba``
-          on ``X_test``.
+          Wall-clock time in seconds measured around decision-policy prediction on ``X_test``.
 
     Raises
     ------
+    KeyError
+        If ``experiment_setting["decision_policy_mode"] == "mec"`` and ``"costs_matrix"`` is missing
+        or ``None``.
     AttributeError
-        If the refit ``best_model`` does not expose ``predict_proba``.
+        If ``experiment_setting["decision_policy_mode"] == "mec"`` but the estimator/pipeline does
+        not expose ``predict_proba`` (raised by :func:`apply_decision_policy`).
     ValueError
         If tuning fails due to invalid ``search_space`` keys, incompatible ``scoring``,
         or an invalid CV configuration (raised by scikit-learn inside the tuning helper).
@@ -282,32 +453,72 @@ def train_and_evaluate_one_fold_static_model(
 
     Notes
     -----
-    - This implementation assumes binary classification and extracts positive-class
-      probabilities as ``predict_proba(X)[:, 1]``.
-    - ``score_time`` includes both hard predictions and probability predictions on the
-      test split.
     - Leakage safety depends on encapsulating preprocessing, feature selection, and
       resampling inside ``base_model`` when the function is used within an outer CV loop.
+    - Under MEC, hard labels are derived from probabilities and the cost matrix; the returned
+      probability vector remains the raw positive-class probability.
+    - The ``average_cost`` metric (when enabled) is computed from hard predictions, consistent
+      with :func:`average_cost_score`.
 
     Examples
     --------
-    >>> best_model, tuning_results, resub_metrics, test_metrics = train_and_evaluate_one_fold_static_model(
-    ...     base_model=base_model,
-    ...     search_space=search_space,
-    ...     X_train=X_train,
-    ...     y_train=y_train,
-    ...     X_test=X_test,
-    ...     y_test=y_test,
-    ...     logger=logger,
-    ...     n_iter=30,
-    ...     val_cv_split=5,
-    ...     scoring="average_precision",
-    ...     random_state=42,
-    ...     n_jobs=-1,
-    ... )
-    >>> tuning_results["best_params"]  # doctest: +ELLIPSIS
-    {...}
+    Standard policy evaluation::
+
+        >>> best_model, tuning_results, resub_metrics, test_metrics = train_and_evaluate_one_fold_static_model(
+        ...     experiment_setting=experiment_setting,
+        ...     base_model=base_model,
+        ...     search_space=search_space,
+        ...     X_train=X_train,
+        ...     y_train=y_train,
+        ...     X_test=X_test,
+        ...     y_test=y_test,
+        ...     logger=logger,
+        ...     n_iter=30,
+        ...     val_cv_split=5,
+        ...     scoring="average_precision",
+        ...     random_state=42,
+        ...     n_jobs=-1,
+        ... )
+
+    MEC policy with cost-based tuning::
+
+        >>> import numpy as np
+        >>> experiment_setting = {
+        ...     "experiment_name": "baseline__mec_fp1_fn10",
+        ...     "description": "MEC policy with FP=1, FN=10.",
+        ...     "approach": "baseline",
+        ...     "tags": ["baseline", "mec_policy"],
+        ...     "class_weight": None,
+        ...     "resampling_method": None,
+        ...     "resampling_params": None,
+        ...     "decision_policy_mode": "mec",
+        ...     "costs_matrix": np.array([[0.0, 1.0],
+        ...                              [10.0, 0.0]]),
+        ... }
+        >>> best_model, tuning_results, resub_metrics, test_metrics = train_and_evaluate_one_fold_static_model(
+        ...     experiment_setting=experiment_setting,
+        ...     base_model=base_model,
+        ...     search_space=search_space,
+        ...     X_train=X_train,
+        ...     y_train=y_train,
+        ...     X_test=X_test,
+        ...     y_test=y_test,
+        ...     logger=logger,
+        ...     n_iter=30,
+        ...     val_cv_split=5,
+        ...     scoring="Average_Cost",
+        ...     random_state=42,
+        ...     n_jobs=-1,
+        ... )
+        >>> test_metrics["average_cost"] is not None
+        True
     """
+
+    costs_matrix = experiment_setting.get("costs_matrix")
+    decision_policy_mode = experiment_setting.get("decision_policy_mode", "standard")
+
+    if decision_policy_mode == "mec" and costs_matrix is None:
+        raise KeyError("Cannot use 'mec' decision policy without a 'costs_matrix'.")
 
     # Run RandomizedSearchCV
     best_model, tuning_results = run_randomized_search_cv(
@@ -319,26 +530,47 @@ def train_and_evaluate_one_fold_static_model(
         val_cv_split=val_cv_split,
         scoring=scoring,
         random_state=random_state,
+        cost_matrix=costs_matrix,
         n_jobs=n_jobs,
     )
 
-    # Evaluate on the training set (resubstitution error)
+    # --- Evaluate on the training set (resubstitution error)
     logger.info("[COMPUTING RESUBSTITUTION METRICS]...")
-    y_train_pred = best_model.predict(X_train)
-    y_train_pred_prob = best_model.predict_proba(X_train)[:, 1]
+
+    # Apply decision policy on the training set
+    y_train_pred, y_train_pred_prob = apply_decision_policy(
+        estimator=best_model,
+        X=X_train,
+        policy_mode=decision_policy_mode,
+        cost_matrix=costs_matrix,
+    )
+
     resubstitution_metrics = compute_classification_metrics(
-        y_train, y_train_pred, y_train_pred_prob
+        y_true=y_train,
+        y_pred=y_train_pred,
+        y_pred_proba=y_train_pred_prob,
+        cost_matrix=costs_matrix,
     )
     logger.info(f"[RESUBSTITUTION METRICS]: {resubstitution_metrics}")
 
-    # Evaluate on the test set (generalization error)
+    # --- Evaluate on the test set (generalization error)
     logger.info("[COMPUTING GENERALIZATION METRICS]...")
+
     start_score_time = time.time()
-    y_test_pred = best_model.predict(X_test)
-    y_test_pred_prob = best_model.predict_proba(X_test)[:, 1]
+
+    # Apply decision policy on the test set
+    y_test_pred, y_test_pred_prob = apply_decision_policy(
+        estimator=best_model,
+        X=X_test,
+        policy_mode=decision_policy_mode,
+        cost_matrix=costs_matrix,
+    )
+
     end_score_time = time.time()
 
-    test_metrics = compute_classification_metrics(y_test, y_test_pred, y_test_pred_prob)
+    test_metrics = compute_classification_metrics(
+        y_true=y_test, y_pred=y_test_pred, y_pred_proba=y_test_pred_prob, cost_matrix=costs_matrix
+    )
     test_metrics["score_time"] = end_score_time - start_score_time
     logger.info(f"[GENERALIZATION METRICS]: {test_metrics}")
 
@@ -346,6 +578,7 @@ def train_and_evaluate_one_fold_static_model(
 
 
 def train_and_evaluate_one_fold_des_model(
+    experiment_setting: dict[str, Any],
     des_model: BaseEstimator,
     des_conf: Dict[str, Any],
     pool_classifiers: Union[ImbPipeline, Pipeline, BaseEstimator],
@@ -376,8 +609,8 @@ def train_and_evaluate_one_fold_des_model(
        stratified ``train_test_split`` controlled by ``random_state``.
 
     2) Tune and refit the pool pipeline on the pool-training subset via
-       :func:`run_randomized_search_cv`. The returned best pipeline is then used to compute
-       pool resubstitution metrics on the pool-training subset.
+       :func:`run_randomized_search_cv`. The returned best pipeline is then evaluated on the
+       pool-training subset (pool resubstitution).
 
     3) Fit the DES model on DSEL:
        - extract the fitted preprocessing part of the tuned pool pipeline by slicing it up to
@@ -389,37 +622,93 @@ def train_and_evaluate_one_fold_des_model(
 
     4) Build an inference pipeline (preprocessing -> DES) and evaluate on the outer test fold.
        Test-time predictions are timed and stored as ``"score_time"`` inside the returned
-       ``test_metrics``. Probabilities are attempted via ``predict_proba``; if unavailable,
-       probability-based metrics are returned as ``None`` by
-       :func:`compute_classification_metrics`.
+       ``test_metrics``.
+
+    Decision policy (standard vs MEC)
+    ---------------------------------
+    Hard predictions are produced by :func:`apply_decision_policy` using
+    ``experiment_setting["decision_policy_mode"]``:
+
+    - ``"standard"``: use ``predict`` (default model decision rule).
+    - ``"mec"``: use **Minimum Expected Cost (MEC)** via :func:`min_expected_cost_predict`,
+      which requires ``predict_proba`` and a valid ``costs_matrix``.
+
+    When probabilities are available, positive-class probabilities are returned and used to
+    compute probability-based metrics (ROC-AUC, average precision). If probabilities are not
+    available under the standard policy, probability-based metrics are returned as ``None``.
+
+    Cost-sensitive tuning
+    ---------------------
+    When ``scoring="Average_Cost"``, pool tuning uses a custom scorer built from
+    ``experiment_setting["costs_matrix"]`` via :func:`get_avg_cost_scorer`. Cost-sensitivity
+    in this function applies to **pool tuning** and to **hard-labeling under MEC**; it does
+    not otherwise change the DES model unless encoded in ``des_conf`` / estimator itself.
 
     Parameters
     ----------
+    experiment_setting : dict[str, Any]
+        Experiment configuration describing the approach, optional imbalance handling, decision
+        policy, and the cost matrix. A typical schema includes::
+
+            {
+                "experiment_name": "baseline__mec_fp1_fn10",
+                "description": "No resampling, no class_weight. Decision policy: MEC with costs FP=1, FN=10.",
+                "approach": "baseline",  # baseline | cost_sensitive_learning | data_level
+                "tags": ["baseline", "mec_policy"],
+                "class_weight": None,    # None | "balanced" | {0: w0, 1: w1}
+                "resampling_method": None,
+                "resampling_params": None,
+                "decision_policy_mode": "mec",  # standard | mec
+                "costs_matrix": COST_MATRIX,
+            }
+
+        This function uses:
+        - ``experiment_setting["decision_policy_mode"]`` to choose between standard vs MEC
+          hard-labeling (via :func:`apply_decision_policy`).
+        - ``experiment_setting["costs_matrix"]``:
+            * for pool tuning when ``scoring="Average_Cost"``,
+            * for MEC hard predictions when ``decision_policy_mode="mec"``,
+            * optionally for reporting ``average_cost`` inside
+              :func:`compute_classification_metrics`.
+
+        Cost matrix alignment (project convention):
+        - ``0`` = ALIVE (negative / majority class)
+        - ``1`` = DEAD  (positive / minority class)
+
+        The cost matrix is interpreted as ``costs_matrix[true_class, predicted_class]`` and
+        typically arranged as::
+
+            [[TN_cost, FP_cost],
+             [FN_cost, TP_cost]]
+
+        **Important:** MEC assumes the column order of ``predict_proba`` matches the class
+        indexing used by the cost matrix (in scikit-learn this is given by ``estimator.classes_``).
+
     des_model : sklearn.base.BaseEstimator
         Unfitted DES estimator (typically from DESlib) implementing ``set_params``, ``fit``,
-        and ``predict``. If the final inference pipeline exposes ``predict_proba``,
-        probability-based metrics can be computed on the test fold.
-    des_conf : Dict[str, Any]
+        and ``predict``. For MEC, the final inference pipeline must also implement
+        ``predict_proba``.
+    des_conf : dict[str, Any]
         Configuration forwarded to ``des_model.set_params(**des_conf_local)``. This function
         creates a local shallow copy to inject the fitted pool under the ``"pool_classifiers"``
         key before calling ``set_params``.
-    pool_classifiers : Union[imblearn.pipeline.Pipeline, sklearn.pipeline.Pipeline, sklearn.base.BaseEstimator]
-        Pool estimator to tune on the pool-training subset. In the current implementation this
-        is expected to behave like a fitted pipeline after tuning (i.e., expose ``named_steps``
-        and support slicing), and to contain:
-        - a step named ``"resampling"`` (used only during training; excluded from inference),
+    pool_classifiers : imblearn.pipeline.Pipeline or sklearn.pipeline.Pipeline or sklearn.base.BaseEstimator
+        Pool estimator to tune on the pool-training subset. Expected to behave like a pipeline
+        after tuning (i.e., expose ``named_steps`` and support slicing), and to contain:
+        - a step named ``"resampling"`` (excluded from inference; may be a real resampler or a
+          ``"passthrough"`` placeholder),
         - a step named ``"classifier"`` (the fitted pool injected into the DES model).
-    search_space : Dict[str, Any]
+    search_space : dict[str, Any]
         Hyperparameter distributions or candidate lists used to tune ``pool_classifiers``.
         Keys must match valid parameter names of the pool pipeline using the double-underscore
         convention (e.g., ``"classifier__n_estimators"``, ``"feature_selection_filter__k"``).
-    X_train : Union[pandas.DataFrame, numpy.ndarray]
+    X_train : pandas.DataFrame or numpy.ndarray
         Features for the outer training fold of shape ``(n_train_samples, n_features)``.
-    y_train : Union[pandas.Series, numpy.ndarray]
+    y_train : pandas.Series or numpy.ndarray
         Labels for the outer training fold of shape ``(n_train_samples,)``.
-    X_test : Union[pandas.DataFrame, numpy.ndarray]
+    X_test : pandas.DataFrame or numpy.ndarray
         Features for the outer test fold of shape ``(n_test_samples, n_features)``.
-    y_test : Union[pandas.Series, numpy.ndarray]
+    y_test : pandas.Series or numpy.ndarray
         Labels for the outer test fold of shape ``(n_test_samples,)``.
     logger : Any
         Logger exposing ``.info(str)``.
@@ -432,7 +721,16 @@ def train_and_evaluate_one_fold_des_model(
         Number of folds for the inner CV used during pool tuning.
     scoring : str, default="f1"
         Scoring identifier used by the randomized CV search to select the best pool
-        configuration (e.g., ``"f1"``, ``"roc_auc"``, ``"average_precision"``).
+        configuration.
+
+        - If a standard scikit-learn scorer name is provided (e.g., ``"f1"``, ``"roc_auc"``,
+          ``"average_precision"``), it is passed directly to RandomizedSearchCV.
+        - If ``"Average_Cost"``, the tuning objective is the **average misclassification cost**
+          computed with ``experiment_setting["costs_matrix"]`` (lower is better). Note that
+          internal CV scores stored by scikit-learn appear negative due to
+          ``greater_is_better=False``; the tuning helper converts them back to positive costs
+          in the returned ``tuning_results``.
+
     random_state : int, default=42
         Random seed used for:
         - the pool-train vs DSEL split,
@@ -448,16 +746,22 @@ def train_and_evaluate_one_fold_des_model(
         Fitted inference pipeline used for test evaluation. It contains the fitted preprocessing
         steps extracted from the tuned pool pipeline (all steps before ``"resampling"``),
         followed by the fitted DES estimator as the final step named ``"classifier"``.
-    tuning_results : Dict[str, Any]
+    tuning_results : dict[str, Any]
         Tuning summary returned by :func:`run_randomized_search_cv` for the best pool candidate
-        (e.g., CV mean/std scores, best params, tuning time).
-    pool_resubstitution_metrics : Dict[str, Optional[float] | int]
-        Metrics computed on the pool-training subset using the tuned pool pipeline. This
-        requires that the tuned pool pipeline implements ``predict_proba``.
-    test_metrics : Dict[str, Optional[float] | int]
-        Metrics computed on the outer test fold using the final DES inference pipeline. The
-        returned dictionary also includes ``"score_time"`` (seconds), measured around the test
-        prediction calls in this function.
+        (e.g., CV mean/std scores, best params, tuning time). If ``scoring="Average_Cost"``,
+        the reported mean train/val scores are **positive costs** (lower is better).
+    pool_resubstitution_metrics : dict[str, Optional[float] | int]
+        Metrics computed on the pool-training subset using:
+        - hard labels produced by :func:`apply_decision_policy` (standard or MEC),
+        - probabilities when available,
+        and optionally including ``average_cost`` when a cost matrix is provided to
+        :func:`compute_classification_metrics`.
+    test_metrics : dict[str, Optional[float] | int]
+        Metrics computed on the outer test fold using:
+        - hard labels produced by :func:`apply_decision_policy` (standard or MEC),
+        - probabilities when available,
+        and optionally including ``average_cost``. The returned dictionary also includes
+        ``"score_time"`` (seconds), measured around the prediction calls.
 
     Raises
     ------
@@ -467,12 +771,12 @@ def train_and_evaluate_one_fold_des_model(
         in ``search_space``), or if the tuned pool pipeline does not include a step named
         ``"resampling"`` (required for preprocessing extraction).
     KeyError
-        If the tuned pool pipeline does not contain a step named ``"classifier"`` when
-        extracting the fitted pool.
+        If required keys are missing from ``experiment_setting`` (e.g., ``"costs_matrix"`` when
+        needed, or ``"decision_policy_mode"`` in strict setups).
     AttributeError
-        If the tuned pool pipeline does not implement ``predict_proba`` (required for pool
-        resubstitution metrics in this implementation), or if required pipeline-like attributes
-        (e.g., ``named_steps``) are not available.
+        If ``experiment_setting["decision_policy_mode"] == "mec"`` but the estimator/pipeline
+        used for inference does not implement ``predict_proba`` (raised by
+        :func:`apply_decision_policy`).
     Exception
         Any exception raised by the underlying estimators/pipeline during fitting, transformation,
         or prediction may propagate.
@@ -485,15 +789,82 @@ def train_and_evaluate_one_fold_des_model(
       the final inference pipeline.
     - Binary classification convention: when available, the positive-class probability is taken
       as ``predict_proba(X)[:, 1]``.
-    - Test probabilities are optional: if ``final_des_pipeline.predict_proba`` is not available,
-      probabilities are set to ``None`` and probability-based metrics are returned as ``None`` by
-      :func:`compute_classification_metrics`.
+    - Under MEC, hard labels are computed from the full probability matrix and ``costs_matrix``;
+      the returned ``y_pred_prob`` remains the raw positive-class probability.
 
     Examples
     --------
-    >>> final_pipe, tuning, pool_resub, test_metrics = train_and_evaluate_one_fold_des_model(des_model=des_model, des_conf=des_conf, pool_classifiers=pool_pipeline, search_space=pool_space, X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, logger=logger, n_iter=30, dsel_size=0.2, val_cv_split=5, scoring="average_precision", random_state=42, n_jobs=-1)
-    >>> test_metrics["score_time"]
+    Standard policy evaluation::
+
+        >>> experiment_setting = {
+        ...     "experiment_name": "baseline__standard",
+        ...     "description": "Standard policy.",
+        ...     "approach": "baseline",
+        ...     "tags": ["baseline", "standard_policy"],
+        ...     "class_weight": None,
+        ...     "resampling_method": None,
+        ...     "resampling_params": None,
+        ...     "decision_policy_mode": "standard",
+        ...     "costs_matrix": None,
+        ... }
+        >>> final_pipe, tuning, pool_resub, test_metrics = train_and_evaluate_one_fold_des_model(
+        ...     experiment_setting=experiment_setting,
+        ...     des_model=des_model,
+        ...     des_conf=des_conf,
+        ...     pool_classifiers=pool_pipeline,
+        ...     search_space=pool_space,
+        ...     X_train=X_train,
+        ...     y_train=y_train,
+        ...     X_test=X_test,
+        ...     y_test=y_test,
+        ...     logger=logger,
+        ...     n_iter=30,
+        ...     dsel_size=0.2,
+        ...     val_cv_split=5,
+        ...     scoring="average_precision",
+        ...     random_state=42,
+        ...     n_jobs=-1,
+        ... )
+
+    MEC policy evaluation (FN >> FP)::
+
+        >>> import numpy as np
+        >>> experiment_setting = {
+        ...     "experiment_name": "baseline__mec_fp1_fn10",
+        ...     "description": "MEC policy with FP=1, FN=10.",
+        ...     "approach": "baseline",
+        ...     "tags": ["baseline", "mec_policy"],
+        ...     "class_weight": None,
+        ...     "resampling_method": None,
+        ...     "resampling_params": None,
+        ...     "decision_policy_mode": "mec",
+        ...     "costs_matrix": np.array([[0.0, 1.0],
+        ...                              [10.0, 0.0]]),
+        ... }
+        >>> final_pipe, tuning, pool_resub, test_metrics = train_and_evaluate_one_fold_des_model(
+        ...     experiment_setting=experiment_setting,
+        ...     des_model=des_model,
+        ...     des_conf=des_conf,
+        ...     pool_classifiers=pool_pipeline,
+        ...     search_space=pool_space,
+        ...     X_train=X_train,
+        ...     y_train=y_train,
+        ...     X_test=X_test,
+        ...     y_test=y_test,
+        ...     logger=logger,
+        ...     n_iter=30,
+        ...     dsel_size=0.2,
+        ...     val_cv_split=5,
+        ...     scoring="Average_Cost",
+        ...     random_state=42,
+        ...     n_jobs=-1,
+        ... )
+        >>> test_metrics["average_cost"] is not None
+        True
     """
+
+    costs_matrix = experiment_setting.get("costs_matrix")
+    decision_policy_mode = experiment_setting.get("decision_policy_mode", "standard")
 
     # Split TRAIN into pool-training and DSEL
     X_train_pool, X_dsel, y_train_pool, y_dsel = train_test_split(
@@ -514,18 +885,26 @@ def train_and_evaluate_one_fold_des_model(
         val_cv_split=val_cv_split,
         scoring=scoring,
         random_state=random_state,
+        cost_matrix=costs_matrix,
         n_jobs=n_jobs,
     )
 
     # --- Pool resubstitution metrics (only for the tuned pool pipeline) ---
     logger.info("[COMPUTING POOL RESUBSTITUTION METRICS]...")
-    y_train_pool_pred = best_pipe_pool_classifiers.predict(X_train_pool)
 
-    # Consistent with the STATIC reference function: require predict_proba
-    y_train_pool_pred_prob = best_pipe_pool_classifiers.predict_proba(X_train_pool)[:, 1]
+    # Apply decision policy on the training set
+    y_train_pool_pred, y_train_pool_pred_prob = apply_decision_policy(
+        estimator=best_pipe_pool_classifiers,
+        X=X_train_pool,
+        policy_mode=decision_policy_mode,
+        cost_matrix=costs_matrix,
+    )
 
     pool_resubstitution_metrics = compute_classification_metrics(
-        y_train_pool, y_train_pool_pred, y_train_pool_pred_prob
+        y_true=y_train_pool,
+        y_pred=y_train_pool_pred,
+        y_pred_proba=y_train_pool_pred_prob,
+        cost_matrix=costs_matrix,
     )
     logger.info(f"[POOL RESUBSTITUTION METRICS]: {pool_resubstitution_metrics}")
 
@@ -555,15 +934,23 @@ def train_and_evaluate_one_fold_des_model(
     # Evaluate on the test set (generalization error)
     logger.info("[COMPUTING GENERALIZATION METRICS]...")
     start_score_time = time.time()
-    y_test_pred = final_des_pipeline.predict(X_test)
-    try:
-        y_test_pred_proba = final_des_pipeline.predict_proba(X_test)[:, 1]
-    except Exception:
-        # Some DES models / configurations may not implement predict_proba
-        y_test_pred_proba = None
+
+    # Apply decision policy on the test set
+    y_test_pred, y_test_pred_proba = apply_decision_policy(
+        estimator=final_des_pipeline,
+        X=X_test,
+        policy_mode=decision_policy_mode,
+        cost_matrix=costs_matrix,
+    )
+
     end_score_time = time.time()
 
-    test_metrics = compute_classification_metrics(y_test, y_test_pred, y_test_pred_proba)
+    test_metrics = compute_classification_metrics(
+        y_true=y_test,
+        y_pred=y_test_pred,
+        y_pred_proba=y_test_pred_proba,
+        cost_matrix=costs_matrix,
+    )
     test_metrics["score_time"] = end_score_time - start_score_time
     logger.info(f"[GENERALIZATION METRICS]: {test_metrics}")
 
@@ -578,7 +965,7 @@ def train_and_evaluate_one_fold_all_models(
     test_idx: np.ndarray,
     X: pd.DataFrame,
     y: pd.Series,
-    experiment_name: str,
+    experiment_setting: dict[str, Any],
     config_preprocessing_features: dict[str, list[Any]],
     static_models: Sequence[str],
     static_ensemble_models: Sequence[str],
@@ -586,9 +973,6 @@ def train_and_evaluate_one_fold_all_models(
     des_models: Sequence[str],
     fs_k_best_to_keep: int | str,
     fs_k_best_candidates: Sequence[int | str] | None,
-    use_cost_sensitive_learning: bool,
-    resampling_method: str | None,
-    resampling_params: Dict[str, Any] | None,
     tuning_n_iter: int,
     tuning_cv_inner_n_splits: int,
     tuning_scoring: str,
@@ -600,22 +984,27 @@ def train_and_evaluate_one_fold_all_models(
     """
     Train and evaluate all STATIC, STATIC-ENSEMBLE, and DES models on a single outer CV fold.
 
-    This helper orchestrates the end-to-end workflow for one outer split of a repeated
+    This orchestrator executes the full workflow for **one** outer split of a repeated
     stratified cross-validation experiment. Given the full dataset (``X``, ``y``) and the
     current outer ``train_idx`` / ``test_idx`` indices, it:
 
-    1) builds outer-fold train/test datasets and logs class distributions,
-    2) trains and evaluates each STATIC model listed in ``static_models``,
-    3) trains and evaluates each STATIC ENSEMBLE model listed in ``static_ensemble_models``,
-       using the shared base-model pool ``static_ensemble_pools``,
-    4) trains and evaluates each DES model listed in ``des_models`` using a two-stage DES
-       workflow (pool tuning + DSEL fitting).
+    1) Builds outer-fold train/test datasets and logs class distributions.
+    2) Trains and evaluates each STATIC model listed in ``static_models``.
+    3) Trains and evaluates each STATIC-ENSEMBLE model listed in ``static_ensemble_models``,
+       using the shared base-model pool ``static_ensemble_pools``.
+    4) Trains and evaluates each DES model listed in ``des_models`` using a two-stage DES
+       workflow (pool tuning on a pool-training subset + DES fitting on a DSEL subset).
 
     For each trained model, it collects standardized reporting rows for:
     - training-side evaluation (resubstitution / pool-resubstitution), and
     - test-side evaluation (generalization metrics on the outer test fold),
 
     by delegating row construction to ``collect_fold_reports``.
+
+    The behavior of models/pipelines is driven by ``experiment_setting`` (e.g., class weights,
+    resampling strategy, and an optional cost matrix used when ``tuning_scoring="Average_Cost"``).
+    The experiment may also specify a decision policy mode (e.g., MEC), which is treated as
+    experiment metadata unless thresholding logic is implemented in downstream helpers.
 
     Parameters
     ----------
@@ -639,11 +1028,43 @@ def train_and_evaluate_one_fold_all_models(
         ``config_preprocessing_features`` column-name lists.
     y : pandas.Series of shape (n_samples,)
         Full target vector. Must be row-aligned with ``X``.
-    experiment_name : str
-        Experiment identifier stored in every output row.
+    experiment_setting : dict[str, Any]
+        Experiment configuration describing the approach, optional imbalance strategy,
+        optional decision policy, and the cost matrix used for cost-based tuning/evaluation.
+        A typical schema includes::
+
+            {
+                "experiment_name": "baseline__mec_fp1_fn10",
+                "description": "No resampling, no class_weight. Decision policy: MEC with costs FP=1, FN=10.",
+                "approach": "baseline",  # baseline | cost_sensitive_learning | data_level
+                "tags": ["baseline", "mec_policy"],
+                "class_weight": None,    # None | "balanced" | {0: w0, 1: w1}
+                "resampling_method": None,
+                "resampling_params": None,
+                "decision_policy_mode": "mec",  # standard | mec
+                "costs_matrix": COST_MATRIX,
+            }
+
+        This function uses, at minimum:
+        - ``experiment_setting["experiment_name"]`` for row labeling.
+        - ``experiment_setting["class_weight"]`` to configure model factories (STATIC, ENSEMBLE,
+          DES pool) when building estimators.
+        - ``experiment_setting["resampling_method"]`` and ``experiment_setting["resampling_params"]``
+          when building pipelines via ``build_model_pipeline``.
+        - ``experiment_setting["costs_matrix"]`` when ``tuning_scoring="Average_Cost"`` is used
+          by downstream tuning (see :func:`run_randomized_search_cv`) and/or when downstream
+          evaluation includes ``average_cost`` (see :func:`compute_classification_metrics`).
+
+        Notes on ``decision_policy_mode``:
+        - ``"standard"`` typically implies the estimator's default decision rule (e.g., 0.5 threshold
+          for probabilistic classifiers).
+        - ``"mec"`` (minimum expected cost) implies thresholding based on FP/FN costs; however,
+          MEC threshold moving is **not applied by this function** unless implemented in downstream
+          helpers (e.g., by converting probabilities to hard labels before metric computation).
+
     config_preprocessing_features : dict[str, list[Any]]
-        Column configuration passed to ``build_model_pipeline`` / ``get_preprocessing_pipeline``.
-        Expected keys mirror the preprocessing setup:
+        Column configuration passed to ``build_model_pipeline`` / preprocessing builders.
+        Expected keys mirror the preprocessing setup (example):
         - ``"num_log1p_standard_scaler"``, ``"num_standard_scaler"``,
         - ``"cat_nominal"``, ``"cat_ordinal"``, ``"cat_ordinal_order"``,
         - ``"cat_partial_ordinal"``, ``"cat_binary"``.
@@ -666,61 +1087,61 @@ def train_and_evaluate_one_fold_all_models(
         Optional candidate values for ``SelectKBest.k`` to be explored during tuning.
         When provided, candidates are injected into the relevant search spaces as
         ``"feature_selection_filter__k": list(fs_k_best_candidates)``.
-    use_cost_sensitive_learning : bool
-        Whether to enable cost-sensitive behavior (e.g., class weights) in STATIC models,
-        STATIC ensembles, and DES pools. Forwarded to the model factory functions.
-    resampling_method : str or None
-        Canonical resampling strategy name (e.g., ``"SMOTE"``, ``"RandomUnderSampler"``,
-        ``"SMOTEENN"``) or ``None`` to disable resampling.
-    resampling_params : dict[str, Any] or None
-        Extra keyword arguments forwarded to the sampler factory when resampling is enabled.
     tuning_n_iter : int
         Number of parameter settings sampled in the randomized hyperparameter search.
     tuning_cv_inner_n_splits : int
         Number of stratified folds for the inner CV used during hyperparameter tuning.
     tuning_scoring : str
-        Scoring metric used by the hyperparameter search (e.g., ``"f1"``,
-        ``"average_precision"``, ``"roc_auc"``).
+        Scoring metric used by hyperparameter search.
+
+        - If a standard scikit-learn scorer name is provided (e.g., ``"f1"``,
+          ``"average_precision"``, ``"roc_auc"``), it is forwarded to the tuning helpers.
+        - If ``"Average_Cost"``, downstream tuning uses the cost-sensitive scorer built from
+          ``experiment_setting["costs_matrix"]`` (lower cost is better). Note: internal CV
+          scores inside scikit-learn appear negative due to ``greater_is_better=False``, but
+          the tuning helper converts them back to positive costs in the returned summaries.
     tuning_n_jobs : int
-        Number of parallel jobs used during hyperparameter tuning.
+        Number of parallel jobs used during hyperparameter tuning (inner randomized search).
     dsel_size : float
         Fraction of the outer training set reserved for the DSEL subset used to fit DES
-        competence models (must satisfy ``0 < dsel_size < 1``).
+        competence models (must satisfy ``0 < dsel_size < 1``). Used only for DES models.
     random_state : int
-        Base random seed forwarded to factories and splitters. Tuning uses
+        Base random seed forwarded to model factories and splitters. Tuning uses
         ``random_state + run_id`` to diversify randomized search sampling across outer folds.
     logger : Any
-        Logger instance exposing at least ``.info(str)`` / ``.warning(str)`` / ``.error(str)``.
+        Logger instance exposing at least ``.info(str)`` (and optionally ``.warning(str)``,
+        ``.error(str)``).
 
     Returns
     -------
     resubstitution_rows : list[dict[str, Any]]
         Metrics rows on the training side of the current outer fold.
+
         - STATIC models: resubstitution metrics on ``(X_train, y_train)``.
-        - STATIC ENSEMBLES: resubstitution metrics on ``(X_train, y_train)``.
+        - STATIC-ENSEMBLE models: resubstitution metrics on ``(X_train, y_train)``.
         - DES models: pool-resubstitution metrics computed for the tuned/fitted pool on the
-          pool-training subset used inside ``train_and_evaluate_one_fold_des_model``.
+          pool-training subset used inside :func:`train_and_evaluate_one_fold_des_model`.
     generalization_rows : list[dict[str, Any]]
         Metrics rows on the test side of the current outer fold.
+
         - STATIC models: test metrics on ``(X_test, y_test)``.
-        - STATIC ENSEMBLES: test metrics on ``(X_test, y_test)``.
+        - STATIC-ENSEMBLE models: test metrics on ``(X_test, y_test)``.
         - DES models: test metrics produced by the final DES inference pipeline on
           ``(X_test, y_test)``.
 
     Raises
     ------
-    typer.Exit
-        If critical preconditions fail (e.g., invalid configuration detected by downstream
-        helpers, missing required pipeline steps, missing required model keys).
+    KeyError
+        If required keys are missing from ``experiment_setting`` (e.g., ``"experiment_name"``,
+        ``"class_weight"``, ``"resampling_method"``, ``"resampling_params"``, ``"decision_policy_mode"``,
+        or ``"costs_matrix"`` when ``tuning_scoring="Average_Cost"``), or if expected pipeline
+        step names are missing during feature-name extraction.
     ValueError
         If downstream helpers raise due to invalid CV configuration, incompatible scoring,
         invalid parameter names, or invalid ``dsel_size``.
-    KeyError
-        If expected keys/step names are missing (e.g., preprocessing config keys or
-        pipeline step ``"feature_selection_filter"`` during feature-name extraction).
     AttributeError
-        If downstream evaluation requires probability estimates but the fitted estimator/pipeline
-        does not expose ``predict_proba``.
+        If downstream evaluation requires probability estimates but a fitted estimator/pipeline
+        does not expose ``predict_proba`` (depending on your metric implementation).
     Exception
         Any exception raised by estimators, samplers, or scikit-learn model-selection routines
         may propagate.
@@ -733,20 +1154,15 @@ def train_and_evaluate_one_fold_all_models(
       is named exactly ``"feature_selection_filter"``.
     - Selected feature names should be extracted from the **fitted best estimator pipeline**
       (e.g., ``best_estimator.named_steps["feature_selection_filter"].get_feature_names_out()``).
+    - Any decision-policy logic (e.g., MEC thresholding) is not applied here unless it is
+      embedded in the estimator/pipeline or implemented inside the downstream train/evaluate
+      helpers.
 
     Examples
     --------
     Typical usage inside an outer CV loop::
 
-        >>> import pandas as pd
-        >>> import numpy as np
         >>> from sklearn.model_selection import RepeatedStratifiedKFold
-        >>> from loguru import logger
-        >>>
-        >>> # df contains the final modeling dataset, with target column "CLASS"
-        >>> X = df.drop(columns=["CLASS"])
-        >>> y = df["CLASS"]
-        >>>
         >>> cv_outer = RepeatedStratifiedKFold(n_splits=10, n_repeats=10, random_state=42)
         >>> resub_rows_all, gen_rows_all = [], []
         >>>
@@ -760,7 +1176,7 @@ def train_and_evaluate_one_fold_all_models(
         ...         test_idx=test_idx,
         ...         X=X,
         ...         y=y,
-        ...         experiment_name="baseline-v1",
+        ...         experiment_setting=experiment_setting,
         ...         config_preprocessing_features=CONFIG_PREPROCESSING_FEATURES,
         ...         static_models=["SVC", "RandomForestClassifier"],
         ...         static_ensemble_models=["VotingClassifier"],
@@ -768,9 +1184,6 @@ def train_and_evaluate_one_fold_all_models(
         ...         des_models=["KNORAU"],
         ...         fs_k_best_to_keep=20,
         ...         fs_k_best_candidates=[10, 20, 30, "all"],
-        ...         use_cost_sensitive_learning=True,
-        ...         resampling_method="SMOTE",
-        ...         resampling_params={"sampling_strategy": 0.2, "random_state": 42},
         ...         tuning_n_iter=35,
         ...         tuning_cv_inner_n_splits=5,
         ...         tuning_scoring="average_precision",
@@ -808,25 +1221,27 @@ def train_and_evaluate_one_fold_all_models(
         static_model_estimator, static_model_search_space = get_static_model_and_search_space(
             static_model_name,
             random_state=random_state,
-            use_cost_sensitive_learning=use_cost_sensitive_learning,
+            class_weight=experiment_setting["class_weight"],
+            y_train=y_train,
         )
 
         # Add the k candidates for SelectKBest to be tuned with the model
         if fs_k_best_candidates is not None:
             static_model_search_space["feature_selection_filter__k"] = list(fs_k_best_candidates)
 
-        # Build the final pipeline: Preprocessing + Feature Selection + Resampling + Classifier
+        # Build the final pipeline: Preprocessing + Feature Selection + Resampling (OPTIONAL) + Classifier
         static_model_pipeline = build_model_pipeline(
             estimator=static_model_estimator,
             config_preprocessing_features=config_preprocessing_features,
             fs_k_best_to_keep=fs_k_best_to_keep,
-            resampling_method=resampling_method,
-            resampling_params=resampling_params,
+            resampling_method=experiment_setting["resampling_method"],
+            resampling_params=experiment_setting["resampling_params"],
         )
 
         # Tune the static model, fit on the training folds and evaluate on the test fold
         best_static_model, tuning_results, resubstitution_metrics, test_metrics = (
             train_and_evaluate_one_fold_static_model(
+                experiment_setting=experiment_setting,
                 base_model=static_model_pipeline,
                 search_space=static_model_search_space,
                 X_train=X_train,
@@ -845,16 +1260,11 @@ def train_and_evaluate_one_fold_all_models(
         # Extract selected feature names
         selected_names = get_selected_feature_names(pipeline=best_static_model)
 
-        # selected_indices, selected_names = get_final_selected_features(
-        #     pipeline=best_static_model,
-        #     feature_names=transformed_feature_names,
-        # )
-
         # Collect resubstitution and generalization metrics
         collect_fold_reports(
             resubstitution_rows=resubstitution_rows,
             generalization_rows=generalization_rows,
-            experiment_name=experiment_name,
+            experiment_name=experiment_setting["experiment_name"],
             iteration=iteration_idx + 1,
             fold=fold_idx + 1,
             model_name=static_model_name,
@@ -877,7 +1287,8 @@ def train_and_evaluate_one_fold_all_models(
                 ensemble_type=static_ensemble_model_name,
                 model_pool=static_ensemble_pools,
                 random_state=random_state,
-                use_cost_sensitive_learning=use_cost_sensitive_learning,
+                class_weight=experiment_setting["class_weight"],
+                y_train=y_train,
             )
         )
 
@@ -887,18 +1298,19 @@ def train_and_evaluate_one_fold_all_models(
                 fs_k_best_candidates
             )
 
-        # Build the final pipeline: Preprocessing + Feature Selection + Resampling + Classifier
+        # Build the final pipeline: Preprocessing + Feature Selection + Resampling (OPTIONAL) + Classifier
         static_ensemble_model_pipeline = build_model_pipeline(
             estimator=static_ensemble_model_estimator,
             config_preprocessing_features=config_preprocessing_features,
             fs_k_best_to_keep=fs_k_best_to_keep,
-            resampling_method=resampling_method,
-            resampling_params=resampling_params,
+            resampling_method=experiment_setting["resampling_method"],
+            resampling_params=experiment_setting["resampling_params"],
         )
 
         # Tune the static model, fit on the training folds and evaluate on the test fold
         best_static_ensemble_model, tuning_results, resubstitution_metrics, test_metrics = (
             train_and_evaluate_one_fold_static_model(
+                experiment_setting=experiment_setting,
                 base_model=static_ensemble_model_pipeline,
                 search_space=static_ensemble_model_search_space,
                 X_train=X_train,
@@ -921,7 +1333,7 @@ def train_and_evaluate_one_fold_all_models(
         collect_fold_reports(
             resubstitution_rows=resubstitution_rows,
             generalization_rows=generalization_rows,
-            experiment_name=experiment_name,
+            experiment_name=experiment_setting["experiment_name"],
             iteration=iteration_idx + 1,
             fold=fold_idx + 1,
             model_name=static_ensemble_model_name,
@@ -943,25 +1355,27 @@ def train_and_evaluate_one_fold_all_models(
         pool_classifiers, pool_search_space, des_model_estimator, des_model_conf = get_des_model(
             des_model_name,
             random_state=random_state,
-            use_cost_sensitive_learning=use_cost_sensitive_learning,
+            class_weight=experiment_setting["class_weight"],
+            y_train=y_train,
         )
 
         # Add the k candidates for SelectKBest to be tuned with the model
         if fs_k_best_candidates is not None:
             pool_search_space["feature_selection_filter__k"] = list(fs_k_best_candidates)
 
-        # Build the final pipeline: Preprocessing + Feature Selection + Resampling + Classifier
+        # Build the final pipeline: Preprocessing + Feature Selection + Resampling (OPTIONAL) + Classifier
         pool_classifiers_pipeline = build_model_pipeline(
             estimator=pool_classifiers,
             config_preprocessing_features=config_preprocessing_features,
             fs_k_best_to_keep=fs_k_best_to_keep,
-            resampling_method=resampling_method,
-            resampling_params=resampling_params,
+            resampling_method=experiment_setting["resampling_method"],
+            resampling_params=experiment_setting["resampling_params"],
         )
 
         # Tune the des model, fit on the training folds and evaluate on the test fold
         best_des_model, tuning_results, resubstitution_metrics, test_metrics = (
             train_and_evaluate_one_fold_des_model(
+                experiment_setting=experiment_setting,
                 des_model=des_model_estimator,
                 des_conf=des_model_conf,
                 pool_classifiers=pool_classifiers_pipeline,
@@ -987,7 +1401,7 @@ def train_and_evaluate_one_fold_all_models(
         collect_fold_reports(
             resubstitution_rows=resubstitution_rows,
             generalization_rows=generalization_rows,
-            experiment_name=experiment_name,
+            experiment_name=experiment_setting["experiment_name"],
             iteration=iteration_idx + 1,
             fold=fold_idx + 1,
             model_name=des_model_name,
