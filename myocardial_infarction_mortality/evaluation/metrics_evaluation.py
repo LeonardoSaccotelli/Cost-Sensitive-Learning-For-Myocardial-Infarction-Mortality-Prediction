@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from functools import partial
 from typing import Any, Dict, List, Mapping, Optional, Sequence
 
 from imblearn.metrics import (
@@ -14,11 +15,153 @@ from sklearn.metrics import (
     cohen_kappa_score,
     confusion_matrix,
     f1_score,
+    make_scorer,
     matthews_corrcoef,
     precision_score,
     recall_score,
     roc_auc_score,
 )
+
+
+def average_cost_score(y_true, y_pred, cost_matrix: np.ndarray) -> float:
+    """
+    Compute the average misclassification cost using a 2x2 cost matrix.
+
+    This function evaluates predictions by computing the confusion matrix with an explicit
+    label order ``[0, 1]`` and then applying a user-provided 2x2 cost matrix via element-wise
+    multiplication. The resulting total cost is divided by the number of samples to return a
+    **positive** average cost (lower is better).
+
+    The confusion matrix produced by scikit-learn with ``labels=[0, 1]`` follows:
+
+    ``[[TN, FP],``
+    `` [FN, TP]]``
+
+    With the project convention:
+    - ``0`` = ALIVE (negative / majority class)
+    - ``1`` = DEAD  (positive / minority class)
+
+    Therefore, the cost matrix is interpreted as:
+    - ``cost_matrix[0, 0]``: cost of TN (true ALIVE predicted ALIVE)
+    - ``cost_matrix[0, 1]``: cost of FP (true ALIVE predicted DEAD)
+    - ``cost_matrix[1, 0]``: cost of FN (true DEAD predicted ALIVE)
+    - ``cost_matrix[1, 1]``: cost of TP (true DEAD predicted DEAD)
+
+    Parameters
+    ----------
+    y_true : array-like of shape (n_samples,)
+        Ground-truth binary labels. Expected values are ``0`` and ``1``.
+    y_pred : array-like of shape (n_samples,)
+        Predicted binary labels. Expected values are ``0`` and ``1``.
+    cost_matrix : numpy.ndarray of shape (2, 2)
+        Misclassification cost matrix aligned with the confusion-matrix layout for
+        ``labels=[0, 1]``. Costs must be finite. Typically non-negative.
+
+    Returns
+    -------
+    avg_cost : float
+        Positive average cost per sample. Returns ``0.0`` if ``y_true`` is empty.
+
+    Raises
+    ------
+    ValueError
+        If ``cost_matrix`` does not have shape ``(2, 2)``.
+    ValueError
+        If ``cost_matrix`` contains non-finite values (NaN/Inf).
+
+    Notes
+    -----
+    - This function returns a **positive cost** (lower is better). When integrating into
+      scikit-learn hyperparameter search, use a scorer configured with
+      ``greater_is_better=False``.
+    - The computation is vectorized as:
+      ``total_cost = sum(confusion_matrix * cost_matrix)``, which is equivalent to:
+      ``TN*CM[0,0] + FP*CM[0,1] + FN*CM[1,0] + TP*CM[1,1]``.
+    - The explicit ``labels=[0, 1]`` ensures a stable layout even if a fold contains only
+      one class.
+
+    Examples
+    --------
+    Basic usage with asymmetric FN/FP costs::
+
+        >>> import numpy as np
+        >>> y_true = [0, 0, 1, 1]
+        >>> y_pred = [0, 1, 0, 1]
+        >>> cost = np.array([[0.0, 1.0],
+        ...                  [10.0, 0.0]])
+        >>> average_cost_score(y_true, y_pred, cost)
+        2.75
+    """
+    cost_matrix = np.asarray(cost_matrix, dtype=float)
+    if cost_matrix.shape != (2, 2):
+        raise ValueError("cost_matrix must have shape (2, 2).")
+    if not np.isfinite(cost_matrix).all():
+        raise ValueError("cost_matrix must contain only finite values.")
+
+    cm = confusion_matrix(y_true, y_pred, labels=[0, 1])
+
+    total_cost = float(np.sum(cm * cost_matrix))
+    n_samples = int(len(y_true))
+    return total_cost / n_samples if n_samples > 0 else 0.0
+
+
+def get_avg_cost_scorer(cost_matrix: np.ndarray):
+    """
+    Create a scikit-learn scorer that minimizes average misclassification cost.
+
+    This helper wraps :func:`average_cost_score` into a scorer object compatible with
+    scikit-learn model selection utilities (e.g., :class:`~sklearn.model_selection.GridSearchCV`,
+    :class:`~sklearn.model_selection.RandomizedSearchCV`).
+
+    The returned scorer:
+    - calls the estimator's ``predict`` method to obtain hard labels (0/1),
+    - computes the **positive** average cost via the provided ``cost_matrix``,
+    - is configured with ``greater_is_better=False`` so that **lower cost is better**.
+
+    Parameters
+    ----------
+    cost_matrix : numpy.ndarray of shape (2, 2)
+        Misclassification cost matrix aligned with ``confusion_matrix(..., labels=[0, 1])``.
+        See :func:`average_cost_score` for interpretation.
+
+    Returns
+    -------
+    scorer : callable
+        Scorer object suitable for scikit-learn hyperparameter search. It can be passed
+        directly as the ``scoring`` argument.
+
+    Raises
+    ------
+    ValueError
+        If ``cost_matrix`` does not have shape ``(2, 2)`` or contains non-finite values.
+
+    Notes
+    -----
+    - Since this scorer uses ``predict``, it evaluates cost under the estimator's default
+      decision policy (typically a probability threshold of 0.5 for binary classifiers with
+      probabilistic outputs).
+    - If you want a cost-sensitive *threshold-moving* evaluation (e.g., MEC), you need a
+      probability-based scorer that uses ``predict_proba`` and applies a custom threshold.
+
+    Examples
+    --------
+    Use the scorer in a grid search::
+
+        >>> import numpy as np
+        >>> from sklearn.model_selection import GridSearchCV
+        >>> cost = np.array([[0.0, 1.0],
+        ...                  [10.0, 0.0]])
+        >>> scorer = get_avg_cost_scorer(cost)
+        >>> # GridSearchCV(..., scoring=scorer)
+    """
+    cost_matrix = np.asarray(cost_matrix, dtype=float)
+    if cost_matrix.shape != (2, 2):
+        raise ValueError("cost_matrix must have shape (2, 2).")
+    if not np.isfinite(cost_matrix).all():
+        raise ValueError("cost_matrix must contain only finite values.")
+
+    custom_metric = partial(average_cost_score, cost_matrix=cost_matrix)
+    return make_scorer(custom_metric, greater_is_better=False)
 
 
 def compute_classification_metrics(
