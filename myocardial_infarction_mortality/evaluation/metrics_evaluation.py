@@ -278,7 +278,7 @@ def apply_decision_policy(
     X: Union[pd.DataFrame, np.ndarray],
     policy_mode: str,
     cost_matrix: Optional[np.ndarray] = None,
-) -> tuple[np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray | None]:
     """
     Apply a decision policy to produce hard predictions and positive-class probabilities.
 
@@ -386,6 +386,9 @@ def apply_decision_policy(
 
     # Check if the estimator can output probabilities
     has_proba = hasattr(estimator, "predict_proba")
+
+    if policy_mode == "mec" and cost_matrix is None:
+        raise ValueError("cost_matrix is required for MEC policy.")
 
     if policy_mode == "mec":
         # MEC mathematically REQUIRES probabilities to calculate expected costs.
