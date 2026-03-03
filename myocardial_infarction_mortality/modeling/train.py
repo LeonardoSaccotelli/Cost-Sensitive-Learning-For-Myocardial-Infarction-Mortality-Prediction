@@ -193,7 +193,7 @@ def main(
     logger.info("Running myocardial_infarction_mortality/train.py ...")
 
     # --- Set experiment folder and experiment tracking
-    experiment_setting: dict[str, Any] = EXPERIMENTS[EXPERIMENT_ID]
+    experiment_setting: dict[str, Any] = EXPERIMENTS[experiment_id]
 
     experiment_path = model_path / experiment_id
     experiment_path.mkdir(parents=True, exist_ok=True)
@@ -325,7 +325,7 @@ def main(
                 test_idx=test_idx,
                 X=X,
                 y=y,
-                experiment=experiment_setting,
+                experiment_setting=experiment_setting,
                 config_preprocessing_features=CONFIG_PREPROCESSING_FEATURES,
                 static_models=STATIC_MODELS,
                 static_ensemble_models=STATIC_ENSEMBLE_MODELS,
