@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from typing import Any, Dict, Iterable, Sequence, Tuple
 
-import numpy as np
-import pandas as pd
 from deslib.dcs import LCA, MLA, OLA, APosteriori, APriori
 from deslib.des import DESKNN, DESP, KNOP, KNORAE, KNORAU, METADES, DESClustering
 from deslib.des.probabilistic import DESKL, RRC, Exponential, Logarithmic
+import numpy as np
+import pandas as pd
 from scipy.stats import loguniform, randint, uniform
 from sklearn.base import BaseEstimator
 from sklearn.ensemble import (
@@ -712,11 +712,7 @@ def get_static_ensemble_model_and_search_space(
     if ensemble_type == "VotingClassifier":
         # Soft voting returns the class label as argmax of the sum of predicted probabilities.
         # This requires 'probability=True' in SVC (handled in base factory).
-        model = VotingClassifier(
-            estimators=estimators,
-            voting="soft",
-            n_jobs=len(model_pool)
-        )
+        model = VotingClassifier(estimators=estimators, voting="soft", n_jobs=len(model_pool))
 
     elif ensemble_type == "StackingClassifier":
         # Define the meta-learner
