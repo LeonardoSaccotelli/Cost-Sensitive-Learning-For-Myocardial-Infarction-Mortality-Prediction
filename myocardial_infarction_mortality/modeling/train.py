@@ -1,5 +1,6 @@
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 from joblib import Parallel, delayed
 from loguru import logger
@@ -16,8 +17,8 @@ from myocardial_infarction_mortality.config import (
     CV_OUTER_PARALLEL_N_JOBS,
     DES_MODELS,
     DSEL_SIZE,
-    EXPERIMENT_DESCRIPTION,
-    EXPERIMENT_NAME,
+    EXPERIMENT_ID,
+    EXPERIMENTS,
     FILENAME_BASE,
     FLOAT_FEATURES,
     FS_K_BEST_CANDIDATES,
@@ -26,8 +27,6 @@ from myocardial_infarction_mortality.config import (
     MODELS_DIR,
     PROCESSED_DATA_DIR,
     RANDOM_STATE,
-    RESAMPLING_METHOD,
-    RESAMPLING_PARAMS,
     SELECTED_TIME_SLOT,
     STATIC_ENSEMBLE_MODELS,
     STATIC_ENSEMBLE_POOLS,
@@ -36,7 +35,6 @@ from myocardial_infarction_mortality.config import (
     TUNING_N_ITER,
     TUNING_N_JOBS,
     TUNING_SCORING,
-    USE_COST_SENSITIVE_LEARNING,
 )
 from myocardial_infarction_mortality.modeling.utils.training import (
     train_and_evaluate_one_fold_all_models,
@@ -48,8 +46,7 @@ app = typer.Typer()
 
 @app.command()
 def main(
-    experiment_name: str = EXPERIMENT_NAME,
-    experiment_description: str = EXPERIMENT_DESCRIPTION,
+    experiment_id: str = EXPERIMENT_ID,
     input_path: Path = PROCESSED_DATA_DIR
     / f"{FILENAME_BASE}_{SELECTED_TIME_SLOT}_LET_IS_BINARY_features.csv",
     model_path: Path = MODELS_DIR,
@@ -57,49 +54,65 @@ def main(
     outer_n_jobs: int = CV_OUTER_PARALLEL_N_JOBS,
 ):
     """
-    Run the full training workflow for the credit-card fraud project (STATIC, STATIC-ENSEMBLE, DES).
+    Run the full training workflow for the myocardial infarction mortality project
+    (STATIC, STATIC-ENSEMBLE, DES) under a configured experiment setting.
 
-    This Typer CLI entry point loads the processed dataset, prepares features/labels for both
-    scikit-learn and DESlib compatibility, executes a repeated stratified outer CV loop, and
-    persists per-model results to disk.
+    This Typer CLI entry point loads the processed dataset, configures the experiment
+    (including optional cost matrix and decision policy metadata), executes a repeated
+    stratified outer cross-validation loop, and persists per-model results to disk.
 
     The workflow executed is:
 
-    1) Load the processed dataset (CSV) from ``input_path`` and log class distribution.
-    2) Perform a single global shuffle using ``RANDOM_STATE`` to randomize row order.
-    3) Split the dataset into features and target using ``target``.
-    4) Build standardization indices and the post-preprocessing feature ordering via
-       :func:`build_standardization_and_feature_order`.
-    5) Convert ``X`` and ``y`` to NumPy arrays (required by DESlib in downstream helpers).
-    6) Build the outer evaluation loop using :class:`sklearn.model_selection.RepeatedStratifiedKFold`.
-    7) Execute each outer fold (sequentially when ``outer_n_jobs == 1``; otherwise in parallel
-       using :class:`joblib.Parallel`). Each fold delegates the full model orchestration to
-       :func:`train_and_evaluate_one_fold_all_models`, which:
-       - tunes and evaluates STATIC models,
-       - tunes and evaluates STATIC ENSEMBLES (e.g., Voting/Stacking),
-       - tunes a DES pool, fits the DES competence model on a DSEL split, and evaluates the
-         DES inference pipeline on the outer test fold,
-       - produces fold-level rows for both resubstitution and generalization metrics.
-    8) Aggregate all fold-level rows in memory and persist results **per model** under the
-       experiment directory.
+    1) Load the processed dataset (CSV) from ``input_path`` and log dataset shape and target checks.
+    2) Select the active experiment configuration as ``experiment_setting = EXPERIMENTS[experiment_id]``.
+    3) Perform a single global shuffle using ``RANDOM_STATE`` to randomize row order.
+    4) Split the dataset into features and target using ``target``.
+    5) Build the outer evaluation loop using
+       :class:`sklearn.model_selection.RepeatedStratifiedKFold`.
+    6) Execute each outer fold:
+       - sequentially when ``outer_n_jobs == 1``,
+       - in parallel using :class:`joblib.Parallel` when ``outer_n_jobs > 1``.
+
+       Each fold delegates the end-to-end orchestration (STATIC, STATIC-ENSEMBLE, DES)
+       to :func:`myocardial_infarction_mortality.modeling.utils.training.train_and_evaluate_one_fold_all_models`,
+       which:
+       - builds pipelines (preprocessing + SelectKBest + optional resampling + estimator),
+       - performs inner-CV hyperparameter tuning,
+       - evaluates resubstitution and generalization metrics,
+       - for DES: tunes the pool, fits the DES model on DSEL, and evaluates the inference pipeline,
+       - applies the experiment decision policy (``standard`` vs ``mec``) and cost reporting when enabled,
+       - returns fold-level rows for both training-side and test-side reporting.
+
+    7) Aggregate fold-level rows across all outer folds and persist results **per model** under::
+
+           <model_path>/<experiment_id>/<MODEL_NAME>/
+
+       Each model subfolder includes:
+       - ``generalization_metrics_summary.csv`` (outer-test metrics),
+       - ``resubstitution_metrics_summary.csv`` (train-side metrics; for DES this refers to pool-resubstitution),
+       - ``experiment_config.json`` (experiment tracking metadata replicated per model).
 
     Parameters
     ----------
+    experiment_id : str, optional
+        Key used to select the experiment configuration from ``EXPERIMENTS``.
+        The folder name created under ``model_path`` is also ``experiment_id``.
+        Defaults to ``EXPERIMENT_ID``.
     input_path : pathlib.Path, optional
         Path to the processed dataset CSV containing engineered features and the target column.
-        Defaults to ``PROCESSED_DATA_DIR / PROCESSED_FILENAME``.
-    experiment_name : str, optional
-        Experiment folder name created under ``model_path``. Defaults to ``EXPERIMENT_NAME``.
-    experiment_description : str, optional
-        Free-text description stored in each model folder’s ``experiment_config.json``.
-        Defaults to ``EXPERIMENT_DESCRIPTION``.
+        Defaults to::
+
+            PROCESSED_DATA_DIR / f"{FILENAME_BASE}_{SELECTED_TIME_SLOT}_LET_IS_BINARY_features.csv"
+
     model_path : pathlib.Path, optional
         Root directory where the experiment folder is created and results are saved.
         Defaults to ``MODELS_DIR``.
     target : str, optional
-        Name of the target column in the input dataset. Defaults to ``"Class"``.
+        Name of the target column in the input dataset. Expected to exist in the loaded CSV.
+        Defaults to ``"CLASS"``.
     outer_n_jobs : int, optional
         Number of outer CV folds executed in parallel.
+
         - ``1`` executes folds sequentially.
         - ``> 1`` parallelizes folds using :class:`joblib.Parallel`.
 
@@ -115,16 +128,14 @@ def main(
     Raises
     ------
     typer.Exit
-        Raised with code ``1`` if ``input_path`` does not exist.
+        Raised with code ``1`` if ``input_path`` does not exist or if ``target`` is missing.
     KeyError
-        If ``target`` is not a column in the loaded dataset when splitting features/labels.
+        If ``experiment_id`` is not a key in ``EXPERIMENTS``.
     ValueError
-        If requested numerical features to standardize are not present (raised by
-        :func:`build_standardization_and_feature_order`), or if the produced summary DataFrames
-        are missing mandatory columns (e.g., ``"model"``).
+        If the aggregated results DataFrames are missing mandatory columns (e.g., ``"model"``),
+        or if no models are found in results (nothing to persist).
     RuntimeError
-        If no models are found in the aggregated results (nothing to persist), or if any model
-        is missing expected metrics rows (generalization and/or resubstitution).
+        If a model is missing expected persisted rows (generalization and/or resubstitution).
     pandas.errors.EmptyDataError
         If the input CSV is empty or has no columns to parse.
     pandas.errors.ParserError
@@ -137,37 +148,44 @@ def main(
 
     Notes
     -----
-    Persistence layout
-        Results are persisted **only** inside per-model subfolders:
+    Experiment setting schema
+        ``experiment_setting`` is expected to follow a schema such as::
 
-        ``<model_path>/<experiment_name>/<MODEL_NAME>/``
+            {
+                "experiment_name": "baseline__mec_fp1_fn10",
+                "description": "...",
+                "approach": "baseline",  # baseline | cost_sensitive_learning | data_level
+                "tags": ["baseline", "mec_policy"],
+                "class_weight": None,  # None | "balanced" | {0: w0, 1: w1}
+                "resampling_method": None,
+                "resampling_params": None,
+                "decision_policy_mode": "mec",  # standard | mec
+                "costs_matrix": COST_MATRIX,
+            }
 
-        Each model folder contains:
-        - ``generalization_metrics_summary.csv`` (outer-test metrics),
-        - ``resubstitution_metrics_summary.csv`` (train-side metrics; for DES this refers to the tuned pool),
-        - ``experiment_config.json`` (experiment tracking metadata replicated per model).
+        Decision policy (e.g., MEC) and the cost matrix are applied downstream by the fold
+        training/evaluation helpers (e.g., via ``apply_decision_policy`` and cost-aware metrics).
 
     Parallel execution
-        When ``outer_n_jobs > 1``, joblib may use process-based parallelism (backend-dependent).
-        Ensure objects captured by the fold worker are picklable. If logger serialization becomes
-        problematic in your environment, consider fold-level logging strategies compatible with
-        multiprocessing.
+        When ``outer_n_jobs > 1``, joblib may use process-based parallelism. Ensure objects
+        captured by fold workers are picklable. If passing the logger causes issues, prefer
+        fold-local logging or passing a lightweight logger proxy.
 
     Feature selection
-        ``SelectKBest`` is included in the modeling pipelines. Candidate values for ``k`` may be
+        ``SelectKBest`` is included in modeling pipelines. Candidate values for ``k`` may be
         tuned when ``FS_K_BEST_CANDIDATES`` is provided and injected by the fold orchestrator.
 
     Examples
     --------
-    Run with defaults:
+    Run with defaults::
 
         python myocardial_infarction_mortality/train.py
 
-    Run specifying a different experiment name and sequential execution:
+    Run sequentially (no outer parallelism)::
 
-        python myocardial_infarction_mortality/train.py --experiment-name baseline-v2 --outer-n-jobs 1
+        python myocardial_infarction_mortality/train.py --outer-n-jobs 1
 
-    Run parallelizing outer folds (ensure inner tuning does not also saturate CPUs):
+    Run parallelizing outer folds (ensure inner tuning does not also saturate CPUs)::
 
         python myocardial_infarction_mortality/train.py --outer-n-jobs 10
     """
@@ -175,15 +193,19 @@ def main(
     logger.info("Running myocardial_infarction_mortality/train.py ...")
 
     # --- Set experiment folder and experiment tracking
-    experiment_path = model_path / experiment_name
+    experiment_setting: dict[str, Any] = EXPERIMENTS[EXPERIMENT_ID]
+
+    experiment_path = model_path / experiment_id
     experiment_path.mkdir(parents=True, exist_ok=True)
 
     experiment_tracking = {
-        "experiment_description": experiment_description,
+        "experiment_id": experiment_id,
+        "experiment_name": experiment_setting["experiment_name"],
+        "experiment_description": experiment_setting["description"],
+        "experiment_approach": experiment_setting["approach"],
+        "experiment_tags": experiment_setting["tags"],
         "experiment_start_time": datetime.now().strftime("%Y/%m/%d-%H:%M:%S"),
-        "use_cost_sensitive_learning": USE_COST_SENSITIVE_LEARNING,
         "feature_selection_KBest_candidates": FS_K_BEST_CANDIDATES,
-        "resampling_method": RESAMPLING_METHOD,
         "outer_evaluation_loop": f"RepeatedStratifiedKFold_{CV_OUTER_N_REPEATS}_times_{CV_OUTER_N_SPLITS}_folds",
         "DSEL_size": DSEL_SIZE,
         "tuning_hyperparameters_n_iter": TUNING_N_ITER,
@@ -196,7 +218,7 @@ def main(
         "des_models_to_train": DES_MODELS,
     }
 
-    logger.info(f"Initialized experiment: {experiment_name}")
+    logger.info(f"Initialized experiment: {experiment_id}")
     logger.info(experiment_tracking)
 
     ################################# INITIAL CHECKS #################################
@@ -269,7 +291,7 @@ def main(
                 test_idx=test_idx,
                 X=X,
                 y=y,
-                experiment_name=experiment_name,
+                experiment_setting=experiment_setting,
                 config_preprocessing_features=CONFIG_PREPROCESSING_FEATURES,
                 static_models=STATIC_MODELS,
                 static_ensemble_models=STATIC_ENSEMBLE_MODELS,
@@ -277,9 +299,6 @@ def main(
                 des_models=DES_MODELS,
                 fs_k_best_to_keep=FS_K_BEST_TO_KEEP,
                 fs_k_best_candidates=FS_K_BEST_CANDIDATES,
-                use_cost_sensitive_learning=USE_COST_SENSITIVE_LEARNING,
-                resampling_method=RESAMPLING_METHOD,
-                resampling_params=RESAMPLING_PARAMS,
                 tuning_n_iter=TUNING_N_ITER,
                 tuning_cv_inner_n_splits=TUNING_CV_INNER_N_SPLITS,
                 tuning_scoring=TUNING_SCORING,
@@ -306,7 +325,7 @@ def main(
                 test_idx=test_idx,
                 X=X,
                 y=y,
-                experiment_name=experiment_name,
+                experiment=experiment_setting,
                 config_preprocessing_features=CONFIG_PREPROCESSING_FEATURES,
                 static_models=STATIC_MODELS,
                 static_ensemble_models=STATIC_ENSEMBLE_MODELS,
@@ -314,9 +333,6 @@ def main(
                 des_models=DES_MODELS,
                 fs_k_best_to_keep=FS_K_BEST_TO_KEEP,
                 fs_k_best_candidates=FS_K_BEST_CANDIDATES,
-                use_cost_sensitive_learning=USE_COST_SENSITIVE_LEARNING,
-                resampling_method=RESAMPLING_METHOD,
-                resampling_params=RESAMPLING_PARAMS,
                 tuning_n_iter=TUNING_N_ITER,
                 tuning_cv_inner_n_splits=TUNING_CV_INNER_N_SPLITS,
                 tuning_scoring=TUNING_SCORING,
