@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 from functools import partial
-from typing import Any, Dict, List, Mapping, Optional, Sequence
+from typing import Any, Dict, List, Mapping, Optional, Sequence, Union
 
 from imblearn.metrics import (
     geometric_mean_score,
     specificity_score,
 )
 import numpy as np
+import pandas as pd
 from sklearn.metrics import (
     accuracy_score,
     average_precision_score,
@@ -164,66 +165,387 @@ def get_avg_cost_scorer(cost_matrix: np.ndarray):
     return make_scorer(custom_metric, greater_is_better=False)
 
 
+def min_expected_cost_predict(y_proba: np.ndarray, cost_matrix: np.ndarray) -> np.ndarray:
+    """
+    Predict class labels by minimizing expected misclassification cost.
+
+    This function implements the **Minimum Expected Cost (MEC)** decision rule for
+    multi-class classification. Given class-probability estimates for each sample and
+    a user-defined cost matrix, it predicts the class that yields the smallest expected
+    cost.
+
+    For each sample ``i`` and candidate predicted class ``c``, the expected cost is:
+
+    ``E[cost | predict=c] = sum_k P(true=k | x_i) * cost_matrix[k, c]``
+
+    The predicted label is:
+
+    ``y_pred[i] = argmin_c E[cost | predict=c]``
+
+    With the project binary convention (optional specialization):
+    - ``0`` = ALIVE (negative / majority class)
+    - ``1`` = DEAD  (positive / minority class)
+
+    and the cost matrix aligned as ``[[TN, FP], [FN, TP]]`` (rows = true class,
+    columns = predicted class), a large ``cost_matrix[1, 0]`` penalizes missed deaths
+    (FN), thus moving the decision boundary away from the default 0.5 threshold.
+
+    Parameters
+    ----------
+    y_proba : numpy.ndarray of shape (n_samples, n_classes)
+        Predicted class probabilities for each sample. Each row must sum to 1 (within
+        numerical tolerance) and contain finite values. Column order must match the
+        class indexing used by ``cost_matrix``.
+    cost_matrix : numpy.ndarray of shape (n_classes, n_classes)
+        Cost matrix where ``cost_matrix[true_class, predicted_class]`` is the cost
+        incurred by predicting ``predicted_class`` when the true class is
+        ``true_class``. Values must be finite. Costs are typically non-negative, but
+        the MEC rule also works with arbitrary real-valued costs.
+
+    Returns
+    -------
+    y_pred : numpy.ndarray of shape (n_samples,)
+        Predicted class labels (integer indices in ``[0, n_classes - 1]``) that minimize
+        expected cost under ``cost_matrix``.
+
+    Raises
+    ------
+    ValueError
+        If ``y_proba`` is not 2D, if ``cost_matrix`` is not 2D square, if dimensions are
+        incompatible (``y_proba.shape[1] != cost_matrix.shape[0]``), or if either input
+        contains non-finite values.
+
+    Notes
+    -----
+    - This function assumes ``y_proba`` provides calibrated probabilities. If probabilities
+      are poorly calibrated, MEC decisions may be suboptimal; consider calibration (e.g.,
+      Platt scaling / isotonic regression) before applying MEC.
+    - In binary classification, MEC is equivalent to using a cost-derived threshold **only**
+      under specific assumptions and when costs are defined purely on FP/FN (with TN/TP cost 0).
+      The general matrix formulation used here is more robust and extends naturally to
+      multi-class settings.
+
+    Examples
+    --------
+    Binary MEC with asymmetric FN/FP costs::
+
+        >>> import numpy as np
+        >>> y_proba = np.array([[0.90, 0.10],
+        ...                     [0.40, 0.60],
+        ...                     [0.70, 0.30]])
+        >>> cost = np.array([[0.0, 1.0],
+        ...                  [10.0, 0.0]])  # FN cost >> FP cost
+        >>> min_expected_cost_predict(y_proba, cost)
+        array([0, 1, 0])
+
+    Multi-class MEC::
+
+        >>> y_proba = np.array([[0.2, 0.5, 0.3]])
+        >>> cost = np.array([[0, 1, 2],
+        ...                  [3, 0, 1],
+        ...                  [1, 2, 0]])
+        >>> min_expected_cost_predict(y_proba, cost)
+        array([1])
+    """
+    y_proba = np.asarray(y_proba, dtype=float)
+    cost_matrix = np.asarray(cost_matrix, dtype=float)
+
+    if y_proba.ndim != 2:
+        raise ValueError(
+            f"y_proba must be a 2D array of shape (n_samples, n_classes). Got {y_proba.ndim}D."
+        )
+    if cost_matrix.ndim != 2 or cost_matrix.shape[0] != cost_matrix.shape[1]:
+        raise ValueError(
+            "cost_matrix must be a 2D square array of shape (n_classes, n_classes). "
+            f"Got shape {cost_matrix.shape}."
+        )
+    if y_proba.shape[1] != cost_matrix.shape[0]:
+        raise ValueError(
+            "Incompatible shapes: y_proba has n_classes="
+            f"{y_proba.shape[1]} but cost_matrix is {cost_matrix.shape}."
+        )
+    if not np.isfinite(y_proba).all():
+        raise ValueError("y_proba must contain only finite values (no NaN/Inf).")
+    if not np.isfinite(cost_matrix).all():
+        raise ValueError("cost_matrix must contain only finite values (no NaN/Inf).")
+
+    expected_costs = np.dot(y_proba, cost_matrix)
+    return np.argmin(expected_costs, axis=1)
+
+
+def apply_decision_policy(
+    estimator: Any,
+    X: Union[pd.DataFrame, np.ndarray],
+    policy_mode: str,
+    cost_matrix: Optional[np.ndarray] = None,
+) -> tuple[np.ndarray, np.ndarray]:
+    """
+    Apply a decision policy to produce hard predictions and positive-class probabilities.
+
+    This helper standardizes inference under two decision-policy modes:
+
+    - ``"standard"``: uses the estimator's default decision rule (typically a 0.5 threshold
+      for probabilistic binary classifiers) via ``estimator.predict(X)``.
+    - ``"mec"``: applies the **Minimum Expected Cost (MEC)** decision rule using a user-provided
+      cost matrix and the estimator's class-probability estimates via
+      :func:`min_expected_cost_predict`.
+
+    The function returns both:
+    1) hard labels ``y_pred`` (always),
+    2) positive-class probabilities ``y_pred_prob`` when available.
+
+    Project binary convention
+    -------------------------
+    - ``0`` = ALIVE (negative / majority class)
+    - ``1`` = DEAD  (positive / minority class)
+
+    MEC requires probabilities
+    --------------------------
+    MEC mathematically requires class probabilities to compute expected costs. Therefore,
+    when ``policy_mode="mec"``, the estimator (or final pipeline step) **must** implement
+    ``predict_proba`` and ``cost_matrix`` must be provided.
+
+    Parameters
+    ----------
+    estimator : Any
+        Fitted estimator or pipeline implementing ``predict(X)``. If ``policy_mode="mec"``,
+        it must also implement ``predict_proba(X)`` returning an array of shape
+        ``(n_samples, n_classes)``.
+    X : pandas.DataFrame or numpy.ndarray of shape (n_samples, n_features)
+        Feature matrix to score.
+    policy_mode : {'standard', 'mec'}
+        Decision policy mode:
+
+        - ``'standard'``: return ``estimator.predict(X)`` and, if available,
+          ``estimator.predict_proba(X)[:, 1]``.
+        - ``'mec'``: compute probabilities via ``predict_proba`` and derive hard predictions
+          by minimizing expected cost using ``cost_matrix`` (see :func:`min_expected_cost_predict`).
+    cost_matrix : numpy.ndarray of shape (2, 2), optional
+        Misclassification cost matrix aligned with the class index order used by
+        ``predict_proba``. For the project binary convention (classes ``[0, 1]``), the
+        matrix is interpreted as ``cost_matrix[true_class, predicted_class]`` and is typically
+        arranged as::
+
+            [[TN_cost, FP_cost],
+             [FN_cost, TP_cost]]
+
+        Required when ``policy_mode='mec'``. Ignored when ``policy_mode='standard'``.
+
+    Returns
+    -------
+    y_pred : numpy.ndarray of shape (n_samples,)
+        Hard class predictions.
+
+        - For ``policy_mode='standard'``: output of ``estimator.predict(X)``.
+        - For ``policy_mode='mec'``: output of :func:`min_expected_cost_predict`.
+    y_pred_prob : numpy.ndarray of shape (n_samples,) or None
+        Positive-class (class ``1``) probability estimates, extracted as
+        ``predict_proba(X)[:, 1]`` when available. If the estimator does not expose
+        ``predict_proba`` and ``policy_mode='standard'`` is used, this is returned as ``None``.
+
+    Raises
+    ------
+    ValueError
+        If ``policy_mode`` is not one of ``{'standard', 'mec'}``.
+    ValueError
+        If ``policy_mode='mec'`` and ``cost_matrix`` is ``None``.
+    AttributeError
+        If ``policy_mode='mec'`` but the estimator does not implement ``predict_proba``.
+    Exception
+        Any exception raised by the estimator during prediction/probability estimation may
+        propagate.
+
+    Notes
+    -----
+    - When ``policy_mode='mec'``, this function assumes that the class order in
+      ``predict_proba`` matches the indexing assumed by ``cost_matrix``. In scikit-learn,
+      the probability columns are ordered by ``estimator.classes_``. If your estimator uses
+      a different ordering (e.g., classes ``[1, 0]``), you must reorder either probabilities
+      or the cost matrix accordingly before applying MEC.
+    - The returned probabilities are always the model's native probabilities. Under MEC, the
+      hard labels may correspond to a non-0.5 implicit threshold, but ``y_pred_prob`` remains
+      the raw positive-class probability.
+
+    Examples
+    --------
+    Standard policy (with probabilities)::
+
+        >>> y_pred, y_prob = apply_decision_policy(clf, X_test, policy_mode="standard")
+        >>> y_pred.shape == y_prob.shape
+        True
+
+    MEC policy with FN >> FP::
+
+        >>> import numpy as np
+        >>> cost = np.array([[0.0, 1.0],
+        ...                  [10.0, 0.0]])
+        >>> y_pred, y_prob = apply_decision_policy(clf, X_test, policy_mode="mec", cost_matrix=cost)
+        >>> y_pred.shape == y_prob.shape
+        True
+    """
+
+    # Check if the estimator can output probabilities
+    has_proba = hasattr(estimator, "predict_proba")
+
+    if policy_mode == "mec":
+        # MEC mathematically REQUIRES probabilities to calculate expected costs.
+        # If the model can't output them, we must crash loudly and clearly.
+        if not has_proba:
+            raise AttributeError(
+                f"Cannot apply 'mec' policy. The estimator '{type(estimator).__name__}' "
+                f"(or the final step in the pipeline) does not have a 'predict_proba' method."
+            )
+
+        # 1. Get the full probability array (needed for MEC math)
+        y_proba_full = estimator.predict_proba(X)
+
+        # 2. Calculate hard predictions (y_pred) using the cost matrix
+        y_pred = min_expected_cost_predict(y_proba_full, cost_matrix)
+
+        # 3. Extract positive class probabilities for standard metrics
+        y_pred_prob = y_proba_full[:, 1]
+
+    else:  # standard
+        # 1. Use the standard scikit-learn hard prediction (0.5 threshold)
+        y_pred = estimator.predict(X)
+
+        # If probabilities are available, grab them for ROC-AUC/AP metrics.
+        # If not, return None safely.
+        if has_proba:
+            # 2. Use the standard scikit-learn probability extraction
+            y_pred_prob = estimator.predict_proba(X)[:, 1]
+        else:
+            y_pred_prob = None
+
+    return y_pred, y_pred_prob
+
+
 def compute_classification_metrics(
     y_true: Sequence[int],
     y_pred: Sequence[int],
     y_pred_proba: Sequence[float] | np.ndarray | None = None,
+    cost_matrix: np.ndarray | None = None,
 ) -> Dict[str, Optional[float] | int]:
     """
-    Compute a standard set of binary classification metrics.
+    Compute a standard set of binary classification metrics (optionally including cost).
 
-    This helper aggregates confusion-matrix counts (TP/TN/FP/FN), threshold-based
-    metrics (accuracy, precision, recall, F1), imbalance-oriented metrics
-    (specificity, balanced accuracy, geometric mean, MCC, Cohen's kappa), and
-    optional ranking/probability metrics (ROC-AUC, average precision) when
-    predicted probabilities/scores are provided. Non-computable probability
-    metrics (e.g., single-class ``y_true``) are returned as ``None``.
+    This helper aggregates:
+
+    - Confusion-matrix counts (TP/TN/FP/FN) using a fixed label order ``labels=[0, 1]``.
+    - Threshold-based metrics: accuracy, precision, recall, F1.
+    - Imbalance-oriented metrics: specificity, false positive rate (FPR), balanced accuracy,
+      geometric mean (G-mean), MCC, Cohen's kappa.
+    - Optional ranking/probability metrics: ROC-AUC and average precision, computed only
+      when ``y_pred_proba`` is provided and both classes are present in ``y_true``.
+    - Optional cost metric: average misclassification cost computed from a 2x2 cost matrix
+      aligned with the confusion matrix layout when ``cost_matrix`` is provided.
+
+    Project label convention (binary classification)
+    -----------------------------------------------
+    - ``0`` = ALIVE (negative / majority class)
+    - ``1`` = DEAD  (positive / minority class)
+
+    Confusion matrix layout enforced by ``labels=[0, 1]``:
+    ``[[TN, FP], [FN, TP]]``.
 
     Parameters
     ----------
     y_true : array-like of shape (n_samples,)
-        Ground-truth binary labels (0 for negative class, 1 for positive class).
+        Ground-truth binary labels. Expected values are ``0`` and ``1``.
     y_pred : array-like of shape (n_samples,)
-        Predicted binary labels (0 or 1), typically produced by ``estimator.predict``.
+        Predicted hard labels (``0`` or ``1``), typically produced by ``estimator.predict``.
     y_pred_proba : array-like of shape (n_samples,) or (n_samples, n_classes), optional
-        Predicted probability or score for the positive class. If a 2D array is
-        provided, column 1 (``[:, 1]``) is interpreted as the positive-class
-        probability/score when available. If ``None``, ROC-AUC and average
-        precision are not computed and are returned as ``None``.
+        Predicted probability or score for the positive class (label ``1``).
+
+        - If 1D, it is interpreted as the positive-class probability/score.
+        - If 2D with at least 2 columns, column 1 (``[:, 1]``) is interpreted as the
+          positive-class probability/score.
+        - If ``None``, probability-based metrics (ROC-AUC, average precision) are not
+          computed and are returned as ``None``.
+    cost_matrix : numpy.ndarray of shape (2, 2), optional
+        Misclassification cost matrix aligned with the confusion-matrix layout produced by
+        ``confusion_matrix(..., labels=[0, 1])`` i.e. ``[[TN, FP], [FN, TP]]``.
+
+        Interpreted as:
+        - ``cost_matrix[0, 0]``: cost of TN (true 0 predicted 0)
+        - ``cost_matrix[0, 1]``: cost of FP (true 0 predicted 1)
+        - ``cost_matrix[1, 0]``: cost of FN (true 1 predicted 0)
+        - ``cost_matrix[1, 1]``: cost of TP (true 1 predicted 1)
+
+        If provided, the function computes ``average_cost`` via :func:`average_cost_score`
+        using ``(y_true, y_pred)`` (hard labels). If ``None``, ``average_cost`` is returned
+        as ``None``.
 
     Returns
     -------
-    metrics : dict
+    metrics : dict[str, float | int | None]
         Dictionary of metrics with keys:
-        - ``'tp'``, ``'tn'``, ``'fp'``, ``'fn'`` : int
-        - ``'accuracy'``, ``'precision'``, ``'recall'``, ``'f1'`` : float
-        - ``'specificity'``, ``'fpr'``, ``'balanced_accuracy'``, ``'geometric_mean'`` : float
-        - ``'mcc'``, ``'kappa'`` : float
-        - ``'roc_auc'``, ``'average_precision'`` : float or None
+
+        Counts
+        - ``"tp"``, ``"tn"``, ``"fp"``, ``"fn"`` : int
+
+        Threshold-based
+        - ``"accuracy"``, ``"precision"``, ``"recall"``, ``"f1"`` : float
+
+        Imbalance-oriented
+        - ``"specificity"``, ``"fpr"``, ``"balanced_accuracy"``, ``"geometric_mean"`` : float
+        - ``"mcc"``, ``"kappa"`` : float
+
+        Probability / ranking (optional)
+        - ``"roc_auc"``, ``"average_precision"`` : float or None
+
+        Cost (optional)
+        - ``"average_cost"`` : float or None
+          Average misclassification cost per sample (lower is better), computed only when
+          ``cost_matrix`` is provided.
+
+    Raises
+    ------
+    ValueError
+        If ``cost_matrix`` is provided but is invalid (e.g., not shape ``(2, 2)`` or contains
+        non-finite values). This is raised by :func:`average_cost_score`.
 
     Notes
     -----
-    - Confusion-matrix counts are computed with ``labels=[0, 1]`` to enforce a 2×2
-      shape even when one class is absent in predictions.
-    - ``precision``, ``recall``, and ``f1`` use ``zero_division=0`` to handle
-      degenerate cases (e.g., no positive predictions) without raising.
+    - Confusion-matrix counts are computed with ``labels=[0, 1]`` to enforce a stable 2×2
+      layout even when one class is absent in predictions.
+    - ``precision``, ``recall``, and ``f1`` use ``zero_division=0`` to handle degenerate
+      cases (e.g., no positive predictions) without raising.
     - ``fpr`` is computed as ``1.0 - specificity``.
-    - ROC-AUC and average precision require both classes to be present in ``y_true``.
-      When undefined, they are returned as ``None``.
+    - ROC-AUC and average precision require both classes to be present in ``y_true``; when
+      undefined (e.g., single-class fold), they are returned as ``None``.
+    - ``average_cost`` is computed from hard predictions (``y_pred``). If you want
+      probability-based threshold moving (e.g., MEC), compute a custom ``y_pred`` from
+      probabilities and then call this function.
 
     Examples
     --------
-    >>> y_true = [0, 0, 0, 1, 1]
-    >>> y_pred = [0, 0, 1, 1, 0]
-    >>> metrics = compute_classification_metrics(y_true, y_pred)
-    >>> (metrics["tp"], metrics["fp"], metrics["fn"], metrics["tn"])
-    (1, 1, 1, 2)
+    Basic usage (no probabilities)::
 
-    >>> import numpy as np
-    >>> y_pred_proba = np.array([0.10, 0.35, 0.60, 0.80, 0.40])
-    >>> metrics = compute_classification_metrics(y_true, y_pred, y_pred_proba)
-    >>> metrics["roc_auc"] is not None
-    True
+        >>> y_true = [0, 0, 0, 1, 1]
+        >>> y_pred = [0, 0, 1, 1, 0]
+        >>> metrics = compute_classification_metrics(y_true, y_pred)
+        >>> (metrics["tp"], metrics["fp"], metrics["fn"], metrics["tn"])
+        (1, 1, 1, 2)
+
+    With probabilities (ROC-AUC / average precision)::
+
+        >>> import numpy as np
+        >>> y_true = [0, 0, 0, 1, 1]
+        >>> y_pred = [0, 0, 1, 1, 0]
+        >>> y_pred_proba = np.array([0.10, 0.35, 0.60, 0.80, 0.40])
+        >>> metrics = compute_classification_metrics(y_true, y_pred, y_pred_proba)
+        >>> metrics["roc_auc"] is not None
+        True
+
+    With an asymmetric cost matrix (FN >> FP)::
+
+        >>> import numpy as np
+        >>> cost = np.array([[0.0, 1.0],
+        ...                  [1000.0, 0.0]])
+        >>> metrics = compute_classification_metrics(y_true, y_pred, cost_matrix=cost)
+        >>> metrics["average_cost"] >= 0.0
+        True
     """
 
     # Convert to numpy arrays for safety
@@ -269,7 +591,12 @@ def compute_classification_metrics(
             roc_auc = None
             avg_precision = None
 
-    return {
+    # 4. Calculate Average Cost if matrix is provided
+    avg_cost = None
+    if cost_matrix is not None:
+        avg_cost = average_cost_score(y_true_arr, y_pred_arr, cost_matrix)
+
+    results_dict = {
         # --- Raw counts ---
         "tp": int(tp),
         "tn": int(tn),
@@ -303,7 +630,11 @@ def compute_classification_metrics(
         # --- Probabilistic / ranking ---
         "roc_auc": roc_auc,
         "average_precision": avg_precision,
+        # --- Custom Business Metrics ---
+        "average_cost": avg_cost,
     }
+
+    return results_dict
 
 
 def collect_single_report_one_fold(
