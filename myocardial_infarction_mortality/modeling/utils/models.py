@@ -729,7 +729,7 @@ def get_static_ensemble_model_and_search_space(
         model = StackingClassifier(
             estimators=estimators,
             final_estimator=final_estimator,
-            n_jobs=len(model_pool),
+            n_jobs=1,
             passthrough=False,  # 'passthrough': False -> Train meta-model only on predictions of base models
             cv=3,  # Internal CV for training the meta-model
         )
