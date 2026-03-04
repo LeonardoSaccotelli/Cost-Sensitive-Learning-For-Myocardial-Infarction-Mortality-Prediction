@@ -521,17 +521,10 @@ STATIC_ENSEMBLE_POOLS = [
 
 # des model
 DES_MODELS = [
-    # "APriori",
-    # "APosteriori",
     # "MLA",
-    # "DESP",
+    # "KNORAE",
     # "DESKL",
     # "Exponential",
-    # "Logarithmic",
-    # "RRC",
-    # "KNOP",
-    # "KNORAU",
-    # "KNORAE",
     # "METADES",
 ]
 
