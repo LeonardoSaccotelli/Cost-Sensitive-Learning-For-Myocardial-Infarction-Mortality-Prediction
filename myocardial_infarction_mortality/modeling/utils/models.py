@@ -420,7 +420,7 @@ def get_static_model_and_search_space(
             "model_class": LogisticRegression,
             "model_args": {
                 "penalty": "l2",
-                "solver": "lbfgs",
+                "solver": "liblinear",
                 "max_iter": 1000,
                 "tol": 1e-4,
                 "fit_intercept": True,
@@ -718,7 +718,7 @@ def get_static_ensemble_model_and_search_space(
         # Define the meta-learner
         final_estimator = LogisticRegression(
             random_state=random_state,
-            solver="lbfgs",
+            solver="liblinear",
             penalty="l2",
             max_iter=1000,
             tol=1e-4,
@@ -731,7 +731,7 @@ def get_static_ensemble_model_and_search_space(
             final_estimator=final_estimator,
             n_jobs=len(model_pool),
             passthrough=False,  # 'passthrough': False -> Train meta-model only on predictions of base models
-            cv=5,  # Internal CV for training the meta-model
+            cv=3,  # Internal CV for training the meta-model
         )
     else:
         raise ValueError(
