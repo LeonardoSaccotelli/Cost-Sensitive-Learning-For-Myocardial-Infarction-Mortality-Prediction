@@ -15,7 +15,7 @@ from sklearn.ensemble import (
     StackingClassifier,
     VotingClassifier,
 )
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LogisticRegression, SGDClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from xgboost import XGBClassifier
@@ -416,6 +416,31 @@ def get_static_model_and_search_space(
     """
 
     model_configurations = {
+        "SGDClassifier": {
+            "model_class": SGDClassifier,
+            "model_args": {
+                # 'modified_huber' is the magic setting that acts like an SVM but allows .predict_proba()
+                "loss": "modified_huber",
+                "penalty": "l2",
+                "max_iter": 5000,
+                "tol": 1e-3,
+                "n_jobs": 1,  # Kept at 1 to prevent thread collisions with your 150-core CV
+                "early_stopping": True,
+                "verbose": 0,
+                "random_state": random_state,
+                "class_weight": class_weight,
+            },
+            "param_dist": {
+                # Regularization parameter. This is mathematically the inverse of SVC's 'C'.
+                # Smaller values specify WEAKER regularization (closer to a high 'C').
+                "classifier__alpha": loguniform(1e-5, 1e1),
+                # The penalty (regularization term) to be used.
+                "classifier__penalty": ["l2", "l1", "elasticnet"],
+                # The Elastic Net mixing parameter.
+                # (Only takes effect if 'elasticnet' is chosen by the random search).
+                "classifier__l1_ratio": uniform(0.0, 1.0),
+            },
+        },
         "LogisticRegression": {
             "model_class": LogisticRegression,
             "model_args": {
