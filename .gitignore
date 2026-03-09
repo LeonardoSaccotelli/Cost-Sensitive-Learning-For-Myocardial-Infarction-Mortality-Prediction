@@ -196,8 +196,9 @@ docs/*.csv
 models_to_pass
 
 *.docx
-
 *.drawio
+*.out
+*.err
 
 predict.py
 plots.py
