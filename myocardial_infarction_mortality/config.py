@@ -371,14 +371,14 @@ FS_K_BEST_CANDIDATES: list[int | str] = list(range(5, 91, 5)) + ["all"]
 
 COST_MATRIX = np.array(
     [
-        [0, 1],   # True = 0 (ALIVE), Predict = 1 (DEAD)  --> FP = 1
+        [0, 1],  # True = 0 (ALIVE), Predict = 1 (DEAD)  --> FP = 1
         [10, 0],  # True = 1 (DEAD),  Predict = 0 (ALIVE) --> FN = 10
     ]
 )
 
 COST_SENSITIVE_CLASS_WEIGHT = {0: 1, 1: 10}
 
-EXPERIMENT_ID: str = "baseline__standard"
+EXPERIMENT_ID: str = "smoteenn_auto__mec_fp1_fn10"
 EXPERIMENTS: dict[str, dict[str, Any]] = {
     # ============================================================
     # BASELINE
@@ -482,6 +482,28 @@ EXPERIMENTS: dict[str, dict[str, Any]] = {
         "decision_policy_mode": "mec",
         "costs_matrix": COST_MATRIX,
     },
+    "smoteenn_auto__standard": {
+        "experiment_name": "smoteenn_auto__standard",
+        "description": "SMOTEENN sampling_strategy='auto'. No class_weight. Decision policy: standard (0.5 implicit).",
+        "approach": "data_level",
+        "tags": ["data_level", "smoteenn", "auto", "standard_policy"],
+        "class_weight": None,
+        "resampling_method": "SMOTEENN",
+        "resampling_params": {"sampling_strategy": "auto", "random_state": RANDOM_STATE},
+        "decision_policy_mode": "standard",
+        "costs_matrix": COST_MATRIX,
+    },
+    "smoteenn_auto__mec_fp1_fn10": {
+        "experiment_name": "smoteenn_auto__mec_fp1_fn10",
+        "description": "SMOTEENN sampling_strategy='auto'. No class_weight. Decision policy: MEC with costs FP=1, FN=10.",
+        "approach": "data_level",
+        "tags": ["data_level", "smoteenn", "auto", "mec_policy"],
+        "class_weight": None,
+        "resampling_method": "SMOTEENN",
+        "resampling_params": {"sampling_strategy": "auto", "random_state": RANDOM_STATE},
+        "decision_policy_mode": "mec",
+        "costs_matrix": COST_MATRIX,
+    },
 }
 
 # ------- evaluation protocol
@@ -502,30 +524,30 @@ TUNING_N_JOBS = -1
 # ------- models to train
 # classic ML model + static ensemble models
 STATIC_MODELS = [
-    # "LogisticRegression"
-    # "SVC"
+    "LogisticRegression",
+    "SGDClassifier",
     "DecisionTreeClassifier",
-    # "RandomForestClassifier",
-    # "XGBClassifier",
+    "RandomForestClassifier",
+    "XGBClassifier",
 ]
 
 STATIC_ENSEMBLE_MODELS = [
-    # "VotingClassifier",
-    # "StackingClassifier"
+    "VotingClassifier",
+    "StackingClassifier"
 ]
 STATIC_ENSEMBLE_POOLS = [
-    # "SVC",
-    # "RandomForestClassifier",
-    # "XGBClassifier",
+    "SGDClassifier",
+    "RandomForestClassifier",
+    "XGBClassifier",
 ]
 
 # des model
 DES_MODELS = [
-    # "MLA",
-    # "KNORAE",
-    # "DESKL",
-    # "Exponential",
-    # "METADES",
+    "MLA",
+    "KNORAE",
+    "DESKL",
+    "Exponential",
+    "METADES",
 ]
 
 #################################################################
