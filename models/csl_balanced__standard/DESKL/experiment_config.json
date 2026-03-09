@@ -1,0 +1,46 @@
+{
+  "experiment_id": "csl_balanced__standard",
+  "experiment_name": "csl_balanced__standard",
+  "experiment_description": "class_weight='balanced'. No resampling. Decision policy: standard (threshold=0.5 implicit).",
+  "experiment_approach": "cost_sensitive_learning",
+  "experiment_tags": [
+    "cost_sensitive_learning",
+    "class_weight_balanced",
+    "standard_policy"
+  ],
+  "experiment_start_time": "2026/03/05-13:39:56",
+  "feature_selection_KBest_candidates": [
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60,
+    65,
+    70,
+    75,
+    80,
+    85,
+    90,
+    "all"
+  ],
+  "outer_evaluation_loop": "RepeatedStratifiedKFold_10_times_10_folds",
+  "DSEL_size": 0.25,
+  "tuning_hyperparameters_n_iter": 30,
+  "tuning_hyperparameters_cv_splits": 5,
+  "tuning_hyperparameters_scoring": "Average_Cost",
+  "tuning_hyperparameters_n_jobs": 150,
+  "static_models_to_train": [],
+  "static_ensemble_models_to_train": [],
+  "static_ensemble_pools": [],
+  "des_models_to_train": [
+    "DESKL"
+  ],
+  "experiment_end_time": "2026/03/05-14:23:36"
+}

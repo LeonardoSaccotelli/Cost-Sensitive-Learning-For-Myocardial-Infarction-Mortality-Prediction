@@ -1,0 +1,47 @@
+{
+  "experiment_id": "smote_auto__mec_fp1_fn10",
+  "experiment_name": "smote_auto__mec_fp1_fn10",
+  "experiment_description": "SMOTE sampling_strategy='auto'. No class_weight. Decision policy: MEC with costs FP=1, FN=10.",
+  "experiment_approach": "data_level",
+  "experiment_tags": [
+    "data_level",
+    "smote",
+    "auto",
+    "mec_policy"
+  ],
+  "experiment_start_time": "2026/03/06-19:27:57",
+  "feature_selection_KBest_candidates": [
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60,
+    65,
+    70,
+    75,
+    80,
+    85,
+    90,
+    "all"
+  ],
+  "outer_evaluation_loop": "RepeatedStratifiedKFold_10_times_10_folds",
+  "DSEL_size": 0.25,
+  "tuning_hyperparameters_n_iter": 30,
+  "tuning_hyperparameters_cv_splits": 5,
+  "tuning_hyperparameters_scoring": "Average_Cost",
+  "tuning_hyperparameters_n_jobs": 150,
+  "static_models_to_train": [
+    "XGBClassifier"
+  ],
+  "static_ensemble_models_to_train": [],
+  "static_ensemble_pools": [],
+  "des_models_to_train": [],
+  "experiment_end_time": "2026/03/06-23:24:29"
+}
