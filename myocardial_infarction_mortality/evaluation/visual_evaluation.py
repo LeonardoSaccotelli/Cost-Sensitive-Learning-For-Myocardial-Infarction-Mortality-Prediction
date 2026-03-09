@@ -157,6 +157,7 @@ def analyze_roc_stability(df: pd.DataFrame, model_name: str, save_path: Path) ->
     # 5. Save Figure
     fig_filename = f"{model_name}_roc_stability_cloud.png"
     plt.savefig(save_path / fig_filename, dpi=300, bbox_inches="tight")
+    plt.show()
     plt.close()
 
     # 6. Save Statistics
@@ -327,6 +328,7 @@ def analyze_partition_stability(
     # 6. Save Figure
     fig_filename = f"{model_name}_stability_heatmap_grid.png"
     plt.savefig(save_path / fig_filename, dpi=300, bbox_inches="tight")
+    plt.show()
     plt.close()
 
     print(f"Heatmap Grid for {model_name} -> Saved at path:\n\t {save_path}\n")
@@ -448,7 +450,6 @@ def plot_learning_curves(
         )
 
     # 4. Formatting
-    plt.ylim([0, 1.05])
     plt.title(
         f"Learning Stability Analysis for {model_name.upper()}: {metric_name.upper()}",
         fontsize=16,
@@ -458,7 +459,6 @@ def plot_learning_curves(
     plt.xlabel("Iteration", fontweight="bold")
     plt.ylabel(f"{metric_name.upper()}\n(Mean ± Std Dev)", fontweight="bold")
     plt.xticks(range(1, 11))  # Ensure integer ticks for iterations 1-10
-    plt.yticks(ticks=np.arange(0, 1.1, 0.1))
     plt.legend(loc="best", frameon=True)
     plt.grid(True, linestyle="--", alpha=0.6)
 
@@ -610,6 +610,7 @@ def analyze_generalization_gap(
     )
     plt.ylabel("Performance Drop (Train Score - Test Score)", fontweight="bold")
     plt.xlabel("Metric", fontweight="bold")
+    plt.xticks(rotation=90)
     plt.grid(True, axis="y", alpha=0.5, linestyle="--")
     plt.legend(loc="upper right", frameon=True)
 
