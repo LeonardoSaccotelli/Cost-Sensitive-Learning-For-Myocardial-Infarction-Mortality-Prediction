@@ -759,8 +759,12 @@ def plot_model_distribution(
     )
 
     # C. Styling
-    plt.ylim([0, 1.05])
-    plt.yticks(ticks=np.arange(0, 1.1, 0.1))
+    if metric_name != "average_cost":
+        plt.ylim([0, 1.05])
+        plt.yticks(ticks=np.arange(0, 1.1, 0.1))
+    else:
+        plt.ylim([0, df_subset[metric_name].max() * 1.05])
+
     plt.title(
         f"Model Distribution - {split_name.capitalize()}: {metric_name.upper()}",
         fontweight="bold",
@@ -1302,9 +1306,11 @@ def plot_ranking_with_significance(
     plt.ylabel(f"{metric_name.upper()}\n(Mean ± Std Dev)", fontweight="bold")
     plt.xlabel("Model", fontweight="bold")
     plt.xticks(rotation=90)
-    plt.yticks(np.arange(0, 1.1, 0.2))
-    plt.ylim(0, current_y + y_step)  # Extend Y-axis to fit lines
 
+    if metric_name != "average_cost":
+        plt.yticks(np.arange(0, 1.1, 0.2))
+
+    plt.ylim(0, current_y + y_step)  # Extend Y-axis to fit lines
     plt.tight_layout()
     out_file = save_path / f"corrected_resampled_ttest_{metric_name}_barplot_significance.png"
     plt.savefig(out_file, dpi=300, bbox_inches="tight")
