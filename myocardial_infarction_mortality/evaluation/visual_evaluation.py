@@ -779,7 +779,7 @@ def plot_model_distribution(
     fig_filename = f"distribution_boxplot_{split_name}_{metric_name}.png"
     plt.tight_layout()
     plt.savefig(save_path / fig_filename, dpi=300, bbox_inches="tight")
-    plt.show()
+    #plt.show()
     plt.close()
 
     return summary_stats
@@ -1086,7 +1086,7 @@ def plot_significance_heatmap(
         dpi=300,
         bbox_inches="tight",
     )
-    plt.show()
+    #plt.show()
     plt.close()
 
 
@@ -1314,5 +1314,5 @@ def plot_ranking_with_significance(
     plt.tight_layout()
     out_file = save_path / f"corrected_resampled_ttest_{metric_name}_barplot_significance.png"
     plt.savefig(out_file, dpi=300, bbox_inches="tight")
-    plt.show()
+    #plt.show()
     plt.close()
