@@ -531,10 +531,7 @@ STATIC_MODELS = [
     "XGBClassifier",
 ]
 
-STATIC_ENSEMBLE_MODELS = [
-    "VotingClassifier",
-    "StackingClassifier"
-]
+STATIC_ENSEMBLE_MODELS = ["VotingClassifier", "StackingClassifier"]
 STATIC_ENSEMBLE_POOLS = [
     "SGDClassifier",
     "RandomForestClassifier",
