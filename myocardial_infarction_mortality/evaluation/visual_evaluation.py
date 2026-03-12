@@ -628,7 +628,11 @@ def analyze_generalization_gap(
 
 
 def plot_model_distribution(
-    df: pd.DataFrame, metric_name: str, save_path: Path, split_name: str = "generalization"
+    df: pd.DataFrame,
+    metric_name: str,
+    save_path: Path,
+    split_name: str = "generalization",
+    figsize: tuple[float, float] = (12, 10),
 ) -> Optional[pd.DataFrame]:
     """
     Generate, display, and save a per-model distribution plot and statistical summary for one metric.
@@ -639,10 +643,6 @@ def plot_model_distribution(
     saves it as CSV, and generates a figure overlaying:
     - a boxplot (summary statistics; fliers hidden), and
     - a strip plot (raw points).
-
-    IMPORTANT
-    ---------
-    Do **not** modify the function body/code in any way. Only the docstring must be edited.
 
     Parameters
     ----------
@@ -659,6 +659,8 @@ def plot_model_distribution(
         assumes the directory exists and is writable.
     split_name : str, default="generalization"
         Split label used to filter the input DataFrame (matched against ``df["split"]``).
+    figsize : tuple of float, default=(12, 10)
+        Figure size passed to ``plt.figure(figsize=...)`` as ``(width, height)`` in inches.
 
     Returns
     -------
@@ -690,8 +692,9 @@ def plot_model_distribution(
 
           distribution_boxplot_<split_name>_<metric_name>.png
 
-    - The plotting routine currently fixes y-limits to ``[0, 1.05]``. If you pass a metric
-      with a different range (e.g., MCC in ``[-1, 1]``), adjust the limits accordingly.
+    - The plotting routine currently fixes y-limits to ``[0, 1.05]`` for all metrics
+      except ``"average_cost"``. If you pass a metric with a different range
+      (e.g., MCC in ``[-1, 1]``), adjust the limits accordingly.
 
     Examples
     --------
@@ -704,7 +707,13 @@ def plot_model_distribution(
     ...         "mcc": [0.40, 0.35, 0.45, 0.42],
     ...     }
     ... )
-    >>> out = plot_model_distribution(df, "mcc", Path("."), split_name="generalization")
+    >>> out = plot_model_distribution(
+    ...     df=df,
+    ...     metric_name="mcc",
+    ...     save_path=Path("."),
+    ...     split_name="generalization",
+    ...     figsize=(12, 10),
+    ... )
     >>> (out is None) or ("mcc_mean" in out.columns)
     True
     """
@@ -737,7 +746,7 @@ def plot_model_distribution(
     summary_stats.to_csv(save_path / summary_filename)
 
     # --- Generate Plot ---
-    plt.figure(figsize=(12, 10))
+    plt.figure(figsize=figsize)
     sns.set_style("whitegrid")
 
     # A. Plot Boxplot (Summary)
@@ -779,7 +788,7 @@ def plot_model_distribution(
     fig_filename = f"distribution_boxplot_{split_name}_{metric_name}.png"
     plt.tight_layout()
     plt.savefig(save_path / fig_filename, dpi=300, bbox_inches="tight")
-    #plt.show()
+    plt.show()
     plt.close()
 
     return summary_stats
@@ -960,7 +969,10 @@ def plot_model_barplot(
 
 
 def plot_significance_heatmap(
-    df_comparisons: pd.DataFrame, metric_name: str, save_path: Path
+    df_comparisons: pd.DataFrame,
+    metric_name: str,
+    save_path: Path,
+    figsize: tuple[float, float] = (10, 8),
 ) -> None:
     """
     Plot a lower-triangular pairwise significance heatmap for a given metric.
@@ -970,10 +982,6 @@ def plot_significance_heatmap(
     pairs with ``1.0`` (treated as non-significant), and renders a significance heatmap
     via :func:`scikit_posthocs.sign_plot`. The resulting figure is saved under
     ``save_path`` with a filename that includes the metric name.
-
-    IMPORTANT
-    ---------
-    Do **not** modify the function body/code in any way. Only the docstring must be edited.
 
     Parameters
     ----------
@@ -990,6 +998,8 @@ def plot_significance_heatmap(
     save_path : pathlib.Path
         Output directory where the heatmap image will be written. The function assumes the
         directory exists and is writable.
+    figsize : tuple of float, default=(10, 8)
+        Figure size passed to ``plt.figure(figsize=...)`` as ``(width, height)`` in inches.
 
     Returns
     -------
@@ -1002,7 +1012,7 @@ def plot_significance_heatmap(
         If required columns (``"Metric"``, ``"Model_A"``, ``"Model_B"``, or ``"p-value"``)
         are missing from ``df_comparisons``.
     ValueError
-        If no rows match the requested ``metric`` (the pivot would be empty).
+        If no rows match the requested ``metric_name`` and the pivoted matrix is empty.
     PermissionError
         If the output image cannot be written due to insufficient permissions.
     OSError
@@ -1012,7 +1022,7 @@ def plot_significance_heatmap(
     -----
     - Rows are filtered as::
 
-          df_metric = df_comparisons[df_comparisons["Metric"] == metric].copy()
+          df_metric = df_comparisons[df_comparisons["Metric"] == metric_name].copy()
 
     - The p-value matrix is created as::
 
@@ -1026,7 +1036,7 @@ def plot_significance_heatmap(
       t-test context.
     - The saved filename is::
 
-          corrected_resampled_ttest_<metric>_heatmap.png
+          corrected_resampled_ttest_<metric_name>_heatmap.png
 
     Examples
     --------
@@ -1040,7 +1050,12 @@ def plot_significance_heatmap(
     ...         "p-value": [0.03, 0.20],
     ...     }
     ... )
-    >>> plot_significance_heatmap(df_comp, "roc_auc", Path("."))
+    >>> plot_significance_heatmap(
+    ...     df_comparisons=df_comp,
+    ...     metric_name="roc_auc",
+    ...     save_path=Path("."),
+    ...     figsize=(10, 8),
+    ... )
     """
 
     # 1. FILTER: Select only the rows for the current metric
@@ -1053,7 +1068,7 @@ def plot_significance_heatmap(
     p_matrix = p_matrix.fillna(1.0)
 
     # 4. Plot using scikit-posthocs
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=figsize)
 
     # Define Colormap:
     # 1 (White), 0.05, 0.01, 0.001 (Blues/Reds)
@@ -1086,7 +1101,7 @@ def plot_significance_heatmap(
         dpi=300,
         bbox_inches="tight",
     )
-    #plt.show()
+    plt.show()
     plt.close()
 
 
@@ -1097,6 +1112,8 @@ def plot_ranking_with_significance(
     save_path: Path,
     greater_is_better: bool = True,
     alpha: float = 0.05,
+    figsize: tuple[float, float] = (14, 8),
+    value_label_fontsize: float = 11,
 ) -> None:
     """
     Plot a mean±std model ranking barplot and overlay statistical-tie cliques from pairwise tests.
@@ -1138,6 +1155,10 @@ def plot_ranking_with_significance(
     alpha : float, default=0.05
         Significance threshold used to define non-significant edges (statistical ties) in the
         clique graph. Edges are added when ``p-value >= alpha``.
+    figsize : tuple of float, default=(14, 8)
+        Figure size passed to ``plt.figure(figsize=...)`` as ``(width, height)`` in inches.
+    value_label_fontsize : float, default=11
+        Font size used for the numeric value labels added inside the bars via ``ax.text(...)``.
 
     Returns
     -------
@@ -1168,13 +1189,20 @@ def plot_ranking_with_significance(
           df_metric_comp = df_comparisons[df_comparisons["Metric"] == metric_name]
 
       Non-significant comparisons (``p-value >= alpha``) define graph edges.
+    - The figure is created with::
+
+          plt.figure(figsize=figsize)
+
+    - Bar value labels use::
+
+          ax.text(..., fontsize=value_label_fontsize, ...)
+
     - The output filename is::
 
           corrected_resampled_ttest_<metric_name>_barplot_significance.png
 
     Examples
     --------
-    >>> import numpy as np
     >>> import pandas as pd
     >>> from pathlib import Path
     >>> df_raw = pd.DataFrame(
@@ -1191,8 +1219,15 @@ def plot_ranking_with_significance(
     ...         "p-value": [0.20, 0.20],
     ...     }
     ... )
-    >>> plot_ranking_with_significance(df_raw, df_comp, "roc_auc", Path("."), alpha=0.05)
-    >>> True
+    >>> plot_ranking_with_significance(
+    ...     df_raw=df_raw,
+    ...     df_comparisons=df_comp,
+    ...     metric_name="roc_auc",
+    ...     save_path=Path("."),
+    ...     alpha=0.05,
+    ...     figsize=(14, 8),
+    ...     value_label_fontsize=11,
+    ... )
     """
 
     # --- STEP 1: Calculate Statistics ---
@@ -1245,7 +1280,7 @@ def plot_ranking_with_significance(
             final_cliques.append(interval)
 
     # --- STEP 4: Plotting ---
-    plt.figure(figsize=(14, 8))
+    plt.figure(figsize=figsize)
     sns.set_style("whitegrid")
 
     # A. Draw the Barplot
@@ -1276,7 +1311,7 @@ def plot_ranking_with_significance(
             ha="center",
             va="bottom",
             fontweight="bold",
-            fontsize=11,
+            fontsize=value_label_fontsize,
             rotation=90,
         )
 
@@ -1314,5 +1349,5 @@ def plot_ranking_with_significance(
     plt.tight_layout()
     out_file = save_path / f"corrected_resampled_ttest_{metric_name}_barplot_significance.png"
     plt.savefig(out_file, dpi=300, bbox_inches="tight")
-    #plt.show()
+    plt.show()
     plt.close()

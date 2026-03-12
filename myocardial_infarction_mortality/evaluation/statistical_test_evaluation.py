@@ -120,6 +120,9 @@ def compute_pairwise_corrected_resampled_ttest(
     n_test: int | float,
     save_path: Path,
     alpha: float = 0.05,
+    heatmap_figsize: tuple[float, float] = (10, 8),
+    ranking_figsize: tuple[float, float] = (14, 8),
+    ranking_value_label_fontsize: float = 11,
 ) -> pd.DataFrame:
     """
     Compute ordered pairwise corrected resampled t-tests (Nadeau–Bengio) for a single metric and save outputs.
@@ -164,6 +167,15 @@ def compute_pairwise_corrected_resampled_ttest(
     alpha : float, default=0.05
         Significance threshold used to set ``is_significant`` and the ``result`` label.
         Must be in ``(0, 1)``.
+    heatmap_figsize : tuple of float, default=(10, 8)
+        Figure size passed to :func:`plot_significance_heatmap` as ``(width, height)``
+        in inches.
+    ranking_figsize : tuple of float, default=(14, 8)
+        Figure size passed to :func:`plot_ranking_with_significance` as ``(width, height)``
+        in inches.
+    ranking_value_label_fontsize : float, default=11
+        Font size passed to :func:`plot_ranking_with_significance` for the numeric value
+        labels shown inside the bars.
 
     Returns
     -------
@@ -204,14 +216,25 @@ def compute_pairwise_corrected_resampled_ttest(
 
           corrected_resampled_ttest_<metric_name>.csv
 
-      Plots are generated via::
+    - Plots are generated via::
 
-          plot_significance_heatmap(df_comparisons, metric_name, save_path)
-          plot_ranking_with_significance(df, df_comparisons, metric_name, save_path)
+          plot_significance_heatmap(
+              df_comparisons,
+              metric_name,
+              save_path,
+              figsize=heatmap_figsize,
+          )
+          plot_ranking_with_significance(
+              df,
+              df_comparisons,
+              metric_name,
+              save_path,
+              figsize=ranking_figsize,
+              value_label_fontsize=ranking_value_label_fontsize,
+          )
 
     Examples
     --------
-    >>> import numpy as np
     >>> import pandas as pd
     >>> from pathlib import Path
     >>> df = pd.DataFrame(
@@ -227,6 +250,9 @@ def compute_pairwise_corrected_resampled_ttest(
     ...     n_test=5000,
     ...     save_path=Path("."),
     ...     alpha=0.05,
+    ...     heatmap_figsize=(10, 8),
+    ...     ranking_figsize=(14, 8),
+    ...     ranking_value_label_fontsize=11,
     ... )
     >>> {"Model_A", "Model_B", "p-value", "result"}.issubset(out.columns)
     True
@@ -302,7 +328,19 @@ def compute_pairwise_corrected_resampled_ttest(
     df_comparisons.to_csv(save_path / csv_filename, index=False)
 
     # 5. Generate Visualization (Heatmap)
-    plot_significance_heatmap(df_comparisons, metric_name, save_path)
-    plot_ranking_with_significance(df, df_comparisons, metric_name, save_path)
+    plot_significance_heatmap(
+        df_comparisons,
+        metric_name,
+        save_path,
+        figsize=heatmap_figsize,
+    )
+    plot_ranking_with_significance(
+        df,
+        df_comparisons,
+        metric_name,
+        save_path,
+        figsize=ranking_figsize,
+        value_label_fontsize=ranking_value_label_fontsize,
+    )
 
     return df_comparisons
