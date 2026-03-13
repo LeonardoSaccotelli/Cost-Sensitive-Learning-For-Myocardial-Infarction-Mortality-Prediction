@@ -222,9 +222,32 @@ This script relies on the logic defined in `myocardial_infarction_mortality/conf
 | ```target ```             | ```LET_IS_BINARY```                    | Selected target column.                                                                                                                        |
 | ```target_alias ```       | ```CLASS```                            | Standardized target name used inside the processed dataset (i.e., the column is renamed to this value).                                        |
 
+---
+## ⚙️ ️ Model Training & Evaluation
+### 1. The Cost Matrix & Decision Policy
+Traditional machine learning assumes all classification errors are equal. We override this using a specific clinical cost matrix where a **Missed Death (FN) is penalized 10x more heavily than a False Alarm (FP)**:
+* **TN (True ALIVE predicted ALIVE):** Cost = 0
+* **FP (True ALIVE predicted DEAD):** Cost = 1
+* **FN (True DEAD predicted ALIVE):** Cost = 10
+* **TP (True DEAD predicted DEAD):** Cost = 0
 
+### 2. Experimental Schemas
+The `EXPERIMENTS` dictionary defines multiple configurations to test which approach best handles the severe class imbalance:
+* **Baseline:** Standard models using a default `0.5` decision threshold.
+* **Cost-Sensitive Learning (CSL):** Adjusting `class_weight` (e.g., `{0: 1, 1: 10}`) directly within the model algorithms.
+* **Data-Level Resampling:** Utilizing `SMOTE` or `SMOTEENN` to synthetically balance the training data distributions.
+* **Minimum Expected Cost (MEC) Policy:** Shifting the final probability decision threshold to mathematically minimize the overall risk based on the cost matrix.
 
+### 🏋️ Training
 
+The training pipeline uses a rigorous **Repeated Nested Cross-Validation** approach to ensure the models generalize reliably to unseen patients.
+
+### Execution
+To execute the training pipeline based on the currently active `EXPERIMENT_ID` (e.g., `smoteenn_auto__mec_fp1_fn10`), run the following command:
+
+```bash
+make train
+```
 
 ---
 ## 📓 Notebooks & In-depth Analysis
