@@ -120,6 +120,41 @@ make dataset
 | ```EXTERNAL_DATASET_ID ```           | ```579```                                  |  UCI dataset ID to fetch. |
 | ```EXTERNAL_FORCE_DOWNLOAD ```           | ```False```                                  |  If True, re-download and overwrite outputs even if they already exist. |
 
+--- 
+## 📉 Data Sampling & Reduction
+
+The second step in the pipeline is to transition from the **External** (full) data to a **Raw** (subsampled) dataset.
+The dataset provides 4 different time windows for the training of the machine learning models, based on the ICU time points: 
+- the time of admission to hospital
+- the end of the first day (24 hours after admission to the hospital)
+- the end of the second day (48 hours after admission to the hospital)
+- the end of the third day (72 hours after admission to the hospital)
+
+**1. Subsampling Execution**
+
+
+Use the following command to generate your subsampled dataset based on the current configuration:
+```bash
+make dataset_time_split
+````
+**What this command does:**
+
+- Loads the full dataset from `data/external/`.
+- Construct a time-slot-specific dataset by dropping unavailable features and adding a binary target (`LET_IS_BINARY`)
+- Saves the resulting subset to `data/raw/myocardial_infarction_<selected_time_slot>.csv`.
+
+**2. Sampling Configuration**
+
+You can control how the data is reduced by modifying these variables in `myocardial_infarction_mortality/config.py`.
+
+
+| Variable      | Default Value                       | Description |
+|---------------|-------------------------------------|------------|
+| ```EXTERNAL_DATA_DIR ```      | ```PROJ_ROOT / "data" / "external"``` | The directory where external raw data is stored.      |
+| ```EXTERNAL_FILENAME ```      | ```myocardial_infarction_external.csv``` | The final filename used by the project scripts.       |
+| ```RAW_DATA_DIR ``` | ```PROJ_ROOT / "data" / "raw"```    | The directory where raw data is stored.            |
+| ```FILENAME_BASE ``` | ```myocardial_infarction```                     |  Base filename (without extension) used to build the output filename. |
+| ```SELECTED_TIME_SLOT ```   | ```admission```                     |       Time slot key used to select which features to drop. Must be a key of``EXCLUDE_FEATURES_BY_SLOT`` (e.g., "admission", "day1", "day2", "day3").|
 
 
 ---
