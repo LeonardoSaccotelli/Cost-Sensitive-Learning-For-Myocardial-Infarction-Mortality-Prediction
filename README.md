@@ -179,23 +179,48 @@ make cleaning
 
 **2. Cleaning Configuration**
 
-This script relies on the pathing logic defined in `fraud_dynamic_ensemble/config.py`. While the core logic is automated, the following paths are used:
+This script relies on the logic defined in `myocardial_infarction_mortality/config.py`. While the core logic is automated, the following paths are used:
 
-The script is highly flexible, specifically supporting a "keep all minority" approach which is standard in fraud detection research to ensure no rare fraud cases are lost during data reduction.
-
-| Variable                  | Default Value                        | Description                                                                                                                                    |
-|---------------------------|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| ```RAW_DATA_DIR ```       | ```PROJ_ROOT / "data" / "raw"```     | The directory where raw data is stored.                                                                                                        |
-| ```FILENAME_BASE ```      | ```myocardial_infarction```          | Base filename (without extension) used to build the output filename.                                                                           |
-| ```SELECTED_TIME_SLOT ``` | ```admission```                      | Time slot key used to select which features to drop. Must be a key of``EXCLUDE_FEATURES_BY_SLOT`` (e.g., "admission", "day1", "day2", "day3"). |
-| ```INTERIM_DATA_DIR ```   | ```PROJ_ROOT / "data" / "interim"``` | The directory where interim data is stored.                                                                                                    |
-| ```TARGET ```             | ```LET_IS_BINARY```                  | Target column that must exist and must be preserved.                                                                                           |
-| ```threshold_drop_missing_rows ```   | ```0.20```                           | Drop rows with missingness strictly greater than this fraction.                                                                                                   |
-| ```threshold_drop_missing_cols ```   | ```0.30```                           |  Drop columns with missingness strictly greater than this fraction.                                                                                                   |
+| Variable                           | Default Value                        | Description                                                                                                                                    |
+|------------------------------------|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```RAW_DATA_DIR ```                | ```PROJ_ROOT / "data" / "raw"```     | The directory where raw data is stored.                                                                                                        |
+| ```FILENAME_BASE ```               | ```myocardial_infarction```          | Base filename (without extension) used to build the output filename.                                                                           |
+| ```SELECTED_TIME_SLOT ```          | ```admission```                      | Time slot key used to select which features to drop. Must be a key of``EXCLUDE_FEATURES_BY_SLOT`` (e.g., "admission", "day1", "day2", "day3"). |
+| ```INTERIM_DATA_DIR ```            | ```PROJ_ROOT / "data" / "interim"``` | The directory where interim data is stored.                                                                                                    |
+| ```target ```                      | ```LET_IS_BINARY```                  | Target column that must exist and must be preserved.                                                                                           |
+| ```threshold_drop_missing_rows ``` | ```0.20```                           | Drop rows with missingness strictly greater than this fraction.                                                                                                   |
+| ```threshold_drop_missing_cols ``` | ```0.30```                           |  Drop columns with missingness strictly greater than this fraction.                                                                                                   |
 
 
 ---
 
+## 🛠 Feature Engineering & Transformation
+The final stage of the data pipeline converts cleaned data into a **Processed** dataset. Create the PROCESSED (features) dataset from the cleaned INTERIM dataset and standardize the target name.
+
+**1. Feature Engineering Execution**
+
+To generate the final features for your models, run:
+```bash
+make features
+````
+
+**What this command does:**
+
+- The target column specified by ``target`` (default: ``"LET_IS_BINARY"``) is renamed to ``target_alias`` (default: ``"CLASS"``) to enforce a consistent target name for modeling.
+- Saves the result to `data/processed/myocardial_infarction_<selected_time_slot>_<target>_features.csv`.
+
+**2. Configuration & Parameters**
+
+This script relies on the logic defined in `myocardial_infarction_mortality/config.py`.
+
+| Variable                  | Default Value                          | Description                                                                                                                                    |
+|---------------------------|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```INTERIM_DATA_DIR ```   | ```PROJ_ROOT / "data" / "interim"```   | The directory where interim data is stored.                                                                                                    |
+| ```FILENAME_BASE ```      | ```myocardial_infarction```            | Base filename (without extension) used to build the output filename.                                                                           |
+| ```SELECTED_TIME_SLOT ``` | ```admission```                        | Time slot key used to select which features to drop. Must be a key of``EXCLUDE_FEATURES_BY_SLOT`` (e.g., "admission", "day1", "day2", "day3"). |
+| ```PROCESSED_DATA_DIR ``` | ```PROJ_ROOT / "data" / "processed"``` | The directory where processed data is stored.                                                                                                  |
+| ```target ```             | ```LET_IS_BINARY```                    | Selected target column.                                                                                                                        |
+| ```target_alias ```       | ```CLASS```                            | Standardized target name used inside the processed dataset (i.e., the column is renamed to this value).                                        |
 
 ---
 
