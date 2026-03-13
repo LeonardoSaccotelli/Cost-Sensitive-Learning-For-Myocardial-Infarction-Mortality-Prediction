@@ -5,7 +5,7 @@
 </a>
 
 ## 📖 Project Description
-This project addresses the critical challenge of predict mortality outcomes due to myocardial infarction within highly **unbalanced datasets**. In the context of myocardial infarction mortality prediction, non-deadly outcomes vastly outnumber deadly outcomes, making standard machine learning approaches biased toward the majority class.
+This project addresses the critical challenge of predict mortality outcomes due to myocardial infarction within highly **unbalanced dataset**. In the context of myocardial infarction mortality prediction, non-deadly outcomes vastly outnumber deadly outcomes, making standard machine learning approaches biased toward the majority class.
 
 The core of this research is a comparative analysis between **Static Ensemble Learning** and **Dynamic Ensemble Selection (DES)** under **Cost-Sensitive-Learning** and **Cost-Sensitive-Evaluation** schemas. By evaluating how these models behave when the "cost" of misclassification is high, this project aims to identify the most robust architecture for myocardial infarction mortality.
 
@@ -15,7 +15,7 @@ The framework implements and compare three main strategies to handle the class d
 * **Cost-Sensitive Learning:** Implementation of the `class_weight` parameter across models to assign a higher penalty to **DEAD** misclassifications, forcing the algorithms to prioritize the minority class.
    * _balanced_ : uses the values of y to automatically adjust weights inversely proportional to class frequencies in the input data as `n_samples / (n_classes * np.bincount(y))`
    * _cost_sensitive_cost_matrix_ : use the business cost matrix following the rule `FN=10:FP=1 → DEAD=10, ALIVE=1` to adjust the class weights.
-* **Resampling:** Fully support to `imbalanced-learn` resampling method to undersample the majority class or oversample the minority class
+* **Resampling:** Fully support to `imbalanced-learn` resampling method to undersample the majority class or oversample the minority class.
 
 The framework implements two main strategies to handle the class distribution during the evaluation phase:
 * **Standard Threshold:** Models use a fixed 0.5 probability threshold.
@@ -78,10 +78,6 @@ make requirements
 ## 🧹 Maintenance Commands
 
 The Makefile also includes utility commands for project maintenance:
-
-make clean,Remove __pycache__ and compiled Python files.
-make clean_environment,Completely remove the venv directory.
-make freeze,Update the requirements.txt file with current environment state.
 
 
 | Command                       | Description |
