@@ -1,4 +1,4 @@
-# Cost-Sensitive-Learning-For-Myocardial-Infarction-Mortality-Prediction documentation!
+# Cost-Sensitive Learning for Myocardial Infarction Mortality Prediction: A Static and Dynamic Ensemble Approach documentation!
 
 ## Description
 
