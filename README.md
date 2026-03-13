@@ -240,11 +240,102 @@ The `EXPERIMENTS` dictionary defines multiple configurations to test which appro
 * **Data-Level Resampling:** Utilizing `SMOTE` or `SMOTEENN` to synthetically balance the training data distributions.
 * **Minimum Expected Cost (MEC) Policy:** Shifting the final probability decision threshold to mathematically minimize the overall risk based on the cost matrix.
 
-**3. Training**
+The training pipeline supports the following experiment configurations, selected through the `experiment_id` argument.
+
+#### Baseline experiments
+
+- `baseline__standard`
+  - No resampling
+  - No class weighting
+  - Standard decision policy
+
+- `baseline__mec_fp1_fn10`
+  - No resampling
+  - No class weighting
+  - Minimum Expected Cost (MEC) decision policy with `FP=1`, `FN=10`
+
+#### Cost-sensitive learning experiments
+
+- `csl_balanced__standard`
+  - `class_weight="balanced"`
+  - No resampling
+  - Standard decision policy
+
+- `csl_balanced__mec_fp1_fn10`
+  - `class_weight="balanced"`
+  - No resampling
+  - MEC decision policy with `FP=1`, `FN=10`
+
+- `csl_fp1_fn10__standard`
+  - `class_weight={0: 1, 1: 10}`
+  - No resampling
+  - Standard decision policy
+
+- `csl_fp1_fn10__mec_fp1_fn10`
+  - `class_weight={0: 1, 1: 10}`
+  - No resampling
+  - MEC decision policy with `FP=1`, `FN=10`
+
+#### Data-level imbalance handling experiments
+
+- `smote_auto__standard`
+  - Resampling: `SMOTE`
+  - `sampling_strategy="auto"`
+  - Standard decision policy
+
+- `smote_auto__mec_fp1_fn10`
+  - Resampling: `SMOTE`
+  - `sampling_strategy="auto"`
+  - MEC decision policy with `FP=1`, `FN=10`
+
+- `smoteenn_auto__standard`
+  - Resampling: `SMOTEENN`
+  - `sampling_strategy="auto"`
+  - Standard decision policy
+
+- `smoteenn_auto__mec_fp1_fn10`
+  - Resampling: `SMOTEENN`
+  - `sampling_strategy="auto"`
+  - MEC decision policy with `FP=1`, `FN=10`
+
+**3. Supported Models to Train**
+
+The pipeline trains three model families: static single models, static ensemble models, and dynamic ensemble selection (DES) models.
+
+#### Static single models
+
+- `LogisticRegression`
+- `SGDClassifier`
+- `DecisionTreeClassifier`
+- `RandomForestClassifier`
+- `XGBClassifier`
+
+#### Static ensemble models
+
+- `VotingClassifier`
+- `StackingClassifier`
+
+#### Static ensemble pool members
+
+These models are used as the base pool for static ensembles:
+
+- `SGDClassifier`
+- `RandomForestClassifier`
+- `XGBClassifier`
+
+#### Dynamic ensemble selection (DES) models
+
+- `MLA`
+- `KNORAE`
+- `DESKL`
+- `Exponential`
+- `METADES`
+
+**4. Training**
 
 The training pipeline uses a rigorous **Repeated Nested Cross-Validation** approach to ensure the models generalize reliably to unseen patients.
 
-**4. Execution**
+**5. Execution**
 
 To execute the training pipeline based on the currently active `EXPERIMENT_ID` (e.g., `smoteenn_auto__mec_fp1_fn10`), run the following command:
 
