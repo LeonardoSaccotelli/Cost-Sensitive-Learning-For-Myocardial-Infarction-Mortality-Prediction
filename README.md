@@ -91,6 +91,36 @@ The Makefile also includes utility commands for project maintenance:
 
 ---
 
+## 📊 Data Workflow
+
+The project manages data through a structured pipeline. Before running any analysis, you must retrieve the raw dataset.
+
+### 1. External Dataset Acquisition
+The first step is to download the "Myocardial infarction complications" dataset from UC Irvine Machine Learning Repository. This is handled automatically by the ```dataset.py``` script.
+
+**Execution:**
+
+```bash
+make dataset
+```
+
+**What this command does:**
+- Checks if the dataset already exists in ```data/external/```. 
+- If missing, it uses ```ucimlrepo``` to download the ```fetch_ucirepo(id=579) ``` dataset. 
+- Moves and renames the file to match the project's internal configuration.
+ 
+**Related Configuration** (```myocardial_infarction_mortality/config.py```): The script relies on these path definitions. If you wish to change where data is stored, modify these variables:
+
+| Variable                      | Default Value                             | Description                                              |
+|-------------------------------|-------------------------------------------|----------------------------------------------------------|
+| ```EXTERNAL_DATA_DIR ```      | ```PROJ_ROOT / "data" / "external"```     | The directory where external raw data is stored.         |
+| ```EXTERNAL_FILENAME ```      | ```myocardial_infarction_external.csv```  | The final filename used by the project scripts.          |
+| ```EXTERNAL_METADATA_FILENAME ```           | ```myocardial_infarction_metadata.txt```  | The name of the metadata file.                           |
+| ```EXTERNAL_VARIABLES_FILENAME ```           | ```myocardial_infarction_variables.csv``` | The name of the file with variables list.                |
+| ```EXTERNAL_DATASET_ID ```           | ```579```                                  |  UCI dataset ID to fetch. |
+| ```EXTERNAL_FORCE_DOWNLOAD ```           | ```False```                                  |  If True, re-download and overwrite outputs even if they already exist. |
+
+
 
 ---
 
