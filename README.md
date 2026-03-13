@@ -245,6 +245,7 @@ The `EXPERIMENTS` dictionary defines multiple configurations to test which appro
 The training pipeline uses a rigorous **Repeated Nested Cross-Validation** approach to ensure the models generalize reliably to unseen patients.
 
 **4. Execution**
+
 To execute the training pipeline based on the currently active `EXPERIMENT_ID` (e.g., `smoteenn_auto__mec_fp1_fn10`), run the following command:
 
 ```bash
