@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+roc_auc,XGBClassifier (Baseline),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.0017604430657063297,0.09422099547345611,0.925124040955132,False,No Diff
+roc_auc,XGBClassifier (Baseline),XGBClassifier (Cost-sensitive + Standard Threshold),0.0026035114008797766,0.1528941220591628,0.8787929647898693,False,No Diff
+roc_auc,XGBClassifier (Baseline),XGBClassifier (SMOTE + Minimum Expected Cost),0.032310094729831484,1.3859796197805256,0.16886712376510218,False,No Diff
+roc_auc,XGBClassifier (Baseline),XGBClassifier (SMOTE + Standard Threshold),0.03353559554480612,1.3901647542508706,0.1675965508276432,False,No Diff
+roc_auc,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Baseline),-0.0017604430657063297,-0.09422099547345611,0.925124040955132,False,No Diff
+roc_auc,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),0.0008430683351734469,0.050367040391921795,0.9599313818784951,False,No Diff
+roc_auc,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Minimum Expected Cost),0.030549651664125155,1.2358589021918995,0.219435432860026,False,No Diff
+roc_auc,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),0.03177515247909979,1.459247956851325,0.14766261293060598,False,No Diff
+roc_auc,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Baseline),-0.0026035114008797766,-0.1528941220591628,0.8787929647898693,False,No Diff
+roc_auc,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),-0.0008430683351734469,-0.050367040391921795,0.9599313818784951,False,No Diff
+roc_auc,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),0.029706583328951708,1.2447771016592748,0.21615232576576737,False,No Diff
+roc_auc,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Standard Threshold),0.03093208414392634,1.2664244074606599,0.20833282710678858,False,No Diff
+roc_auc,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Baseline),-0.032310094729831484,-1.3859796197805256,0.16886712376510218,False,No Diff
+roc_auc,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Minimum Expected Cost),-0.030549651664125155,-1.2358589021918995,0.219435432860026,False,No Diff
+roc_auc,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),-0.029706583328951708,-1.2447771016592748,0.21615232576576737,False,No Diff
+roc_auc,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),0.0012255008149746338,0.03963736157845434,0.9684620647062244,False,No Diff
+roc_auc,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (Baseline),-0.03353559554480612,-1.3901647542508706,0.1675965508276432,False,No Diff
+roc_auc,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),-0.03177515247909979,-1.459247956851325,0.14766261293060598,False,No Diff
+roc_auc,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Standard Threshold),-0.03093208414392634,-1.2664244074606599,0.20833282710678858,False,No Diff
+roc_auc,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),-0.0012255008149746338,-0.03963736157845434,0.9684620647062244,False,No Diff

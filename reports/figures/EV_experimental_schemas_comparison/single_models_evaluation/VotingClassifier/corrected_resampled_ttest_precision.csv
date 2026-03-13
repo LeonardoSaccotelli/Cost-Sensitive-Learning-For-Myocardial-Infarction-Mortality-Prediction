@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+precision,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.5415429362112532,10.166707440669285,4.7363910051536794e-17,True,Better
+precision,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + Standard Threshold),0.4294645707473359,7.047727051991448,2.4644398324075413e-10,True,Better
+precision,VotingClassifier (Baseline),VotingClassifier (SMOTE + Minimum Expected Cost),0.5386032236152818,10.080465599617074,7.303017680816306e-17,True,Better
+precision,VotingClassifier (Baseline),VotingClassifier (SMOTE + Standard Threshold),0.2934773291928818,4.625524356598608,1.1320471300904502e-05,True,Better
+precision,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Baseline),-0.5415429362112532,-10.166707440669285,4.7363910051536794e-17,True,Worse
+precision,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),-0.11207836546391728,-4.6665297791198395,9.617869120546075e-06,True,Worse
+precision,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),-0.0029397125959713666,-0.9785946546912229,0.33016562761640533,False,No Diff
+precision,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),-0.2480656070183714,-6.447373747564202,4.181624393949483e-09,True,Worse
+precision,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Baseline),-0.4294645707473359,-7.047727051991448,2.4644398324075413e-10,True,Worse
+precision,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.11207836546391728,4.6665297791198395,9.617869120546075e-06,True,Better
+precision,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),0.10913865286794591,4.452843767494837,2.2284508421867556e-05,True,Better
+precision,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),-0.13598724155445413,-3.0661259837028854,0.002795668515900646,True,Worse
+precision,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Baseline),-0.5386032236152818,-10.080465599617074,7.303017680816306e-17,True,Worse
+precision,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.0029397125959713666,0.9785946546912229,0.33016562761640533,False,No Diff
+precision,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),-0.10913865286794591,-4.452843767494837,2.2284508421867556e-05,True,Worse
+precision,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),-0.24512589442240004,-6.35892675059112,6.298755625495029e-09,True,Worse
+precision,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Baseline),-0.2934773291928818,-4.625524356598608,1.1320471300904502e-05,True,Worse
+precision,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.2480656070183714,6.447373747564202,4.181624393949483e-09,True,Better
+precision,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),0.13598724155445413,3.0661259837028854,0.002795668515900646,True,Better
+precision,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),0.24512589442240004,6.35892675059112,6.298755625495029e-09,True,Better

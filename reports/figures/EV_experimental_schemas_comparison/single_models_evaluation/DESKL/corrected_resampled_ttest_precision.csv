@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+precision,DESKL (Baseline),DESKL (Cost-sensitive + Minimum Expected Cost),0.6448160286885395,6.576468055750888,2.2912635574306897e-09,True,Better
+precision,DESKL (Baseline),DESKL (Cost-sensitive + Standard Threshold),0.5040667857760649,5.101031570063266,1.6298759336221848e-06,True,Better
+precision,DESKL (Baseline),DESKL (SMOTE + Minimum Expected Cost),0.6448160286885395,6.570975538579353,2.350870411469868e-09,True,Better
+precision,DESKL (Baseline),DESKL (SMOTE + Standard Threshold),0.3529037421071064,3.461593829455549,0.0007942187660098319,True,Better
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (Baseline),-0.6448160286885395,-6.576468055750888,2.2912635574306897e-09,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.14074924291247456,-8.360014580003767,4.0391753228318196e-13,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.2919122865814331,-8.322156928648067,4.874579052499204e-13,True,Worse
+precision,DESKL (Cost-sensitive + Standard Threshold),DESKL (Baseline),-0.5040667857760649,-5.101031570063266,1.6298759336221848e-06,True,Worse
+precision,DESKL (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.14074924291247456,8.360014580003767,4.0391753228318196e-13,True,Better
+precision,DESKL (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.14074924291247456,8.330850820390445,4.668663821443358e-13,True,Better
+precision,DESKL (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Standard Threshold),-0.1511630436689585,-3.946440346091403,0.00014840282131462217,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),DESKL (Baseline),-0.6448160286885395,-6.570975538579353,2.350870411469868e-09,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+precision,DESKL (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.14074924291247456,-8.330850820390445,4.668663821443358e-13,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.2919122865814331,-8.332594677080674,4.628416126104778e-13,True,Worse
+precision,DESKL (SMOTE + Standard Threshold),DESKL (Baseline),-0.3529037421071064,-3.461593829455549,0.0007942187660098319,True,Worse
+precision,DESKL (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.2919122865814331,8.322156928648067,4.874579052499204e-13,True,Better
+precision,DESKL (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),0.1511630436689585,3.946440346091403,0.00014840282131462217,True,Better
+precision,DESKL (SMOTE + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.2919122865814331,8.332594677080674,4.628416126104778e-13,True,Better

@@ -1,0 +1,381 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+roc_auc,DESKL (Baseline),DESKL (Cost-sensitive + Minimum Expected Cost),-0.03418357563489138,-0.9910733597696764,0.32406590418995607,False,No Diff
+roc_auc,DESKL (Baseline),DESKL (Cost-sensitive + Standard Threshold),-0.033965321082426225,-0.9727893127342807,0.33302889515901424,False,No Diff
+roc_auc,DESKL (Baseline),DESKL (SMOTE + Minimum Expected Cost),0.004034233748707594,0.11622024947966933,0.9077134176555859,False,No Diff
+roc_auc,DESKL (Baseline),DESKL (SMOTE + Standard Threshold),0.0020282471914050415,0.05720623824909122,0.9544962116742159,False,No Diff
+roc_auc,DESKL (Baseline),KNORAE (Baseline),0.07624910396620921,2.100110547081811,0.03826089783745534,True,Better
+roc_auc,DESKL (Baseline),KNORAE (Cost-sensitive + Minimum Expected Cost),0.052304472282103665,1.5737586809907858,0.1187337393726107,False,No Diff
+roc_auc,DESKL (Baseline),KNORAE (Cost-sensitive + Standard Threshold),0.05323112808244379,1.4887494465226214,0.13973204031049863,False,No Diff
+roc_auc,DESKL (Baseline),KNORAE (SMOTE + Minimum Expected Cost),0.09151999360288843,2.6388865471334237,0.009662904474013051,True,Better
+roc_auc,DESKL (Baseline),KNORAE (SMOTE + Standard Threshold),0.08911164405769656,2.541235519548481,0.012598486831545134,True,Better
+roc_auc,DESKL (Baseline),LogisticRegression (Baseline),-0.03128783716283723,-0.8681684172078523,0.38740180937853885,False,No Diff
+roc_auc,DESKL (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.04537752379199744,-1.3056849011779161,0.19468575913455077,False,No Diff
+roc_auc,DESKL (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),-0.044432832518358945,-1.4310013853522434,0.1555789026599829,False,No Diff
+roc_auc,DESKL (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),-0.039363487827961396,-1.157659688396753,0.249788294643466,False,No Diff
+roc_auc,DESKL (Baseline),LogisticRegression (SMOTE + Standard Threshold),-0.040232978863242064,-1.1426899862379982,0.25592327689397615,False,No Diff
+roc_auc,DESKL (Baseline),METADES (Baseline),0.030218718123981025,0.8198486179154997,0.4142718957407746,False,No Diff
+roc_auc,DESKL (Baseline),METADES (Cost-sensitive + Minimum Expected Cost),-0.03526843595001483,-1.101623996250751,0.2732962579830949,False,No Diff
+roc_auc,DESKL (Baseline),METADES (Cost-sensitive + Standard Threshold),-0.03446759249522402,-1.038868240522024,0.3013966540243523,False,No Diff
+roc_auc,DESKL (Baseline),METADES (SMOTE + Minimum Expected Cost),0.052940256673151165,1.4170411465249306,0.15961021975964185,False,No Diff
+roc_auc,DESKL (Baseline),METADES (SMOTE + Standard Threshold),0.03579053534185095,0.9998707330847404,0.3198107211587443,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (Baseline),0.03418357563489138,0.9910733597696764,0.32406590418995607,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),0.00021825455246515801,0.009770074338984734,0.9922243936431207,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),0.03821780938359898,1.6635028887360848,0.09937438159969197,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),0.036211822826296425,1.5869282457474758,0.11571785249706691,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),KNORAE (Baseline),0.11043267960110059,4.366605445965381,3.1077383390618204e-05,True,Better
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),0.08648804791699505,3.3379951075440903,0.0011899517695643945,True,Better
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),0.08741470371733517,3.613738320505813,0.00047646350515894353,True,Better
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),0.1257035692377798,4.661349466532433,9.818403842387721e-06,True,Better
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),0.12329521969258794,5.007842323333583,2.4021252800075187e-06,True,Better
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),0.0028957384720541546,0.10630975004191033,0.9155517179975401,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.01119394815710606,-0.478547566826767,0.6333157017197909,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.010249256883467561,-0.4717615540184636,0.6381351002739897,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.005179912193070013,-0.2361456040036807,0.8138075578763186,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.0060494032283506805,-0.2796090091601766,0.7803608349956679,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),METADES (Baseline),0.06440229375887241,2.151511016038677,0.03386840341277967,True,Better
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),-0.0010848603151234482,-0.050162622725616446,0.9600938647678485,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.0002840168603326365,-0.011395510301947178,0.9909308275367388,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),0.08712383230804255,3.2713941145226344,0.001473557928530632,True,Better
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),0.06997411097674233,2.7335355400300023,0.007423247902056373,True,Better
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),DESKL (Baseline),0.033965321082426225,0.9727893127342807,0.33302889515901424,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),-0.00021825455246515801,-0.009770074338984734,0.9922243936431207,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.03799955483113382,1.7299579040725814,0.08675414834639274,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Standard Threshold),0.03599356827383127,1.567276175981791,0.12024106723494721,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),KNORAE (Baseline),0.11021442504863543,3.7008239868060557,0.00035335515118590464,True,Better
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.08626979336452989,3.412408371904683,0.0009339516865911804,True,Better
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),0.08719644916487002,3.404190861890734,0.0009594409449383486,True,Better
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.12548531468531465,4.4380232681268055,2.3601752816700186e-05,True,Better
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.12307696514012278,4.984771738133405,2.6426694979709656e-06,True,Better
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),0.0026774839195889966,0.09795142441415886,0.9221689087459348,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.011412202709571218,-0.4695547642660975,0.6397057176655001,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.01046751143593272,-0.4942441678081621,0.6222286599680998,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),-0.005398166745535171,-0.23814621346102985,0.8122599041114325,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.0062676577808158385,-0.2908321766755176,0.7717880781190471,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),METADES (Baseline),0.06418403920640725,2.037142539199425,0.044304564983494304,True,Better
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),-0.0013031148675886062,-0.06238718257334897,0.9503802858174628,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),-0.0005022714127977945,-0.02051358100405833,0.9836749660999462,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.08690557775557739,3.2471265793270785,0.0015917735735493856,True,Better
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),METADES (SMOTE + Standard Threshold),0.06975585642427717,2.5071887568246,0.013796863640147332,True,Better
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),DESKL (Baseline),-0.004034233748707594,-0.11622024947966933,0.9077134176555859,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),-0.03821780938359898,-1.6635028887360848,0.09937438159969197,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.03799955483113382,-1.7299579040725814,0.08675414834639274,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.0020059865573025526,-0.08538780525346346,0.9321255341746476,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),KNORAE (Baseline),0.07221487021750161,2.638912992305691,0.009662201280372878,True,Better
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),0.04827023853339607,1.7859656273536046,0.07716642453890862,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),0.049196894333736196,1.7896502133388923,0.0765676782900307,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),0.08748575985418083,3.4927499492666536,0.0007161609765019124,True,Better
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),0.08507741030898897,3.082614153955757,0.002658269735324237,True,Better
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.03532207091154482,-1.2777143228185985,0.20433819670968978,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.04941175754070504,-2.1662048265850604,0.03269607038523081,True,Worse
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.04846706626706654,-2.175716729558685,0.0319561216836701,True,Worse
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.04339772157666899,-1.844802637833668,0.06805593291056976,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.04426721261194966,-1.9118367745700289,0.058788576945161215,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),METADES (Baseline),0.02618448437527343,0.8762989291665793,0.3829888857911129,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),-0.039302669698722426,-1.6834160610151812,0.09544550982816633,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.038501826243931614,-1.5889909886275957,0.1152510617199439,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),0.04890602292444357,1.8616923989546195,0.06561294890259957,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),0.031756301593143355,1.103846611276436,0.27233551172047044,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),DESKL (Baseline),-0.0020282471914050415,-0.05720623824909122,0.9544962116742159,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),-0.036211822826296425,-1.5869282457474758,0.11571785249706691,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),-0.03599356827383127,-1.567276175981791,0.12024106723494721,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.0020059865573025526,0.08538780525346346,0.9321255341746476,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),KNORAE (Baseline),0.07422085677480417,2.835462894222805,0.005548563497934564,True,Better
+roc_auc,DESKL (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.05027622509069862,1.8483562875293085,0.06753570871955193,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),0.05120288089103875,1.9085409998445597,0.05921797762547822,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.08949174641148339,3.168712949375199,0.0020371219720039997,True,Better
+roc_auc,DESKL (SMOTE + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.08708339686629152,3.9325010953273374,0.00015603982680753218,True,Better
+roc_auc,DESKL (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.03331608435424227,-1.2216120333666507,0.224755364034122,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.047405770983402484,-2.215723188272711,0.029001253404029745,True,Worse
+roc_auc,DESKL (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.046461079709763986,-1.9258484770213353,0.05699220468047115,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),-0.04139173501936644,-1.8846874869908758,0.06240523691178633,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.042261226054647105,-1.8409885538710453,0.06861800026511009,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),METADES (Baseline),0.028190470932575984,0.9037658295105807,0.36831350030699184,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),-0.03729668314141987,-1.5697100212549362,0.11967336995100206,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),-0.03649583968662906,-1.3605987951964358,0.17673016717249884,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.05091200948174612,1.8720389181931083,0.06415296836601063,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),METADES (SMOTE + Standard Threshold),0.03376228815044591,1.2311499725676238,0.2211835491629024,False,No Diff
+roc_auc,KNORAE (Baseline),DESKL (Baseline),-0.07624910396620921,-2.100110547081811,0.03826089783745534,True,Worse
+roc_auc,KNORAE (Baseline),DESKL (Cost-sensitive + Minimum Expected Cost),-0.11043267960110059,-4.366605445965381,3.1077383390618204e-05,True,Worse
+roc_auc,KNORAE (Baseline),DESKL (Cost-sensitive + Standard Threshold),-0.11021442504863543,-3.7008239868060557,0.00035335515118590464,True,Worse
+roc_auc,KNORAE (Baseline),DESKL (SMOTE + Minimum Expected Cost),-0.07221487021750161,-2.638912992305691,0.009662201280372878,True,Worse
+roc_auc,KNORAE (Baseline),DESKL (SMOTE + Standard Threshold),-0.07422085677480417,-2.835462894222805,0.005548563497934564,True,Worse
+roc_auc,KNORAE (Baseline),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.023944631684105544,-0.7838750837041709,0.4349848612150894,False,No Diff
+roc_auc,KNORAE (Baseline),KNORAE (Cost-sensitive + Standard Threshold),-0.023017975883765418,-0.8231641864309666,0.4123931130375791,False,No Diff
+roc_auc,KNORAE (Baseline),KNORAE (SMOTE + Minimum Expected Cost),0.015270889636679219,0.4982921829101398,0.6193833297040214,False,No Diff
+roc_auc,KNORAE (Baseline),KNORAE (SMOTE + Standard Threshold),0.012862540091487351,0.43639166459221695,0.6635028094986613,False,No Diff
+roc_auc,KNORAE (Baseline),LogisticRegression (Baseline),-0.10753694112904644,-3.2075739298286607,0.0018036116603349724,True,Worse
+roc_auc,KNORAE (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.12162662775820665,-4.337462565453462,3.4743809914624634e-05,True,Worse
+roc_auc,KNORAE (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),-0.12068193648456815,-4.108563397676954,8.211941401977337e-05,True,Worse
+roc_auc,KNORAE (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),-0.1156125917941706,-4.670585248166726,9.463655258723741e-06,True,Worse
+roc_auc,KNORAE (Baseline),LogisticRegression (SMOTE + Standard Threshold),-0.11648208282945127,-4.162858366058089,6.713539797621138e-05,True,Worse
+roc_auc,KNORAE (Baseline),METADES (Baseline),-0.04603038584222818,-1.4011423847606481,0.16429847709379705,False,No Diff
+roc_auc,KNORAE (Baseline),METADES (Cost-sensitive + Minimum Expected Cost),-0.11151753991622404,-3.9703034328855193,0.00013615101801067497,True,Worse
+roc_auc,KNORAE (Baseline),METADES (Cost-sensitive + Standard Threshold),-0.11071669646143323,-3.8445571028238565,0.00021360092723565787,True,Worse
+roc_auc,KNORAE (Baseline),METADES (SMOTE + Minimum Expected Cost),-0.023308847293058044,-0.6930450517339154,0.48990395093157424,False,No Diff
+roc_auc,KNORAE (Baseline),METADES (SMOTE + Standard Threshold),-0.04045856862435826,-1.2015248761729342,0.23241413922642531,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),DESKL (Baseline),-0.052304472282103665,-1.5737586809907858,0.1187337393726107,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),-0.08648804791699505,-3.3379951075440903,0.0011899517695643945,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.08626979336452989,-3.412408371904683,0.0009339516865911804,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),-0.04827023853339607,-1.7859656273536046,0.07716642453890862,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.05027622509069862,-1.8483562875293085,0.06753570871955193,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (Baseline),0.023944631684105544,0.7838750837041709,0.4349848612150894,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),0.000926655800340126,0.033943098281682876,0.9729908679142127,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),0.03921552132078476,1.3083081363728062,0.1937982146310544,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),0.036807171775592895,1.3319506783307058,0.18593470064630327,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),-0.0835923094449409,-2.750579471340295,0.007074208835458417,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.09768199607410111,-3.628847400895681,0.0004525339219854402,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.09673730480046261,-4.403729476430055,2.694444624069945e-05,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.09166796011006506,-3.32799891074158,0.0012289763337927605,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.09253745114534573,-3.9449166208256665,0.0001492199150571754,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),METADES (Baseline),-0.02208575415812264,-0.6922602773129221,0.49039441795672123,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),-0.0875729082321185,-3.4519743764682596,0.0008198948744423265,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.08677206477732768,-3.458277750416238,0.0008029832092057728,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),0.0006357843910475003,0.021132095159649682,0.9831828156238035,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.016513936940252716,-0.5523503957034521,0.5819532009605397,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),DESKL (Baseline),-0.05323112808244379,-1.4887494465226214,0.13973204031049863,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),-0.08741470371733517,-3.613738320505813,0.00047646350515894353,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),-0.08719644916487002,-3.404190861890734,0.0009594409449383486,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),-0.049196894333736196,-1.7896502133388923,0.0765676782900307,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Standard Threshold),-0.05120288089103875,-1.9085409998445597,0.05921797762547822,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (Baseline),0.023017975883765418,0.8231641864309666,0.4123931130375791,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.000926655800340126,-0.033943098281682876,0.9729908679142127,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.03828886552044464,1.2692612888669739,0.20732370761579896,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.03588051597525277,1.2874365130477858,0.2009438343005419,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),-0.08451896524528102,-2.8467075166195333,0.005370811635436437,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.09860865187444123,-3.4881348325472237,0.0007272484648972701,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.09766396060080274,-3.557969471887449,0.0005755727399867708,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),-0.09259461591040519,-3.8385616798449775,0.00021818670468501747,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.09346410694568585,-3.8216052064268378,0.00023166979194315824,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),METADES (Baseline),-0.023012409958462765,-0.6532358236500861,0.5151185023297462,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),-0.08849956403245862,-3.4459083360236376,0.000836486068443048,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),-0.08769872057766781,-3.129012310444391,0.0023045246738121416,True,Worse
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),-0.00029087140929262567,-0.010625782419055693,0.9915433950958681,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),METADES (SMOTE + Standard Threshold),-0.017440592740592842,-0.5384584975637962,0.5914691906938656,False,No Diff
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),DESKL (Baseline),-0.09151999360288843,-2.6388865471334237,0.009662904474013051,True,Worse
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),-0.1257035692377798,-4.661349466532433,9.818403842387721e-06,True,Worse
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.12548531468531465,-4.4380232681268055,2.3601752816700186e-05,True,Worse
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),-0.08748575985418083,-3.4927499492666536,0.0007161609765019124,True,Worse
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.08949174641148339,-3.168712949375199,0.0020371219720039997,True,Worse
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (Baseline),-0.015270889636679219,-0.4982921829101398,0.6193833297040214,False,No Diff
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.03921552132078476,-1.3083081363728062,0.1937982146310544,False,No Diff
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),-0.03828886552044464,-1.2692612888669739,0.20732370761579896,False,No Diff
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),-0.002408349545191868,-0.08279556854361894,0.9341812681751499,False,No Diff
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.12280783076572566,-4.290478106390866,4.154830864627607e-05,True,Worse
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.13689751739488587,-5.657855734906105,1.4919618384969936e-07,True,Worse
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.13595282612124737,-4.867610449039695,4.2750425786344105e-06,True,Worse
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.13088348143084982,-4.656724966250578,1.0000842817200897e-05,True,Worse
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.1317529724661305,-4.602533829764729,1.239927926330373e-05,True,Worse
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),METADES (Baseline),-0.0613012754789074,-1.8062385703936492,0.07391950645365525,False,No Diff
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),-0.12678842955290326,-4.747007202110362,6.9684274429260834e-06,True,Worse
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.12598758609811245,-4.9591220742240605,2.9376754323577127e-06,True,Worse
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),-0.03857973692973726,-1.1497171639046393,0.253030239919151,False,No Diff
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.05572945826103748,-1.8080982150908704,0.07362742768673508,False,No Diff
+roc_auc,KNORAE (SMOTE + Standard Threshold),DESKL (Baseline),-0.08911164405769656,-2.541235519548481,0.012598486831545134,True,Worse
+roc_auc,KNORAE (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),-0.12329521969258794,-5.007842323333583,2.4021252800075187e-06,True,Worse
+roc_auc,KNORAE (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),-0.12307696514012278,-4.984771738133405,2.6426694979709656e-06,True,Worse
+roc_auc,KNORAE (SMOTE + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),-0.08507741030898897,-3.082614153955757,0.002658269735324237,True,Worse
+roc_auc,KNORAE (SMOTE + Standard Threshold),DESKL (SMOTE + Standard Threshold),-0.08708339686629152,-3.9325010953273374,0.00015603982680753218,True,Worse
+roc_auc,KNORAE (SMOTE + Standard Threshold),KNORAE (Baseline),-0.012862540091487351,-0.43639166459221695,0.6635028094986613,False,No Diff
+roc_auc,KNORAE (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.036807171775592895,-1.3319506783307058,0.18593470064630327,False,No Diff
+roc_auc,KNORAE (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),-0.03588051597525277,-1.2874365130477858,0.2009438343005419,False,No Diff
+roc_auc,KNORAE (SMOTE + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.002408349545191868,0.08279556854361894,0.9341812681751499,False,No Diff
+roc_auc,KNORAE (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.12039948122053379,-4.243504302420647,4.962525624017994e-05,True,Worse
+roc_auc,KNORAE (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.134489167849694,-5.066426690759578,1.8831864770098531e-06,True,Worse
+roc_auc,KNORAE (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.1335444765760555,-5.601923832197351,1.9071377367551658e-07,True,Worse
+roc_auc,KNORAE (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),-0.12847513188565796,-5.0503373812557975,2.0136650547969915e-06,True,Worse
+roc_auc,KNORAE (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.12934462292093862,-5.120370411037698,1.503129967273882e-06,True,Worse
+roc_auc,KNORAE (SMOTE + Standard Threshold),METADES (Baseline),-0.058892925933715534,-1.8439598883417692,0.06817979384463659,False,No Diff
+roc_auc,KNORAE (SMOTE + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),-0.12438008000771139,-5.1912221758291155,1.1158442247137098e-06,True,Worse
+roc_auc,KNORAE (SMOTE + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),-0.12357923655292058,-5.0554276164495215,1.9714598224730953e-06,True,Worse
+roc_auc,KNORAE (SMOTE + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),-0.036171387384545395,-1.1506217079679166,0.25265953258478463,False,No Diff
+roc_auc,KNORAE (SMOTE + Standard Threshold),METADES (SMOTE + Standard Threshold),-0.05332110871584561,-1.9661809263196517,0.052078231291242366,False,No Diff
+roc_auc,LogisticRegression (Baseline),DESKL (Baseline),0.03128783716283723,0.8681684172078523,0.38740180937853885,False,No Diff
+roc_auc,LogisticRegression (Baseline),DESKL (Cost-sensitive + Minimum Expected Cost),-0.0028957384720541546,-0.10630975004191033,0.9155517179975401,False,No Diff
+roc_auc,LogisticRegression (Baseline),DESKL (Cost-sensitive + Standard Threshold),-0.0026774839195889966,-0.09795142441415886,0.9221689087459348,False,No Diff
+roc_auc,LogisticRegression (Baseline),DESKL (SMOTE + Minimum Expected Cost),0.03532207091154482,1.2777143228185985,0.20433819670968978,False,No Diff
+roc_auc,LogisticRegression (Baseline),DESKL (SMOTE + Standard Threshold),0.03331608435424227,1.2216120333666507,0.224755364034122,False,No Diff
+roc_auc,LogisticRegression (Baseline),KNORAE (Baseline),0.10753694112904644,3.2075739298286607,0.0018036116603349724,True,Better
+roc_auc,LogisticRegression (Baseline),KNORAE (Cost-sensitive + Minimum Expected Cost),0.0835923094449409,2.750579471340295,0.007074208835458417,True,Better
+roc_auc,LogisticRegression (Baseline),KNORAE (Cost-sensitive + Standard Threshold),0.08451896524528102,2.8467075166195333,0.005370811635436437,True,Better
+roc_auc,LogisticRegression (Baseline),KNORAE (SMOTE + Minimum Expected Cost),0.12280783076572566,4.290478106390866,4.154830864627607e-05,True,Better
+roc_auc,LogisticRegression (Baseline),KNORAE (SMOTE + Standard Threshold),0.12039948122053379,4.243504302420647,4.962525624017994e-05,True,Better
+roc_auc,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.014089686629160214,-0.5199597621393546,0.6042523633156104,False,No Diff
+roc_auc,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),-0.013144995355521716,-0.4900291863905277,0.6251974514613823,False,No Diff
+roc_auc,LogisticRegression (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),-0.008075650665124168,-0.28989000991667685,0.7725066769311479,False,No Diff
+roc_auc,LogisticRegression (Baseline),LogisticRegression (SMOTE + Standard Threshold),-0.008945141700404835,-0.2988849021727926,0.7656543609752612,False,No Diff
+roc_auc,LogisticRegression (Baseline),METADES (Baseline),0.061506555286818254,1.7695353288481854,0.07988367906045345,False,No Diff
+roc_auc,LogisticRegression (Baseline),METADES (Cost-sensitive + Minimum Expected Cost),-0.003980598787177603,-0.13949584131124426,0.8893417339005361,False,No Diff
+roc_auc,LogisticRegression (Baseline),METADES (Cost-sensitive + Standard Threshold),-0.003179755332386791,-0.11165663847237633,0.9113217317399392,False,No Diff
+roc_auc,LogisticRegression (Baseline),METADES (SMOTE + Minimum Expected Cost),0.0842280938359884,2.6808488735935296,0.008603635691404857,True,Better
+roc_auc,LogisticRegression (Baseline),METADES (SMOTE + Standard Threshold),0.06707837250468818,2.2619761841853743,0.025885071493324783,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),DESKL (Baseline),0.04537752379199744,1.3056849011779161,0.19468575913455077,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),0.01119394815710606,0.478547566826767,0.6333157017197909,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),0.011412202709571218,0.4695547642660975,0.6397057176655001,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),0.04941175754070504,2.1662048265850604,0.03269607038523081,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),0.047405770983402484,2.215723188272711,0.029001253404029745,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),KNORAE (Baseline),0.12162662775820665,4.337462565453462,3.4743809914624634e-05,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),0.09768199607410111,3.628847400895681,0.0004525339219854402,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),0.09860865187444123,3.4881348325472237,0.0007272484648972701,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),0.13689751739488587,5.657855734906105,1.4919618384969936e-07,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),0.134489167849694,5.066426690759578,1.8831864770098531e-06,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),0.014089686629160214,0.5199597621393546,0.6042523633156104,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),0.0009446912736384983,0.03926573936327354,0.9687575961242167,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),0.006014035964036046,0.2660840404991496,0.7907278524955301,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),0.005144544928755379,0.2164536016185123,0.829079584921486,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),METADES (Baseline),0.07559624191597847,2.4053387428685626,0.018014755207656732,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),0.010109087841982611,0.46279857026125937,0.6445244169507671,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),0.010909931296773423,0.43354977876000683,0.6655586543765111,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),0.09831778046514861,3.582548501394087,0.0005297029276088622,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),0.08116805913384839,2.995548731603126,0.0034614896949436407,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),DESKL (Baseline),0.044432832518358945,1.4310013853522434,0.1555789026599829,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.010249256883467561,0.4717615540184636,0.6381351002739897,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),0.01046751143593272,0.4942441678081621,0.6222286599680998,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.04846706626706654,2.175716729558685,0.0319561216836701,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Standard Threshold),0.046461079709763986,1.9258484770213353,0.05699220468047115,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),KNORAE (Baseline),0.12068193648456815,4.108563397676954,8.211941401977337e-05,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.09673730480046261,4.403729476430055,2.694444624069945e-05,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),0.09766396060080274,3.557969471887449,0.0005755727399867708,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.13595282612124737,4.867610449039695,4.2750425786344105e-06,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.1335444765760555,5.601923832197351,1.9071377367551658e-07,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),0.013144995355521716,0.4900291863905277,0.6251974514613823,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.0009446912736384983,-0.03926573936327354,0.9687575961242167,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.005069344690397548,0.212270931160877,0.8323321058358648,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),0.004199853655116881,0.18697801595558045,0.8520605167639678,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),METADES (Baseline),0.07465155064233997,2.4920525819376182,0.014361703340648718,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),0.009164396568344113,0.4309390170967286,0.6674495543964815,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),0.009965240023134925,0.43103082742749704,0.6673830223296946,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.09737308919151011,3.514023489303875,0.0006670828199836685,True,Better
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),METADES (SMOTE + Standard Threshold),0.0802233678602099,3.25309942429645,0.0015618821014432365,True,Better
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),DESKL (Baseline),0.039363487827961396,1.157659688396753,0.249788294643466,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),0.005179912193070013,0.2361456040036807,0.8138075578763186,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),0.005398166745535171,0.23814621346102985,0.8122599041114325,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),0.04339772157666899,1.844802637833668,0.06805593291056976,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),0.04139173501936644,1.8846874869908758,0.06240523691178633,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),KNORAE (Baseline),0.1156125917941706,4.670585248166726,9.463655258723741e-06,True,Better
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),0.09166796011006506,3.32799891074158,0.0012289763337927605,True,Better
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),0.09259461591040519,3.8385616798449775,0.00021818670468501747,True,Better
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),0.13088348143084982,4.656724966250578,1.0000842817200897e-05,True,Better
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),0.12847513188565796,5.0503373812557975,2.0136650547969915e-06,True,Better
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),0.008075650665124168,0.28989000991667685,0.7725066769311479,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.006014035964036046,-0.2660840404991496,0.7907278524955301,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.005069344690397548,-0.212270931160877,0.8323321058358648,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.0008694910352806673,-0.033595062082318404,0.9732677007925427,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),METADES (Baseline),0.06958220595194242,2.258810640917939,0.026088569139103374,True,Better
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),0.004095051877946565,0.20007846039852667,0.8418296379415052,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),0.004895895332737377,0.2091734848418119,0.8347426195834904,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),0.09230374450111256,3.6195529525554204,0.00046711588972785806,True,Better
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),0.07515402316981235,2.7630419616930255,0.006828532594610135,True,Better
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),DESKL (Baseline),0.040232978863242064,1.1426899862379982,0.25592327689397615,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.0060494032283506805,0.2796090091601766,0.7803608349956679,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),0.0062676577808158385,0.2908321766755176,0.7717880781190471,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.04426721261194966,1.9118367745700289,0.058788576945161215,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),DESKL (SMOTE + Standard Threshold),0.042261226054647105,1.8409885538710453,0.06861800026511009,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),KNORAE (Baseline),0.11648208282945127,4.162858366058089,6.713539797621138e-05,True,Better
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.09253745114534573,3.9449166208256665,0.0001492199150571754,True,Better
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),0.09346410694568585,3.8216052064268378,0.00023166979194315824,True,Better
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.1317529724661305,4.602533829764729,1.239927926330373e-05,True,Better
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.12934462292093862,5.120370411037698,1.503129967273882e-06,True,Better
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Baseline),0.008945141700404835,0.2988849021727926,0.7656543609752612,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.005144544928755379,-0.2164536016185123,0.829079584921486,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.004199853655116881,-0.18697801595558045,0.8520605167639678,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.0008694910352806673,0.033595062082318404,0.9732677007925427,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),METADES (Baseline),0.07045169698722309,2.0522049029307614,0.042788955965006245,True,Better
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),0.004964542913227232,0.21264000376334566,0.832044990105028,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),0.005765386368018044,0.23045755476039043,0.8182117962607092,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.09317323553639323,3.5376999653866243,0.0006161993564943524,True,Better
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),METADES (SMOTE + Standard Threshold),0.07602351420509301,2.619072012273545,0.010202989844529633,True,Better
+roc_auc,METADES (Baseline),DESKL (Baseline),-0.030218718123981025,-0.8198486179154997,0.4142718957407746,False,No Diff
+roc_auc,METADES (Baseline),DESKL (Cost-sensitive + Minimum Expected Cost),-0.06440229375887241,-2.151511016038677,0.03386840341277967,True,Worse
+roc_auc,METADES (Baseline),DESKL (Cost-sensitive + Standard Threshold),-0.06418403920640725,-2.037142539199425,0.044304564983494304,True,Worse
+roc_auc,METADES (Baseline),DESKL (SMOTE + Minimum Expected Cost),-0.02618448437527343,-0.8762989291665793,0.3829888857911129,False,No Diff
+roc_auc,METADES (Baseline),DESKL (SMOTE + Standard Threshold),-0.028190470932575984,-0.9037658295105807,0.36831350030699184,False,No Diff
+roc_auc,METADES (Baseline),KNORAE (Baseline),0.04603038584222818,1.4011423847606481,0.16429847709379705,False,No Diff
+roc_auc,METADES (Baseline),KNORAE (Cost-sensitive + Minimum Expected Cost),0.02208575415812264,0.6922602773129221,0.49039441795672123,False,No Diff
+roc_auc,METADES (Baseline),KNORAE (Cost-sensitive + Standard Threshold),0.023012409958462765,0.6532358236500861,0.5151185023297462,False,No Diff
+roc_auc,METADES (Baseline),KNORAE (SMOTE + Minimum Expected Cost),0.0613012754789074,1.8062385703936492,0.07391950645365525,False,No Diff
+roc_auc,METADES (Baseline),KNORAE (SMOTE + Standard Threshold),0.058892925933715534,1.8439598883417692,0.06817979384463659,False,No Diff
+roc_auc,METADES (Baseline),LogisticRegression (Baseline),-0.061506555286818254,-1.7695353288481854,0.07988367906045345,False,No Diff
+roc_auc,METADES (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.07559624191597847,-2.4053387428685626,0.018014755207656732,True,Worse
+roc_auc,METADES (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),-0.07465155064233997,-2.4920525819376182,0.014361703340648718,True,Worse
+roc_auc,METADES (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),-0.06958220595194242,-2.258810640917939,0.026088569139103374,True,Worse
+roc_auc,METADES (Baseline),LogisticRegression (SMOTE + Standard Threshold),-0.07045169698722309,-2.0522049029307614,0.042788955965006245,True,Worse
+roc_auc,METADES (Baseline),METADES (Cost-sensitive + Minimum Expected Cost),-0.06548715407399586,-2.1974827403636645,0.03031751677685822,True,Worse
+roc_auc,METADES (Baseline),METADES (Cost-sensitive + Standard Threshold),-0.06468631061920505,-2.101854145987284,0.0381042023800657,True,Worse
+roc_auc,METADES (Baseline),METADES (SMOTE + Minimum Expected Cost),0.02272153854917014,0.6249182127084536,0.5334624499958132,False,No Diff
+roc_auc,METADES (Baseline),METADES (SMOTE + Standard Threshold),0.005571817217869923,0.14907852703278535,0.8817949302182627,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),DESKL (Baseline),0.03526843595001483,1.101623996250751,0.2732962579830949,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),0.0010848603151234482,0.050162622725616446,0.9600938647678485,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),0.0013031148675886062,0.06238718257334897,0.9503802858174628,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),0.039302669698722426,1.6834160610151812,0.09544550982816633,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),0.03729668314141987,1.5697100212549362,0.11967336995100206,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),KNORAE (Baseline),0.11151753991622404,3.9703034328855193,0.00013615101801067497,True,Better
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),0.0875729082321185,3.4519743764682596,0.0008198948744423265,True,Better
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),0.08849956403245862,3.4459083360236376,0.000836486068443048,True,Better
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),0.12678842955290326,4.747007202110362,6.9684274429260834e-06,True,Better
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),0.12438008000771139,5.1912221758291155,1.1158442247137098e-06,True,Better
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),0.003980598787177603,0.13949584131124426,0.8893417339005361,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.010109087841982611,-0.46279857026125937,0.6445244169507671,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.009164396568344113,-0.4309390170967286,0.6674495543964815,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.004095051877946565,-0.20007846039852667,0.8418296379415052,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.004964542913227232,-0.21264000376334566,0.832044990105028,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),METADES (Baseline),0.06548715407399586,2.1974827403636645,0.03031751677685822,True,Better
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),0.0008008434547908116,0.037305685844114395,0.9703163937314268,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),0.088208692623166,3.0475650745208864,0.0029582020188834435,True,Better
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),0.07105897129186578,2.6499141087211653,0.009373659803583201,True,Better
+roc_auc,METADES (Cost-sensitive + Standard Threshold),DESKL (Baseline),0.03446759249522402,1.038868240522024,0.3013966540243523,False,No Diff
+roc_auc,METADES (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.0002840168603326365,0.011395510301947178,0.9909308275367388,False,No Diff
+roc_auc,METADES (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),0.0005022714127977945,0.02051358100405833,0.9836749660999462,False,No Diff
+roc_auc,METADES (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.038501826243931614,1.5889909886275957,0.1152510617199439,False,No Diff
+roc_auc,METADES (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Standard Threshold),0.03649583968662906,1.3605987951964358,0.17673016717249884,False,No Diff
+roc_auc,METADES (Cost-sensitive + Standard Threshold),KNORAE (Baseline),0.11071669646143323,3.8445571028238565,0.00021360092723565787,True,Better
+roc_auc,METADES (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.08677206477732768,3.458277750416238,0.0008029832092057728,True,Better
+roc_auc,METADES (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),0.08769872057766781,3.129012310444391,0.0023045246738121416,True,Better
+roc_auc,METADES (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.12598758609811245,4.9591220742240605,2.9376754323577127e-06,True,Better
+roc_auc,METADES (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.12357923655292058,5.0554276164495215,1.9714598224730953e-06,True,Better
+roc_auc,METADES (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),0.003179755332386791,0.11165663847237633,0.9113217317399392,False,No Diff
+roc_auc,METADES (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.010909931296773423,-0.43354977876000683,0.6655586543765111,False,No Diff
+roc_auc,METADES (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.009965240023134925,-0.43103082742749704,0.6673830223296946,False,No Diff
+roc_auc,METADES (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),-0.004895895332737377,-0.2091734848418119,0.8347426195834904,False,No Diff
+roc_auc,METADES (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.005765386368018044,-0.23045755476039043,0.8182117962607092,False,No Diff
+roc_auc,METADES (Cost-sensitive + Standard Threshold),METADES (Baseline),0.06468631061920505,2.101854145987284,0.0381042023800657,True,Better
+roc_auc,METADES (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),-0.0008008434547908116,-0.037305685844114395,0.9703163937314268,False,No Diff
+roc_auc,METADES (Cost-sensitive + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.08740784916837518,2.775558916543169,0.006589640175918346,True,Better
+roc_auc,METADES (Cost-sensitive + Standard Threshold),METADES (SMOTE + Standard Threshold),0.07025812783707497,2.5262370865389743,0.013114375124170664,True,Better
+roc_auc,METADES (SMOTE + Minimum Expected Cost),DESKL (Baseline),-0.052940256673151165,-1.4170411465249306,0.15961021975964185,False,No Diff
+roc_auc,METADES (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),-0.08712383230804255,-3.2713941145226344,0.001473557928530632,True,Worse
+roc_auc,METADES (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.08690557775557739,-3.2471265793270785,0.0015917735735493856,True,Worse
+roc_auc,METADES (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),-0.04890602292444357,-1.8616923989546195,0.06561294890259957,False,No Diff
+roc_auc,METADES (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.05091200948174612,-1.8720389181931083,0.06415296836601063,False,No Diff
+roc_auc,METADES (SMOTE + Minimum Expected Cost),KNORAE (Baseline),0.023308847293058044,0.6930450517339154,0.48990395093157424,False,No Diff
+roc_auc,METADES (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.0006357843910475003,-0.021132095159649682,0.9831828156238035,False,No Diff
+roc_auc,METADES (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),0.00029087140929262567,0.010625782419055693,0.9915433950958681,False,No Diff
+roc_auc,METADES (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),0.03857973692973726,1.1497171639046393,0.253030239919151,False,No Diff
+roc_auc,METADES (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),0.036171387384545395,1.1506217079679166,0.25265953258478463,False,No Diff
+roc_auc,METADES (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.0842280938359884,-2.6808488735935296,0.008603635691404857,True,Worse
+roc_auc,METADES (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.09831778046514861,-3.582548501394087,0.0005297029276088622,True,Worse
+roc_auc,METADES (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.09737308919151011,-3.514023489303875,0.0006670828199836685,True,Worse
+roc_auc,METADES (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.09230374450111256,-3.6195529525554204,0.00046711588972785806,True,Worse
+roc_auc,METADES (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.09317323553639323,-3.5376999653866243,0.0006161993564943524,True,Worse
+roc_auc,METADES (SMOTE + Minimum Expected Cost),METADES (Baseline),-0.02272153854917014,-0.6249182127084536,0.5334624499958132,False,No Diff
+roc_auc,METADES (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),-0.088208692623166,-3.0475650745208864,0.0029582020188834435,True,Worse
+roc_auc,METADES (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.08740784916837518,-2.775558916543169,0.006589640175918346,True,Worse
+roc_auc,METADES (SMOTE + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.017149721331300216,-0.5421653150800564,0.5889229175171968,False,No Diff
+roc_auc,METADES (SMOTE + Standard Threshold),DESKL (Baseline),-0.03579053534185095,-0.9998707330847404,0.3198107211587443,False,No Diff
+roc_auc,METADES (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),-0.06997411097674233,-2.7335355400300023,0.007423247902056373,True,Worse
+roc_auc,METADES (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),-0.06975585642427717,-2.5071887568246,0.013796863640147332,True,Worse
+roc_auc,METADES (SMOTE + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),-0.031756301593143355,-1.103846611276436,0.27233551172047044,False,No Diff
+roc_auc,METADES (SMOTE + Standard Threshold),DESKL (SMOTE + Standard Threshold),-0.03376228815044591,-1.2311499725676238,0.2211835491629024,False,No Diff
+roc_auc,METADES (SMOTE + Standard Threshold),KNORAE (Baseline),0.04045856862435826,1.2015248761729342,0.23241413922642531,False,No Diff
+roc_auc,METADES (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.016513936940252716,0.5523503957034521,0.5819532009605397,False,No Diff
+roc_auc,METADES (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),0.017440592740592842,0.5384584975637962,0.5914691906938656,False,No Diff
+roc_auc,METADES (SMOTE + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.05572945826103748,1.8080982150908704,0.07362742768673508,False,No Diff
+roc_auc,METADES (SMOTE + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.05332110871584561,1.9661809263196517,0.052078231291242366,False,No Diff
+roc_auc,METADES (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.06707837250468818,-2.2619761841853743,0.025885071493324783,True,Worse
+roc_auc,METADES (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.08116805913384839,-2.995548731603126,0.0034614896949436407,True,Worse
+roc_auc,METADES (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.0802233678602099,-3.25309942429645,0.0015618821014432365,True,Worse
+roc_auc,METADES (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),-0.07515402316981235,-2.7630419616930255,0.006828532594610135,True,Worse
+roc_auc,METADES (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.07602351420509301,-2.619072012273545,0.010202989844529633,True,Worse
+roc_auc,METADES (SMOTE + Standard Threshold),METADES (Baseline),-0.005571817217869923,-0.14907852703278535,0.8817949302182627,False,No Diff
+roc_auc,METADES (SMOTE + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),-0.07105897129186578,-2.6499141087211653,0.009373659803583201,True,Worse
+roc_auc,METADES (SMOTE + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),-0.07025812783707497,-2.5262370865389743,0.013114375124170664,True,Worse
+roc_auc,METADES (SMOTE + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.017149721331300216,0.5421653150800564,0.5889229175171968,False,No Diff

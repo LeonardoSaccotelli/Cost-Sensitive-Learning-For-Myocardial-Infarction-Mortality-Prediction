@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+precision,XGBClassifier (Baseline),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.49485176788169094,13.689886630340844,1.431138494749534e-24,True,Better
+precision,XGBClassifier (Baseline),XGBClassifier (Cost-sensitive + Standard Threshold),0.30177995693221626,7.341792761444197,5.98904829300691e-11,True,Better
+precision,XGBClassifier (Baseline),XGBClassifier (SMOTE + Minimum Expected Cost),0.412798108895542,9.130277245836457,8.624577025169928e-15,True,Better
+precision,XGBClassifier (Baseline),XGBClassifier (SMOTE + Standard Threshold),0.12268406574862711,1.951457190063817,0.05382875417363506,False,No Diff
+precision,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Baseline),-0.49485176788169094,-13.689886630340844,1.431138494749534e-24,True,Worse
+precision,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),-0.19307181094947465,-8.38593151106171,3.551146441012434e-13,True,Worse
+precision,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Minimum Expected Cost),-0.08205365898614889,-2.595685232138384,0.010875448712637504,True,Worse
+precision,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.3721677021330638,-7.316925793001341,6.75421443348337e-11,True,Worse
+precision,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Baseline),-0.30177995693221626,-7.341792761444197,5.98904829300691e-11,True,Worse
+precision,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.19307181094947465,8.38593151106171,3.551146441012434e-13,True,Better
+precision,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),0.11101815196332576,3.1383046549582727,0.0022391603262229944,True,Better
+precision,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Standard Threshold),-0.17909589118358915,-3.0965954441666153,0.0025466981553389986,True,Worse
+precision,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Baseline),-0.412798108895542,-9.130277245836457,8.624577025169928e-15,True,Worse
+precision,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.08205365898614889,2.595685232138384,0.010875448712637504,True,Better
+precision,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),-0.11101815196332576,-3.1383046549582727,0.0022391603262229944,True,Worse
+precision,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.2901140431469149,-4.610505635230427,1.201439022799208e-05,True,Worse
+precision,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (Baseline),-0.12268406574862711,-1.951457190063817,0.05382875417363506,False,No Diff
+precision,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.3721677021330638,7.316925793001341,6.75421443348337e-11,True,Better
+precision,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Standard Threshold),0.17909589118358915,3.0965954441666153,0.0025466981553389986,True,Better
+precision,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),0.2901140431469149,4.610505635230427,1.201439022799208e-05,True,Better

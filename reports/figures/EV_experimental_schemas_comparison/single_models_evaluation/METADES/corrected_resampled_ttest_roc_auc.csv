@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+roc_auc,METADES (Baseline),METADES (Cost-sensitive + Minimum Expected Cost),-0.06548715407399619,-2.0455153594967235,0.043456491284632755,True,Worse
+roc_auc,METADES (Baseline),METADES (Cost-sensitive + Standard Threshold),-0.06468631061920527,-2.177063312309275,0.03185255492327747,True,Worse
+roc_auc,METADES (Baseline),METADES (SMOTE + Minimum Expected Cost),0.02272153854917025,0.7060143556459423,0.481837353860911,False,No Diff
+roc_auc,METADES (Baseline),METADES (SMOTE + Standard Threshold),0.005571817217869923,0.15598221680137697,0.8763646615088048,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),METADES (Baseline),0.06548715407399619,2.0455153594967235,0.043456491284632755,True,Better
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),0.0008008434547909227,0.03889198319536951,0.9690548289549524,False,No Diff
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),0.08820869262316644,3.058029886887186,0.0028655186268035744,True,Better
+roc_auc,METADES (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),0.07105897129186611,3.015200036025514,0.0032627122720840615,True,Better
+roc_auc,METADES (Cost-sensitive + Standard Threshold),METADES (Baseline),0.06468631061920527,2.177063312309275,0.03185255492327747,True,Better
+roc_auc,METADES (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),-0.0008008434547909227,-0.03889198319536951,0.9690548289549524,False,No Diff
+roc_auc,METADES (Cost-sensitive + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.08740784916837552,2.972718944508599,0.003706441319905291,True,Better
+roc_auc,METADES (Cost-sensitive + Standard Threshold),METADES (SMOTE + Standard Threshold),0.07025812783707519,2.470118225925838,0.015216988044766034,True,Better
+roc_auc,METADES (SMOTE + Minimum Expected Cost),METADES (Baseline),-0.02272153854917025,-0.7060143556459423,0.481837353860911,False,No Diff
+roc_auc,METADES (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),-0.08820869262316644,-3.058029886887186,0.0028655186268035744,True,Worse
+roc_auc,METADES (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.08740784916837552,-2.972718944508599,0.003706441319905291,True,Worse
+roc_auc,METADES (SMOTE + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.017149721331300327,-0.522170171142753,0.6027182954496126,False,No Diff
+roc_auc,METADES (SMOTE + Standard Threshold),METADES (Baseline),-0.005571817217869923,-0.15598221680137697,0.8763646615088048,False,No Diff
+roc_auc,METADES (SMOTE + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),-0.07105897129186611,-3.015200036025514,0.0032627122720840615,True,Worse
+roc_auc,METADES (SMOTE + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),-0.07025812783707519,-2.470118225925838,0.015216988044766034,True,Worse
+roc_auc,METADES (SMOTE + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.017149721331300327,0.522170171142753,0.6027182954496126,False,No Diff

@@ -1,0 +1,381 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+precision,DESKL (Baseline),DESKL (Cost-sensitive + Minimum Expected Cost),0.6448160286885395,6.578382494132264,2.2708405106167227e-09,True,Better
+precision,DESKL (Baseline),DESKL (Cost-sensitive + Standard Threshold),0.5040667857760649,5.007123393238955,2.4092882960783186e-06,True,Better
+precision,DESKL (Baseline),DESKL (SMOTE + Minimum Expected Cost),0.6448160286885395,6.571920800834182,2.3405039652051322e-09,True,Better
+precision,DESKL (Baseline),DESKL (SMOTE + Standard Threshold),0.35290374210710634,3.326322080956268,0.0012356389498841469,True,Better
+precision,DESKL (Baseline),KNORAE (Baseline),0.3278625608623591,2.85567572565833,0.0052328031110145095,True,Better
+precision,DESKL (Baseline),KNORAE (Cost-sensitive + Minimum Expected Cost),0.642082658199405,6.547742404891779,2.620425506298305e-09,True,Better
+precision,DESKL (Baseline),KNORAE (Cost-sensitive + Standard Threshold),0.4773126755342748,4.728478030207813,7.507134919439948e-06,True,Better
+precision,DESKL (Baseline),KNORAE (SMOTE + Minimum Expected Cost),0.6443648881218201,6.5715425058368,2.3446471936298876e-09,True,Better
+precision,DESKL (Baseline),KNORAE (SMOTE + Standard Threshold),0.47806621738323113,4.673995021524244,9.335852612507927e-06,True,Better
+precision,DESKL (Baseline),LogisticRegression (Baseline),0.19188947287571023,1.715287160494055,0.08942094206277096,False,No Diff
+precision,DESKL (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.6289775860599461,6.4197150594930585,4.754204505553934e-09,True,Better
+precision,DESKL (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),0.4908402128422534,4.904935977526984,3.6701184784044003e-06,True,Better
+precision,DESKL (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),0.6177240953340692,6.237360229266701,1.1022009468363185e-08,True,Better
+precision,DESKL (Baseline),LogisticRegression (SMOTE + Standard Threshold),0.4227216894879278,4.363512391705377,3.1448068819735624e-05,True,Better
+precision,DESKL (Baseline),METADES (Baseline),0.19826874514374515,1.3193158913503418,0.19010672110045546,False,No Diff
+precision,DESKL (Baseline),METADES (Cost-sensitive + Minimum Expected Cost),0.6448160286885395,6.5675778086295304,2.388508615486581e-09,True,Better
+precision,DESKL (Baseline),METADES (Cost-sensitive + Standard Threshold),0.45189224260273075,4.562613641267126,1.451345687609001e-05,True,Better
+precision,DESKL (Baseline),METADES (SMOTE + Minimum Expected Cost),0.6447543785714722,6.5646669863845695,2.4212264424812277e-09,True,Better
+precision,DESKL (Baseline),METADES (SMOTE + Standard Threshold),0.3735417556070121,3.6903631141847746,0.0003663629120351096,True,Better
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (Baseline),-0.6448160286885395,-6.578382494132264,2.2708405106167227e-09,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.14074924291247456,-8.36322193925574,3.9753297200350665e-13,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.2919122865814331,-8.316919572256705,5.002968076800537e-13,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),KNORAE (Baseline),-0.3169534678261804,-5.52516783905467,2.666242968850974e-07,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.0027333704891344124,-1.4100928673715651,0.16164635041789768,False,No Diff
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),-0.16750335315426465,-8.978500581527548,1.84512280084617e-14,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),-0.00045114056671929914,-0.3895791833637884,0.6976845506206629,False,No Diff
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),-0.16674981130530833,-7.57036404323052,1.9738015263892554e-11,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),-0.45292655581282926,-9.940473908404861,1.475242923689793e-16,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.015838442628593324,-4.111604616787717,8.120143700136673e-05,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.15397581584628608,-11.0290786092562,6.315558921071465e-19,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.027091933354470188,-4.198683636811122,5.872677664205041e-05,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.22209433920061164,-13.195690804734811,1.521649644963694e-23,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),METADES (Baseline),-0.44654728354479434,-4.470215319825574,2.0830841880631437e-05,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.1929237860858087,-9.391401460059447,2.326636815769371e-15,True,Worse
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),-6.165011706724122e-05,-0.07100839923179807,0.9435343180789968,False,No Diff
+precision,DESKL (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.2712742730815274,-9.373339869367644,2.547474858577502e-15,True,Worse
+precision,DESKL (Cost-sensitive + Standard Threshold),DESKL (Baseline),-0.5040667857760649,-5.007123393238955,2.4092882960783186e-06,True,Worse
+precision,DESKL (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.14074924291247456,8.36322193925574,3.9753297200350665e-13,True,Better
+precision,DESKL (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.14074924291247456,8.322306702218551,4.870956179353044e-13,True,Better
+precision,DESKL (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Standard Threshold),-0.15116304366895855,-3.7922727704137498,0.0002568873845605141,True,Worse
+precision,DESKL (Cost-sensitive + Standard Threshold),KNORAE (Baseline),-0.1762042249137058,-3.067006083736283,0.0027881712230461335,True,Worse
+precision,DESKL (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.13801587242334015,8.16081231084887,1.0845467102531597e-12,True,Better
+precision,DESKL (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),-0.026754110241790086,-1.0268523934878468,0.3069923877286737,False,No Diff
+precision,DESKL (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.14029810234575527,8.332533478293985,4.62982270501647e-13,True,Better
+precision,DESKL (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Standard Threshold),-0.026000568392833767,-0.875636171169596,0.38334743020461304,False,No Diff
+precision,DESKL (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),-0.31217731290035466,-6.33218208419068,7.126393708665373e-09,True,Worse
+precision,DESKL (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.12491080028388124,7.396283326179257,4.600178054407728e-11,True,Better
+precision,DESKL (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.01322657293381152,-0.6140866603325907,0.540566667668242,False,No Diff
+precision,DESKL (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.11365730955800438,6.144177382757559,1.687662764723026e-08,True,Better
+precision,DESKL (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.08134509628813708,-3.436779956015427,0.0008620499137660224,True,Worse
+precision,DESKL (Cost-sensitive + Standard Threshold),METADES (Baseline),-0.30579804063231975,-3.054592497620301,0.0028956614364875535,True,Worse
+precision,DESKL (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),0.14074924291247456,8.31089410468866,5.154849818397621e-13,True,Better
+precision,DESKL (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),-0.05217454317333414,-2.0396803927653937,0.044046023454714645,True,Worse
+precision,DESKL (Cost-sensitive + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.14068759279540732,8.324575741768468,4.816397434506076e-13,True,Better
+precision,DESKL (Cost-sensitive + Standard Threshold),METADES (SMOTE + Standard Threshold),-0.1305250301690528,-3.898439007741255,0.00017631314960050027,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),DESKL (Baseline),-0.6448160286885395,-6.571920800834182,2.3405039652051322e-09,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+precision,DESKL (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.14074924291247456,-8.322306702218551,4.870956179353044e-13,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.2919122865814331,-8.319409429135739,4.941516721052927e-13,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),KNORAE (Baseline),-0.3169534678261804,-5.527688106386319,2.637161159902356e-07,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.0027333704891344124,-1.395303446258944,0.16604647163105868,False,No Diff
+precision,DESKL (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),-0.16750335315426465,-8.946468240320744,2.1661013252158334e-14,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),-0.00045114056671929914,-0.3523212796165017,0.7253462484333177,False,No Diff
+precision,DESKL (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),-0.16674981130530833,-7.548390548802262,2.196857943425911e-11,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.45292655581282926,-9.93883664211509,1.4874262650000708e-16,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.015838442628593324,-4.147860859946375,7.098881334450834e-05,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.15397581584628608,-11.10032286649777,4.427304449539308e-19,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.027091933354470188,-4.184336300069317,6.196504078216381e-05,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.22209433920061164,-13.1023700092828,2.3847393160204086e-23,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),METADES (Baseline),-0.44654728354479434,-4.4796554756531455,2.0079762019765046e-05,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+precision,DESKL (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.1929237860858087,-9.376294249347131,2.5099692554734043e-15,True,Worse
+precision,DESKL (SMOTE + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),-6.165011706724122e-05,-0.07437958163481334,0.9408584397320063,False,No Diff
+precision,DESKL (SMOTE + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.2712742730815274,-9.380528414413028,2.4571768587977965e-15,True,Worse
+precision,DESKL (SMOTE + Standard Threshold),DESKL (Baseline),-0.35290374210710634,-3.326322080956268,0.0012356389498841469,True,Worse
+precision,DESKL (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.2919122865814331,8.316919572256705,5.002968076800537e-13,True,Better
+precision,DESKL (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),0.15116304366895855,3.7922727704137498,0.0002568873845605141,True,Better
+precision,DESKL (SMOTE + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.2919122865814331,8.319409429135739,4.941516721052927e-13,True,Better
+precision,DESKL (SMOTE + Standard Threshold),KNORAE (Baseline),-0.025041181244747246,-0.41145426919248546,0.6816288562328718,False,No Diff
+precision,DESKL (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.28917891609229873,8.287343769631711,5.79384056017693e-13,True,Better
+precision,DESKL (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),0.12440893342716847,3.0442320449644473,0.0029882997050282418,True,Better
+precision,DESKL (SMOTE + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.29146114601471385,8.254044876655636,6.834189251263343e-13,True,Better
+precision,DESKL (SMOTE + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.12516247527612478,3.1144993432742183,0.0024101702209086487,True,Better
+precision,DESKL (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.1610142692313961,-2.813165637630622,0.005917065528357551,True,Worse
+precision,DESKL (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.2760738439528398,7.841451962166318,5.237991159206552e-12,True,Better
+precision,DESKL (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.13793647073514703,3.7596886001292424,0.0002879587557269181,True,Better
+precision,DESKL (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.26482035322696296,7.431590637206348,3.8762756240758134e-11,True,Better
+precision,DESKL (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),0.06981794738082148,1.8431240251102816,0.06830282849896585,False,No Diff
+precision,DESKL (SMOTE + Standard Threshold),METADES (Baseline),-0.1546349969633612,-1.4218098716223637,0.15822422332815908,False,No Diff
+precision,DESKL (SMOTE + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),0.2919122865814331,8.333116788230493,4.616433341635719e-13,True,Better
+precision,DESKL (SMOTE + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),0.09898850049562441,2.4408411715956095,0.016429432860281163,True,Better
+precision,DESKL (SMOTE + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.2918506364643659,8.340618423587857,4.4476399555269e-13,True,Better
+precision,DESKL (SMOTE + Standard Threshold),METADES (SMOTE + Standard Threshold),0.02063801349990574,0.4516823830135415,0.6524857999355966,False,No Diff
+precision,KNORAE (Baseline),DESKL (Baseline),-0.3278625608623591,-2.85567572565833,0.0052328031110145095,True,Worse
+precision,KNORAE (Baseline),DESKL (Cost-sensitive + Minimum Expected Cost),0.3169534678261804,5.52516783905467,2.666242968850974e-07,True,Better
+precision,KNORAE (Baseline),DESKL (Cost-sensitive + Standard Threshold),0.1762042249137058,3.067006083736283,0.0027881712230461335,True,Better
+precision,KNORAE (Baseline),DESKL (SMOTE + Minimum Expected Cost),0.3169534678261804,5.527688106386319,2.637161159902356e-07,True,Better
+precision,KNORAE (Baseline),DESKL (SMOTE + Standard Threshold),0.025041181244747246,0.41145426919248546,0.6816288562328718,False,No Diff
+precision,KNORAE (Baseline),KNORAE (Cost-sensitive + Minimum Expected Cost),0.3142200973370459,5.468696249776842,3.406861317011137e-07,True,Better
+precision,KNORAE (Baseline),KNORAE (Cost-sensitive + Standard Threshold),0.1494501146719157,2.5160029616396633,0.013477194015847228,True,Better
+precision,KNORAE (Baseline),KNORAE (SMOTE + Minimum Expected Cost),0.31650232725946104,5.529457477661107,2.6169301067873165e-07,True,Better
+precision,KNORAE (Baseline),KNORAE (SMOTE + Standard Threshold),0.15020365652087203,2.4360608214756,0.016635382594574425,True,Better
+precision,KNORAE (Baseline),LogisticRegression (Baseline),-0.13597308798664887,-1.7253807450525944,0.08757908124899018,False,No Diff
+precision,KNORAE (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.30111502519758704,5.208255898725716,1.0383895712697728e-06,True,Better
+precision,KNORAE (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),0.16297765197989428,2.7472309880999553,0.007141577688684012,True,Better
+precision,KNORAE (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),0.28986153447171015,4.995949928843675,2.523326699375858e-06,True,Better
+precision,KNORAE (Baseline),LogisticRegression (SMOTE + Standard Threshold),0.09485912862556872,1.5530062289630078,0.1236127324086403,False,No Diff
+precision,KNORAE (Baseline),METADES (Baseline),-0.12959381571861395,-1.1039929324959525,0.27227234542331663,False,No Diff
+precision,KNORAE (Baseline),METADES (Cost-sensitive + Minimum Expected Cost),0.3169534678261804,5.526405407865787,2.651923370270914e-07,True,Better
+precision,KNORAE (Baseline),METADES (Cost-sensitive + Standard Threshold),0.12402968174037166,2.0459972577030205,0.04340810692609977,True,Better
+precision,KNORAE (Baseline),METADES (SMOTE + Minimum Expected Cost),0.3168918177091131,5.518186618820501,2.7484520484414676e-07,True,Better
+precision,KNORAE (Baseline),METADES (SMOTE + Standard Threshold),0.045679194744652984,0.7182518274311499,0.47429368339661426,False,No Diff
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),DESKL (Baseline),-0.642082658199405,-6.547742404891779,2.620425506298305e-09,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),0.0027333704891344124,1.4100928673715651,0.16164635041789768,False,No Diff
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.13801587242334015,-8.16081231084887,1.0845467102531597e-12,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),0.0027333704891344124,1.395303446258944,0.16604647163105868,False,No Diff
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.28917891609229873,-8.287343769631711,5.79384056017693e-13,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (Baseline),-0.3142200973370459,-5.468696249776842,3.406861317011137e-07,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),-0.16476998266513024,-8.816494238721297,4.150328606990513e-14,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),0.0022822299224151132,1.0077281482231628,0.3160416903359255,False,No Diff
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),-0.16401644081617392,-7.368326392520741,5.2673240249502514e-11,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),-0.4501931853236948,-9.864333583979818,2.1626341494721777e-16,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.013105072139458912,-3.154189907417876,0.002131399017256904,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.15124244535715167,-10.86152244027874,1.4577822852222275e-18,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.024358562865335776,-3.4771152397735645,0.0007543804429205773,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.21936096871147723,-12.980312073837377,4.2977425294187733e-23,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),METADES (Baseline),-0.44381391305565987,-4.438139913032348,2.3591097637638427e-05,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),0.0027333704891344124,1.3439580417756407,0.18203389468557926,False,No Diff
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.1901904155966743,-9.166779865556412,7.182033033960084e-15,True,Worse
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),0.002671720372067171,1.286728501838467,0.2011896074485691,False,No Diff
+precision,KNORAE (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.26854090259239294,-9.30991181835589,3.502544954690256e-15,True,Worse
+precision,KNORAE (Cost-sensitive + Standard Threshold),DESKL (Baseline),-0.4773126755342748,-4.728478030207813,7.507134919439948e-06,True,Worse
+precision,KNORAE (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.16750335315426465,8.978500581527548,1.84512280084617e-14,True,Better
+precision,KNORAE (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),0.026754110241790086,1.0268523934878468,0.3069923877286737,False,No Diff
+precision,KNORAE (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.16750335315426465,8.946468240320744,2.1661013252158334e-14,True,Better
+precision,KNORAE (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Standard Threshold),-0.12440893342716847,-3.0442320449644473,0.0029882997050282418,True,Worse
+precision,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (Baseline),-0.1494501146719157,-2.5160029616396633,0.013477194015847228,True,Worse
+precision,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.16476998266513024,8.816494238721297,4.150328606990513e-14,True,Better
+precision,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.16705221258754535,8.991185231410231,1.7315591473306406e-14,True,Better
+precision,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.0007535418489563184,0.025325021593226315,0.9798466934257595,False,No Diff
+precision,KNORAE (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),-0.2854232026585646,-5.785586129642155,8.481334149262774e-08,True,Worse
+precision,KNORAE (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.15166491052567133,7.93899045196157,3.242134045385088e-12,True,Better
+precision,KNORAE (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.013527537307978565,0.5584500018226841,0.5777980192362377,False,No Diff
+precision,KNORAE (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.14041141979979446,7.682023320429199,1.144293840698824e-11,True,Better
+precision,KNORAE (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.05459098604634699,-2.24746522603527,0.02682948894567502,True,Worse
+precision,KNORAE (Cost-sensitive + Standard Threshold),METADES (Baseline),-0.27904393039052966,-2.6125135900163596,0.010387673470837635,True,Worse
+precision,KNORAE (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),0.16750335315426465,8.979503720635599,1.835877301900213e-14,True,Better
+precision,KNORAE (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),-0.025420432931544057,-0.9347088165643954,0.352212698661994,False,No Diff
+precision,KNORAE (Cost-sensitive + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.1674417030371974,9.03779109019239,1.371033998556562e-14,True,Better
+precision,KNORAE (Cost-sensitive + Standard Threshold),METADES (SMOTE + Standard Threshold),-0.10377091992726273,-2.930561069327543,0.004201273265926475,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),DESKL (Baseline),-0.6443648881218201,-6.5715425058368,2.3446471936298876e-09,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),0.00045114056671929914,0.3895791833637884,0.6976845506206629,False,No Diff
+precision,KNORAE (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.14029810234575527,-8.332533478293985,4.62982270501647e-13,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),0.00045114056671929914,0.3523212796165017,0.7253462484333177,False,No Diff
+precision,KNORAE (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.29146114601471385,-8.254044876655636,6.834189251263343e-13,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (Baseline),-0.31650232725946104,-5.529457477661107,2.6169301067873165e-07,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.0022822299224151132,-1.0077281482231628,0.3160416903359255,False,No Diff
+precision,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),-0.16705221258754535,-8.991185231410231,1.7315591473306406e-14,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),-0.16629867073858903,-7.497744494373669,2.8109417413085833e-11,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.4524754152461099,-9.89566100949694,1.8477028087240082e-16,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.015387302061874025,-3.6756892867864024,0.0003853771164784349,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.15352467527956679,-10.966392373092784,8.634758798032669e-19,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.02664079278775089,-4.108257421488553,8.22123207247362e-05,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.22164319863389234,-13.017378868101128,3.5932636895649534e-23,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),METADES (Baseline),-0.446096142978075,-4.467620902931563,2.1041970499536224e-05,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),0.00045114056671929914,0.34823488241528794,0.7284031989517301,False,No Diff
+precision,KNORAE (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.1924726455190894,-9.369616297575988,2.5955439505543626e-15,True,Worse
+precision,KNORAE (SMOTE + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),0.0003894904496520579,0.2985924864230251,0.76587683429726,False,No Diff
+precision,KNORAE (SMOTE + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.27082313251480805,-9.347340830442507,2.9026374303958597e-15,True,Worse
+precision,KNORAE (SMOTE + Standard Threshold),DESKL (Baseline),-0.47806621738323113,-4.673995021524244,9.335852612507927e-06,True,Worse
+precision,KNORAE (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.16674981130530833,7.57036404323052,1.9738015263892554e-11,True,Better
+precision,KNORAE (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),0.026000568392833767,0.875636171169596,0.38334743020461304,False,No Diff
+precision,KNORAE (SMOTE + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.16674981130530833,7.548390548802262,2.196857943425911e-11,True,Better
+precision,KNORAE (SMOTE + Standard Threshold),DESKL (SMOTE + Standard Threshold),-0.12516247527612478,-3.1144993432742183,0.0024101702209086487,True,Worse
+precision,KNORAE (SMOTE + Standard Threshold),KNORAE (Baseline),-0.15020365652087203,-2.4360608214756,0.016635382594574425,True,Worse
+precision,KNORAE (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.16401644081617392,7.368326392520741,5.2673240249502514e-11,True,Better
+precision,KNORAE (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),-0.0007535418489563184,-0.025325021593226315,0.9798466934257595,False,No Diff
+precision,KNORAE (SMOTE + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.16629867073858903,7.497744494373669,2.8109417413085833e-11,True,Better
+precision,KNORAE (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.2861767445075209,-5.808869764927675,7.646931409026748e-08,True,Worse
+precision,KNORAE (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.150911368676715,6.74194429875401,1.0532826125964244e-09,True,Better
+precision,KNORAE (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.012773995459022247,0.4804730169960763,0.6319511152434412,False,No Diff
+precision,KNORAE (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.13965787795083814,6.575491916000765,2.301746712861472e-09,True,Better
+precision,KNORAE (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.05534452789530331,-1.9642558706924254,0.05230432098429288,False,No Diff
+precision,KNORAE (SMOTE + Standard Threshold),METADES (Baseline),-0.279797472239486,-2.697413259389524,0.008215346162284112,True,Worse
+precision,KNORAE (SMOTE + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),0.16674981130530833,7.567280622676118,2.0036888620720907e-11,True,Better
+precision,KNORAE (SMOTE + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),-0.026173974780500375,-0.8855014836328299,0.37803198811574745,False,No Diff
+precision,KNORAE (SMOTE + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.1666881611882411,7.551838181092412,2.1602722945071385e-11,True,Better
+precision,KNORAE (SMOTE + Standard Threshold),METADES (SMOTE + Standard Threshold),-0.10452446177621905,-2.578706156870344,0.011388443968172384,True,Worse
+precision,LogisticRegression (Baseline),DESKL (Baseline),-0.19188947287571023,-1.715287160494055,0.08942094206277096,False,No Diff
+precision,LogisticRegression (Baseline),DESKL (Cost-sensitive + Minimum Expected Cost),0.45292655581282926,9.940473908404861,1.475242923689793e-16,True,Better
+precision,LogisticRegression (Baseline),DESKL (Cost-sensitive + Standard Threshold),0.31217731290035466,6.33218208419068,7.126393708665373e-09,True,Better
+precision,LogisticRegression (Baseline),DESKL (SMOTE + Minimum Expected Cost),0.45292655581282926,9.93883664211509,1.4874262650000708e-16,True,Better
+precision,LogisticRegression (Baseline),DESKL (SMOTE + Standard Threshold),0.1610142692313961,2.813165637630622,0.005917065528357551,True,Better
+precision,LogisticRegression (Baseline),KNORAE (Baseline),0.13597308798664887,1.7253807450525944,0.08757908124899018,False,No Diff
+precision,LogisticRegression (Baseline),KNORAE (Cost-sensitive + Minimum Expected Cost),0.4501931853236948,9.864333583979818,2.1626341494721777e-16,True,Better
+precision,LogisticRegression (Baseline),KNORAE (Cost-sensitive + Standard Threshold),0.2854232026585646,5.785586129642155,8.481334149262774e-08,True,Better
+precision,LogisticRegression (Baseline),KNORAE (SMOTE + Minimum Expected Cost),0.4524754152461099,9.89566100949694,1.8477028087240082e-16,True,Better
+precision,LogisticRegression (Baseline),KNORAE (SMOTE + Standard Threshold),0.2861767445075209,5.808869764927675,7.646931409026748e-08,True,Better
+precision,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.4370881131842359,9.572977302845768,9.347433219448643e-16,True,Better
+precision,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),0.29895073996654314,6.349174157408706,6.588941936954481e-09,True,Better
+precision,LogisticRegression (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),0.425834622458359,9.286032122145993,3.9484903723969195e-15,True,Better
+precision,LogisticRegression (Baseline),LogisticRegression (SMOTE + Standard Threshold),0.2308322166122176,4.729514485121099,7.475962818968488e-06,True,Better
+precision,LogisticRegression (Baseline),METADES (Baseline),0.006379272268034919,0.06114508973531877,0.9513669301505289,False,No Diff
+precision,LogisticRegression (Baseline),METADES (Cost-sensitive + Minimum Expected Cost),0.45292655581282926,9.936868262329472,1.5022068298997677e-16,True,Better
+precision,LogisticRegression (Baseline),METADES (Cost-sensitive + Standard Threshold),0.2600027697270205,5.399969156562896,4.583554793587312e-07,True,Better
+precision,LogisticRegression (Baseline),METADES (SMOTE + Minimum Expected Cost),0.452864905695762,9.961765557833102,1.3256048379580646e-16,True,Better
+precision,LogisticRegression (Baseline),METADES (SMOTE + Standard Threshold),0.18165228273130185,3.435792471228062,0.0008648590029664991,True,Better
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),DESKL (Baseline),-0.6289775860599461,-6.4197150594930585,4.754204505553934e-09,True,Worse
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),0.015838442628593324,4.111604616787717,8.120143700136673e-05,True,Better
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.12491080028388124,-7.396283326179257,4.600178054407728e-11,True,Worse
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),0.015838442628593324,4.147860859946375,7.098881334450834e-05,True,Better
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.2760738439528398,-7.841451962166318,5.237991159206552e-12,True,Worse
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),KNORAE (Baseline),-0.30111502519758704,-5.208255898725716,1.0383895712697728e-06,True,Worse
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),0.013105072139458912,3.154189907417876,0.002131399017256904,True,Better
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),-0.15166491052567133,-7.93899045196157,3.242134045385088e-12,True,Worse
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),0.015387302061874025,3.6756892867864024,0.0003853771164784349,True,Better
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),-0.150911368676715,-6.74194429875401,1.0532826125964244e-09,True,Worse
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),-0.4370881131842359,-9.572977302845768,9.347433219448643e-16,True,Worse
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.13813737321769276,-9.62958239518233,7.03389663139472e-16,True,Worse
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.011253490725876863,-1.5175244452822094,0.1323212354162757,False,No Diff
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.20625589657201832,-11.79122984936056,1.436043563293832e-20,True,Worse
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),METADES (Baseline),-0.430708840916201,-4.311463445022861,3.836387000625369e-05,True,Worse
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),0.015838442628593324,4.157868926771598,6.839450932752973e-05,True,Better
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.17708534345721538,-8.307882887571987,5.232465293178658e-13,True,Worse
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),0.015776792511526083,4.068739350313948,9.509770896119266e-05,True,Better
+precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.25543583045293405,-8.689547205990857,7.825674810950435e-14,True,Worse
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),DESKL (Baseline),-0.4908402128422534,-4.904935977526984,3.6701184784044003e-06,True,Worse
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.15397581584628608,11.0290786092562,6.315558921071465e-19,True,Better
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),0.01322657293381152,0.6140866603325907,0.540566667668242,False,No Diff
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.15397581584628608,11.10032286649777,4.427304449539308e-19,True,Better
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Standard Threshold),-0.13793647073514703,-3.7596886001292424,0.0002879587557269181,True,Worse
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),KNORAE (Baseline),-0.16297765197989428,-2.7472309880999553,0.007141577688684012,True,Worse
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.15124244535715167,10.86152244027874,1.4577822852222275e-18,True,Better
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),-0.013527537307978565,-0.5584500018226841,0.5777980192362377,False,No Diff
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.15352467527956679,10.966392373092784,8.634758798032669e-19,True,Better
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Standard Threshold),-0.012773995459022247,-0.4804730169960763,0.6319511152434412,False,No Diff
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),-0.29895073996654314,-6.349174157408706,6.588941936954481e-09,True,Worse
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.13813737321769276,9.62958239518233,7.03389663139472e-16,True,Better
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.1268838824918159,8.020565965776829,2.1687594760291074e-12,True,Better
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.06811852335432556,-3.12063673508428,0.0023649561555801253,True,Worse
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),METADES (Baseline),-0.2925714676985082,-2.983625522714928,0.0035874894982284933,True,Worse
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),0.15397581584628608,11.179447478312058,2.985020123511151e-19,True,Better
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),-0.03894797023952262,-1.4937360695708422,0.1384250351979921,False,No Diff
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.15391416572921884,11.11478348603783,4.119468580921016e-19,True,Better
+precision,LogisticRegression (Cost-sensitive + Standard Threshold),METADES (SMOTE + Standard Threshold),-0.1172984572352413,-3.686548811989797,0.00037121796008632226,True,Worse
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),DESKL (Baseline),-0.6177240953340692,-6.237360229266701,1.1022009468363185e-08,True,Worse
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),0.027091933354470188,4.198683636811122,5.872677664205041e-05,True,Better
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.11365730955800438,-6.144177382757559,1.687662764723026e-08,True,Worse
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),0.027091933354470188,4.184336300069317,6.196504078216381e-05,True,Better
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.26482035322696296,-7.431590637206348,3.8762756240758134e-11,True,Worse
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),KNORAE (Baseline),-0.28986153447171015,-4.995949928843675,2.523326699375858e-06,True,Worse
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),0.024358562865335776,3.4771152397735645,0.0007543804429205773,True,Better
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),-0.14041141979979446,-7.682023320429199,1.144293840698824e-11,True,Worse
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),0.02664079278775089,4.108257421488553,8.22123207247362e-05,True,Better
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),-0.13965787795083814,-6.575491916000765,2.301746712861472e-09,True,Worse
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.425834622458359,-9.286032122145993,3.9484903723969195e-15,True,Worse
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.011253490725876863,1.5175244452822094,0.1323212354162757,False,No Diff
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.1268838824918159,-8.020565965776829,2.1687594760291074e-12,True,Worse
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.19500240584614145,-10.358942733377487,1.8051547661636164e-17,True,Worse
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),METADES (Baseline),-0.4194553501903241,-4.18846572439743,6.101582890898814e-05,True,Worse
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),0.027091933354470188,4.197711937648601,5.894085733796298e-05,True,Better
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.16583185273133852,-7.5758677667390755,1.921551237495062e-11,True,Worse
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),0.027030283237402947,4.241275458323941,5.00438433116537e-05,True,Better
+precision,LogisticRegression (SMOTE + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.2441823397270572,-7.795903782954525,6.550475978158608e-12,True,Worse
+precision,LogisticRegression (SMOTE + Standard Threshold),DESKL (Baseline),-0.4227216894879278,-4.363512391705377,3.1448068819735624e-05,True,Worse
+precision,LogisticRegression (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.22209433920061164,13.195690804734811,1.521649644963694e-23,True,Better
+precision,LogisticRegression (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),0.08134509628813708,3.436779956015427,0.0008620499137660224,True,Better
+precision,LogisticRegression (SMOTE + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.22209433920061164,13.1023700092828,2.3847393160204086e-23,True,Better
+precision,LogisticRegression (SMOTE + Standard Threshold),DESKL (SMOTE + Standard Threshold),-0.06981794738082148,-1.8431240251102816,0.06830282849896585,False,No Diff
+precision,LogisticRegression (SMOTE + Standard Threshold),KNORAE (Baseline),-0.09485912862556872,-1.5530062289630078,0.1236127324086403,False,No Diff
+precision,LogisticRegression (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.21936096871147723,12.980312073837377,4.2977425294187733e-23,True,Better
+precision,LogisticRegression (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),0.05459098604634699,2.24746522603527,0.02682948894567502,True,Better
+precision,LogisticRegression (SMOTE + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.22164319863389234,13.017378868101128,3.5932636895649534e-23,True,Better
+precision,LogisticRegression (SMOTE + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.05534452789530331,1.9642558706924254,0.05230432098429288,False,No Diff
+precision,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.2308322166122176,-4.729514485121099,7.475962818968488e-06,True,Worse
+precision,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.20625589657201832,11.79122984936056,1.436043563293832e-20,True,Better
+precision,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.06811852335432556,3.12063673508428,0.0023649561555801253,True,Better
+precision,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.19500240584614145,10.358942733377487,1.8051547661636164e-17,True,Better
+precision,LogisticRegression (SMOTE + Standard Threshold),METADES (Baseline),-0.22445294434418267,-2.208826737136667,0.02949292487665062,True,Worse
+precision,LogisticRegression (SMOTE + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),0.22209433920061164,13.106032634902952,2.3430161864139882e-23,True,Better
+precision,LogisticRegression (SMOTE + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),0.029170553114802933,1.11885163032809,0.26591085421085026,False,No Diff
+precision,LogisticRegression (SMOTE + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.2220326890835444,13.157690812202768,1.826931619974822e-23,True,Better
+precision,LogisticRegression (SMOTE + Standard Threshold),METADES (SMOTE + Standard Threshold),-0.04917993388091574,-1.5558172049902634,0.12294270176803723,False,No Diff
+precision,METADES (Baseline),DESKL (Baseline),-0.19826874514374515,-1.3193158913503418,0.19010672110045546,False,No Diff
+precision,METADES (Baseline),DESKL (Cost-sensitive + Minimum Expected Cost),0.44654728354479434,4.470215319825574,2.0830841880631437e-05,True,Better
+precision,METADES (Baseline),DESKL (Cost-sensitive + Standard Threshold),0.30579804063231975,3.054592497620301,0.0028956614364875535,True,Better
+precision,METADES (Baseline),DESKL (SMOTE + Minimum Expected Cost),0.44654728354479434,4.4796554756531455,2.0079762019765046e-05,True,Better
+precision,METADES (Baseline),DESKL (SMOTE + Standard Threshold),0.1546349969633612,1.4218098716223637,0.15822422332815908,False,No Diff
+precision,METADES (Baseline),KNORAE (Baseline),0.12959381571861395,1.1039929324959525,0.27227234542331663,False,No Diff
+precision,METADES (Baseline),KNORAE (Cost-sensitive + Minimum Expected Cost),0.44381391305565987,4.438139913032348,2.3591097637638427e-05,True,Better
+precision,METADES (Baseline),KNORAE (Cost-sensitive + Standard Threshold),0.27904393039052966,2.6125135900163596,0.010387673470837635,True,Better
+precision,METADES (Baseline),KNORAE (SMOTE + Minimum Expected Cost),0.446096142978075,4.467620902931563,2.1041970499536224e-05,True,Better
+precision,METADES (Baseline),KNORAE (SMOTE + Standard Threshold),0.279797472239486,2.697413259389524,0.008215346162284112,True,Better
+precision,METADES (Baseline),LogisticRegression (Baseline),-0.006379272268034919,-0.06114508973531877,0.9513669301505289,False,No Diff
+precision,METADES (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.430708840916201,4.311463445022861,3.836387000625369e-05,True,Better
+precision,METADES (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),0.2925714676985082,2.983625522714928,0.0035874894982284933,True,Better
+precision,METADES (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),0.4194553501903241,4.18846572439743,6.101582890898814e-05,True,Better
+precision,METADES (Baseline),LogisticRegression (SMOTE + Standard Threshold),0.22445294434418267,2.208826737136667,0.02949292487665062,True,Better
+precision,METADES (Baseline),METADES (Cost-sensitive + Minimum Expected Cost),0.44654728354479434,4.477040709778894,2.0285136224360557e-05,True,Better
+precision,METADES (Baseline),METADES (Cost-sensitive + Standard Threshold),0.2536234974589856,2.4886726104034835,0.014490628225297824,True,Better
+precision,METADES (Baseline),METADES (SMOTE + Minimum Expected Cost),0.44648563342772707,4.476237384089305,2.034863930658464e-05,True,Better
+precision,METADES (Baseline),METADES (SMOTE + Standard Threshold),0.17527301046326693,1.6733018401254824,0.09742497446788125,False,No Diff
+precision,METADES (Cost-sensitive + Minimum Expected Cost),DESKL (Baseline),-0.6448160286885395,-6.5675778086295304,2.388508615486581e-09,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+precision,METADES (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.14074924291247456,-8.31089410468866,5.154849818397621e-13,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+precision,METADES (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.2919122865814331,-8.333116788230493,4.616433341635719e-13,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),KNORAE (Baseline),-0.3169534678261804,-5.526405407865787,2.651923370270914e-07,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.0027333704891344124,-1.3439580417756407,0.18203389468557926,False,No Diff
+precision,METADES (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),-0.16750335315426465,-8.979503720635599,1.835877301900213e-14,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),-0.00045114056671929914,-0.34823488241528794,0.7284031989517301,False,No Diff
+precision,METADES (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),-0.16674981130530833,-7.567280622676118,2.0036888620720907e-11,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),-0.45292655581282926,-9.936868262329472,1.5022068298997677e-16,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.015838442628593324,-4.157868926771598,6.839450932752973e-05,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.15397581584628608,-11.179447478312058,2.985020123511151e-19,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.027091933354470188,-4.197711937648601,5.894085733796298e-05,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.22209433920061164,-13.106032634902952,2.3430161864139882e-23,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),METADES (Baseline),-0.44654728354479434,-4.477040709778894,2.0285136224360557e-05,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.1929237860858087,-9.399588402278553,2.232939456537221e-15,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),-6.165011706724122e-05,-0.07888559580089897,0.937282851417721,False,No Diff
+precision,METADES (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.2712742730815274,-9.337054258861999,3.056453010275754e-15,True,Worse
+precision,METADES (Cost-sensitive + Standard Threshold),DESKL (Baseline),-0.45189224260273075,-4.562613641267126,1.451345687609001e-05,True,Worse
+precision,METADES (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.1929237860858087,9.391401460059447,2.326636815769371e-15,True,Better
+precision,METADES (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),0.05217454317333414,2.0396803927653937,0.044046023454714645,True,Better
+precision,METADES (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.1929237860858087,9.376294249347131,2.5099692554734043e-15,True,Better
+precision,METADES (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Standard Threshold),-0.09898850049562441,-2.4408411715956095,0.016429432860281163,True,Worse
+precision,METADES (Cost-sensitive + Standard Threshold),KNORAE (Baseline),-0.12402968174037166,-2.0459972577030205,0.04340810692609977,True,Worse
+precision,METADES (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.1901904155966743,9.166779865556412,7.182033033960084e-15,True,Better
+precision,METADES (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),0.025420432931544057,0.9347088165643954,0.352212698661994,False,No Diff
+precision,METADES (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.1924726455190894,9.369616297575988,2.5955439505543626e-15,True,Better
+precision,METADES (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.026173974780500375,0.8855014836328299,0.37803198811574745,False,No Diff
+precision,METADES (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),-0.2600027697270205,-5.399969156562896,4.583554793587312e-07,True,Worse
+precision,METADES (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.17708534345721538,8.307882887571987,5.232465293178658e-13,True,Better
+precision,METADES (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.03894797023952262,1.4937360695708422,0.1384250351979921,False,No Diff
+precision,METADES (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.16583185273133852,7.5758677667390755,1.921551237495062e-11,True,Better
+precision,METADES (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.029170553114802933,-1.11885163032809,0.26591085421085026,False,No Diff
+precision,METADES (Cost-sensitive + Standard Threshold),METADES (Baseline),-0.2536234974589856,-2.4886726104034835,0.014490628225297824,True,Worse
+precision,METADES (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),0.1929237860858087,9.399588402278553,2.232939456537221e-15,True,Better
+precision,METADES (Cost-sensitive + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.19286213596874147,9.446312147323876,1.7659787130126596e-15,True,Better
+precision,METADES (Cost-sensitive + Standard Threshold),METADES (SMOTE + Standard Threshold),-0.07835048699571867,-2.1709532396047813,0.032324840871814156,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),DESKL (Baseline),-0.6447543785714722,-6.5646669863845695,2.4212264424812277e-09,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),6.165011706724122e-05,0.07100839923179807,0.9435343180789968,False,No Diff
+precision,METADES (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.14068759279540732,-8.324575741768468,4.816397434506076e-13,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),6.165011706724122e-05,0.07437958163481334,0.9408584397320063,False,No Diff
+precision,METADES (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.2918506364643659,-8.340618423587857,4.4476399555269e-13,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),KNORAE (Baseline),-0.3168918177091131,-5.518186618820501,2.7484520484414676e-07,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.002671720372067171,-1.286728501838467,0.2011896074485691,False,No Diff
+precision,METADES (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),-0.1674417030371974,-9.03779109019239,1.371033998556562e-14,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),-0.0003894904496520579,-0.2985924864230251,0.76587683429726,False,No Diff
+precision,METADES (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),-0.1666881611882411,-7.551838181092412,2.1602722945071385e-11,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.452864905695762,-9.961765557833102,1.3256048379580646e-16,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.015776792511526083,-4.068739350313948,9.509770896119266e-05,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.15391416572921884,-11.11478348603783,4.119468580921016e-19,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.027030283237402947,-4.241275458323941,5.00438433116537e-05,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.2220326890835444,-13.157690812202768,1.826931619974822e-23,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),METADES (Baseline),-0.44648563342772707,-4.476237384089305,2.034863930658464e-05,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),6.165011706724122e-05,0.07888559580089897,0.937282851417721,False,No Diff
+precision,METADES (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.19286213596874147,-9.446312147323876,1.7659787130126596e-15,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.27121262296446014,-9.377165011166422,2.499020647682159e-15,True,Worse
+precision,METADES (SMOTE + Standard Threshold),DESKL (Baseline),-0.3735417556070121,-3.6903631141847746,0.0003663629120351096,True,Worse
+precision,METADES (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),0.2712742730815274,9.373339869367644,2.547474858577502e-15,True,Better
+precision,METADES (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),0.1305250301690528,3.898439007741255,0.00017631314960050027,True,Better
+precision,METADES (SMOTE + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.2712742730815274,9.380528414413028,2.4571768587977965e-15,True,Better
+precision,METADES (SMOTE + Standard Threshold),DESKL (SMOTE + Standard Threshold),-0.02063801349990574,-0.4516823830135415,0.6524857999355966,False,No Diff
+precision,METADES (SMOTE + Standard Threshold),KNORAE (Baseline),-0.045679194744652984,-0.7182518274311499,0.47429368339661426,False,No Diff
+precision,METADES (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.26854090259239294,9.30991181835589,3.502544954690256e-15,True,Better
+precision,METADES (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),0.10377091992726273,2.930561069327543,0.004201273265926475,True,Better
+precision,METADES (SMOTE + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.27082313251480805,9.347340830442507,2.9026374303958597e-15,True,Better
+precision,METADES (SMOTE + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.10452446177621905,2.578706156870344,0.011388443968172384,True,Better
+precision,METADES (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.18165228273130185,-3.435792471228062,0.0008648590029664991,True,Worse
+precision,METADES (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.25543583045293405,8.689547205990857,7.825674810950435e-14,True,Better
+precision,METADES (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.1172984572352413,3.686548811989797,0.00037121796008632226,True,Better
+precision,METADES (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.2441823397270572,7.795903782954525,6.550475978158608e-12,True,Better
+precision,METADES (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),0.04917993388091574,1.5558172049902634,0.12294270176803723,False,No Diff
+precision,METADES (SMOTE + Standard Threshold),METADES (Baseline),-0.17527301046326693,-1.6733018401254824,0.09742497446788125,False,No Diff
+precision,METADES (SMOTE + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),0.2712742730815274,9.337054258861999,3.056453010275754e-15,True,Better
+precision,METADES (SMOTE + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),0.07835048699571867,2.1709532396047813,0.032324840871814156,True,Better
+precision,METADES (SMOTE + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.27121262296446014,9.377165011166422,2.499020647682159e-15,True,Better

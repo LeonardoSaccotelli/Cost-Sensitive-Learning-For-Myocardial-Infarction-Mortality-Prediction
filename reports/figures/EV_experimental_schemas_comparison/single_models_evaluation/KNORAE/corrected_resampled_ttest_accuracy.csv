@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+accuracy,KNORAE (Baseline),KNORAE (Cost-sensitive + Minimum Expected Cost),0.6456937837619932,55.765123569845564,1.3490151997402621e-76,True,Better
+accuracy,KNORAE (Baseline),KNORAE (Cost-sensitive + Standard Threshold),0.0968930903813594,5.793358319354428,8.193312469429779e-08,True,Better
+accuracy,KNORAE (Baseline),KNORAE (SMOTE + Minimum Expected Cost),0.6687724744013547,64.90734591567426,5.963401996930875e-83,True,Better
+accuracy,KNORAE (Baseline),KNORAE (SMOTE + Standard Threshold),0.07621543175038314,5.2951431067050425,7.181075554898241e-07,True,Better
+accuracy,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (Baseline),-0.6456937837619932,-55.765123569845564,1.3490151997402621e-76,True,Worse
+accuracy,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),-0.5488006933806338,-34.09690889211565,1.617106870355925e-56,True,Worse
+accuracy,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),0.023078690639361493,2.124604448420931,0.03610989050723551,True,Better
+accuracy,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),-0.56947835201161,-36.36756132907316,4.363614291146245e-59,True,Worse
+accuracy,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (Baseline),-0.0968930903813594,-5.793358319354428,8.193312469429779e-08,True,Worse
+accuracy,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.5488006933806338,34.09690889211565,1.617106870355925e-56,True,Better
+accuracy,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.5718793840199953,39.595762450407,1.6460591182253976e-62,True,Better
+accuracy,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Standard Threshold),-0.02067765863097626,-1.223155639041873,0.22417448617154134,False,No Diff
+accuracy,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (Baseline),-0.6687724744013547,-64.90734591567426,5.963401996930875e-83,True,Worse
+accuracy,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.023078690639361493,-2.124604448420931,0.03610989050723551,True,Worse
+accuracy,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),-0.5718793840199953,-39.595762450407,1.6460591182253976e-62,True,Worse
+accuracy,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),-0.5925570426509715,-44.479728293897836,3.017387505300122e-67,True,Worse
+accuracy,KNORAE (SMOTE + Standard Threshold),KNORAE (Baseline),-0.07621543175038314,-5.2951431067050425,7.181075554898241e-07,True,Worse
+accuracy,KNORAE (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),0.56947835201161,36.36756132907316,4.363614291146245e-59,True,Better
+accuracy,KNORAE (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),0.02067765863097626,1.223155639041873,0.22417448617154134,False,No Diff
+accuracy,KNORAE (SMOTE + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.5925570426509715,44.479728293897836,3.017387505300122e-67,True,Better

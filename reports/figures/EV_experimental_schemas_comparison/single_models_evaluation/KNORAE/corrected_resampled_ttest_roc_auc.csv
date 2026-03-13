@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+roc_auc,KNORAE (Baseline),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.023944631684105544,-0.8411747826575176,0.40227722967314017,False,No Diff
+roc_auc,KNORAE (Baseline),KNORAE (Cost-sensitive + Standard Threshold),-0.02301797588376553,-0.7555328766081297,0.451723166414555,False,No Diff
+roc_auc,KNORAE (Baseline),KNORAE (SMOTE + Minimum Expected Cost),0.015270889636678997,0.5065951038450613,0.61356536119121,False,No Diff
+roc_auc,KNORAE (Baseline),KNORAE (SMOTE + Standard Threshold),0.012862540091487351,0.39963828515474525,0.6902838471754715,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (Baseline),0.023944631684105544,0.8411747826575176,0.40227722967314017,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),0.0009266558003400149,0.03437441331414771,0.972647798470327,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Minimum Expected Cost),0.03921552132078454,1.427412563731424,0.1566076828235039,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),0.036807171775592895,1.500756228901126,0.13660126606427356,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (Baseline),0.02301797588376553,0.7555328766081297,0.451723166414555,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.0009266558003400149,-0.03437441331414771,0.972647798470327,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.038288865520444526,1.1905479985011653,0.23667798009619417,False,No Diff
+roc_auc,KNORAE (Cost-sensitive + Standard Threshold),KNORAE (SMOTE + Standard Threshold),0.03588051597525288,1.238769624276963,0.21835992066137463,False,No Diff
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (Baseline),-0.015270889636678997,-0.5065951038450613,0.61356536119121,False,No Diff
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.03921552132078454,-1.427412563731424,0.1566076828235039,False,No Diff
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (Cost-sensitive + Standard Threshold),-0.038288865520444526,-1.1905479985011653,0.23667798009619417,False,No Diff
+roc_auc,KNORAE (SMOTE + Minimum Expected Cost),KNORAE (SMOTE + Standard Threshold),-0.002408349545191646,-0.08572036636687878,0.931861834596195,False,No Diff
+roc_auc,KNORAE (SMOTE + Standard Threshold),KNORAE (Baseline),-0.012862540091487351,-0.39963828515474525,0.6902838471754715,False,No Diff
+roc_auc,KNORAE (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Minimum Expected Cost),-0.036807171775592895,-1.500756228901126,0.13660126606427356,False,No Diff
+roc_auc,KNORAE (SMOTE + Standard Threshold),KNORAE (Cost-sensitive + Standard Threshold),-0.03588051597525288,-1.238769624276963,0.21835992066137463,False,No Diff
+roc_auc,KNORAE (SMOTE + Standard Threshold),KNORAE (SMOTE + Minimum Expected Cost),0.002408349545191646,0.08572036636687878,0.931861834596195,False,No Diff

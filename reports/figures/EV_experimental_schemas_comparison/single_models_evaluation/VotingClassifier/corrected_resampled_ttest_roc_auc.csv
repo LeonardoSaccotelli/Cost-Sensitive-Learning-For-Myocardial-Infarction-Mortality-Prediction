@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+roc_auc,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.013539223933960898,0.5801246373777309,0.5631486175510309,False,No Diff
+roc_auc,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + Standard Threshold),0.017083395551816705,0.7172026117747624,0.474937869884019,False,No Diff
+roc_auc,VotingClassifier (Baseline),VotingClassifier (SMOTE + Minimum Expected Cost),0.01132740154582268,0.5966460302452683,0.5521056917933678,False,No Diff
+roc_auc,VotingClassifier (Baseline),VotingClassifier (SMOTE + Standard Threshold),0.013640406085142942,0.6748482142828001,0.5013452141629235,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Baseline),-0.013539223933960898,-0.5801246373777309,0.5631486175510309,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.003544171617855807,0.16104148613998498,0.8723889005358095,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),-0.002211822388138218,-0.10338146728324027,0.917869354070646,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),0.00010118215118204432,0.005426450494491007,0.9956812598990468,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Baseline),-0.017083395551816705,-0.7172026117747624,0.474937869884019,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.003544171617855807,-0.16104148613998498,0.8723889005358095,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.005755994005994025,-0.24389435425885142,0.8078173546174583,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),-0.0034429894666737626,-0.15981417514784574,0.8733530703217485,False,No Diff
+roc_auc,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Baseline),-0.01132740154582268,-0.5966460302452683,0.5521056917933678,False,No Diff
+roc_auc,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.002211822388138218,0.10338146728324027,0.917869354070646,False,No Diff
+roc_auc,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.005755994005994025,0.24389435425885142,0.8078173546174583,False,No Diff
+roc_auc,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),0.0023130045393202625,0.11121201695880316,0.9116733815040364,False,No Diff
+roc_auc,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Baseline),-0.013640406085142942,-0.6748482142828001,0.5013452141629235,False,No Diff
+roc_auc,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.00010118215118204432,-0.005426450494491007,0.9956812598990468,False,No Diff
+roc_auc,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),0.0034429894666737626,0.15981417514784574,0.8733530703217485,False,No Diff
+roc_auc,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.0023130045393202625,-0.11121201695880316,0.9116733815040364,False,No Diff

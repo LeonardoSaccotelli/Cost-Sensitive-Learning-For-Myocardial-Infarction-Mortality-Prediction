@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+precision,METADES (Baseline),METADES (Cost-sensitive + Minimum Expected Cost),0.4465472835447942,4.479084409797037,2.012444357009118e-05,True,Better
+precision,METADES (Baseline),METADES (Cost-sensitive + Standard Threshold),0.2536234974589853,2.4930112408832854,0.014325323912793321,True,Better
+precision,METADES (Baseline),METADES (SMOTE + Minimum Expected Cost),0.44648563342772696,4.4738214662843925,2.0540778126219982e-05,True,Better
+precision,METADES (Baseline),METADES (SMOTE + Standard Threshold),0.17527301046326682,1.7248823567610672,0.08766929142130049,False,No Diff
+precision,METADES (Cost-sensitive + Minimum Expected Cost),METADES (Baseline),-0.4465472835447942,-4.479084409797037,2.012444357009118e-05,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.19292378608580887,-9.440188619937048,1.821126509733035e-15,True,Worse
+precision,METADES (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),-6.165011706724122e-05,-0.075211473476633,0.9401982280701919,False,No Diff
+precision,METADES (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.2712742730815274,-9.318117435968231,3.361225379473429e-15,True,Worse
+precision,METADES (Cost-sensitive + Standard Threshold),METADES (Baseline),-0.2536234974589853,-2.4930112408832854,0.014325323912793321,True,Worse
+precision,METADES (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),0.19292378608580887,9.440188619937048,1.821126509733035e-15,True,Better
+precision,METADES (Cost-sensitive + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.19286213596874163,9.45763612076863,1.6683554433941874e-15,True,Better
+precision,METADES (Cost-sensitive + Standard Threshold),METADES (SMOTE + Standard Threshold),-0.0783504869957185,-2.0950563736662904,0.03871825761067017,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),METADES (Baseline),-0.44648563342772696,-4.4738214662843925,2.0540778126219982e-05,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),6.165011706724122e-05,0.075211473476633,0.9401982280701919,False,No Diff
+precision,METADES (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),-0.19286213596874163,-9.45763612076863,1.6683554433941874e-15,True,Worse
+precision,METADES (SMOTE + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),-0.27121262296446014,-9.337929649840108,3.0430521398123927e-15,True,Worse
+precision,METADES (SMOTE + Standard Threshold),METADES (Baseline),-0.17527301046326682,-1.7248823567610672,0.08766929142130049,False,No Diff
+precision,METADES (SMOTE + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),0.2712742730815274,9.318117435968231,3.361225379473429e-15,True,Better
+precision,METADES (SMOTE + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),0.0783504869957185,2.0950563736662904,0.03871825761067017,True,Better
+precision,METADES (SMOTE + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),0.27121262296446014,9.337929649840108,3.0430521398123927e-15,True,Better

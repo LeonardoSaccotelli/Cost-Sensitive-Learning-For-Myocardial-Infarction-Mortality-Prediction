@@ -1,0 +1,6 @@
+model,recall_count,recall_mean,recall_std,recall_min,recall_25%,recall_50%,recall_75%,recall_max
+RandomForestClassifier (Baseline),100.0,0.11376923076923076,0.07092222744208589,0.0,0.07923076923076923,0.12,0.16,0.28
+RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),100.0,1.0,0.0,1.0,1.0,1.0,1.0,1.0
+RandomForestClassifier (Cost-sensitive + Standard Threshold),100.0,0.9346769230769231,0.0608518101685476,0.6923076923076923,0.92,0.96,0.9615384615384616,1.0
+RandomForestClassifier (SMOTE + Minimum Expected Cost),100.0,1.0,0.0,1.0,1.0,1.0,1.0,1.0
+RandomForestClassifier (SMOTE + Standard Threshold),100.0,0.5519538461538461,0.12195797789110328,0.0,0.48,0.56,0.64,0.88

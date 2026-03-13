@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+accuracy,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.6076412964605336,26.165581567303597,2.8639687542600257e-46,True,Better
+accuracy,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),0.18117915020559516,8.66402896874091,8.888687792379992e-14,True,Better
+accuracy,LogisticRegression (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),0.5550487785213254,18.277609121594363,1.7076051967326417e-33,True,Better
+accuracy,LogisticRegression (Baseline),LogisticRegression (SMOTE + Standard Threshold),0.09448843021849551,4.861069939297294,4.390589622546905e-06,True,Better
+accuracy,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),-0.6076412964605336,-26.165581567303597,2.8639687542600257e-46,True,Worse
+accuracy,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.4264621462549384,-17.18908123608045,1.7615578909792576e-31,True,Worse
+accuracy,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.052592517939208216,-1.4899453574253054,0.1394177138228618,False,No Diff
+accuracy,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.513152866242038,-20.34499471745468,3.846848526406698e-37,True,Worse
+accuracy,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),-0.18117915020559516,-8.66402896874091,8.888687792379992e-14,True,Worse
+accuracy,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.4264621462549384,17.18908123608045,1.7615578909792576e-31,True,Better
+accuracy,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.3738696283157302,11.201533560072473,2.674178481955822e-19,True,Better
+accuracy,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.08669071998709965,-3.8626199006958437,0.00020033392947129105,True,Worse
+accuracy,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.5550487785213254,-18.277609121594363,1.7076051967326417e-33,True,Worse
+accuracy,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.052592517939208216,1.4899453574253054,0.1394177138228618,False,No Diff
+accuracy,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.3738696283157302,-11.201533560072473,2.674178481955822e-19,True,Worse
+accuracy,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.4605603483028298,-13.954800819574196,4.0752017359915877e-25,True,Worse
+accuracy,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.09448843021849551,-4.861069939297294,4.390589622546905e-06,True,Worse
+accuracy,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.513152866242038,20.34499471745468,3.846848526406698e-37,True,Better
+accuracy,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.08669071998709965,3.8626199006958437,0.00020033392947129105,True,Better
+accuracy,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.4605603483028298,13.954800819574196,4.0752017359915877e-25,True,Better

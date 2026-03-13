@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+roc_auc,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.0005553972343445013,0.029792374239102103,0.9762926178048332,False,No Diff
+roc_auc,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + Standard Threshold),-0.00041935170093088114,-0.02339324505570842,0.9813836799032035,False,No Diff
+roc_auc,StackingClassifier (Baseline),StackingClassifier (SMOTE + Minimum Expected Cost),0.007775496433390816,0.4222383005478673,0.6737666691792752,False,No Diff
+roc_auc,StackingClassifier (Baseline),StackingClassifier (SMOTE + Standard Threshold),0.005361853935537897,0.3021270074035492,0.7631890481355155,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Baseline),-0.0005553972343445013,-0.029792374239102103,0.9762926178048332,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),-0.0009747489352753824,-0.05559602238036921,0.9557756804782219,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),0.007220099199046315,0.359703195446682,0.7198352648937671,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),0.004806456701193396,0.3063265743056753,0.75999930117546,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Baseline),0.00041935170093088114,0.02339324505570842,0.9813836799032035,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.0009747489352753824,0.05559602238036921,0.9557756804782219,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.008194848134321697,0.3968821040417894,0.6923086790697419,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),0.005781205636468778,0.30190874166785264,0.7633549422728589,False,No Diff
+roc_auc,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Baseline),-0.007775496433390816,-0.4222383005478673,0.6737666691792752,False,No Diff
+roc_auc,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.007220099199046315,-0.359703195446682,0.7198352648937671,False,No Diff
+roc_auc,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),-0.008194848134321697,-0.3968821040417894,0.6923086790697419,False,No Diff
+roc_auc,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),-0.002413642497852919,-0.11884075573838035,0.9056423283717885,False,No Diff
+roc_auc,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Baseline),-0.005361853935537897,-0.3021270074035492,0.7631890481355155,False,No Diff
+roc_auc,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.004806456701193396,-0.3063265743056753,0.75999930117546,False,No Diff
+roc_auc,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),-0.005781205636468778,-0.30190874166785264,0.7633549422728589,False,No Diff
+roc_auc,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.002413642497852919,0.11884075573838035,0.9056423283717885,False,No Diff

@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+roc_auc,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.014089686629160214,-0.5037255154475294,0.61557335338878,False,No Diff
+roc_auc,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),-0.013144995355521716,-0.4896762750995208,0.6254463031386106,False,No Diff
+roc_auc,LogisticRegression (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),-0.00807565066512439,-0.2967310987279323,0.7672934586726392,False,No Diff
+roc_auc,LogisticRegression (Baseline),LogisticRegression (SMOTE + Standard Threshold),-0.008945141700404835,-0.31040737450082834,0.7569037263928254,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),0.014089686629160214,0.5037255154475294,0.61557335338878,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),0.0009446912736384983,0.04332342482605541,0.9655309790341458,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),0.006014035964035824,0.2526220861694898,0.8010840347969714,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),0.005144544928755379,0.3132594725731747,0.7547425537407229,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),0.013144995355521716,0.4896762750995208,0.6254463031386106,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.0009446912736384983,-0.04332342482605541,0.9655309790341458,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.005069344690397326,0.20136619718372034,0.8408254034522629,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),0.004199853655116881,0.17993096986451076,0.8575745431133064,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),0.00807565066512439,0.2967310987279323,0.7672934586726392,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.006014035964035824,-0.2526220861694898,0.8010840347969714,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.005069344690397326,-0.20136619718372034,0.8408254034522629,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.0008694910352804452,-0.036657260622355275,0.970832101048989,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Baseline),0.008945141700404835,0.31040737450082834,0.7569037263928254,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.005144544928755379,-0.3132594725731747,0.7547425537407229,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.004199853655116881,-0.17993096986451076,0.8575745431133064,False,No Diff
+roc_auc,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.0008694910352804452,0.036657260622355275,0.970832101048989,False,No Diff

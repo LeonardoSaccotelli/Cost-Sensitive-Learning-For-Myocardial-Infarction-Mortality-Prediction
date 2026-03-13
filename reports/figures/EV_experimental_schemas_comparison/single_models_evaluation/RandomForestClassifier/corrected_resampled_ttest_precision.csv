@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+precision,RandomForestClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.6347615553840662,5.563865716262213,2.2524334593621324e-07,True,Better
+precision,RandomForestClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.5375704268591041,4.678868730877027,9.156081553199654e-06,True,Better
+precision,RandomForestClassifier (Baseline),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.6347615553840662,5.562668976561932,2.2642311908556165e-07,True,Better
+precision,RandomForestClassifier (Baseline),RandomForestClassifier (SMOTE + Standard Threshold),0.38946777378021946,3.3438906395292487,0.0011674839622630468,True,Better
+precision,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.6347615553840662,-5.563865716262213,2.2524334593621324e-07,True,Worse
+precision,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),-0.09719112852496212,-6.360596778892328,6.250345500513578e-09,True,Worse
+precision,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+precision,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.2452937816038467,-8.241695541033364,7.265641222155722e-13,True,Worse
+precision,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Baseline),-0.5375704268591041,-4.678868730877027,9.156081553199654e-06,True,Worse
+precision,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.09719112852496212,6.360596778892328,6.250345500513578e-09,True,Better
+precision,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.09719112852496212,6.349403491423683,6.581968990385129e-09,True,Better
+precision,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Standard Threshold),-0.1481026530788846,-4.568168898095922,1.4199609756838814e-05,True,Worse
+precision,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.6347615553840662,-5.562668976561932,2.2642311908556165e-07,True,Worse
+precision,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+precision,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),-0.09719112852496212,-6.349403491423683,6.581968990385129e-09,True,Worse
+precision,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.2452937816038467,-8.262203070148477,6.563261949558693e-13,True,Worse
+precision,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Baseline),-0.38946777378021946,-3.3438906395292487,0.0011674839622630468,True,Worse
+precision,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.2452937816038467,8.241695541033364,7.265641222155722e-13,True,Better
+precision,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.1481026530788846,4.568168898095922,1.4199609756838814e-05,True,Better
+precision,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.2452937816038467,8.262203070148477,6.563261949558693e-13,True,Better

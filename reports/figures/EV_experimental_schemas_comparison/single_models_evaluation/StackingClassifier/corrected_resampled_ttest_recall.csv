@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+recall,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.6012307692307692,-19.999382016814796,1.5101524387494446e-36,True,Worse
+recall,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + Standard Threshold),-0.4414153846153848,-11.613787044409953,3.453237488967746e-20,True,Worse
+recall,StackingClassifier (Baseline),StackingClassifier (SMOTE + Minimum Expected Cost),-0.5024,-12.483724951856313,4.792230808862366e-22,True,Worse
+recall,StackingClassifier (Baseline),StackingClassifier (SMOTE + Standard Threshold),-0.16776923076923084,-3.4660466652118287,0.000782591558465676,True,Worse
+recall,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Baseline),0.6012307692307692,19.999382016814796,1.5101524387494446e-36,True,Better
+recall,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),0.15981538461538447,6.457139812837955,3.996181603281912e-09,True,Better
+recall,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),0.09883076923076939,3.9367658816549684,0.00015366425193841015,True,Better
+recall,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),0.43346153846153845,11.341482078922516,1.3331407251073126e-19,True,Better
+recall,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Baseline),0.4414153846153848,11.613787044409953,3.453237488967746e-20,True,Better
+recall,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.15981538461538447,-6.457139812837955,3.996181603281912e-09,True,Worse
+recall,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),-0.06098461538461508,-1.7919257194346723,0.07619983237946028,False,No Diff
+recall,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),0.273646153846154,6.288152450006785,8.728679047719932e-09,True,Better
+recall,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Baseline),0.5024,12.483724951856313,4.792230808862366e-22,True,Better
+recall,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.09883076923076939,-3.9367658816549684,0.00015366425193841015,True,Worse
+recall,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),0.06098461538461508,1.7919257194346723,0.07619983237946028,False,No Diff
+recall,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),0.33463076923076907,7.631409725967004,1.4654073636876566e-11,True,Better
+recall,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Baseline),0.16776923076923084,3.4660466652118287,0.000782591558465676,True,Better
+recall,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.43346153846153845,-11.341482078922516,1.3331407251073126e-19,True,Worse
+recall,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),-0.273646153846154,-6.288152450006785,8.728679047719932e-09,True,Worse
+recall,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),-0.33463076923076907,-7.631409725967004,1.4654073636876566e-11,True,Worse

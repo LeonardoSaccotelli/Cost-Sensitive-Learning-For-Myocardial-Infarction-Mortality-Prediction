@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+recall,METADES (Baseline),METADES (Cost-sensitive + Minimum Expected Cost),-0.8634,-27.230745165930653,8.884778713080427e-48,True,Worse
+recall,METADES (Baseline),METADES (Cost-sensitive + Standard Threshold),-0.6079538461538461,-13.122271607406832,2.1666834443535678e-23,True,Worse
+recall,METADES (Baseline),METADES (SMOTE + Minimum Expected Cost),-0.8634,-27.230745165930653,8.884778713080427e-48,True,Worse
+recall,METADES (Baseline),METADES (SMOTE + Standard Threshold),-0.29492307692307695,-6.365564876002612,6.108493388023318e-09,True,Worse
+recall,METADES (Cost-sensitive + Minimum Expected Cost),METADES (Baseline),0.8634,27.230745165930653,8.884778713080427e-48,True,Better
+recall,METADES (Cost-sensitive + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),0.255446153846154,7.266958197422097,8.597202229549083e-11,True,Better
+recall,METADES (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+recall,METADES (Cost-sensitive + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),0.5684769230769231,16.70616035001128,1.445734105204864e-30,True,Better
+recall,METADES (Cost-sensitive + Standard Threshold),METADES (Baseline),0.6079538461538461,13.122271607406832,2.1666834443535678e-23,True,Better
+recall,METADES (Cost-sensitive + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),-0.255446153846154,-7.266958197422097,8.597202229549083e-11,True,Worse
+recall,METADES (Cost-sensitive + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),-0.255446153846154,-7.266958197422097,8.597202229549083e-11,True,Worse
+recall,METADES (Cost-sensitive + Standard Threshold),METADES (SMOTE + Standard Threshold),0.31303076923076906,6.4143245502346105,4.874494254898077e-09,True,Better
+recall,METADES (SMOTE + Minimum Expected Cost),METADES (Baseline),0.8634,27.230745165930653,8.884778713080427e-48,True,Better
+recall,METADES (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+recall,METADES (SMOTE + Minimum Expected Cost),METADES (Cost-sensitive + Standard Threshold),0.255446153846154,7.266958197422097,8.597202229549083e-11,True,Better
+recall,METADES (SMOTE + Minimum Expected Cost),METADES (SMOTE + Standard Threshold),0.5684769230769231,16.70616035001128,1.445734105204864e-30,True,Better
+recall,METADES (SMOTE + Standard Threshold),METADES (Baseline),0.29492307692307695,6.365564876002612,6.108493388023318e-09,True,Better
+recall,METADES (SMOTE + Standard Threshold),METADES (Cost-sensitive + Minimum Expected Cost),-0.5684769230769231,-16.70616035001128,1.445734105204864e-30,True,Worse
+recall,METADES (SMOTE + Standard Threshold),METADES (Cost-sensitive + Standard Threshold),-0.31303076923076906,-6.4143245502346105,4.874494254898077e-09,True,Worse
+recall,METADES (SMOTE + Standard Threshold),METADES (SMOTE + Minimum Expected Cost),-0.5684769230769231,-16.70616035001128,1.445734105204864e-30,True,Worse

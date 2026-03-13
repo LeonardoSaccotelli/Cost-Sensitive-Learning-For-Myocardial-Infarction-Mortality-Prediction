@@ -1,0 +1,21 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+roc_auc,DESKL (Baseline),DESKL (Cost-sensitive + Minimum Expected Cost),-0.03418357563489138,-1.0231399046220573,0.30873531674582744,False,No Diff
+roc_auc,DESKL (Baseline),DESKL (Cost-sensitive + Standard Threshold),-0.03396532108242645,-1.070474179786354,0.2870088186808357,False,No Diff
+roc_auc,DESKL (Baseline),DESKL (SMOTE + Minimum Expected Cost),0.004034233748707483,0.11847852729058027,0.9059285733052711,False,No Diff
+roc_auc,DESKL (Baseline),DESKL (SMOTE + Standard Threshold),0.0020282471914050415,0.059182369361444644,0.952926151634711,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (Baseline),0.03418357563489138,1.0231399046220573,0.30873531674582744,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),0.00021825455246493597,0.011274897527351599,0.9910268136712508,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Minimum Expected Cost),0.038217809383598866,1.7198808361638702,0.08857880560115396,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),0.036211822826296425,1.834073075151686,0.06964698591689603,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),DESKL (Baseline),0.03396532108242645,1.070474179786354,0.2870088186808357,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),-0.00021825455246493597,-0.011274897527351599,0.9910268136712508,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.03799955483113393,1.6025133146524353,0.11222813458366089,False,No Diff
+roc_auc,DESKL (Cost-sensitive + Standard Threshold),DESKL (SMOTE + Standard Threshold),0.03599356827383149,1.5207978660773687,0.13149814009742888,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),DESKL (Baseline),-0.004034233748707483,-0.11847852729058027,0.9059285733052711,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Minimum Expected Cost),-0.038217809383598866,-1.7198808361638702,0.08857880560115396,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),DESKL (Cost-sensitive + Standard Threshold),-0.03799955483113393,-1.6025133146524353,0.11222813458366089,False,No Diff
+roc_auc,DESKL (SMOTE + Minimum Expected Cost),DESKL (SMOTE + Standard Threshold),-0.0020059865573024416,-0.08923985187511176,0.9290715799816528,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),DESKL (Baseline),-0.0020282471914050415,-0.059182369361444644,0.952926151634711,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Minimum Expected Cost),-0.036211822826296425,-1.834073075151686,0.06964698591689603,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),DESKL (Cost-sensitive + Standard Threshold),-0.03599356827383149,-1.5207978660773687,0.13149814009742888,False,No Diff
+roc_auc,DESKL (SMOTE + Standard Threshold),DESKL (SMOTE + Minimum Expected Cost),0.0020059865573024416,0.08923985187511176,0.9290715799816528,False,No Diff

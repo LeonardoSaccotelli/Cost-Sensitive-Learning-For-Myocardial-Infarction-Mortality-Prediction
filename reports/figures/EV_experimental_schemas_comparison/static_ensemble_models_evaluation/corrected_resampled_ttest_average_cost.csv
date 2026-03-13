@@ -1,0 +1,601 @@
+Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
+average_cost,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.25049342900911054,4.127185594287519,7.66507492000319e-05,True,Better
+average_cost,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),0.45193017818269776,5.81247664294911,7.525106770042745e-08,True,Better
+average_cost,LogisticRegression (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),0.29507498185922754,4.76245465545901,6.548173502923922e-06,True,Better
+average_cost,LogisticRegression (Baseline),LogisticRegression (SMOTE + Standard Threshold),0.38863299201806023,5.343763688982892,5.834242559191462e-07,True,Better
+average_cost,LogisticRegression (Baseline),RandomForestClassifier (Baseline),-0.4058695476900751,-6.363430846943174,6.169031815396228e-09,True,Worse
+average_cost,LogisticRegression (Baseline),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.171158590663549,3.0278355371179058,0.003140534508534849,True,Better
+average_cost,LogisticRegression (Baseline),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.45528863984519885,7.1860222463068215,1.2695955633933474e-10,True,Better
+average_cost,LogisticRegression (Baseline),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.17115859066354888,3.022177109310434,0.003194715084157728,True,Better
+average_cost,LogisticRegression (Baseline),RandomForestClassifier (SMOTE + Standard Threshold),0.1623115375312425,1.978212352553587,0.05068391250752592,False,No Diff
+average_cost,LogisticRegression (Baseline),StackingClassifier (Baseline),0.028453196807224246,0.37996810877549764,0.7047830182057394,False,No Diff
+average_cost,LogisticRegression (Baseline),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.17115859066354888,3.027313893305006,0.0031454935395938185,True,Better
+average_cost,LogisticRegression (Baseline),StackingClassifier (Cost-sensitive + Standard Threshold),0.5090603079900025,7.167735889358044,1.3862620372183286e-10,True,Better
+average_cost,LogisticRegression (Baseline),StackingClassifier (SMOTE + Minimum Expected Cost),0.47990324921389993,7.501392919063403,2.7615062912118465e-11,True,Better
+average_cost,LogisticRegression (Baseline),StackingClassifier (SMOTE + Standard Threshold),0.25012376038055306,3.0610640424287316,0.0028391537055440664,True,Better
+average_cost,LogisticRegression (Baseline),VotingClassifier (Baseline),-0.08097798919616217,-0.8220607385418142,0.4130178170047657,False,No Diff
+average_cost,LogisticRegression (Baseline),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.17255704265097138,3.063221963653823,0.002820539727563385,True,Better
+average_cost,LogisticRegression (Baseline),VotingClassifier (Cost-sensitive + Standard Threshold),0.3829093767636862,4.941602557793044,3.1573569946072977e-06,True,Better
+average_cost,LogisticRegression (Baseline),VotingClassifier (SMOTE + Minimum Expected Cost),0.18717044263484628,3.086630697028893,0.002625761765730363,True,Better
+average_cost,LogisticRegression (Baseline),VotingClassifier (SMOTE + Standard Threshold),0.26524913327420796,2.796017015160311,0.0062155635122698805,True,Better
+average_cost,LogisticRegression (Baseline),XGBClassifier (Baseline),0.06307586874143367,0.8766554703517098,0.38279608744876203,False,No Diff
+average_cost,LogisticRegression (Baseline),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.3168902684834314,4.492998229402795,1.9062673434641607e-05,True,Better
+average_cost,LogisticRegression (Baseline),XGBClassifier (Cost-sensitive + Standard Threshold),0.4748177860195115,6.704864940896266,1.2543671379054072e-09,True,Better
+average_cost,LogisticRegression (Baseline),XGBClassifier (SMOTE + Minimum Expected Cost),0.42042812222849324,5.551219273195843,2.3802124997076738e-07,True,Better
+average_cost,LogisticRegression (Baseline),XGBClassifier (SMOTE + Standard Threshold),0.09481818914778672,1.3065233474855136,0.19440175092255152,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),-0.25049342900911054,-4.127185594287519,7.66507492000319e-05,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),0.20143674917358723,3.9438258611115296,0.00014980747078874142,True,Better
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),0.044581552850117,1.4544688830919488,0.14897956829639955,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),0.1381395630089497,2.787486767713041,0.006369115233583602,True,Better
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.6563629766991856,-14.457603167916837,3.840013540679943e-26,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.07933483834556154,-4.222908741594349,5.36249385700287e-05,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.20479521083608831,4.538841823159757,1.593396998581692e-05,True,Better
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.07933483834556165,-4.251554605646958,4.814125266995538e-05,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.08818189147786804,-1.4018925571714944,0.16407492292863793,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Baseline),-0.2220402322018863,-4.273150411291603,4.436819490068801e-05,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.07933483834556165,-4.215191249916374,5.520211173374208e-05,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),0.2585668789808919,5.775904518611008,8.854062563195019e-08,True,Better
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),0.2294098202047894,5.365412029905032,5.317283348046997e-07,True,Better
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),-0.0003696686285574735,-0.005983465349674547,0.9952379545107595,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Baseline),-0.3314714182052727,-4.2050986888455615,5.733208223315596e-05,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.07793638635813915,-4.141818970016278,7.260046721866838e-05,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.13241594775457566,2.2688310252339035,0.02544917623589191,True,Better
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),-0.06332298637426426,-2.9307107505470986,0.004199413526098447,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),0.014755704265097425,0.19880598626549703,0.8428222265956018,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Baseline),-0.18741756026767686,-3.646980962539175,0.0004253168481191925,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.06639683947432085,1.5447799405040943,0.1255902037715705,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),0.224324357010401,4.76538975294316,6.471154256525842e-06,True,Better
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Minimum Expected Cost),0.1699346932193827,3.3203094483820723,0.001259808605436004,True,Better
+average_cost,LogisticRegression (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.1556752398613238,-2.873160649726031,0.004973043342091724,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),-0.45193017818269776,-5.81247664294911,7.525106770042745e-08,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.20143674917358723,-3.9438258611115296,0.00014980747078874142,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),-0.15685519632347023,-2.918311276506605,0.004356069095677981,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.06329718616463753,-0.8986609172659411,0.37101380670033257,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),RandomForestClassifier (Baseline),-0.8577997258727729,-14.509954726555014,3.0079023627683323e-26,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.28077158751914877,-5.826850234726685,7.058296931470831e-08,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.003358461662501089,0.05639573444201042,0.9551402189374765,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.2807715875191489,-5.847194457225758,6.445886913592859e-08,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Standard Threshold),-0.28961864065145526,-3.555419147260813,0.0005805415093854684,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),StackingClassifier (Baseline),-0.4234769813754735,-5.919846583728678,4.656211843377934e-08,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.2807715875191489,-5.833065051998387,6.865386551818813e-08,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),0.0571301298073047,0.8685932682245002,0.3871704403432382,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.027973071031202168,0.4911405366696886,0.624414077912575,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),-0.2018064178021447,-2.8393485849570834,0.005486539077650907,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),VotingClassifier (Baseline),-0.5329081673788599,-6.037555005689613,2.739148878144127e-08,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.2793731355317264,-5.815909795780656,7.410922928747016e-08,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),-0.06902080141901157,-0.8724604862743986,0.38506833318682265,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.2647597355478515,-5.16502400658658,1.2461038894586135e-06,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),-0.1866810449084898,-2.3012986461645792,0.023471030038835553,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),XGBClassifier (Baseline),-0.3888543094412641,-6.043020631484545,2.6722096889150387e-08,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),-0.13503990969926638,-2.1897728493741884,0.030889359628757083,True,Worse
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),XGBClassifier (Cost-sensitive + Standard Threshold),0.02288760783681376,0.3890961656984159,0.6980406599256468,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),-0.03150205595420452,-0.5298546642196591,0.597399009683641,False,No Diff
+average_cost,LogisticRegression (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Standard Threshold),-0.35711198903491104,-5.101376078659319,1.6275293697128881e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.29507498185922754,-4.76245465545901,6.548173502923922e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.044581552850117,-1.4544688830919488,0.14897956829639955,False,No Diff
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),0.15685519632347023,2.918311276506605,0.004356069095677981,True,Better
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),0.0935580101588327,1.7819423226442899,0.07782463109721556,False,No Diff
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.7009445295493026,-15.624280963401127,1.797627106740219e-28,True,Worse
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.12391639119567854,-4.896373764936104,3.8010534406258794e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.16021365798597131,3.988792518565761,0.00012732968081029502,True,Better
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.12391639119567865,-4.893606515519785,3.844334396760069e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.13276344432798504,-2.0967467193371707,0.038564773552769584,True,Worse
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),StackingClassifier (Baseline),-0.2666217850520033,-4.88234815322854,4.025416650273567e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.12391639119567865,-4.878413932573659,4.0906311241986945e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),0.21398532613077492,4.209588186222119,5.6375022580497484e-05,True,Better
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),0.1848282673546724,4.3872508560366,2.870893810046853e-05,True,Better
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),-0.044951221478674475,-0.648951397298418,0.5178724194273921,False,No Diff
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),VotingClassifier (Baseline),-0.3760529710553897,-4.674599029873504,9.313388791797383e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.12251793920825615,-4.791390017821071,5.826222032959402e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.08783439490445866,1.4528019324715296,0.14944106020773842,False,No Diff
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),-0.10790453922438126,-3.661528264007571,0.00040461170108009137,True,Worse
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),-0.029825848585019576,-0.41265480721352593,0.6807518361138131,False,No Diff
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),XGBClassifier (Baseline),-0.23199911311779386,-4.139782618759217,7.315152939357027e-05,True,Worse
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.021815286624203845,0.44391138133924807,0.6580754079382622,False,No Diff
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),0.179742804160284,3.295094382114712,0.001366075054482964,True,Better
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),XGBClassifier (SMOTE + Minimum Expected Cost),0.1253531403692657,2.1472474866721667,0.034215323522528464,True,Better
+average_cost,LogisticRegression (SMOTE + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.2002567927114408,-3.5345337057341757,0.0006227851052845138,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.38863299201806023,-5.343763688982892,5.834242559191462e-07,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.1381395630089497,-2.787486767713041,0.006369115233583602,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.06329718616463753,0.8986609172659411,0.37101380670033257,False,No Diff
+average_cost,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),-0.0935580101588327,-1.7819423226442899,0.07782463109721556,False,No Diff
+average_cost,LogisticRegression (SMOTE + Standard Threshold),RandomForestClassifier (Baseline),-0.7945025397081353,-13.965264996231479,3.878564650539714e-25,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.21747440135451124,-4.751409030803992,6.846077432880237e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.06665564782713862,1.11604381130319,0.26710494425239517,False,No Diff
+average_cost,LogisticRegression (SMOTE + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.21747440135451135,-4.743074545870814,7.0795302083815435e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),RandomForestClassifier (SMOTE + Standard Threshold),-0.22632145448681773,-3.1127435994385024,0.002423251750161346,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),StackingClassifier (Baseline),-0.360179795210836,-5.273418848138702,7.877010879040721e-07,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.21747440135451135,-4.751358796132069,6.847461881460745e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),0.12042731597194223,1.90285573641931,0.05996491116061743,False,No Diff
+average_cost,LogisticRegression (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.0912702571958397,1.5758833298217354,0.11824299609098857,False,No Diff
+average_cost,LogisticRegression (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),-0.13850923163750717,-1.847678721215818,0.06763464160991793,False,No Diff
+average_cost,LogisticRegression (SMOTE + Standard Threshold),VotingClassifier (Baseline),-0.4696109812142224,-5.061868192893861,1.9192929552199846e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.21607594936708885,-4.714268765776635,7.947419687801764e-06,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),-0.005723615254374037,-0.07523119375607998,0.9401825780323079,False,No Diff
+average_cost,LogisticRegression (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.20146254938321395,-4.384169085055945,2.9051077905671514e-05,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),-0.12338385874385227,-1.5319020820923774,0.12873599400017988,False,No Diff
+average_cost,LogisticRegression (SMOTE + Standard Threshold),XGBClassifier (Baseline),-0.32555712327662656,-4.594868397374331,1.2780624291051056e-05,True,Worse
+average_cost,LogisticRegression (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),-0.07174272353462885,-1.2329348122274133,0.22051976657371314,False,No Diff
+average_cost,LogisticRegression (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Standard Threshold),0.08618479400145129,1.3235464927512355,0.1887020456906174,False,No Diff
+average_cost,LogisticRegression (SMOTE + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),0.03179513021043301,0.46108196081595393,0.6457511790879893,False,No Diff
+average_cost,LogisticRegression (SMOTE + Standard Threshold),XGBClassifier (SMOTE + Standard Threshold),-0.2938148028702735,-4.558149300889994,1.4770528396060899e-05,True,Worse
+average_cost,RandomForestClassifier (Baseline),LogisticRegression (Baseline),0.4058695476900751,6.363430846943174,6.169031815396228e-09,True,Better
+average_cost,RandomForestClassifier (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.6563629766991856,14.457603167916837,3.840013540679943e-26,True,Better
+average_cost,RandomForestClassifier (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),0.8577997258727729,14.509954726555014,3.0079023627683323e-26,True,Better
+average_cost,RandomForestClassifier (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),0.7009445295493026,15.624280963401127,1.797627106740219e-28,True,Better
+average_cost,RandomForestClassifier (Baseline),LogisticRegression (SMOTE + Standard Threshold),0.7945025397081353,13.965264996231479,3.878564650539714e-25,True,Better
+average_cost,RandomForestClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.5770281383536241,15.086280450023382,2.0893522954148423e-27,True,Better
+average_cost,RandomForestClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.861158187535274,16.455625413569297,4.359431124938875e-30,True,Better
+average_cost,RandomForestClassifier (Baseline),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.577028138353624,15.079094526530987,2.1594623598319292e-27,True,Better
+average_cost,RandomForestClassifier (Baseline),RandomForestClassifier (SMOTE + Standard Threshold),0.5681810852213176,7.444301433364351,3.644373582614412e-11,True,Better
+average_cost,RandomForestClassifier (Baseline),StackingClassifier (Baseline),0.43432274449729935,7.217571582494959,1.0907621684040505e-10,True,Better
+average_cost,RandomForestClassifier (Baseline),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.577028138353624,15.116931786068266,1.8151036716309792e-27,True,Better
+average_cost,RandomForestClassifier (Baseline),StackingClassifier (Cost-sensitive + Standard Threshold),0.9149298556800776,16.585991812706926,2.4522904501819974e-30,True,Better
+average_cost,RandomForestClassifier (Baseline),StackingClassifier (SMOTE + Minimum Expected Cost),0.885772796903975,18.103606381565225,3.547160778789462e-33,True,Better
+average_cost,RandomForestClassifier (Baseline),StackingClassifier (SMOTE + Standard Threshold),0.6559933080706282,9.484228328542635,1.4597860902289794e-15,True,Better
+average_cost,RandomForestClassifier (Baseline),VotingClassifier (Baseline),0.32489155849391294,4.198597721411696,5.874567499967547e-05,True,Better
+average_cost,RandomForestClassifier (Baseline),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.5784265903410465,15.171225185396596,1.4150712687694675e-27,True,Better
+average_cost,RandomForestClassifier (Baseline),VotingClassifier (Cost-sensitive + Standard Threshold),0.7887789244537613,10.72402599594483,2.8989252098484783e-18,True,Better
+average_cost,RandomForestClassifier (Baseline),VotingClassifier (SMOTE + Minimum Expected Cost),0.5930399903249214,15.314045332120116,7.363931634989334e-28,True,Better
+average_cost,RandomForestClassifier (Baseline),VotingClassifier (SMOTE + Standard Threshold),0.6711186809642831,8.072062298240535,1.6819359481376082e-12,True,Better
+average_cost,RandomForestClassifier (Baseline),XGBClassifier (Baseline),0.4689454164315088,7.906449136410539,3.8053363280374245e-12,True,Better
+average_cost,RandomForestClassifier (Baseline),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.7227598161735065,13.461039100616002,4.262498514864855e-24,True,Better
+average_cost,RandomForestClassifier (Baseline),XGBClassifier (Cost-sensitive + Standard Threshold),0.8806873337095866,15.409587065198572,4.76382645030223e-28,True,Better
+average_cost,RandomForestClassifier (Baseline),XGBClassifier (SMOTE + Minimum Expected Cost),0.8262976699185683,13.464756436201055,4.187407264147695e-24,True,Better
+average_cost,RandomForestClassifier (Baseline),XGBClassifier (SMOTE + Standard Threshold),0.5006877368378618,7.580984881816907,1.8742051922035565e-11,True,Better
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),-0.171158590663549,-3.0278355371179058,0.003140534508534849,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.07933483834556154,4.222908741594349,5.36249385700287e-05,True,Better
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),0.28077158751914877,5.826850234726685,7.058296931470831e-08,True,Better
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),0.12391639119567854,4.896373764936104,3.8010534406258794e-06,True,Better
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),0.21747440135451124,4.751409030803992,6.846077432880237e-06,True,Better
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.5770281383536241,-15.086280450023382,2.0893522954148423e-27,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.28413004918164986,7.64123281847223,1.3967628290173752e-11,True,Better
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Minimum Expected Cost),-1.1102230246251565e-16,0.0,1.0,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.008847053132306493,-0.14914043706195176,0.8817462078721593,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Baseline),-0.14270539385632475,-2.994708847924933,0.0034702296074419683,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-1.1102230246251565e-16,0.0,1.0,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),0.33790171732645347,8.427410631095007,2.8894337329553524e-13,True,Better
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),0.30874465855035094,8.92709480963913,2.3866890032983933e-14,True,Better
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),0.07896516971700407,1.3471505337661496,0.18100720046511018,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Baseline),-0.25213657985971116,-3.316545955327296,0.001275161871742294,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.0013984519874223889,0.5459807315312694,0.5863074231132341,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.2117507861001372,3.92415053387987,0.00016079325634500808,True,Better
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),0.016011851971297286,1.0943417558464075,0.27646054579377444,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),0.09409054261065897,1.3214434989483703,0.18939932287963993,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Baseline),-0.10808272192211532,-2.2662003552452665,0.025615690698462996,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.1457316778198824,3.847368871769653,0.0002114820476755159,True,Better
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),0.30365919535596253,6.7957770126237635,8.168362593323587e-10,True,Better
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Minimum Expected Cost),0.24926953156494425,5.078288516189786,1.7923089899109645e-06,True,Better
+average_cost,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.07634040151576227,-1.4728743101046935,0.1439572139188739,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),-0.45528863984519885,-7.1860222463068215,1.2695955633933474e-10,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.20479521083608831,-4.538841823159757,1.593396998581692e-05,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.003358461662501089,-0.05639573444201042,0.9551402189374765,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),-0.16021365798597131,-3.988792518565761,0.00012732968081029502,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.06665564782713862,-1.11604381130319,0.26710494425239517,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Baseline),-0.861158187535274,-16.455625413569297,4.359431124938875e-30,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.28413004918164986,-7.64123281847223,1.3967628290173752e-11,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.28413004918164997,-7.6188223178660195,1.558290772289732e-11,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Standard Threshold),-0.29297710231395635,-4.049530730371389,0.00010203967503962725,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Baseline),-0.4268354430379746,-7.0304371464905895,2.676801725868587e-10,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.28413004918164997,-7.631579914768245,1.4641899954995758e-11,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),0.05377166814480361,0.9593893954660138,0.339699840771832,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.02461460936870108,0.4995716511826086,0.6184851974993599,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),-0.2051648794646458,-2.978952010920643,0.0036380225349999574,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Baseline),-0.536266629041361,-6.06974844277161,2.367377417489549e-08,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.28273159719422747,-7.6348349910701385,1.4410987900709913e-11,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),-0.07237926308151266,-1.1995569087702838,0.23317447447249887,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.26811819721035257,-6.377323109792908,5.785304090185712e-09,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),-0.1900395065709909,-2.467452356881803,0.015323982257446817,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Baseline),-0.3922127711037652,-6.299813438581853,8.272643214808672e-09,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),-0.13839837136176747,-2.4329727202545754,0.016769646453773674,True,Worse
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Cost-sensitive + Standard Threshold),0.019529146174312673,0.32709006682043634,0.7442903539247554,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),-0.03486051761670561,-0.5392857947034008,0.5909004618135113,False,No Diff
+average_cost,RandomForestClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Standard Threshold),-0.3604704506974121,-6.019377529644807,2.973873528395862e-08,True,Worse
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.17115859066354888,-3.022177109310434,0.003194715084157728,True,Worse
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.07933483834556165,4.251554605646958,4.814125266995538e-05,True,Better
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),0.2807715875191489,5.847194457225758,6.445886913592859e-08,True,Better
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),0.12391639119567865,4.893606515519785,3.844334396760069e-06,True,Better
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),0.21747440135451135,4.743074545870814,7.0795302083815435e-06,True,Better
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.577028138353624,-15.079094526530987,2.1594623598319292e-27,True,Worse
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),1.1102230246251565e-16,0.0,1.0,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.28413004918164997,7.6188223178660195,1.558290772289732e-11,True,Better
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.008847053132306382,-0.149060427513979,0.8818091743777818,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Baseline),-0.14270539385632464,-2.9956064517590626,0.0034608898007930885,True,Worse
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),0.3379017173264536,8.450745319943374,2.572792521575595e-13,True,Better
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),0.30874465855035105,8.8906707025847,2.863909159621785e-14,True,Better
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),0.07896516971700418,1.347754898095752,0.18081333128635324,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Baseline),-0.25213657985971105,-3.316896552050455,0.0012737242308908546,True,Worse
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.0013984519874224999,0.5704300516493053,0.569678465739737,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.2117507861001373,3.9264899404294415,0.00015944781783759559,True,Better
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),0.016011851971297397,1.1137215785287446,0.26809535201208834,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),0.09409054261065908,1.3193926424962688,0.19008116817111692,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Baseline),-0.10808272192211521,-2.27483861508479,0.02507247224536001,True,Worse
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.1457316778198825,3.84912791992049,0.00021016667725515814,True,Better
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),0.30365919535596264,6.811795035153603,7.572286577927374e-10,True,Better
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (SMOTE + Minimum Expected Cost),0.24926953156494436,5.078069442745673,1.793947951370673e-06,True,Better
+average_cost,RandomForestClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.07634040151576216,-1.4707048654861958,0.14454225654141084,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.1623115375312425,-1.978212352553587,0.05068391250752592,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.08818189147786804,1.4018925571714944,0.16407492292863793,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.28961864065145526,3.555419147260813,0.0005805415093854684,True,Better
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.13276344432798504,2.0967467193371707,0.038564773552769584,True,Better
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),0.22632145448681773,3.1127435994385024,0.002423251750161346,True,Better
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Baseline),-0.5681810852213176,-7.444301433364351,3.644373582614412e-11,True,Worse
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.008847053132306493,0.14914043706195176,0.8817462078721593,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.29297710231395635,4.049530730371389,0.00010203967503962725,True,Better
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.008847053132306382,0.149060427513979,0.8818091743777818,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),StackingClassifier (Baseline),-0.13385834072401825,-1.7897276571315297,0.07655513503094596,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.008847053132306382,0.14900628069332872,0.8818517876733447,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),0.34674877045875996,5.293459087266939,7.232800546332518e-07,True,Better
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.31759171168265743,4.950161370725515,3.0481083347259645e-06,True,Better
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),0.08781222284931056,1.0932767867783983,0.27692541433224,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),VotingClassifier (Baseline),-0.24328952672740467,-2.5826843049678456,0.01126633214947672,True,Worse
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.010245505119728882,0.17118101345438633,0.8644308288038423,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),0.2205978392324437,3.060340371220166,0.0028454214603047087,True,Better
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),0.02485890510360378,0.4014191129396139,0.6889767544633637,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),0.10293759574296546,1.1384625545492588,0.2576748780812396,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),XGBClassifier (Baseline),-0.09923566878980883,-1.3590110817279106,0.17723110116984425,False,No Diff
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.15457873095218888,2.2351994336650267,0.027651203816712298,True,Better
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Standard Threshold),0.312506248488269,4.206202319145181,5.709537531840915e-05,True,Better
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),0.25811658469725074,3.238574516995239,0.0016355046470923269,True,Better
+average_cost,RandomForestClassifier (SMOTE + Standard Threshold),XGBClassifier (SMOTE + Standard Threshold),-0.06749334838345578,-0.898924854438674,0.3708738887957844,False,No Diff
+average_cost,StackingClassifier (Baseline),LogisticRegression (Baseline),-0.028453196807224246,-0.37996810877549764,0.7047830182057394,False,No Diff
+average_cost,StackingClassifier (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.2220402322018863,4.273150411291603,4.436819490068801e-05,True,Better
+average_cost,StackingClassifier (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),0.4234769813754735,5.919846583728678,4.656211843377934e-08,True,Better
+average_cost,StackingClassifier (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),0.2666217850520033,4.88234815322854,4.025416650273567e-06,True,Better
+average_cost,StackingClassifier (Baseline),LogisticRegression (SMOTE + Standard Threshold),0.360179795210836,5.273418848138702,7.877010879040721e-07,True,Better
+average_cost,StackingClassifier (Baseline),RandomForestClassifier (Baseline),-0.43432274449729935,-7.217571582494959,1.0907621684040505e-10,True,Worse
+average_cost,StackingClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.14270539385632475,2.994708847924933,0.0034702296074419683,True,Better
+average_cost,StackingClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.4268354430379746,7.0304371464905895,2.676801725868587e-10,True,Better
+average_cost,StackingClassifier (Baseline),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.14270539385632464,2.9956064517590626,0.0034608898007930885,True,Better
+average_cost,StackingClassifier (Baseline),RandomForestClassifier (SMOTE + Standard Threshold),0.13385834072401825,1.7897276571315297,0.07655513503094596,False,No Diff
+average_cost,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.14270539385632464,2.993220553959008,0.0034857670326340685,True,Better
+average_cost,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + Standard Threshold),0.4806071111827782,8.171835625633815,1.0269623346246576e-12,True,Better
+average_cost,StackingClassifier (Baseline),StackingClassifier (SMOTE + Minimum Expected Cost),0.4514500524066757,8.182671109733041,9.733281786725638e-13,True,Better
+average_cost,StackingClassifier (Baseline),StackingClassifier (SMOTE + Standard Threshold),0.22167056357332882,3.118590909045303,0.0023799393863938472,True,Better
+average_cost,StackingClassifier (Baseline),VotingClassifier (Baseline),-0.10943118600338642,-1.2734815882509716,0.20582915566953897,False,No Diff
+average_cost,StackingClassifier (Baseline),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.14410384584374714,3.000313048561942,0.0034122954578934645,True,Better
+average_cost,StackingClassifier (Baseline),VotingClassifier (Cost-sensitive + Standard Threshold),0.35445617995646195,4.624562040266235,1.1363744168438368e-05,True,Better
+average_cost,StackingClassifier (Baseline),VotingClassifier (SMOTE + Minimum Expected Cost),0.15871724582762203,3.3118905720142418,0.001294396237704784,True,Better
+average_cost,StackingClassifier (Baseline),VotingClassifier (SMOTE + Standard Threshold),0.23679593646698371,2.5742195185013816,0.011527594374567154,True,Better
+average_cost,StackingClassifier (Baseline),XGBClassifier (Baseline),0.034622671934209426,0.508308705134686,0.6123676707038683,False,No Diff
+average_cost,StackingClassifier (Baseline),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.28843707167620714,5.010178896843526,2.3789880099757638e-06,True,Better
+average_cost,StackingClassifier (Baseline),XGBClassifier (Cost-sensitive + Standard Threshold),0.4463645892122873,6.434540282646135,4.43829000997432e-09,True,Better
+average_cost,StackingClassifier (Baseline),XGBClassifier (SMOTE + Minimum Expected Cost),0.391974925421269,5.419814535371283,4.2080190571447265e-07,True,Better
+average_cost,StackingClassifier (Baseline),XGBClassifier (SMOTE + Standard Threshold),0.06636499234056248,0.9322026063723813,0.3534996935818969,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),-0.17115859066354888,-3.027313893305006,0.0031454935395938185,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.07933483834556165,4.215191249916374,5.520211173374208e-05,True,Better
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),0.2807715875191489,5.833065051998387,6.865386551818813e-08,True,Better
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),0.12391639119567865,4.878413932573659,4.0906311241986945e-06,True,Better
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),0.21747440135451135,4.751358796132069,6.847461881460745e-06,True,Better
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.577028138353624,-15.116931786068266,1.8151036716309792e-27,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),1.1102230246251565e-16,0.0,1.0,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.28413004918164997,7.631579914768245,1.4641899954995758e-11,True,Better
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.008847053132306382,-0.14900628069332872,0.8818517876733447,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Baseline),-0.14270539385632464,-2.993220553959008,0.0034857670326340685,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),0.3379017173264536,8.444059597065833,2.6598021093361584e-13,True,Better
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),0.30874465855035105,8.891036838101396,2.8586673920178315e-14,True,Better
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),0.07896516971700418,1.3473343291931719,0.18094822563542917,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Baseline),-0.25213657985971105,-3.3160222094067167,0.0012773123530127448,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.0013984519874224999,0.5326102959529904,0.5954968243018071,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.2117507861001373,3.928177437067637,0.0001584839892072119,True,Better
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),0.016011851971297397,1.0933283540415262,0.2769028923084175,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),0.09409054261065908,1.3191992319942787,0.19014556567796292,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Baseline),-0.10808272192211521,-2.272912047028682,0.025192739779910718,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.1457316778198825,3.8554127331561516,0.00020553048547399802,True,Better
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),0.30365919535596264,6.796565705747167,8.137954900417024e-10,True,Better
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Minimum Expected Cost),0.24926953156494436,5.079183461061424,1.7856287654922078e-06,True,Better
+average_cost,StackingClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.07634040151576216,-1.4723918898384405,0.1440871504573124,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),-0.5090603079900025,-7.167735889358044,1.3862620372183286e-10,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.2585668789808919,-5.775904518611008,8.854062563195019e-08,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.0571301298073047,-0.8685932682245002,0.3871704403432382,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),-0.21398532613077492,-4.209588186222119,5.6375022580497484e-05,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.12042731597194223,-1.90285573641931,0.05996491116061743,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Baseline),-0.9149298556800776,-16.585991812706926,2.4522904501819974e-30,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.33790171732645347,-8.427410631095007,2.8894337329553524e-13,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Cost-sensitive + Standard Threshold),-0.05377166814480361,-0.9593893954660138,0.339699840771832,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.3379017173264536,-8.450745319943374,2.572792521575595e-13,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Standard Threshold),-0.34674877045875996,-5.293459087266939,7.232800546332518e-07,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Baseline),-0.4806071111827782,-8.171835625633815,1.0269623346246576e-12,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.3379017173264536,-8.444059597065833,2.6598021093361584e-13,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),-0.02915705877610253,-0.5623384744065099,0.5751565281922268,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),-0.2589365476094494,-3.8962414433297496,0.0001777040069723871,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Baseline),-0.5900382971861646,-7.351070730175196,5.72616083204656e-11,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.3365032653390311,-8.364825759391165,3.9437822943645454e-13,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),-0.12615093122631627,-1.9244799709796216,0.057165586973961395,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.3218898653551562,-7.890892707670426,4.107972224345267e-12,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),-0.2438111747157945,-2.944890451948804,0.004026634192933064,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Baseline),-0.4459844392485688,-7.34592740867272,5.870446749004462e-11,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),-0.19217003950657108,-3.785594060394984,0.0002629838119678605,True,Worse
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Cost-sensitive + Standard Threshold),-0.034242521970490936,-0.6068574588194007,0.5453347480378461,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),-0.08863218576150922,-1.3283306666067731,0.1871229476881244,False,No Diff
+average_cost,StackingClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Standard Threshold),-0.41424211884221573,-6.096989979734289,2.091970431536897e-08,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.47990324921389993,-7.501392919063403,2.7615062912118465e-11,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.2294098202047894,-5.365412029905032,5.317283348046997e-07,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.027973071031202168,-0.4911405366696886,0.624414077912575,False,No Diff
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.1848282673546724,-4.3872508560366,2.870893810046853e-05,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.0912702571958397,-1.5758833298217354,0.11824299609098857,False,No Diff
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.885772796903975,-18.103606381565225,3.547160778789462e-33,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.30874465855035094,-8.92709480963913,2.3866890032983933e-14,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),-0.02461460936870108,-0.4995716511826086,0.6184851974993599,False,No Diff
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.30874465855035105,-8.8906707025847,2.863909159621785e-14,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.31759171168265743,-4.950161370725515,3.0481083347259645e-06,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Baseline),-0.4514500524066757,-8.182671109733041,9.733281786725638e-13,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.30874465855035105,-8.891036838101396,2.8586673920178315e-14,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),0.02915705877610253,0.5623384744065099,0.5751565281922268,False,No Diff
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),-0.22977948883334687,-3.4411925101918497,0.0008496021697403295,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Baseline),-0.5608812384100621,-6.6386413786829825,1.7123546185132085e-09,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.30734620656292855,-8.971551736009998,1.9104561163399468e-14,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),-0.09699387245021374,-1.4974132503827062,0.13746737806647785,False,No Diff
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),-0.29273280657905365,-7.8822214192663225,4.2869363481960865e-12,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),-0.21465411593969197,-2.6914817306273555,0.008352520565164959,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Baseline),-0.41682738047246626,-7.191996147385016,1.2336348704741526e-10,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Minimum Expected Cost),-0.16301298073046855,-3.2113362465537802,0.0017823825013917728,True,Worse
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),-0.0050854631943884065,-0.08855837759157506,0.9296117860378468,False,No Diff
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (SMOTE + Minimum Expected Cost),-0.05947512698540669,-0.9854307068314091,0.3268148054716048,False,No Diff
+average_cost,StackingClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.3850850600661132,-6.124972561553052,1.8419620465298683e-08,True,Worse
+average_cost,StackingClassifier (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.25012376038055306,-3.0610640424287316,0.0028391537055440664,True,Worse
+average_cost,StackingClassifier (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.0003696686285574735,0.005983465349674547,0.9952379545107595,False,No Diff
+average_cost,StackingClassifier (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.2018064178021447,2.8393485849570834,0.005486539077650907,True,Better
+average_cost,StackingClassifier (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.044951221478674475,0.648951397298418,0.5178724194273921,False,No Diff
+average_cost,StackingClassifier (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),0.13850923163750717,1.847678721215818,0.06763464160991793,False,No Diff
+average_cost,StackingClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Baseline),-0.6559933080706282,-9.484228328542635,1.4597860902289794e-15,True,Worse
+average_cost,StackingClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.07896516971700407,-1.3471505337661496,0.18100720046511018,False,No Diff
+average_cost,StackingClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.2051648794646458,2.978952010920643,0.0036380225349999574,True,Better
+average_cost,StackingClassifier (SMOTE + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.07896516971700418,-1.347754898095752,0.18081333128635324,False,No Diff
+average_cost,StackingClassifier (SMOTE + Standard Threshold),RandomForestClassifier (SMOTE + Standard Threshold),-0.08781222284931056,-1.0932767867783983,0.27692541433224,False,No Diff
+average_cost,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Baseline),-0.22167056357332882,-3.118590909045303,0.0023799393863938472,True,Worse
+average_cost,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.07896516971700418,-1.3473343291931719,0.18094822563542917,False,No Diff
+average_cost,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),0.2589365476094494,3.8962414433297496,0.0001777040069723871,True,Better
+average_cost,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.22977948883334687,3.4411925101918497,0.0008496021697403295,True,Better
+average_cost,StackingClassifier (SMOTE + Standard Threshold),VotingClassifier (Baseline),-0.33110174957671523,-3.4424932027575026,0.0008459653526534817,True,Worse
+average_cost,StackingClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.07756671772958168,-1.3294828472011633,0.18674413528087092,False,No Diff
+average_cost,StackingClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),0.13278561638313313,1.7132443062006464,0.08979754578526392,False,No Diff
+average_cost,StackingClassifier (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.06295331774570678,-1.0610047477351545,0.29126929907754207,False,No Diff
+average_cost,StackingClassifier (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),0.015125372893654898,0.16524212419743328,0.869090363955247,False,No Diff
+average_cost,StackingClassifier (SMOTE + Standard Threshold),XGBClassifier (Baseline),-0.1870478916391194,-2.360630484950775,0.02020377120918889,True,Worse
+average_cost,StackingClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.06676650810287832,1.0641845446407752,0.2898338582746032,False,No Diff
+average_cost,StackingClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Standard Threshold),0.22469402563895846,3.2031265359222982,0.0018290106124623485,True,Better
+average_cost,StackingClassifier (SMOTE + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),0.17030436184794018,2.091058291235283,0.0390833835252911,True,Better
+average_cost,StackingClassifier (SMOTE + Standard Threshold),XGBClassifier (SMOTE + Standard Threshold),-0.15530557123276634,-2.0766344989540055,0.040425419176691325,True,Worse
+average_cost,VotingClassifier (Baseline),LogisticRegression (Baseline),0.08097798919616217,0.8220607385418142,0.4130178170047657,False,No Diff
+average_cost,VotingClassifier (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.3314714182052727,4.2050986888455615,5.733208223315596e-05,True,Better
+average_cost,VotingClassifier (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),0.5329081673788599,6.037555005689613,2.739148878144127e-08,True,Better
+average_cost,VotingClassifier (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),0.3760529710553897,4.674599029873504,9.313388791797383e-06,True,Better
+average_cost,VotingClassifier (Baseline),LogisticRegression (SMOTE + Standard Threshold),0.4696109812142224,5.061868192893861,1.9192929552199846e-06,True,Better
+average_cost,VotingClassifier (Baseline),RandomForestClassifier (Baseline),-0.32489155849391294,-4.198597721411696,5.874567499967547e-05,True,Worse
+average_cost,VotingClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.25213657985971116,3.316545955327296,0.001275161871742294,True,Better
+average_cost,VotingClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.536266629041361,6.06974844277161,2.367377417489549e-08,True,Better
+average_cost,VotingClassifier (Baseline),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.25213657985971105,3.316896552050455,0.0012737242308908546,True,Better
+average_cost,VotingClassifier (Baseline),RandomForestClassifier (SMOTE + Standard Threshold),0.24328952672740467,2.5826843049678456,0.01126633214947672,True,Better
+average_cost,VotingClassifier (Baseline),StackingClassifier (Baseline),0.10943118600338642,1.2734815882509716,0.20582915566953897,False,No Diff
+average_cost,VotingClassifier (Baseline),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.25213657985971105,3.3160222094067167,0.0012773123530127448,True,Better
+average_cost,VotingClassifier (Baseline),StackingClassifier (Cost-sensitive + Standard Threshold),0.5900382971861646,7.351070730175196,5.72616083204656e-11,True,Better
+average_cost,VotingClassifier (Baseline),StackingClassifier (SMOTE + Minimum Expected Cost),0.5608812384100621,6.6386413786829825,1.7123546185132085e-09,True,Better
+average_cost,VotingClassifier (Baseline),StackingClassifier (SMOTE + Standard Threshold),0.33110174957671523,3.4424932027575026,0.0008459653526534817,True,Better
+average_cost,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.25353503184713355,3.3354698165405603,0.0011996991418786176,True,Better
+average_cost,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + Standard Threshold),0.46388736595984836,5.429236797032095,4.040437357799218e-07,True,Better
+average_cost,VotingClassifier (Baseline),VotingClassifier (SMOTE + Minimum Expected Cost),0.26814843183100845,3.4373987923388394,0.0008602938955203732,True,Better
+average_cost,VotingClassifier (Baseline),VotingClassifier (SMOTE + Standard Threshold),0.34622712247037013,3.583005713030263,0.0005288833643334829,True,Better
+average_cost,VotingClassifier (Baseline),XGBClassifier (Baseline),0.14405385793759584,1.633667154761836,0.10550511281792785,False,No Diff
+average_cost,VotingClassifier (Baseline),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.39786825767959355,4.6055022613266665,1.2254584034296536e-05,True,Better
+average_cost,VotingClassifier (Baseline),XGBClassifier (Cost-sensitive + Standard Threshold),0.5557957752156737,6.081825285956349,2.2411338689338524e-08,True,Better
+average_cost,VotingClassifier (Baseline),XGBClassifier (SMOTE + Minimum Expected Cost),0.5014061114246554,5.373791405660321,5.129459083886966e-07,True,Better
+average_cost,VotingClassifier (Baseline),XGBClassifier (SMOTE + Standard Threshold),0.1757961783439489,1.761756723096541,0.08119738202379977,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),-0.17255704265097138,-3.063221963653823,0.002820539727563385,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.07793638635813915,4.141818970016278,7.260046721866838e-05,True,Better
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),0.2793731355317264,5.815909795780656,7.410922928747016e-08,True,Better
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),0.12251793920825615,4.791390017821071,5.826222032959402e-06,True,Better
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),0.21607594936708885,4.714268765776635,7.947419687801764e-06,True,Better
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.5784265903410465,-15.171225185396596,1.4150712687694675e-27,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.0013984519874223889,-0.5459807315312694,0.5863074231132341,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.28273159719422747,7.6348349910701385,1.4410987900709913e-11,True,Better
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.0013984519874224999,-0.5704300516493053,0.569678465739737,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.010245505119728882,-0.17118101345438633,0.8644308288038423,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Baseline),-0.14410384584374714,-3.000313048561942,0.0034122954578934645,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.0013984519874224999,-0.5326102959529904,0.5954968243018071,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),0.3365032653390311,8.364825759391165,3.9437822943645454e-13,True,Better
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),0.30734620656292855,8.971551736009998,1.9104561163399468e-14,True,Better
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),0.07756671772958168,1.3294828472011633,0.18674413528087092,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Baseline),-0.25353503184713355,-3.3354698165405603,0.0011996991418786176,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.2103523341127148,3.904327848047751,0.00017263710037928614,True,Better
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),0.014613399983874897,1.0158039447366558,0.31219887829031384,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),0.09269209062323658,1.2935037357911963,0.19884682160992243,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Baseline),-0.10948117390953771,-2.3013514535243473,0.023467926231587676,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.14433322583246,3.7641826579483713,0.00028347023553102824,True,Better
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),0.30226074336854014,6.802113791993722,7.927194580154417e-10,True,Better
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Minimum Expected Cost),0.24787107957752186,5.0320403911284135,2.1727719658502542e-06,True,Better
+average_cost,VotingClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.07773885350318466,-1.488685481072096,0.13974886821561633,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),-0.3829093767636862,-4.941602557793044,3.1573569946072977e-06,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.13241594775457566,-2.2688310252339035,0.02544917623589191,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.06902080141901157,0.8724604862743986,0.38506833318682265,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),-0.08783439490445866,-1.4528019324715296,0.14944106020773842,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),0.005723615254374037,0.07523119375607998,0.9401825780323079,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Baseline),-0.7887789244537613,-10.72402599594483,2.8989252098484783e-18,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.2117507861001372,-3.92415053387987,0.00016079325634500808,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.07237926308151266,1.1995569087702838,0.23317447447249887,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.2117507861001373,-3.9264899404294415,0.00015944781783759559,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Standard Threshold),-0.2205978392324437,-3.060340371220166,0.0028454214603047087,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Baseline),-0.35445617995646195,-4.624562040266235,1.1363744168438368e-05,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.2117507861001373,-3.928177437067637,0.0001584839892072119,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),0.12615093122631627,1.9244799709796216,0.057165586973961395,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.09699387245021374,1.4974132503827062,0.13746737806647785,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),-0.13278561638313313,-1.7132443062006464,0.08979754578526392,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Baseline),-0.46388736595984836,-5.429236797032095,4.040437357799218e-07,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.2103523341127148,-3.904327848047751,0.00017263710037928614,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.19573893412883991,-3.400846153098133,0.0009700017511194647,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),-0.11766024348947823,-1.2673847389636916,0.20799081944452705,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Baseline),-0.3198335080222525,-4.780976577901105,6.076657769388054e-06,True,Worse
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),-0.06601910828025481,-0.9651235735834371,0.33683458978976555,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Cost-sensitive + Standard Threshold),0.09190840925582533,1.3372462835357162,0.1842066639690338,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),0.037518745464807046,0.49546977621404287,0.6213665780802031,False,No Diff
+average_cost,VotingClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Standard Threshold),-0.28809118761589947,-3.8991873901379845,0.00017584186847219562,True,Worse
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.18717044263484628,-3.086630697028893,0.002625761765730363,True,Worse
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.06332298637426426,2.9307107505470986,0.004199413526098447,True,Better
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),0.2647597355478515,5.16502400658658,1.2461038894586135e-06,True,Better
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),0.10790453922438126,3.661528264007571,0.00040461170108009137,True,Better
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),0.20146254938321395,4.384169085055945,2.9051077905671514e-05,True,Better
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.5930399903249214,-15.314045332120116,7.363931634989334e-28,True,Worse
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.016011851971297286,-1.0943417558464075,0.27646054579377444,False,No Diff
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.26811819721035257,6.377323109792908,5.785304090185712e-09,True,Better
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.016011851971297397,-1.1137215785287446,0.26809535201208834,False,No Diff
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.02485890510360378,-0.4014191129396139,0.6889767544633637,False,No Diff
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Baseline),-0.15871724582762203,-3.3118905720142418,0.001294396237704784,True,Worse
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.016011851971297397,-1.0933283540415262,0.2769028923084175,False,No Diff
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),0.3218898653551562,7.890892707670426,4.107972224345267e-12,True,Better
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),0.29273280657905365,7.8822214192663225,4.2869363481960865e-12,True,Better
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),0.06295331774570678,1.0610047477351545,0.29126929907754207,False,No Diff
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Baseline),-0.26814843183100845,-3.4373987923388394,0.0008602938955203732,True,Worse
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.014613399983874897,-1.0158039447366558,0.31219887829031384,False,No Diff
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.19573893412883991,3.400846153098133,0.0009700017511194647,True,Better
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),0.07807869063936168,1.0450381045719064,0.2985503288582829,False,No Diff
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Baseline),-0.12409457389341261,-2.487553032722287,0.01453356101124094,True,Worse
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.1297198258485851,3.1608022303697645,0.0020879820759647713,True,Better
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),0.28764734338466524,6.253525750144498,1.0234130931393461e-08,True,Better
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (SMOTE + Minimum Expected Cost),0.23325767959364696,4.599020885502437,1.2572655290444419e-05,True,Better
+average_cost,VotingClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.09235225348705955,-1.717055876890918,0.08909592004031672,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.26524913327420796,-2.796017015160311,0.0062155635122698805,True,Worse
+average_cost,VotingClassifier (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.014755704265097425,-0.19880598626549703,0.8428222265956018,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.1866810449084898,2.3012986461645792,0.023471030038835553,True,Better
+average_cost,VotingClassifier (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.029825848585019576,0.41265480721352593,0.6807518361138131,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),0.12338385874385227,1.5319020820923774,0.12873599400017988,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Baseline),-0.6711186809642831,-8.072062298240535,1.6819359481376082e-12,True,Worse
+average_cost,VotingClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.09409054261065897,-1.3214434989483703,0.18939932287963993,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.1900395065709909,2.467452356881803,0.015323982257446817,True,Better
+average_cost,VotingClassifier (SMOTE + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.09409054261065908,-1.3193926424962688,0.19008116817111692,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),RandomForestClassifier (SMOTE + Standard Threshold),-0.10293759574296546,-1.1384625545492588,0.2576748780812396,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),StackingClassifier (Baseline),-0.23679593646698371,-2.5742195185013816,0.011527594374567154,True,Worse
+average_cost,VotingClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.09409054261065908,-1.3191992319942787,0.19014556567796292,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),0.2438111747157945,2.944890451948804,0.004026634192933064,True,Better
+average_cost,VotingClassifier (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.21465411593969197,2.6914817306273555,0.008352520565164959,True,Better
+average_cost,VotingClassifier (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),-0.015125372893654898,-0.16524212419743328,0.869090363955247,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Baseline),-0.34622712247037013,-3.583005713030263,0.0005288833643334829,True,Worse
+average_cost,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.09269209062323658,-1.2935037357911963,0.19884682160992243,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),0.11766024348947823,1.2673847389636916,0.20799081944452705,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.07807869063936168,-1.0450381045719064,0.2985503288582829,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),XGBClassifier (Baseline),-0.2021732645327743,-2.2108825881889795,0.029345600291929626,True,Worse
+average_cost,VotingClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.05164113520922342,0.7028716579342895,0.48378527869082866,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Standard Threshold),0.20956865274530356,2.514490126442918,0.013531584066933259,True,Better
+average_cost,VotingClassifier (SMOTE + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),0.15517898895428528,1.7680250211799966,0.08013736899811878,False,No Diff
+average_cost,VotingClassifier (SMOTE + Standard Threshold),XGBClassifier (SMOTE + Standard Threshold),-0.17043094412642124,-1.9359249957198033,0.05572918997900904,False,No Diff
+average_cost,XGBClassifier (Baseline),LogisticRegression (Baseline),-0.06307586874143367,-0.8766554703517098,0.38279608744876203,False,No Diff
+average_cost,XGBClassifier (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.18741756026767686,3.646980962539175,0.0004253168481191925,True,Better
+average_cost,XGBClassifier (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),0.3888543094412641,6.043020631484545,2.6722096889150387e-08,True,Better
+average_cost,XGBClassifier (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),0.23199911311779386,4.139782618759217,7.315152939357027e-05,True,Better
+average_cost,XGBClassifier (Baseline),LogisticRegression (SMOTE + Standard Threshold),0.32555712327662656,4.594868397374331,1.2780624291051056e-05,True,Better
+average_cost,XGBClassifier (Baseline),RandomForestClassifier (Baseline),-0.4689454164315088,-7.906449136410539,3.8053363280374245e-12,True,Worse
+average_cost,XGBClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.10808272192211532,2.2662003552452665,0.025615690698462996,True,Better
+average_cost,XGBClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.3922127711037652,6.299813438581853,8.272643214808672e-09,True,Better
+average_cost,XGBClassifier (Baseline),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.10808272192211521,2.27483861508479,0.02507247224536001,True,Better
+average_cost,XGBClassifier (Baseline),RandomForestClassifier (SMOTE + Standard Threshold),0.09923566878980883,1.3590110817279106,0.17723110116984425,False,No Diff
+average_cost,XGBClassifier (Baseline),StackingClassifier (Baseline),-0.034622671934209426,-0.508308705134686,0.6123676707038683,False,No Diff
+average_cost,XGBClassifier (Baseline),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.10808272192211521,2.272912047028682,0.025192739779910718,True,Better
+average_cost,XGBClassifier (Baseline),StackingClassifier (Cost-sensitive + Standard Threshold),0.4459844392485688,7.34592740867272,5.870446749004462e-11,True,Better
+average_cost,XGBClassifier (Baseline),StackingClassifier (SMOTE + Minimum Expected Cost),0.41682738047246626,7.191996147385016,1.2336348704741526e-10,True,Better
+average_cost,XGBClassifier (Baseline),StackingClassifier (SMOTE + Standard Threshold),0.1870478916391194,2.360630484950775,0.02020377120918889,True,Better
+average_cost,XGBClassifier (Baseline),VotingClassifier (Baseline),-0.14405385793759584,-1.633667154761836,0.10550511281792785,False,No Diff
+average_cost,XGBClassifier (Baseline),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.10948117390953771,2.3013514535243473,0.023467926231587676,True,Better
+average_cost,XGBClassifier (Baseline),VotingClassifier (Cost-sensitive + Standard Threshold),0.3198335080222525,4.780976577901105,6.076657769388054e-06,True,Better
+average_cost,XGBClassifier (Baseline),VotingClassifier (SMOTE + Minimum Expected Cost),0.12409457389341261,2.487553032722287,0.01453356101124094,True,Better
+average_cost,XGBClassifier (Baseline),VotingClassifier (SMOTE + Standard Threshold),0.2021732645327743,2.2108825881889795,0.029345600291929626,True,Better
+average_cost,XGBClassifier (Baseline),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.2538143997419977,3.9415511284922733,0.000151039914257212,True,Better
+average_cost,XGBClassifier (Baseline),XGBClassifier (Cost-sensitive + Standard Threshold),0.41174191727807785,6.328635459705987,7.243914287921264e-09,True,Better
+average_cost,XGBClassifier (Baseline),XGBClassifier (SMOTE + Minimum Expected Cost),0.35735225348705957,5.454035938946764,3.629987664382366e-07,True,Better
+average_cost,XGBClassifier (Baseline),XGBClassifier (SMOTE + Standard Threshold),0.03174232040635305,0.45655660354083427,0.6489898770976986,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),-0.3168902684834314,-4.492998229402795,1.9062673434641607e-05,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.06639683947432085,-1.5447799405040943,0.1255902037715705,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),0.13503990969926638,2.1897728493741884,0.030889359628757083,True,Better
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.021815286624203845,-0.44391138133924807,0.6580754079382622,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),0.07174272353462885,1.2329348122274133,0.22051976657371314,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.7227598161735065,-13.461039100616002,4.262498514864855e-24,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.1457316778198824,-3.847368871769653,0.0002114820476755159,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.13839837136176747,2.4329727202545754,0.016769646453773674,True,Better
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.1457316778198825,-3.84912791992049,0.00021016667725515814,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.15457873095218888,-2.2351994336650267,0.027651203816712298,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Baseline),-0.28843707167620714,-5.010178896843526,2.3789880099757638e-06,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.1457316778198825,-3.8554127331561516,0.00020553048547399802,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),0.19217003950657108,3.785594060394984,0.0002629838119678605,True,Better
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),0.16301298073046855,3.2113362465537802,0.0017823825013917728,True,Better
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),-0.06676650810287832,-1.0641845446407752,0.2898338582746032,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Baseline),-0.39786825767959355,-4.6055022613266665,1.2254584034296536e-05,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.14433322583246,-3.7641826579483713,0.00028347023553102824,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.06601910828025481,0.9651235735834371,0.33683458978976555,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),-0.1297198258485851,-3.1608022303697645,0.0020879820759647713,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),-0.05164113520922342,-0.7028716579342895,0.48378527869082866,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Baseline),-0.2538143997419977,-3.9415511284922733,0.000151039914257212,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),0.15792751753608014,2.9616854700080975,0.003830471796413483,True,Better
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Minimum Expected Cost),0.10353785374506186,1.5908937497243347,0.11482180834088004,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.22207207933564466,-3.537250057235215,0.0006171311291785673,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),-0.4748177860195115,-6.704864940896266,1.2543671379054072e-09,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.224324357010401,-4.76538975294316,6.471154256525842e-06,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.02288760783681376,-0.3890961656984159,0.6980406599256468,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),-0.179742804160284,-3.295094382114712,0.001366075054482964,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.08618479400145129,-1.3235464927512355,0.1887020456906174,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Baseline),-0.8806873337095866,-15.409587065198572,4.76382645030223e-28,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.30365919535596253,-6.7957770126237635,8.168362593323587e-10,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Cost-sensitive + Standard Threshold),-0.019529146174312673,-0.32709006682043634,0.7442903539247554,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.30365919535596264,-6.811795035153603,7.572286577927374e-10,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Standard Threshold),-0.312506248488269,-4.206202319145181,5.709537531840915e-05,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Baseline),-0.4463645892122873,-6.434540282646135,4.43829000997432e-09,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.30365919535596264,-6.796565705747167,8.137954900417024e-10,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),0.034242521970490936,0.6068574588194007,0.5453347480378461,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.0050854631943884065,0.08855837759157506,0.9296117860378468,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),-0.22469402563895846,-3.2031265359222982,0.0018290106124623485,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Baseline),-0.5557957752156737,-6.081825285956349,2.2411338689338524e-08,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.30226074336854014,-6.802113791993722,7.927194580154417e-10,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),-0.09190840925582533,-1.3372462835357162,0.1842066639690338,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.28764734338466524,-6.253525750144498,1.0234130931393461e-08,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),-0.20956865274530356,-2.514490126442918,0.013531584066933259,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Baseline),-0.41174191727807785,-6.328635459705987,7.243914287921264e-09,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),-0.15792751753608014,-2.9616854700080975,0.003830471796413483,True,Worse
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),-0.05438966379101828,-0.9232079433560823,0.35814346899425586,False,No Diff
+average_cost,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Standard Threshold),-0.3799995968717248,-5.7616856746036165,9.430817022412864e-08,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.42042812222849324,-5.551219273195843,2.3802124997076738e-07,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.1699346932193827,-3.3203094483820723,0.001259808605436004,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),0.03150205595420452,0.5298546642196591,0.597399009683641,False,No Diff
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.1253531403692657,-2.1472474866721667,0.034215323522528464,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.03179513021043301,-0.46108196081595393,0.6457511790879893,False,No Diff
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.8262976699185683,-13.464756436201055,4.187407264147695e-24,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.24926953156494425,-5.078288516189786,1.7923089899109645e-06,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.03486051761670561,0.5392857947034008,0.5909004618135113,False,No Diff
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.24926953156494436,-5.078069442745673,1.793947951370673e-06,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.25811658469725074,-3.238574516995239,0.0016355046470923269,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Baseline),-0.391974925421269,-5.419814535371283,4.2080190571447265e-07,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.24926953156494436,-5.079183461061424,1.7856287654922078e-06,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),0.08863218576150922,1.3283306666067731,0.1871229476881244,False,No Diff
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),0.05947512698540669,0.9854307068314091,0.3268148054716048,False,No Diff
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),-0.17030436184794018,-2.091058291235283,0.0390833835252911,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Baseline),-0.5014061114246554,-5.373791405660321,5.129459083886966e-07,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.24787107957752186,-5.0320403911284135,2.1727719658502542e-06,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),-0.037518745464807046,-0.49546977621404287,0.6213665780802031,False,No Diff
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),-0.23325767959364696,-4.599020885502437,1.2572655290444419e-05,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),-0.15517898895428528,-1.7680250211799966,0.08013736899811878,False,No Diff
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Baseline),-0.35735225348705957,-5.454035938946764,3.629987664382366e-07,True,Worse
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Minimum Expected Cost),-0.10353785374506186,-1.5908937497243347,0.11482180834088004,False,No Diff
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),0.05438966379101828,0.9232079433560823,0.35814346899425586,False,No Diff
+average_cost,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.3256099330807065,-4.643462073688634,1.0542487058529718e-05,True,Worse
+average_cost,XGBClassifier (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.09481818914778672,-1.3065233474855136,0.19440175092255152,False,No Diff
+average_cost,XGBClassifier (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.1556752398613238,2.873160649726031,0.004973043342091724,True,Better
+average_cost,XGBClassifier (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.35711198903491104,5.101376078659319,1.6275293697128881e-06,True,Better
+average_cost,XGBClassifier (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.2002567927114408,3.5345337057341757,0.0006227851052845138,True,Better
+average_cost,XGBClassifier (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),0.2938148028702735,4.558149300889994,1.4770528396060899e-05,True,Better
+average_cost,XGBClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Baseline),-0.5006877368378618,-7.580984881816907,1.8742051922035565e-11,True,Worse
+average_cost,XGBClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.07634040151576227,1.4728743101046935,0.1439572139188739,False,No Diff
+average_cost,XGBClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.3604704506974121,6.019377529644807,2.973873528395862e-08,True,Better
+average_cost,XGBClassifier (SMOTE + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.07634040151576216,1.4707048654861958,0.14454225654141084,False,No Diff
+average_cost,XGBClassifier (SMOTE + Standard Threshold),RandomForestClassifier (SMOTE + Standard Threshold),0.06749334838345578,0.898924854438674,0.3708738887957844,False,No Diff
+average_cost,XGBClassifier (SMOTE + Standard Threshold),StackingClassifier (Baseline),-0.06636499234056248,-0.9322026063723813,0.3534996935818969,False,No Diff
+average_cost,XGBClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.07634040151576216,1.4723918898384405,0.1440871504573124,False,No Diff
+average_cost,XGBClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),0.41424211884221573,6.096989979734289,2.091970431536897e-08,True,Better
+average_cost,XGBClassifier (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.3850850600661132,6.124972561553052,1.8419620465298683e-08,True,Better
+average_cost,XGBClassifier (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),0.15530557123276634,2.0766344989540055,0.040425419176691325,True,Better
+average_cost,XGBClassifier (SMOTE + Standard Threshold),VotingClassifier (Baseline),-0.1757961783439489,-1.761756723096541,0.08119738202379977,False,No Diff
+average_cost,XGBClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.07773885350318466,1.488685481072096,0.13974886821561633,False,No Diff
+average_cost,XGBClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),0.28809118761589947,3.8991873901379845,0.00017584186847219562,True,Better
+average_cost,XGBClassifier (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),0.09235225348705955,1.717055876890918,0.08909592004031672,False,No Diff
+average_cost,XGBClassifier (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),0.17043094412642124,1.9359249957198033,0.05572918997900904,False,No Diff
+average_cost,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (Baseline),-0.03174232040635305,-0.45655660354083427,0.6489898770976986,False,No Diff
+average_cost,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.22207207933564466,3.537250057235215,0.0006171311291785673,True,Better
+average_cost,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Standard Threshold),0.3799995968717248,5.7616856746036165,9.430817022412864e-08,True,Better
+average_cost,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),0.3256099330807065,4.643462073688634,1.0542487058529718e-05,True,Better

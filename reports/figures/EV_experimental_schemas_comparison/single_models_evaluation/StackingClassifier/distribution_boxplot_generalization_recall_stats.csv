@@ -1,0 +1,6 @@
+model,recall_count,recall_mean,recall_std,recall_min,recall_25%,recall_50%,recall_75%,recall_max
+StackingClassifier (Baseline),100.0,0.3987692307692307,0.08638386432672579,0.2,0.32,0.4,0.44,0.6
+StackingClassifier (Cost-sensitive + Minimum Expected Cost),100.0,1.0,0.0,1.0,1.0,1.0,1.0,1.0
+StackingClassifier (Cost-sensitive + Standard Threshold),100.0,0.8401846153846155,0.07111912422726328,0.64,0.8,0.84,0.8811538461538462,0.9615384615384616
+StackingClassifier (SMOTE + Minimum Expected Cost),100.0,0.9011692307692306,0.07213741792391894,0.64,0.84,0.92,0.96,1.0
+StackingClassifier (SMOTE + Standard Threshold),100.0,0.5665384615384615,0.10982185192774324,0.32,0.48,0.56,0.64,0.8
