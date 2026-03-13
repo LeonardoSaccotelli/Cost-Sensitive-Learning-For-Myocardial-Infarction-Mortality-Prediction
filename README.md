@@ -159,6 +159,46 @@ You can control how the data is reduced by modifying these variables in `myocard
 
 ---
 
+## 🧹 Data Cleaning & Deduplication
+Once the raw sample is created, the next phase of the pipeline is cleaning. This script focuses on creating a clean time-slot-specific RAW dataset by filtering missingness, pruning extra targets, and removing duplicates.
+
+**1. Cleaning Execution**
+
+To process your raw data into a cleaned format, run:
+```bash
+make cleaning
+````
+**What this command does:**
+
+- Loads the subsampled data from `data/raw/`.
+- Row filtering: drop rows whose missingness fraction is strictly greater than ``threshold_drop_missing_rows``.
+- Column filtering: drop columns whose missingness fraction is strictly greater than ``threshold_drop_missing_cols``. The selected ``target`` is never dropped here. The script logs both the number of dropped columns and their names.
+- Target pruning: drop any columns listed in ``EXCLUDE_TARGETS`` if present, except the selected ``target``.
+- Duplicate removal: remove duplicated rows using ``remove_duplicates`` with the current policy ``subset=None`` and ``keep="first"``. The script logs how many rows were removed.
+- Saves the result to `data/interim/myocardial_infarction_<selected_time_slot>_<target>_cleaned.csv`
+
+**2. Cleaning Configuration**
+
+This script relies on the pathing logic defined in `fraud_dynamic_ensemble/config.py`. While the core logic is automated, the following paths are used:
+
+The script is highly flexible, specifically supporting a "keep all minority" approach which is standard in fraud detection research to ensure no rare fraud cases are lost during data reduction.
+
+| Variable                  | Default Value                        | Description                                                                                                                                    |
+|---------------------------|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```RAW_DATA_DIR ```       | ```PROJ_ROOT / "data" / "raw"```     | The directory where raw data is stored.                                                                                                        |
+| ```FILENAME_BASE ```      | ```myocardial_infarction```          | Base filename (without extension) used to build the output filename.                                                                           |
+| ```SELECTED_TIME_SLOT ``` | ```admission```                      | Time slot key used to select which features to drop. Must be a key of``EXCLUDE_FEATURES_BY_SLOT`` (e.g., "admission", "day1", "day2", "day3"). |
+| ```INTERIM_DATA_DIR ```   | ```PROJ_ROOT / "data" / "interim"``` | The directory where interim data is stored.                                                                                                    |
+| ```TARGET ```             | ```LET_IS_BINARY```                  | Target column that must exist and must be preserved.                                                                                           |
+| ```threshold_drop_missing_rows ```   | ```0.20```                           | Drop rows with missingness strictly greater than this fraction.                                                                                                   |
+| ```threshold_drop_missing_cols ```   | ```0.30```                           |  Drop columns with missingness strictly greater than this fraction.                                                                                                   |
+
+
+---
+
+
+---
+
 ## License
 
 This project is released under the [LICENSE](LICENSE). See the LICENSE file for details.
