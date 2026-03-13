@@ -222,8 +222,26 @@ This script relies on the logic defined in `myocardial_infarction_mortality/conf
 | ```target ```             | ```LET_IS_BINARY```                    | Selected target column.                                                                                                                        |
 | ```target_alias ```       | ```CLASS```                            | Standardized target name used inside the processed dataset (i.e., the column is renamed to this value).                                        |
 
----
 
+
+
+
+---
+## 📓 Notebooks & In-depth Analysis
+The `notebooks/` directory contains the experimental logs and visual analyses of the project. These are organized chronologically to mirror the research workflow.
+
+**Data Understanding (DU) & Preparation (DP)**
+- `1.0-ls-DU-data-quality-inspection`: Initial assessment of the external dataset to identify missing values, data types, and potential inconsistencies.
+- `2.0-ls-DU-data-exploration`: Comprehensive Exploratory Data Analysis (EDA) focused on feature distributions and the extreme skewness of the target class.
+- `3.0-ls-DP-data-exploration-cleaned-dataset`:  Assessment of the dataset quality after the cleaning step.
+
+**Evaluation (EV) & Experimental Results**
+- `4.0-ls-EV-feature-selection-analysis`: A post-hoc analysis of the feature selection process, identifying which variables were most frequently selected during hyperparameter tuning across different models.
+- `5.0-ls-EV-models-evaluation`: Detailed performance breakdown for individual models within a specific experimental configuration.
+- `5.1-ls-EV-models-evaluation-comparison`: Comparison of different models within the same experiment setting, utilizing qualitative plots, quantitative metrics, and **Resampled Corrected t-tests** for statistical significance.
+- `5.2-ls-EV-experimental-schemas-comparison`: An "All-vs-All" comparison across different experiment settings to determine the optimal pipeline.
+
+---
 ## License
 
 This project is released under the [LICENSE](LICENSE). See the LICENSE file for details.
