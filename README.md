@@ -240,11 +240,11 @@ The `EXPERIMENTS` dictionary defines multiple configurations to test which appro
 * **Data-Level Resampling:** Utilizing `SMOTE` or `SMOTEENN` to synthetically balance the training data distributions.
 * **Minimum Expected Cost (MEC) Policy:** Shifting the final probability decision threshold to mathematically minimize the overall risk based on the cost matrix.
 
-### 🏋️ Training
+**3. Training**
 
 The training pipeline uses a rigorous **Repeated Nested Cross-Validation** approach to ensure the models generalize reliably to unseen patients.
 
-### Execution
+**4. Execution**
 To execute the training pipeline based on the currently active `EXPERIMENT_ID` (e.g., `smoteenn_auto__mec_fp1_fn10`), run the following command:
 
 ```bash
