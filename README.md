@@ -1,7 +1,7 @@
 # Cost-Sensitive Learning for Myocardial Infarction Mortality Prediction: A Static and Dynamic Ensemble Approach
 
 <a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
+    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter"  alt=""/>
 </a>
 
 ## 📖 Project Description
@@ -80,14 +80,14 @@ make requirements
 The Makefile also includes utility commands for project maintenance:
 
 
-| Command                       | Description |
-|-------------------------------| ------------- |
-| ```make help ```              | Display a list of all available commands and their descriptions.|
-| ```make lint ```              | Check code quality and formatting using Ruff. |
-| ```make format ```            | Automatically fix linting issues and format code. |
-| ```make clean ```             | Remove __pycache__ and compiled Python files  |
-| ```make clean_environment ``` | Completely remove the venv directory. |
-| ```make freeze ```            | Update the requirements.txt file with current environment state.|
+| Command                       | Description                                                      |
+|-------------------------------|------------------------------------------------------------------|
+| ```make help ```              | Display a list of all available commands and their descriptions. |
+| ```make lint ```              | Check code quality and formatting using Ruff.                    |
+| ```make format ```            | Automatically fix linting issues and format code.                |
+| ```make clean ```             | Remove __pycache__ and compiled Python files                     |
+| ```make clean_environment ``` | Completely remove the venv directory.                            |
+| ```make freeze ```            | Update the requirements.txt file with current environment state. |
 
 ---
 
@@ -111,14 +111,14 @@ make dataset
  
 **Related Configuration** (```myocardial_infarction_mortality/config.py```): The script relies on these path definitions. If you wish to change where data is stored, modify these variables:
 
-| Variable                      | Default Value                             | Description                                              |
-|-------------------------------|-------------------------------------------|----------------------------------------------------------|
-| ```EXTERNAL_DATA_DIR ```      | ```PROJ_ROOT / "data" / "external"```     | The directory where external raw data is stored.         |
-| ```EXTERNAL_FILENAME ```      | ```myocardial_infarction_external.csv```  | The final filename used by the project scripts.          |
-| ```EXTERNAL_METADATA_FILENAME ```           | ```myocardial_infarction_metadata.txt```  | The name of the metadata file.                           |
-| ```EXTERNAL_VARIABLES_FILENAME ```           | ```myocardial_infarction_variables.csv``` | The name of the file with variables list.                |
-| ```EXTERNAL_DATASET_ID ```           | ```579```                                  |  UCI dataset ID to fetch. |
-| ```EXTERNAL_FORCE_DOWNLOAD ```           | ```False```                                  |  If True, re-download and overwrite outputs even if they already exist. |
+| Variable                           | Default Value                             | Description                                                            |
+|------------------------------------|-------------------------------------------|------------------------------------------------------------------------|
+| ```EXTERNAL_DATA_DIR ```           | ```PROJ_ROOT / "data" / "external"```     | The directory where external raw data is stored.                       |
+| ```EXTERNAL_FILENAME ```           | ```myocardial_infarction_external.csv```  | The final filename used by the project scripts.                        |
+| ```EXTERNAL_METADATA_FILENAME ```  | ```myocardial_infarction_metadata.txt```  | The name of the metadata file.                                         |
+| ```EXTERNAL_VARIABLES_FILENAME ``` | ```myocardial_infarction_variables.csv``` | The name of the file with variables list.                              |
+| ```EXTERNAL_DATASET_ID ```         | ```579```                                 | UCI dataset ID to fetch.                                               |
+| ```EXTERNAL_FORCE_DOWNLOAD ```     | ```False```                               | If True, re-download and overwrite outputs even if they already exist. |
 
 --- 
 ## 📉 Data Sampling & Reduction
@@ -148,13 +148,13 @@ make dataset_time_split
 You can control how the data is reduced by modifying these variables in `myocardial_infarction_mortality/config.py`.
 
 
-| Variable      | Default Value                       | Description |
-|---------------|-------------------------------------|------------|
-| ```EXTERNAL_DATA_DIR ```      | ```PROJ_ROOT / "data" / "external"``` | The directory where external raw data is stored.      |
-| ```EXTERNAL_FILENAME ```      | ```myocardial_infarction_external.csv``` | The final filename used by the project scripts.       |
-| ```RAW_DATA_DIR ``` | ```PROJ_ROOT / "data" / "raw"```    | The directory where raw data is stored.            |
-| ```FILENAME_BASE ``` | ```myocardial_infarction```                     |  Base filename (without extension) used to build the output filename. |
-| ```SELECTED_TIME_SLOT ```   | ```admission```                     |       Time slot key used to select which features to drop. Must be a key of``EXCLUDE_FEATURES_BY_SLOT`` (e.g., "admission", "day1", "day2", "day3").|
+| Variable                  | Default Value                            | Description                                                                                                                                    |
+|---------------------------|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| ```EXTERNAL_DATA_DIR ```  | ```PROJ_ROOT / "data" / "external"```    | The directory where external raw data is stored.                                                                                               |
+| ```EXTERNAL_FILENAME ```  | ```myocardial_infarction_external.csv``` | The final filename used by the project scripts.                                                                                                |
+| ```RAW_DATA_DIR ```       | ```PROJ_ROOT / "data" / "raw"```         | The directory where raw data is stored.                                                                                                        |
+| ```FILENAME_BASE ```      | ```myocardial_infarction```              | Base filename (without extension) used to build the output filename.                                                                           |
+| ```SELECTED_TIME_SLOT ``` | ```admission```                          | Time slot key used to select which features to drop. Must be a key of``EXCLUDE_FEATURES_BY_SLOT`` (e.g., "admission", "day1", "day2", "day3"). |
 
 
 ---
@@ -188,8 +188,8 @@ This script relies on the logic defined in `myocardial_infarction_mortality/conf
 | ```SELECTED_TIME_SLOT ```          | ```admission```                      | Time slot key used to select which features to drop. Must be a key of``EXCLUDE_FEATURES_BY_SLOT`` (e.g., "admission", "day1", "day2", "day3"). |
 | ```INTERIM_DATA_DIR ```            | ```PROJ_ROOT / "data" / "interim"``` | The directory where interim data is stored.                                                                                                    |
 | ```target ```                      | ```LET_IS_BINARY```                  | Target column that must exist and must be preserved.                                                                                           |
-| ```threshold_drop_missing_rows ``` | ```0.20```                           | Drop rows with missingness strictly greater than this fraction.                                                                                                   |
-| ```threshold_drop_missing_cols ``` | ```0.30```                           |  Drop columns with missingness strictly greater than this fraction.                                                                                                   |
+| ```threshold_drop_missing_rows ``` | ```0.20```                           | Drop rows with missingness strictly greater than this fraction.                                                                                |
+| ```threshold_drop_missing_cols ``` | ```0.30```                           | Drop columns with missingness strictly greater than this fraction.                                                                             |
 
 
 ---
@@ -335,10 +335,10 @@ These models are used as the base pool for static ensembles:
 
 The training pipeline uses a rigorous **Repeated Nested Stratified Cross-Validation** approach to ensure the models generalize reliably to unseen patients.
 The **outer cross validation (k=10)** is used to assess the generalization ability of the model on the unseen dataset, while the **inner cross validation (k=5)** 
-is used to evaluate the quality of each hyperparameters combination during the tuning phase. To tune each model the **Random Search** algorithm is adopted with the **number of combinations equal to 30**. 
+is used to evaluate the quality of each hyperparameters combination during the tuning phase. To tune each model the **Random Search** algorithm is adopted with the **number of combinations equal to 30**. The whole process is **repeated 10 times**. 
 
 For non-ensemble and static ensemble models the process is the same. For DES models the training phase is divided into two steps: first, train the pool of classifiers; secondly, train the DES model. Thus, the outer training folds are split in a smaller training dataset (to tune and train the pool of classifiers, in the same way used for non-ensemble and static ensemble models)
-and the DSEL dataset (0.25 % of the outer training folds) to train the DES models. The whole process is repeated 10 times. 
+and the DSEL dataset (0.25 % of the outer training folds) to train the DES models. 
  
 **5. Execution**
 
