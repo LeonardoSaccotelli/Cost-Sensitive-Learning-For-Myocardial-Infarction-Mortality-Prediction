@@ -335,12 +335,10 @@ These models are used as the base pool for static ensembles:
 
 The training pipeline uses a rigorous **Repeated Nested Stratified Cross-Validation** approach to ensure the models generalize reliably to unseen patients.
 The outer cross validation (k=10) is used to assess the generalization ability of the model on the unseen dataset, while the inner cross validation (k=5) 
-is used to evaluate the quality of each hyperparameters combination during the tuning phase. 
+is used to evaluate the quality of each hyperparameters combination during the tuning phase. To tune each model the Random Search algorithm is adopted with the number of combinations equal to 30. 
 
-To tune each model the Random Search algorithm is adopted with the number of combinations equal to 30. For non-ensemble and static ensemble models the process is the same. For DES models the training phase is divided into two steps: first, train the pool of classifiers; secondly, train the DES model. Thus, the outer training folds are split in a smaller training dataset (to tune and train the pool of classifiers, in the same way used for non-ensemble and static ensemble models)
-and the DSEL dataset (0.25 % of the outer training folds) to train the DES models.
-
-The whole process is repeated 10 times. 
+For non-ensemble and static ensemble models the process is the same. For DES models the training phase is divided into two steps: first, train the pool of classifiers; secondly, train the DES model. Thus, the outer training folds are split in a smaller training dataset (to tune and train the pool of classifiers, in the same way used for non-ensemble and static ensemble models)
+and the DSEL dataset (0.25 % of the outer training folds) to train the DES models. The whole process is repeated 10 times. 
 
 **5. Execution**
 
