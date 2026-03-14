@@ -339,7 +339,7 @@ is used to evaluate the quality of each hyperparameters combination during the t
 
 For non-ensemble and static ensemble models the process is the same. For DES models the training phase is divided into two steps: first, train the pool of classifiers; secondly, train the DES model. Thus, the outer training folds are split in a smaller training dataset (to tune and train the pool of classifiers, in the same way used for non-ensemble and static ensemble models)
 and the DSEL dataset (0.25 % of the outer training folds) to train the DES models. The whole process is repeated 10 times. 
-
+ 
 **5. Execution**
 
 To execute the training pipeline based on the currently active `EXPERIMENT_ID` (e.g., `smoteenn_auto__mec_fp1_fn10`), run the following command:
