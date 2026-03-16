@@ -65,7 +65,6 @@ mistune==3.1.4
 mkdocs==1.6.1
 mkdocs-get-deps==0.2.0
 mlxtend==0.23.4
--e git+https://github.com/LeonardoSaccotelli/Cost-Sensitive-Learning-For-Myocardial-Infarction-Mortality-Prediction.git@87914b14bc2de623690cd5c07d616215b54a5c9a#egg=myocardial_infarction_mortality
 nbclient==0.10.2
 nbconvert==7.16.6
 nbformat==5.10.4
@@ -74,7 +73,6 @@ networkx==3.4.2
 notebook==7.4.7
 notebook_shim==0.2.4
 numpy==2.2.6
-nvidia-nccl-cu12==2.28.7
 overrides==7.7.0
 packaging==25.0
 pandas==2.3.3
