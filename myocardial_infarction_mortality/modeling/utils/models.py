@@ -35,7 +35,6 @@ def _tree_common_param_space(
     min_impurity_decrease_max: float = 0.1,
     ccp_alpha_min: float = 0.0,
     ccp_alpha_max: float = 0.01,
-    max_features_choices: Iterable[str] = ("sqrt", "log2"),
 ) -> Dict[str, Any]:
     """
     Build a shared hyperparameter search space for tree-based classifiers.
@@ -75,8 +74,6 @@ def _tree_common_param_space(
         Lower bound for ``ccp_alpha`` (inclusive).
     ccp_alpha_max : float, default 0.01
         Upper bound for ``ccp_alpha`` (exclusive).
-    max_features_choices : Iterable[str], default ('sqrt', 'log2')
-        Categorical choices for ``max_features``.
 
     Returns
     -------
@@ -85,14 +82,14 @@ def _tree_common_param_space(
         - ``<prefix>max_depth`` : ``randint``
         - ``<prefix>min_samples_split`` : ``randint``
         - ``<prefix>min_samples_leaf`` : ``randint``
-        - ``<prefix>max_features`` : ``list[str]``
         - ``<prefix>max_leaf_nodes`` : ``randint``
         - ``<prefix>min_impurity_decrease`` : ``uniform``
         - ``<prefix>ccp_alpha`` : ``uniform``
 
     Notes
     -----
-    - For ``randint(a, b)``, SciPy samples integers in ``[a, b)`` (upper bound excluded).
+    - For ``randint(a, b)``, SciPy samples integers in ``[a, b)``.
+      Note: The 'max' arguments in this function are EXCLUSIVE to match SciPy.
     - For ``uniform(loc, scale)``, SciPy samples continuous values in
       ``[loc, loc + scale)``.
     - The returned dictionary is designed to be merged into a larger search space
@@ -109,7 +106,6 @@ def _tree_common_param_space(
         f"{prefix}max_depth": randint(max_depth_min, max_depth_max),
         f"{prefix}min_samples_split": randint(min_samples_split_min, min_samples_split_max),
         f"{prefix}min_samples_leaf": randint(min_samples_leaf_min, min_samples_leaf_max),
-        f"{prefix}max_features": list(max_features_choices),
         f"{prefix}max_leaf_nodes": randint(max_leaf_nodes_min, max_leaf_nodes_max),
         f"{prefix}min_impurity_decrease": uniform(
             min_impurity_decrease_min,
@@ -494,7 +490,10 @@ def get_static_model_and_search_space(
                 "random_state": random_state,
                 "class_weight": class_weight,
             },
-            "param_dist": _tree_common_param_space(),
+            "param_dist": {
+                "classifier__max_features": ["sqrt", "log2"],
+                **_tree_common_param_space()
+            }
         },
         "RandomForestClassifier": {
             "model_class": RandomForestClassifier,
@@ -514,6 +513,7 @@ def get_static_model_and_search_space(
                 # Controls the size of the bootstrap sample (the subset of data)
                 # used to train each individual decision tree in the forest: [0.5, 0.5 + 0.4] = [0.5, 0.9]
                 "classifier__max_samples": uniform(0.5, 0.4),
+                "classifier__max_features": ["sqrt", "log2", None],
                 **_tree_common_param_space(),
             },
         },
@@ -527,15 +527,17 @@ def get_static_model_and_search_space(
                     random_state=random_state,
                     class_weight=class_weight,
                 ),
+                "bootstrap": True,
+                "bootstrap_features": False,
+                "max_features": 1.0
             },
             "param_dist": {
                 # --- Bagging-level hyperparameters ---
                 # Number of trees in the ensemble
                 "classifier__n_estimators": randint(100, 1000),
-                # Fraction of samples used per base estimator: [0.5, 1.0)
-                "classifier__max_samples": uniform(0.5, 0.5),
-                # Fraction of features used per base estimator: [0.5, 1.0)
-                "classifier__max_features": uniform(0.5, 0.5),
+                # Controls the size of the bootstrap sample (the subset of data)
+                # used to train each individual decision tree in the forest: [0.5, 0.5 + 0.4] = [0.5, 0.9]
+                "classifier__max_samples": uniform(0.5, 0.4),
                 # --- Internal DecisionTree hyperparameters ---
                 # Reuse the common tree space but for the *internal* estimator
                 # i.e. "classifier__estimator__max_depth", etc.
