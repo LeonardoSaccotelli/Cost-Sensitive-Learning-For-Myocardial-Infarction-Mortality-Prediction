@@ -1,6 +1,8 @@
 model,recall_count,recall_mean,recall_std,recall_min,recall_25%,recall_50%,recall_75%,recall_max
-VotingClassifier (Baseline),100.0,0.33144615384615383,0.1432997938333376,0.0,0.24,0.32,0.40576923076923077,0.72
-VotingClassifier (Cost-sensitive + Minimum Expected Cost),100.0,1.0,0.0,1.0,1.0,1.0,1.0,1.0
-VotingClassifier (Cost-sensitive + Standard Threshold),100.0,0.8662153846153845,0.09048522595535417,0.6,0.8319230769230769,0.88,0.92,1.0
-VotingClassifier (SMOTE + Minimum Expected Cost),100.0,0.9984153846153846,0.007803255827293258,0.96,1.0,1.0,1.0,1.0
-VotingClassifier (SMOTE + Standard Threshold),100.0,0.6442769230769231,0.17332058545417847,0.2,0.52,0.66,0.8,1.0
+VotingClassifier (Balanced + MEC),100.0,0.9984000000000001,0.009715134501582486,0.92,1.0,1.0,1.0,1.0
+VotingClassifier (Balanced + STD),100.0,0.7096923076923076,0.11919289069219094,0.32,0.64,0.72,0.8,1.0
+VotingClassifier (Baseline),100.0,0.33144615384615383,0.14329979383333763,0.0,0.24,0.32,0.40576923076923077,0.72
+VotingClassifier (Cost-sensitive + MEC),100.0,1.0,0.0,1.0,1.0,1.0,1.0,1.0
+VotingClassifier (Cost-sensitive + STD),100.0,0.8662153846153845,0.09048522595535419,0.6,0.8319230769230769,0.88,0.92,1.0
+VotingClassifier (SMOTE + MEC),100.0,0.9984153846153846,0.007803255827293258,0.96,1.0,1.0,1.0,1.0
+VotingClassifier (SMOTE + STD),100.0,0.6442769230769231,0.17332058545417847,0.2,0.52,0.66,0.8,1.0

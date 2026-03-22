@@ -1,21 +1,43 @@
 Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
-roc_auc,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.014089686629160214,-0.5037255154475294,0.61557335338878,False,No Diff
-roc_auc,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),-0.013144995355521716,-0.4896762750995208,0.6254463031386106,False,No Diff
-roc_auc,LogisticRegression (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),-0.00807565066512439,-0.2967310987279323,0.7672934586726392,False,No Diff
-roc_auc,LogisticRegression (Baseline),LogisticRegression (SMOTE + Standard Threshold),-0.008945141700404835,-0.31040737450082834,0.7569037263928254,False,No Diff
-roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),0.014089686629160214,0.5037255154475294,0.61557335338878,False,No Diff
-roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),0.0009446912736384983,0.04332342482605541,0.9655309790341458,False,No Diff
-roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),0.006014035964035824,0.2526220861694898,0.8010840347969714,False,No Diff
-roc_auc,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),0.005144544928755379,0.3132594725731747,0.7547425537407229,False,No Diff
-roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),0.013144995355521716,0.4896762750995208,0.6254463031386106,False,No Diff
-roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.0009446912736384983,-0.04332342482605541,0.9655309790341458,False,No Diff
-roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.005069344690397326,0.20136619718372034,0.8408254034522629,False,No Diff
-roc_auc,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),0.004199853655116881,0.17993096986451076,0.8575745431133064,False,No Diff
-roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),0.00807565066512439,0.2967310987279323,0.7672934586726392,False,No Diff
-roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.006014035964035824,-0.2526220861694898,0.8010840347969714,False,No Diff
-roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.005069344690397326,-0.20136619718372034,0.8408254034522629,False,No Diff
-roc_auc,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.0008694910352804452,-0.036657260622355275,0.970832101048989,False,No Diff
-roc_auc,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Baseline),0.008945141700404835,0.31040737450082834,0.7569037263928254,False,No Diff
-roc_auc,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),-0.005144544928755379,-0.3132594725731747,0.7547425537407229,False,No Diff
-roc_auc,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),-0.004199853655116881,-0.17993096986451076,0.8575745431133064,False,No Diff
-roc_auc,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.0008694910352804452,0.036657260622355275,0.970832101048989,False,No Diff
+roc_auc,LogisticRegression (Balanced + MEC),LogisticRegression (Balanced + STD),6.860683176468374e-05,0.003047994639600468,0.997574189360374,False,No Diff
+roc_auc,LogisticRegression (Balanced + MEC),LogisticRegression (Baseline),0.012658223355591747,0.4944131238820152,0.6221097864908908,False,No Diff
+roc_auc,LogisticRegression (Balanced + MEC),LogisticRegression (Cost-sensitive + MEC),-0.0014314632735686894,-0.05731337196289007,0.9544110879924059,False,No Diff
+roc_auc,LogisticRegression (Balanced + MEC),LogisticRegression (Cost-sensitive + STD),-0.00048677199993019116,-0.020257397726931956,0.9838788124791672,False,No Diff
+roc_auc,LogisticRegression (Balanced + MEC),LogisticRegression (SMOTE + MEC),0.004582572690467135,0.20806760958880494,0.8356036239073696,False,No Diff
+roc_auc,LogisticRegression (Balanced + MEC),LogisticRegression (SMOTE + STD),0.0037130816551868007,0.1557430191550942,0.8765527111265246,False,No Diff
+roc_auc,LogisticRegression (Balanced + STD),LogisticRegression (Balanced + MEC),-6.860683176468374e-05,-0.003047994639600468,0.997574189360374,False,No Diff
+roc_auc,LogisticRegression (Balanced + STD),LogisticRegression (Baseline),0.012589616523827063,0.4703284518521471,0.6391548812599748,False,No Diff
+roc_auc,LogisticRegression (Balanced + STD),LogisticRegression (Cost-sensitive + MEC),-0.0015000701053333731,-0.0669502468833846,0.946756334833279,False,No Diff
+roc_auc,LogisticRegression (Balanced + STD),LogisticRegression (Cost-sensitive + STD),-0.0005553788316948749,-0.025250146734594223,0.9799062650076471,False,No Diff
+roc_auc,LogisticRegression (Balanced + STD),LogisticRegression (SMOTE + MEC),0.004513965858702451,0.21729020150938275,0.8284293844546907,False,No Diff
+roc_auc,LogisticRegression (Balanced + STD),LogisticRegression (SMOTE + STD),0.003644474823422117,0.14964106299975066,0.8813522388132252,False,No Diff
+roc_auc,LogisticRegression (Baseline),LogisticRegression (Balanced + MEC),-0.012658223355591747,-0.4944131238820152,0.6221097864908908,False,No Diff
+roc_auc,LogisticRegression (Baseline),LogisticRegression (Balanced + STD),-0.012589616523827063,-0.4703284518521471,0.6391548812599748,False,No Diff
+roc_auc,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + MEC),-0.014089686629160436,-0.49648577867248284,0.6206523308375181,False,No Diff
+roc_auc,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + STD),-0.013144995355521938,-0.47246833489364476,0.6376324178244042,False,No Diff
+roc_auc,LogisticRegression (Baseline),LogisticRegression (SMOTE + MEC),-0.008075650665124612,-0.3088555526100929,0.7580804293323402,False,No Diff
+roc_auc,LogisticRegression (Baseline),LogisticRegression (SMOTE + STD),-0.008945141700404946,-0.3062404799779303,0.7600646520494966,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + MEC),LogisticRegression (Balanced + MEC),0.0014314632735686894,0.05731337196289007,0.9544110879924059,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + MEC),LogisticRegression (Balanced + STD),0.0015000701053333731,0.0669502468833846,0.946756334833279,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + MEC),LogisticRegression (Baseline),0.014089686629160436,0.49648577867248284,0.6206523308375181,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + MEC),LogisticRegression (Cost-sensitive + STD),0.0009446912736384983,0.04918081726244183,0.9608742834112365,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + MEC),LogisticRegression (SMOTE + MEC),0.006014035964035824,0.2691362559049082,0.7883849406092136,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + MEC),LogisticRegression (SMOTE + STD),0.00514454492875549,0.23306328076349692,0.8161934587986154,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + STD),LogisticRegression (Balanced + MEC),0.00048677199993019116,0.020257397726931956,0.9838788124791672,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + STD),LogisticRegression (Balanced + STD),0.0005553788316948749,0.025250146734594223,0.9799062650076471,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + STD),LogisticRegression (Baseline),0.013144995355521938,0.47246833489364476,0.6376324178244042,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + STD),LogisticRegression (Cost-sensitive + MEC),-0.0009446912736384983,-0.04918081726244183,0.9608742834112365,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + STD),LogisticRegression (SMOTE + MEC),0.005069344690397326,0.21873202185741517,0.827309090518791,False,No Diff
+roc_auc,LogisticRegression (Cost-sensitive + STD),LogisticRegression (SMOTE + STD),0.004199853655116992,0.1786453528398814,0.8585812558598424,False,No Diff
+roc_auc,LogisticRegression (SMOTE + MEC),LogisticRegression (Balanced + MEC),-0.004582572690467135,-0.20806760958880494,0.8356036239073696,False,No Diff
+roc_auc,LogisticRegression (SMOTE + MEC),LogisticRegression (Balanced + STD),-0.004513965858702451,-0.21729020150938275,0.8284293844546907,False,No Diff
+roc_auc,LogisticRegression (SMOTE + MEC),LogisticRegression (Baseline),0.008075650665124612,0.3088555526100929,0.7580804293323402,False,No Diff
+roc_auc,LogisticRegression (SMOTE + MEC),LogisticRegression (Cost-sensitive + MEC),-0.006014035964035824,-0.2691362559049082,0.7883849406092136,False,No Diff
+roc_auc,LogisticRegression (SMOTE + MEC),LogisticRegression (Cost-sensitive + STD),-0.005069344690397326,-0.21873202185741517,0.827309090518791,False,No Diff
+roc_auc,LogisticRegression (SMOTE + MEC),LogisticRegression (SMOTE + STD),-0.0008694910352803342,-0.0347235655004809,0.9723700853935905,False,No Diff
+roc_auc,LogisticRegression (SMOTE + STD),LogisticRegression (Balanced + MEC),-0.0037130816551868007,-0.1557430191550942,0.8765527111265246,False,No Diff
+roc_auc,LogisticRegression (SMOTE + STD),LogisticRegression (Balanced + STD),-0.003644474823422117,-0.14964106299975066,0.8813522388132252,False,No Diff
+roc_auc,LogisticRegression (SMOTE + STD),LogisticRegression (Baseline),0.008945141700404946,0.3062404799779303,0.7600646520494966,False,No Diff
+roc_auc,LogisticRegression (SMOTE + STD),LogisticRegression (Cost-sensitive + MEC),-0.00514454492875549,-0.23306328076349692,0.8161934587986154,False,No Diff
+roc_auc,LogisticRegression (SMOTE + STD),LogisticRegression (Cost-sensitive + STD),-0.004199853655116992,-0.1786453528398814,0.8585812558598424,False,No Diff
+roc_auc,LogisticRegression (SMOTE + STD),LogisticRegression (SMOTE + MEC),0.0008694910352803342,0.0347235655004809,0.9723700853935905,False,No Diff

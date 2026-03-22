@@ -1,21 +1,43 @@
 Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
-roc_auc,RandomForestClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.054111614701088606,-1.7487709447708186,0.08343014134334684,False,No Diff
-roc_auc,RandomForestClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Standard Threshold),-0.05340982526245697,-1.710889929081376,0.09023318608863827,False,No Diff
-roc_auc,RandomForestClassifier (Baseline),RandomForestClassifier (SMOTE + Minimum Expected Cost),-0.001765725940726215,-0.05376482101103461,0.9572308835837415,False,No Diff
-roc_auc,RandomForestClassifier (Baseline),RandomForestClassifier (SMOTE + Standard Threshold),-0.0018227022977025387,-0.054779640620828865,0.9564244174102192,False,No Diff
-roc_auc,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Baseline),0.054111614701088606,1.7487709447708186,0.08343014134334684,False,No Diff
-roc_auc,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.0007017894386316392,0.036498545161627184,0.9709583329571738,False,No Diff
-roc_auc,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.05234588876036239,2.1836806320662663,0.0313478459865661,True,Better
-roc_auc,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),0.05228891240338607,2.376244682035598,0.01941384594175642,True,Better
-roc_auc,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Baseline),0.05340982526245697,1.710889929081376,0.09023318608863827,False,No Diff
-roc_auc,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.0007017894386316392,-0.036498545161627184,0.9709583329571738,False,No Diff
-roc_auc,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.05164409932173075,2.213619756639729,0.029150449545024378,True,Better
-roc_auc,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Standard Threshold),0.05158712296475443,2.1822846449680666,0.03145373566917231,True,Better
-roc_auc,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Baseline),0.001765725940726215,0.05376482101103461,0.9572308835837415,False,No Diff
-roc_auc,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.05234588876036239,-2.1836806320662663,0.0313478459865661,True,Worse
-roc_auc,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),-0.05164409932173075,-2.213619756639729,0.029150449545024378,True,Worse
-roc_auc,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-5.697635697632375e-05,-0.0021430356108399096,0.9982944186877305,False,No Diff
-roc_auc,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Baseline),0.0018227022977025387,0.054779640620828865,0.9564244174102192,False,No Diff
-roc_auc,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),-0.05228891240338607,-2.376244682035598,0.01941384594175642,True,Worse
-roc_auc,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Standard Threshold),-0.05158712296475443,-2.1822846449680666,0.03145373566917231,True,Worse
-roc_auc,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),5.697635697632375e-05,0.0021430356108399096,0.9982944186877305,False,No Diff
+roc_auc,RandomForestClassifier (Balanced + MEC),RandomForestClassifier (Balanced + STD),0.0030853935538143196,0.1595703873793876,0.8735446116370124,False,No Diff
+roc_auc,RandomForestClassifier (Balanced + MEC),RandomForestClassifier (Baseline),0.05578168848695164,1.835544148674793,0.06942702777561449,False,No Diff
+roc_auc,RandomForestClassifier (Balanced + MEC),RandomForestClassifier (Cost-sensitive + MEC),0.0016700737858631465,0.07901145827741544,0.9371829957843356,False,No Diff
+roc_auc,RandomForestClassifier (Balanced + MEC),RandomForestClassifier (Cost-sensitive + STD),0.0023718632244947857,0.11909929856559223,0.9054380268635676,False,No Diff
+roc_auc,RandomForestClassifier (Balanced + MEC),RandomForestClassifier (SMOTE + MEC),0.054015962546225316,2.2196775865031952,0.02872257403647862,True,Better
+roc_auc,RandomForestClassifier (Balanced + MEC),RandomForestClassifier (SMOTE + STD),0.0539589861892491,2.3465161717758716,0.020942180444623454,True,Better
+roc_auc,RandomForestClassifier (Balanced + STD),RandomForestClassifier (Balanced + MEC),-0.0030853935538143196,-0.1595703873793876,0.8735446116370124,False,No Diff
+roc_auc,RandomForestClassifier (Balanced + STD),RandomForestClassifier (Baseline),0.05269629493313732,1.690255300241096,0.09412561778033933,False,No Diff
+roc_auc,RandomForestClassifier (Balanced + STD),RandomForestClassifier (Cost-sensitive + MEC),-0.001415319767951173,-0.07257933267887688,0.9422873062090245,False,No Diff
+roc_auc,RandomForestClassifier (Balanced + STD),RandomForestClassifier (Cost-sensitive + STD),-0.0007135303293195339,-0.03446919808833656,0.9725724070248767,False,No Diff
+roc_auc,RandomForestClassifier (Balanced + STD),RandomForestClassifier (SMOTE + MEC),0.050930568992410996,2.2509518526230754,0.02659985309153752,True,Better
+roc_auc,RandomForestClassifier (Balanced + STD),RandomForestClassifier (SMOTE + STD),0.05087359263543478,2.2606197027893282,0.025972101966832348,True,Better
+roc_auc,RandomForestClassifier (Baseline),RandomForestClassifier (Balanced + MEC),-0.05578168848695164,-1.835544148674793,0.06942702777561449,False,No Diff
+roc_auc,RandomForestClassifier (Baseline),RandomForestClassifier (Balanced + STD),-0.05269629493313732,-1.690255300241096,0.09412561778033933,False,No Diff
+roc_auc,RandomForestClassifier (Baseline),RandomForestClassifier (Cost-sensitive + MEC),-0.054111614701088495,-1.7381063356998152,0.08530133787406918,False,No Diff
+roc_auc,RandomForestClassifier (Baseline),RandomForestClassifier (Cost-sensitive + STD),-0.053409825262456856,-1.688941698717298,0.09437796813719987,False,No Diff
+roc_auc,RandomForestClassifier (Baseline),RandomForestClassifier (SMOTE + MEC),-0.001765725940726326,-0.05616075533763786,0.9553269333861001,False,No Diff
+roc_auc,RandomForestClassifier (Baseline),RandomForestClassifier (SMOTE + STD),-0.0018227022977025387,-0.05218870763148963,0.9584834916623808,False,No Diff
+roc_auc,RandomForestClassifier (Cost-sensitive + MEC),RandomForestClassifier (Balanced + MEC),-0.0016700737858631465,-0.07901145827741544,0.9371829957843356,False,No Diff
+roc_auc,RandomForestClassifier (Cost-sensitive + MEC),RandomForestClassifier (Balanced + STD),0.001415319767951173,0.07257933267887688,0.9422873062090245,False,No Diff
+roc_auc,RandomForestClassifier (Cost-sensitive + MEC),RandomForestClassifier (Baseline),0.054111614701088495,1.7381063356998152,0.08530133787406918,False,No Diff
+roc_auc,RandomForestClassifier (Cost-sensitive + MEC),RandomForestClassifier (Cost-sensitive + STD),0.0007017894386316392,0.03763521533648335,0.9700543162511783,False,No Diff
+roc_auc,RandomForestClassifier (Cost-sensitive + MEC),RandomForestClassifier (SMOTE + MEC),0.05234588876036217,2.332111377314572,0.021720305673441263,True,Better
+roc_auc,RandomForestClassifier (Cost-sensitive + MEC),RandomForestClassifier (SMOTE + STD),0.052288912403385956,2.1630566302426057,0.0329442338238891,True,Better
+roc_auc,RandomForestClassifier (Cost-sensitive + STD),RandomForestClassifier (Balanced + MEC),-0.0023718632244947857,-0.11909929856559223,0.9054380268635676,False,No Diff
+roc_auc,RandomForestClassifier (Cost-sensitive + STD),RandomForestClassifier (Balanced + STD),0.0007135303293195339,0.03446919808833656,0.9725724070248767,False,No Diff
+roc_auc,RandomForestClassifier (Cost-sensitive + STD),RandomForestClassifier (Baseline),0.053409825262456856,1.688941698717298,0.09437796813719987,False,No Diff
+roc_auc,RandomForestClassifier (Cost-sensitive + STD),RandomForestClassifier (Cost-sensitive + MEC),-0.0007017894386316392,-0.03763521533648335,0.9700543162511783,False,No Diff
+roc_auc,RandomForestClassifier (Cost-sensitive + STD),RandomForestClassifier (SMOTE + MEC),0.05164409932173053,2.1841180690579103,0.031314729068198884,True,Better
+roc_auc,RandomForestClassifier (Cost-sensitive + STD),RandomForestClassifier (SMOTE + STD),0.05158712296475432,2.173831475671318,0.03210161034356585,True,Better
+roc_auc,RandomForestClassifier (SMOTE + MEC),RandomForestClassifier (Balanced + MEC),-0.054015962546225316,-2.2196775865031952,0.02872257403647862,True,Worse
+roc_auc,RandomForestClassifier (SMOTE + MEC),RandomForestClassifier (Balanced + STD),-0.050930568992410996,-2.2509518526230754,0.02659985309153752,True,Worse
+roc_auc,RandomForestClassifier (SMOTE + MEC),RandomForestClassifier (Baseline),0.001765725940726326,0.05616075533763786,0.9553269333861001,False,No Diff
+roc_auc,RandomForestClassifier (SMOTE + MEC),RandomForestClassifier (Cost-sensitive + MEC),-0.05234588876036217,-2.332111377314572,0.021720305673441263,True,Worse
+roc_auc,RandomForestClassifier (SMOTE + MEC),RandomForestClassifier (Cost-sensitive + STD),-0.05164409932173053,-2.1841180690579103,0.031314729068198884,True,Worse
+roc_auc,RandomForestClassifier (SMOTE + MEC),RandomForestClassifier (SMOTE + STD),-5.697635697621273e-05,-0.0020459905864281774,0.9983716539611087,False,No Diff
+roc_auc,RandomForestClassifier (SMOTE + STD),RandomForestClassifier (Balanced + MEC),-0.0539589861892491,-2.3465161717758716,0.020942180444623454,True,Worse
+roc_auc,RandomForestClassifier (SMOTE + STD),RandomForestClassifier (Balanced + STD),-0.05087359263543478,-2.2606197027893282,0.025972101966832348,True,Worse
+roc_auc,RandomForestClassifier (SMOTE + STD),RandomForestClassifier (Baseline),0.0018227022977025387,0.05218870763148963,0.9584834916623808,False,No Diff
+roc_auc,RandomForestClassifier (SMOTE + STD),RandomForestClassifier (Cost-sensitive + MEC),-0.052288912403385956,-2.1630566302426057,0.0329442338238891,True,Worse
+roc_auc,RandomForestClassifier (SMOTE + STD),RandomForestClassifier (Cost-sensitive + STD),-0.05158712296475432,-2.173831475671318,0.03210161034356585,True,Worse
+roc_auc,RandomForestClassifier (SMOTE + STD),RandomForestClassifier (SMOTE + MEC),5.697635697621273e-05,0.0020459905864281774,0.9983716539611087,False,No Diff

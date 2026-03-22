@@ -1,21 +1,43 @@
 Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
-accuracy,RandomForestClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.6962509070386198,179.95659139605831,2.2929310989287937e-126,True,Better
-accuracy,RandomForestClassifier (Baseline),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.31823873256470214,7.754144502614708,8.038942010117442e-12,True,Better
-accuracy,RandomForestClassifier (Baseline),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.6962509070386198,178.57498903684936,4.9062410634467866e-126,True,Better
-accuracy,RandomForestClassifier (Baseline),RandomForestClassifier (SMOTE + Standard Threshold),0.061510521647988425,3.67189858067432,0.00039043914665600247,True,Better
-accuracy,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.6962509070386198,-179.95659139605831,2.2929310989287937e-126,True,Worse
-accuracy,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),-0.37801217447391766,-9.260544979074236,4.487195391859807e-15,True,Worse
-accuracy,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
-accuracy,RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.6347403853906314,-38.547327418064256,1.9982225509654075e-61,True,Worse
-accuracy,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Baseline),-0.31823873256470214,-7.754144502614708,8.038942010117442e-12,True,Worse
-accuracy,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.37801217447391766,9.260544979074236,4.487195391859807e-15,True,Better
-accuracy,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.37801217447391766,9.260162676092826,4.495811286566787e-15,True,Better
-accuracy,RandomForestClassifier (Cost-sensitive + Standard Threshold),RandomForestClassifier (SMOTE + Standard Threshold),-0.2567282109167137,-5.8524541538603065,6.296253229478306e-08,True,Worse
-accuracy,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Baseline),-0.6962509070386198,-178.57498903684936,4.9062410634467866e-126,True,Worse
-accuracy,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.0,0.0,1.0,False,No Diff
-accuracy,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (Cost-sensitive + Standard Threshold),-0.37801217447391766,-9.260162676092826,4.495811286566787e-15,True,Worse
-accuracy,RandomForestClassifier (SMOTE + Minimum Expected Cost),RandomForestClassifier (SMOTE + Standard Threshold),-0.6347403853906314,-38.97632682577174,7.1435456755591785e-62,True,Worse
-accuracy,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Baseline),-0.061510521647988425,-3.67189858067432,0.00039043914665600247,True,Worse
-accuracy,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Minimum Expected Cost),0.6347403853906314,38.547327418064256,1.9982225509654075e-61,True,Better
-accuracy,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (Cost-sensitive + Standard Threshold),0.2567282109167137,5.8524541538603065,6.296253229478306e-08,True,Better
-accuracy,RandomForestClassifier (SMOTE + Standard Threshold),RandomForestClassifier (SMOTE + Minimum Expected Cost),0.6347403853906314,38.97632682577174,7.1435456755591785e-62,True,Better
+accuracy,RandomForestClassifier (Balanced + MEC),RandomForestClassifier (Balanced + STD),-0.6436333951463358,-54.32393913039207,1.6615366645511027e-75,True,Worse
+accuracy,RandomForestClassifier (Balanced + MEC),RandomForestClassifier (Baseline),-0.6962509070386198,-180.42309662487813,1.7758775345398077e-126,True,Worse
+accuracy,RandomForestClassifier (Balanced + MEC),RandomForestClassifier (Cost-sensitive + MEC),0.0,0.0,1.0,False,No Diff
+accuracy,RandomForestClassifier (Balanced + MEC),RandomForestClassifier (Cost-sensitive + STD),-0.37801217447391766,-9.268529393055957,4.310974192447883e-15,True,Worse
+accuracy,RandomForestClassifier (Balanced + MEC),RandomForestClassifier (SMOTE + MEC),0.0,0.0,1.0,False,No Diff
+accuracy,RandomForestClassifier (Balanced + MEC),RandomForestClassifier (SMOTE + STD),-0.6347403853906314,-38.885492894744885,8.874429299733102e-62,True,Worse
+accuracy,RandomForestClassifier (Balanced + STD),RandomForestClassifier (Balanced + MEC),0.6436333951463358,54.32393913039207,1.6615366645511027e-75,True,Better
+accuracy,RandomForestClassifier (Balanced + STD),RandomForestClassifier (Baseline),-0.05261751189228403,-4.118379937778862,7.91916085548786e-05,True,Worse
+accuracy,RandomForestClassifier (Balanced + STD),RandomForestClassifier (Cost-sensitive + MEC),0.6436333951463358,54.16838504988416,2.1868951000229696e-75,True,Better
+accuracy,RandomForestClassifier (Balanced + STD),RandomForestClassifier (Cost-sensitive + STD),0.2656212206724181,5.972719441741835,3.670871287077797e-08,True,Better
+accuracy,RandomForestClassifier (Balanced + STD),RandomForestClassifier (SMOTE + MEC),0.6436333951463358,54.13000647838548,2.3405374518413605e-75,True,Better
+accuracy,RandomForestClassifier (Balanced + STD),RandomForestClassifier (SMOTE + STD),0.008893009755704395,0.449768077399428,0.6538609195993356,False,No Diff
+accuracy,RandomForestClassifier (Baseline),RandomForestClassifier (Balanced + MEC),0.6962509070386198,180.42309662487813,1.7758775345398077e-126,True,Better
+accuracy,RandomForestClassifier (Baseline),RandomForestClassifier (Balanced + STD),0.05261751189228403,4.118379937778862,7.91916085548786e-05,True,Better
+accuracy,RandomForestClassifier (Baseline),RandomForestClassifier (Cost-sensitive + MEC),0.6962509070386198,187.37908823905047,4.242737399749844e-128,True,Better
+accuracy,RandomForestClassifier (Baseline),RandomForestClassifier (Cost-sensitive + STD),0.31823873256470214,7.699407462796263,1.0510064909609325e-11,True,Better
+accuracy,RandomForestClassifier (Baseline),RandomForestClassifier (SMOTE + MEC),0.6962509070386198,179.92242341020577,2.3363103895000555e-126,True,Better
+accuracy,RandomForestClassifier (Baseline),RandomForestClassifier (SMOTE + STD),0.061510521647988425,3.686154505691709,0.00037172332186574534,True,Better
+accuracy,RandomForestClassifier (Cost-sensitive + MEC),RandomForestClassifier (Balanced + MEC),0.0,0.0,1.0,False,No Diff
+accuracy,RandomForestClassifier (Cost-sensitive + MEC),RandomForestClassifier (Balanced + STD),-0.6436333951463358,-54.16838504988416,2.1868951000229696e-75,True,Worse
+accuracy,RandomForestClassifier (Cost-sensitive + MEC),RandomForestClassifier (Baseline),-0.6962509070386198,-187.37908823905047,4.242737399749844e-128,True,Worse
+accuracy,RandomForestClassifier (Cost-sensitive + MEC),RandomForestClassifier (Cost-sensitive + STD),-0.37801217447391766,-9.261995812173694,4.4546480254083604e-15,True,Worse
+accuracy,RandomForestClassifier (Cost-sensitive + MEC),RandomForestClassifier (SMOTE + MEC),0.0,0.0,1.0,False,No Diff
+accuracy,RandomForestClassifier (Cost-sensitive + MEC),RandomForestClassifier (SMOTE + STD),-0.6347403853906314,-39.00476627568728,6.6750084750203365e-62,True,Worse
+accuracy,RandomForestClassifier (Cost-sensitive + STD),RandomForestClassifier (Balanced + MEC),0.37801217447391766,9.268529393055957,4.310974192447883e-15,True,Better
+accuracy,RandomForestClassifier (Cost-sensitive + STD),RandomForestClassifier (Balanced + STD),-0.2656212206724181,-5.972719441741835,3.670871287077797e-08,True,Worse
+accuracy,RandomForestClassifier (Cost-sensitive + STD),RandomForestClassifier (Baseline),-0.31823873256470214,-7.699407462796263,1.0510064909609325e-11,True,Worse
+accuracy,RandomForestClassifier (Cost-sensitive + STD),RandomForestClassifier (Cost-sensitive + MEC),0.37801217447391766,9.261995812173694,4.4546480254083604e-15,True,Better
+accuracy,RandomForestClassifier (Cost-sensitive + STD),RandomForestClassifier (SMOTE + MEC),0.37801217447391766,9.272619699934799,4.223393812148808e-15,True,Better
+accuracy,RandomForestClassifier (Cost-sensitive + STD),RandomForestClassifier (SMOTE + STD),-0.2567282109167137,-5.790946670133342,8.281639053743386e-08,True,Worse
+accuracy,RandomForestClassifier (SMOTE + MEC),RandomForestClassifier (Balanced + MEC),0.0,0.0,1.0,False,No Diff
+accuracy,RandomForestClassifier (SMOTE + MEC),RandomForestClassifier (Balanced + STD),-0.6436333951463358,-54.13000647838548,2.3405374518413605e-75,True,Worse
+accuracy,RandomForestClassifier (SMOTE + MEC),RandomForestClassifier (Baseline),-0.6962509070386198,-179.92242341020577,2.3363103895000555e-126,True,Worse
+accuracy,RandomForestClassifier (SMOTE + MEC),RandomForestClassifier (Cost-sensitive + MEC),0.0,0.0,1.0,False,No Diff
+accuracy,RandomForestClassifier (SMOTE + MEC),RandomForestClassifier (Cost-sensitive + STD),-0.37801217447391766,-9.272619699934799,4.223393812148808e-15,True,Worse
+accuracy,RandomForestClassifier (SMOTE + MEC),RandomForestClassifier (SMOTE + STD),-0.6347403853906314,-38.52316028653213,2.1180653767756516e-61,True,Worse
+accuracy,RandomForestClassifier (SMOTE + STD),RandomForestClassifier (Balanced + MEC),0.6347403853906314,38.885492894744885,8.874429299733102e-62,True,Better
+accuracy,RandomForestClassifier (SMOTE + STD),RandomForestClassifier (Balanced + STD),-0.008893009755704395,-0.449768077399428,0.6538609195993356,False,No Diff
+accuracy,RandomForestClassifier (SMOTE + STD),RandomForestClassifier (Baseline),-0.061510521647988425,-3.686154505691709,0.00037172332186574534,True,Worse
+accuracy,RandomForestClassifier (SMOTE + STD),RandomForestClassifier (Cost-sensitive + MEC),0.6347403853906314,39.00476627568728,6.6750084750203365e-62,True,Better
+accuracy,RandomForestClassifier (SMOTE + STD),RandomForestClassifier (Cost-sensitive + STD),0.2567282109167137,5.790946670133342,8.281639053743386e-08,True,Better
+accuracy,RandomForestClassifier (SMOTE + STD),RandomForestClassifier (SMOTE + MEC),0.6347403853906314,38.52316028653213,2.1180653767756516e-61,True,Better

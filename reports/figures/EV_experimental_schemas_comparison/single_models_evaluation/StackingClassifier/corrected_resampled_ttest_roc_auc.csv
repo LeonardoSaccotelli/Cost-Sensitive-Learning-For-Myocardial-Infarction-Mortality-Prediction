@@ -1,21 +1,43 @@
 Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
-roc_auc,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.0005553972343445013,0.029792374239102103,0.9762926178048332,False,No Diff
-roc_auc,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + Standard Threshold),-0.00041935170093088114,-0.02339324505570842,0.9813836799032035,False,No Diff
-roc_auc,StackingClassifier (Baseline),StackingClassifier (SMOTE + Minimum Expected Cost),0.007775496433390816,0.4222383005478673,0.6737666691792752,False,No Diff
-roc_auc,StackingClassifier (Baseline),StackingClassifier (SMOTE + Standard Threshold),0.005361853935537897,0.3021270074035492,0.7631890481355155,False,No Diff
-roc_auc,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Baseline),-0.0005553972343445013,-0.029792374239102103,0.9762926178048332,False,No Diff
-roc_auc,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),-0.0009747489352753824,-0.05559602238036921,0.9557756804782219,False,No Diff
-roc_auc,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),0.007220099199046315,0.359703195446682,0.7198352648937671,False,No Diff
-roc_auc,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),0.004806456701193396,0.3063265743056753,0.75999930117546,False,No Diff
-roc_auc,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Baseline),0.00041935170093088114,0.02339324505570842,0.9813836799032035,False,No Diff
-roc_auc,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.0009747489352753824,0.05559602238036921,0.9557756804782219,False,No Diff
-roc_auc,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.008194848134321697,0.3968821040417894,0.6923086790697419,False,No Diff
-roc_auc,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),0.005781205636468778,0.30190874166785264,0.7633549422728589,False,No Diff
-roc_auc,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Baseline),-0.007775496433390816,-0.4222383005478673,0.6737666691792752,False,No Diff
-roc_auc,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.007220099199046315,-0.359703195446682,0.7198352648937671,False,No Diff
-roc_auc,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),-0.008194848134321697,-0.3968821040417894,0.6923086790697419,False,No Diff
-roc_auc,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),-0.002413642497852919,-0.11884075573838035,0.9056423283717885,False,No Diff
-roc_auc,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Baseline),-0.005361853935537897,-0.3021270074035492,0.7631890481355155,False,No Diff
-roc_auc,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),-0.004806456701193396,-0.3063265743056753,0.75999930117546,False,No Diff
-roc_auc,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),-0.005781205636468778,-0.30190874166785264,0.7633549422728589,False,No Diff
-roc_auc,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.002413642497852919,0.11884075573838035,0.9056423283717885,False,No Diff
+roc_auc,StackingClassifier (Balanced + MEC),StackingClassifier (Balanced + STD),-0.0002206977233293328,-0.012177204235990375,0.9903087426690709,False,No Diff
+roc_auc,StackingClassifier (Balanced + MEC),StackingClassifier (Baseline),-0.000630484427852962,-0.03721420253641765,0.9703891517270199,False,No Diff
+roc_auc,StackingClassifier (Balanced + MEC),StackingClassifier (Cost-sensitive + MEC),-7.508719350812765e-05,-0.004141972759552007,0.9967035282301011,False,No Diff
+roc_auc,StackingClassifier (Balanced + MEC),StackingClassifier (Cost-sensitive + STD),-0.00104983612878351,-0.055089235737972204,0.956178394493389,False,No Diff
+roc_auc,StackingClassifier (Balanced + MEC),StackingClassifier (SMOTE + MEC),0.007145012005538187,0.3862975851272413,0.700105266134728,False,No Diff
+roc_auc,StackingClassifier (Balanced + MEC),StackingClassifier (SMOTE + STD),0.004731369507685157,0.2520632085728791,0.8015147573862453,False,No Diff
+roc_auc,StackingClassifier (Balanced + STD),StackingClassifier (Balanced + MEC),0.0002206977233293328,0.012177204235990375,0.9903087426690709,False,No Diff
+roc_auc,StackingClassifier (Balanced + STD),StackingClassifier (Baseline),-0.0004097867045236292,-0.022152268352253333,0.982371080142224,False,No Diff
+roc_auc,StackingClassifier (Balanced + STD),StackingClassifier (Cost-sensitive + MEC),0.00014561052982120515,0.007835546761480093,0.993763970014202,False,No Diff
+roc_auc,StackingClassifier (Balanced + STD),StackingClassifier (Cost-sensitive + STD),-0.0008291384054541773,-0.04755264521406513,0.9621685701959568,False,No Diff
+roc_auc,StackingClassifier (Balanced + STD),StackingClassifier (SMOTE + MEC),0.00736570972886752,0.40589722365395875,0.6856940791377237,False,No Diff
+roc_auc,StackingClassifier (Balanced + STD),StackingClassifier (SMOTE + STD),0.00495206723101449,0.23845969780386594,0.8120174626915978,False,No Diff
+roc_auc,StackingClassifier (Baseline),StackingClassifier (Balanced + MEC),0.000630484427852962,0.03721420253641765,0.9703891517270199,False,No Diff
+roc_auc,StackingClassifier (Baseline),StackingClassifier (Balanced + STD),0.0004097867045236292,0.022152268352253333,0.982371080142224,False,No Diff
+roc_auc,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + MEC),0.0005553972343448343,0.0303454259654344,0.9758526602191566,False,No Diff
+roc_auc,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + STD),-0.0004193517009305481,-0.023770667158659116,0.9810833844700668,False,No Diff
+roc_auc,StackingClassifier (Baseline),StackingClassifier (SMOTE + MEC),0.007775496433391149,0.3979214037591312,0.6915448930476543,False,No Diff
+roc_auc,StackingClassifier (Baseline),StackingClassifier (SMOTE + STD),0.005361853935538119,0.30766437850054756,0.7589840495189115,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + MEC),StackingClassifier (Balanced + MEC),7.508719350812765e-05,0.004141972759552007,0.9967035282301011,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + MEC),StackingClassifier (Balanced + STD),-0.00014561052982120515,-0.007835546761480093,0.993763970014202,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + MEC),StackingClassifier (Baseline),-0.0005553972343448343,-0.0303454259654344,0.9758526602191566,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + MEC),StackingClassifier (Cost-sensitive + STD),-0.0009747489352753824,-0.06058318131200591,0.9518133015847154,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + MEC),StackingClassifier (SMOTE + MEC),0.007220099199046315,0.3604559551826374,0.7192741145418549,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + MEC),StackingClassifier (SMOTE + STD),0.004806456701193285,0.2654885107074223,0.791185211939407,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + STD),StackingClassifier (Balanced + MEC),0.00104983612878351,0.055089235737972204,0.956178394493389,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + STD),StackingClassifier (Balanced + STD),0.0008291384054541773,0.04755264521406513,0.9621685701959568,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + STD),StackingClassifier (Baseline),0.0004193517009305481,0.023770667158659116,0.9810833844700668,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + STD),StackingClassifier (Cost-sensitive + MEC),0.0009747489352753824,0.06058318131200591,0.9518133015847154,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + STD),StackingClassifier (SMOTE + MEC),0.008194848134321697,0.3872599861952539,0.6993950159737076,False,No Diff
+roc_auc,StackingClassifier (Cost-sensitive + STD),StackingClassifier (SMOTE + STD),0.005781205636468667,0.2979036928796016,0.7664009539253225,False,No Diff
+roc_auc,StackingClassifier (SMOTE + MEC),StackingClassifier (Balanced + MEC),-0.007145012005538187,-0.3862975851272413,0.700105266134728,False,No Diff
+roc_auc,StackingClassifier (SMOTE + MEC),StackingClassifier (Balanced + STD),-0.00736570972886752,-0.40589722365395875,0.6856940791377237,False,No Diff
+roc_auc,StackingClassifier (SMOTE + MEC),StackingClassifier (Baseline),-0.007775496433391149,-0.3979214037591312,0.6915448930476543,False,No Diff
+roc_auc,StackingClassifier (SMOTE + MEC),StackingClassifier (Cost-sensitive + MEC),-0.007220099199046315,-0.3604559551826374,0.7192741145418549,False,No Diff
+roc_auc,StackingClassifier (SMOTE + MEC),StackingClassifier (Cost-sensitive + STD),-0.008194848134321697,-0.3872599861952539,0.6993950159737076,False,No Diff
+roc_auc,StackingClassifier (SMOTE + MEC),StackingClassifier (SMOTE + STD),-0.00241364249785303,-0.10804568202159467,0.9141781296665098,False,No Diff
+roc_auc,StackingClassifier (SMOTE + STD),StackingClassifier (Balanced + MEC),-0.004731369507685157,-0.2520632085728791,0.8015147573862453,False,No Diff
+roc_auc,StackingClassifier (SMOTE + STD),StackingClassifier (Balanced + STD),-0.00495206723101449,-0.23845969780386594,0.8120174626915978,False,No Diff
+roc_auc,StackingClassifier (SMOTE + STD),StackingClassifier (Baseline),-0.005361853935538119,-0.30766437850054756,0.7589840495189115,False,No Diff
+roc_auc,StackingClassifier (SMOTE + STD),StackingClassifier (Cost-sensitive + MEC),-0.004806456701193285,-0.2654885107074223,0.791185211939407,False,No Diff
+roc_auc,StackingClassifier (SMOTE + STD),StackingClassifier (Cost-sensitive + STD),-0.005781205636468667,-0.2979036928796016,0.7664009539253225,False,No Diff
+roc_auc,StackingClassifier (SMOTE + STD),StackingClassifier (SMOTE + MEC),0.00241364249785303,0.10804568202159467,0.9141781296665098,False,No Diff

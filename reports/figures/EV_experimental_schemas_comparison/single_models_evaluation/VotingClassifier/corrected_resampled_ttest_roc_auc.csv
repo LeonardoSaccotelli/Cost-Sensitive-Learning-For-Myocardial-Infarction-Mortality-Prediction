@@ -1,21 +1,43 @@
 Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
-roc_auc,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.013539223933960898,0.5801246373777309,0.5631486175510309,False,No Diff
-roc_auc,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + Standard Threshold),0.017083395551816705,0.7172026117747624,0.474937869884019,False,No Diff
-roc_auc,VotingClassifier (Baseline),VotingClassifier (SMOTE + Minimum Expected Cost),0.01132740154582268,0.5966460302452683,0.5521056917933678,False,No Diff
-roc_auc,VotingClassifier (Baseline),VotingClassifier (SMOTE + Standard Threshold),0.013640406085142942,0.6748482142828001,0.5013452141629235,False,No Diff
-roc_auc,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Baseline),-0.013539223933960898,-0.5801246373777309,0.5631486175510309,False,No Diff
-roc_auc,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.003544171617855807,0.16104148613998498,0.8723889005358095,False,No Diff
-roc_auc,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),-0.002211822388138218,-0.10338146728324027,0.917869354070646,False,No Diff
-roc_auc,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),0.00010118215118204432,0.005426450494491007,0.9956812598990468,False,No Diff
-roc_auc,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Baseline),-0.017083395551816705,-0.7172026117747624,0.474937869884019,False,No Diff
-roc_auc,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.003544171617855807,-0.16104148613998498,0.8723889005358095,False,No Diff
-roc_auc,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.005755994005994025,-0.24389435425885142,0.8078173546174583,False,No Diff
-roc_auc,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),-0.0034429894666737626,-0.15981417514784574,0.8733530703217485,False,No Diff
-roc_auc,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Baseline),-0.01132740154582268,-0.5966460302452683,0.5521056917933678,False,No Diff
-roc_auc,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),0.002211822388138218,0.10338146728324027,0.917869354070646,False,No Diff
-roc_auc,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.005755994005994025,0.24389435425885142,0.8078173546174583,False,No Diff
-roc_auc,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),0.0023130045393202625,0.11121201695880316,0.9116733815040364,False,No Diff
-roc_auc,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Baseline),-0.013640406085142942,-0.6748482142828001,0.5013452141629235,False,No Diff
-roc_auc,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.00010118215118204432,-0.005426450494491007,0.9956812598990468,False,No Diff
-roc_auc,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),0.0034429894666737626,0.15981417514784574,0.8733530703217485,False,No Diff
-roc_auc,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.0023130045393202625,-0.11121201695880316,0.9116733815040364,False,No Diff
+roc_auc,VotingClassifier (Balanced + MEC),VotingClassifier (Balanced + STD),0.003399940410466873,0.15966892041874614,0.8734671944265019,False,No Diff
+roc_auc,VotingClassifier (Balanced + MEC),VotingClassifier (Baseline),0.0009956622325044684,0.05069234855984211,0.959672811769518,False,No Diff
+roc_auc,VotingClassifier (Balanced + MEC),VotingClassifier (Cost-sensitive + MEC),0.014534886166465366,0.6835936434523304,0.4958286589814096,False,No Diff
+roc_auc,VotingClassifier (Balanced + MEC),VotingClassifier (Cost-sensitive + STD),0.018079057784321062,0.77178448355083,0.44208045566270937,False,No Diff
+roc_auc,VotingClassifier (Balanced + MEC),VotingClassifier (SMOTE + MEC),0.012323063778327037,0.6108353691036815,0.5427084635055082,False,No Diff
+roc_auc,VotingClassifier (Balanced + MEC),VotingClassifier (SMOTE + STD),0.0146360683176473,0.6330647489377101,0.5281510283023285,False,No Diff
+roc_auc,VotingClassifier (Balanced + STD),VotingClassifier (Balanced + MEC),-0.003399940410466873,-0.15966892041874614,0.8734671944265019,False,No Diff
+roc_auc,VotingClassifier (Balanced + STD),VotingClassifier (Baseline),-0.0024042781779624045,-0.11725264311406142,0.9068973994667189,False,No Diff
+roc_auc,VotingClassifier (Balanced + STD),VotingClassifier (Cost-sensitive + MEC),0.011134945755998493,0.5126148955703992,0.6093625800451266,False,No Diff
+roc_auc,VotingClassifier (Balanced + STD),VotingClassifier (Cost-sensitive + STD),0.014679117373854189,0.701180947551023,0.48483501617197733,False,No Diff
+roc_auc,VotingClassifier (Balanced + STD),VotingClassifier (SMOTE + MEC),0.008923123367860164,0.460400122803102,0.6462387213755969,False,No Diff
+roc_auc,VotingClassifier (Balanced + STD),VotingClassifier (SMOTE + STD),0.011236127907180427,0.4985438095755197,0.6192066528834217,False,No Diff
+roc_auc,VotingClassifier (Baseline),VotingClassifier (Balanced + MEC),-0.0009956622325044684,-0.05069234855984211,0.959672811769518,False,No Diff
+roc_auc,VotingClassifier (Baseline),VotingClassifier (Balanced + STD),0.0024042781779624045,0.11725264311406142,0.9068973994667189,False,No Diff
+roc_auc,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + MEC),0.013539223933960898,0.6144693732214089,0.5403148371574942,False,No Diff
+roc_auc,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + STD),0.017083395551816594,0.7737852077469669,0.4409016705958978,False,No Diff
+roc_auc,VotingClassifier (Baseline),VotingClassifier (SMOTE + MEC),0.011327401545822569,0.5752613783199055,0.56641971302023,False,No Diff
+roc_auc,VotingClassifier (Baseline),VotingClassifier (SMOTE + STD),0.013640406085142831,0.6824599864356727,0.49654190172332324,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + MEC),VotingClassifier (Balanced + MEC),-0.014534886166465366,-0.6835936434523304,0.4958286589814096,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + MEC),VotingClassifier (Balanced + STD),-0.011134945755998493,-0.5126148955703992,0.6093625800451266,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + MEC),VotingClassifier (Baseline),-0.013539223933960898,-0.6144693732214089,0.5403148371574942,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + MEC),VotingClassifier (Cost-sensitive + STD),0.003544171617855696,0.16162128648206997,0.8719334789298254,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + MEC),VotingClassifier (SMOTE + MEC),-0.002211822388138329,-0.10258690443924288,0.918498346577858,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + MEC),VotingClassifier (SMOTE + STD),0.0001011821511819333,0.004677446612838853,0.99627736362581,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + STD),VotingClassifier (Balanced + MEC),-0.018079057784321062,-0.77178448355083,0.44208045566270937,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + STD),VotingClassifier (Balanced + STD),-0.014679117373854189,-0.701180947551023,0.48483501617197733,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + STD),VotingClassifier (Baseline),-0.017083395551816594,-0.7737852077469669,0.4409016705958978,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + STD),VotingClassifier (Cost-sensitive + MEC),-0.003544171617855696,-0.16162128648206997,0.8719334789298254,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + STD),VotingClassifier (SMOTE + MEC),-0.005755994005994025,-0.26285365921630427,0.7932096188344792,False,No Diff
+roc_auc,VotingClassifier (Cost-sensitive + STD),VotingClassifier (SMOTE + STD),-0.0034429894666737626,-0.15712706618175817,0.8754647154603866,False,No Diff
+roc_auc,VotingClassifier (SMOTE + MEC),VotingClassifier (Balanced + MEC),-0.012323063778327037,-0.6108353691036815,0.5427084635055082,False,No Diff
+roc_auc,VotingClassifier (SMOTE + MEC),VotingClassifier (Balanced + STD),-0.008923123367860164,-0.460400122803102,0.6462387213755969,False,No Diff
+roc_auc,VotingClassifier (SMOTE + MEC),VotingClassifier (Baseline),-0.011327401545822569,-0.5752613783199055,0.56641971302023,False,No Diff
+roc_auc,VotingClassifier (SMOTE + MEC),VotingClassifier (Cost-sensitive + MEC),0.002211822388138329,0.10258690443924288,0.918498346577858,False,No Diff
+roc_auc,VotingClassifier (SMOTE + MEC),VotingClassifier (Cost-sensitive + STD),0.005755994005994025,0.26285365921630427,0.7932096188344792,False,No Diff
+roc_auc,VotingClassifier (SMOTE + MEC),VotingClassifier (SMOTE + STD),0.0023130045393202625,0.10439430449477531,0.9170676467301515,False,No Diff
+roc_auc,VotingClassifier (SMOTE + STD),VotingClassifier (Balanced + MEC),-0.0146360683176473,-0.6330647489377101,0.5281510283023285,False,No Diff
+roc_auc,VotingClassifier (SMOTE + STD),VotingClassifier (Balanced + STD),-0.011236127907180427,-0.4985438095755197,0.6192066528834217,False,No Diff
+roc_auc,VotingClassifier (SMOTE + STD),VotingClassifier (Baseline),-0.013640406085142831,-0.6824599864356727,0.49654190172332324,False,No Diff
+roc_auc,VotingClassifier (SMOTE + STD),VotingClassifier (Cost-sensitive + MEC),-0.0001011821511819333,-0.004677446612838853,0.99627736362581,False,No Diff
+roc_auc,VotingClassifier (SMOTE + STD),VotingClassifier (Cost-sensitive + STD),0.0034429894666737626,0.15712706618175817,0.8754647154603866,False,No Diff
+roc_auc,VotingClassifier (SMOTE + STD),VotingClassifier (SMOTE + MEC),-0.0023130045393202625,-0.10439430449477531,0.9170676467301515,False,No Diff

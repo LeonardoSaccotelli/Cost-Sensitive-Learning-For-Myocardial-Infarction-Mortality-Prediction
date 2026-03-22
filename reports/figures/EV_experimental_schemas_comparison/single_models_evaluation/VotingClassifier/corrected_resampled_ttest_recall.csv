@@ -1,21 +1,43 @@
 Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
-recall,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.6685538461538462,-13.405988169318855,5.5469346429533694e-24,True,Worse
-recall,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + Standard Threshold),-0.5347692307692307,-9.153871980838513,7.662291101535384e-15,True,Worse
-recall,VotingClassifier (Baseline),VotingClassifier (SMOTE + Minimum Expected Cost),-0.6669692307692308,-13.391450182023728,5.946819058726936e-24,True,Worse
-recall,VotingClassifier (Baseline),VotingClassifier (SMOTE + Standard Threshold),-0.31283076923076925,-4.092966207513335,8.698598321929792e-05,True,Worse
-recall,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Baseline),0.6685538461538462,13.405988169318855,5.5469346429533694e-24,True,Better
-recall,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.1337846153846155,4.24850863178966,4.869765866680442e-05,True,Better
-recall,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Minimum Expected Cost),0.0015846153846154065,0.5835203795478742,0.5608700916396052,False,No Diff
-recall,VotingClassifier (Cost-sensitive + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),0.3557230769230769,5.897526467104161,5.146445977041219e-08,True,Better
-recall,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Baseline),0.5347692307692307,9.153871980838513,7.662291101535384e-15,True,Better
-recall,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.1337846153846155,-4.24850863178966,4.869765866680442e-05,True,Worse
-recall,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.1322000000000001,-4.171831838964525,6.492671502212495e-05,True,Worse
-recall,VotingClassifier (Cost-sensitive + Standard Threshold),VotingClassifier (SMOTE + Standard Threshold),0.22193846153846142,3.200610582748238,0.0018435265221068752,True,Better
-recall,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Baseline),0.6669692307692308,13.391450182023728,5.946819058726936e-24,True,Better
-recall,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.0015846153846154065,-0.5835203795478742,0.5608700916396052,False,No Diff
-recall,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (Cost-sensitive + Standard Threshold),0.1322000000000001,4.171831838964525,6.492671502212495e-05,True,Better
-recall,VotingClassifier (SMOTE + Minimum Expected Cost),VotingClassifier (SMOTE + Standard Threshold),0.3541384615384615,5.854565049768609,6.237165334075049e-08,True,Better
-recall,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Baseline),0.31283076923076925,4.092966207513335,8.698598321929792e-05,True,Better
-recall,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Minimum Expected Cost),-0.3557230769230769,-5.897526467104161,5.146445977041219e-08,True,Worse
-recall,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (Cost-sensitive + Standard Threshold),-0.22193846153846142,-3.200610582748238,0.0018435265221068752,True,Worse
-recall,VotingClassifier (SMOTE + Standard Threshold),VotingClassifier (SMOTE + Minimum Expected Cost),-0.3541384615384615,-5.854565049768609,6.237165334075049e-08,True,Worse
+recall,VotingClassifier (Balanced + MEC),VotingClassifier (Balanced + STD),0.28870769230769244,6.929036713653687,4.341217756061266e-10,True,Better
+recall,VotingClassifier (Balanced + MEC),VotingClassifier (Baseline),0.6669538461538462,13.261908613100477,1.1068720496222887e-23,True,Better
+recall,VotingClassifier (Balanced + MEC),VotingClassifier (Cost-sensitive + MEC),-0.0015999999999999348,-0.4732375211390676,0.6370855431345844,False,No Diff
+recall,VotingClassifier (Balanced + MEC),VotingClassifier (Cost-sensitive + STD),0.13218461538461557,4.14646348464682,7.13584760606303e-05,True,Better
+recall,VotingClassifier (Balanced + MEC),VotingClassifier (SMOTE + MEC),-1.538461538452829e-05,-0.0034905754572830865,0.9972219534616267,False,No Diff
+recall,VotingClassifier (Balanced + MEC),VotingClassifier (SMOTE + STD),0.354123076923077,5.861450416016255,6.048196056681354e-08,True,Better
+recall,VotingClassifier (Balanced + STD),VotingClassifier (Balanced + MEC),-0.28870769230769244,-6.929036713653687,4.341217756061266e-10,True,Worse
+recall,VotingClassifier (Balanced + STD),VotingClassifier (Baseline),0.3782461538461538,5.958354055619196,3.916192667047325e-08,True,Better
+recall,VotingClassifier (Balanced + STD),VotingClassifier (Cost-sensitive + MEC),-0.2903076923076924,-6.998680966945111,3.115164827823861e-10,True,Worse
+recall,VotingClassifier (Balanced + STD),VotingClassifier (Cost-sensitive + STD),-0.15652307692307688,-3.055788009490269,0.002885144707956752,True,Worse
+recall,VotingClassifier (Balanced + STD),VotingClassifier (SMOTE + MEC),-0.28872307692307697,-6.952719994039471,3.878358264986218e-10,True,Worse
+recall,VotingClassifier (Balanced + STD),VotingClassifier (SMOTE + STD),0.06541538461538454,0.82044649295563,0.4139327276262659,False,No Diff
+recall,VotingClassifier (Baseline),VotingClassifier (Balanced + MEC),-0.6669538461538462,-13.261908613100477,1.1068720496222887e-23,True,Worse
+recall,VotingClassifier (Baseline),VotingClassifier (Balanced + STD),-0.3782461538461538,-5.958354055619196,3.916192667047325e-08,True,Worse
+recall,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + MEC),-0.6685538461538462,-13.40598816931885,5.546934642953488e-24,True,Worse
+recall,VotingClassifier (Baseline),VotingClassifier (Cost-sensitive + STD),-0.5347692307692307,-8.742388135870836,6.010660853708172e-14,True,Worse
+recall,VotingClassifier (Baseline),VotingClassifier (SMOTE + MEC),-0.6669692307692308,-13.334110055986734,7.827423893564894e-24,True,Worse
+recall,VotingClassifier (Baseline),VotingClassifier (SMOTE + STD),-0.31283076923076925,-3.8864447202113257,0.00018403284947434274,True,Worse
+recall,VotingClassifier (Cost-sensitive + MEC),VotingClassifier (Balanced + MEC),0.0015999999999999348,0.4732375211390676,0.6370855431345844,False,No Diff
+recall,VotingClassifier (Cost-sensitive + MEC),VotingClassifier (Balanced + STD),0.2903076923076924,6.998680966945111,3.115164827823861e-10,True,Better
+recall,VotingClassifier (Cost-sensitive + MEC),VotingClassifier (Baseline),0.6685538461538462,13.40598816931885,5.546934642953488e-24,True,Better
+recall,VotingClassifier (Cost-sensitive + MEC),VotingClassifier (Cost-sensitive + STD),0.1337846153846155,4.248508631789658,4.8697658666804704e-05,True,Better
+recall,VotingClassifier (Cost-sensitive + MEC),VotingClassifier (SMOTE + MEC),0.0015846153846154065,0.5835203795478742,0.5608700916396052,False,No Diff
+recall,VotingClassifier (Cost-sensitive + MEC),VotingClassifier (SMOTE + STD),0.3557230769230769,5.897526467104161,5.146445977041219e-08,True,Better
+recall,VotingClassifier (Cost-sensitive + STD),VotingClassifier (Balanced + MEC),-0.13218461538461557,-4.14646348464682,7.13584760606303e-05,True,Worse
+recall,VotingClassifier (Cost-sensitive + STD),VotingClassifier (Balanced + STD),0.15652307692307688,3.055788009490269,0.002885144707956752,True,Better
+recall,VotingClassifier (Cost-sensitive + STD),VotingClassifier (Baseline),0.5347692307692307,8.742388135870836,6.010660853708172e-14,True,Better
+recall,VotingClassifier (Cost-sensitive + STD),VotingClassifier (Cost-sensitive + MEC),-0.1337846153846155,-4.248508631789658,4.8697658666804704e-05,True,Worse
+recall,VotingClassifier (Cost-sensitive + STD),VotingClassifier (SMOTE + MEC),-0.1322000000000001,-4.1862937083129035,6.15133445781012e-05,True,Worse
+recall,VotingClassifier (Cost-sensitive + STD),VotingClassifier (SMOTE + STD),0.22193846153846142,3.1774135129416132,0.0019825175476611894,True,Better
+recall,VotingClassifier (SMOTE + MEC),VotingClassifier (Balanced + MEC),1.538461538452829e-05,0.0034905754572830865,0.9972219534616267,False,No Diff
+recall,VotingClassifier (SMOTE + MEC),VotingClassifier (Balanced + STD),0.28872307692307697,6.952719994039471,3.878358264986218e-10,True,Better
+recall,VotingClassifier (SMOTE + MEC),VotingClassifier (Baseline),0.6669692307692308,13.334110055986734,7.827423893564894e-24,True,Better
+recall,VotingClassifier (SMOTE + MEC),VotingClassifier (Cost-sensitive + MEC),-0.0015846153846154065,-0.5835203795478742,0.5608700916396052,False,No Diff
+recall,VotingClassifier (SMOTE + MEC),VotingClassifier (Cost-sensitive + STD),0.1322000000000001,4.1862937083129035,6.15133445781012e-05,True,Better
+recall,VotingClassifier (SMOTE + MEC),VotingClassifier (SMOTE + STD),0.3541384615384615,5.863136304619106,6.002791655106481e-08,True,Better
+recall,VotingClassifier (SMOTE + STD),VotingClassifier (Balanced + MEC),-0.354123076923077,-5.861450416016255,6.048196056681354e-08,True,Worse
+recall,VotingClassifier (SMOTE + STD),VotingClassifier (Balanced + STD),-0.06541538461538454,-0.82044649295563,0.4139327276262659,False,No Diff
+recall,VotingClassifier (SMOTE + STD),VotingClassifier (Baseline),0.31283076923076925,3.8864447202113257,0.00018403284947434274,True,Better
+recall,VotingClassifier (SMOTE + STD),VotingClassifier (Cost-sensitive + MEC),-0.3557230769230769,-5.897526467104161,5.146445977041219e-08,True,Worse
+recall,VotingClassifier (SMOTE + STD),VotingClassifier (Cost-sensitive + STD),-0.22193846153846142,-3.1774135129416132,0.0019825175476611894,True,Worse
+recall,VotingClassifier (SMOTE + STD),VotingClassifier (SMOTE + MEC),-0.3541384615384615,-5.863136304619106,6.002791655106481e-08,True,Worse

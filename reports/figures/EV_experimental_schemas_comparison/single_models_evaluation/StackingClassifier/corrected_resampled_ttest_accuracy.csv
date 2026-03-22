@@ -1,21 +1,43 @@
 Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
-accuracy,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.7211908409255827,113.95483641849354,8.105315805377404e-107,True,Better
-accuracy,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + Standard Threshold),0.15374667419172794,8.321660236613747,4.88661276291561e-13,True,Better
-accuracy,StackingClassifier (Baseline),StackingClassifier (SMOTE + Minimum Expected Cost),0.2704692413125859,10.043995635398984,8.770876077806611e-17,True,Better
-accuracy,StackingClassifier (Baseline),StackingClassifier (SMOTE + Standard Threshold),0.019402160767556298,1.9872853205974528,0.04965356132618151,True,Better
-accuracy,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Baseline),-0.7211908409255827,-113.95483641849354,8.105315805377404e-107,True,Worse
-accuracy,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),-0.5674441667338548,-32.36140768385615,1.8691668958176e-54,True,Worse
-accuracy,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Minimum Expected Cost),-0.45072159961299685,-16.914127380713087,5.818614584863219e-31,True,Worse
-accuracy,StackingClassifier (Cost-sensitive + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),-0.7017886801580264,-77.61021927443622,1.7298253749763416e-90,True,Worse
-accuracy,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Baseline),-0.15374667419172794,-8.321660236613747,4.88661276291561e-13,True,Worse
-accuracy,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.5674441667338548,32.36140768385615,1.8691668958176e-54,True,Better
-accuracy,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.11672256712085793,3.507944567821326,0.0006807729886016706,True,Better
-accuracy,StackingClassifier (Cost-sensitive + Standard Threshold),StackingClassifier (SMOTE + Standard Threshold),-0.13434451342417164,-6.923340104354811,4.4604763130727005e-10,True,Worse
-accuracy,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Baseline),-0.2704692413125859,-10.043995635398984,8.770876077806611e-17,True,Worse
-accuracy,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.45072159961299685,16.914127380713087,5.818614584863219e-31,True,Better
-accuracy,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (Cost-sensitive + Standard Threshold),-0.11672256712085793,-3.507944567821326,0.0006807729886016706,True,Worse
-accuracy,StackingClassifier (SMOTE + Minimum Expected Cost),StackingClassifier (SMOTE + Standard Threshold),-0.2510670805450296,-8.616301227729075,1.1278394034181482e-13,True,Worse
-accuracy,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Baseline),-0.019402160767556298,-1.9872853205974528,0.04965356132618151,True,Worse
-accuracy,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Minimum Expected Cost),0.7017886801580264,77.61021927443622,1.7298253749763416e-90,True,Better
-accuracy,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (Cost-sensitive + Standard Threshold),0.13434451342417164,6.923340104354811,4.4604763130727005e-10,True,Better
-accuracy,StackingClassifier (SMOTE + Standard Threshold),StackingClassifier (SMOTE + Minimum Expected Cost),0.2510670805450296,8.616301227729075,1.1278394034181482e-13,True,Better
+accuracy,StackingClassifier (Balanced + MEC),StackingClassifier (Balanced + STD),-0.6320035475288237,-44.452925600013415,3.193916158507176e-67,True,Worse
+accuracy,StackingClassifier (Balanced + MEC),StackingClassifier (Baseline),-0.7157800532129324,-66.91091793060308,3.142181202862623e-84,True,Worse
+accuracy,StackingClassifier (Balanced + MEC),StackingClassifier (Cost-sensitive + MEC),0.005410787712650161,0.6220812854924226,0.5353184986680426,False,No Diff
+accuracy,StackingClassifier (Balanced + MEC),StackingClassifier (Cost-sensitive + STD),-0.5620333790212046,-28.407674239592918,2.156848254190337e-49,True,Worse
+accuracy,StackingClassifier (Balanced + MEC),StackingClassifier (SMOTE + MEC),-0.44531081190034666,-15.607366717731143,1.94068296174164e-28,True,Worse
+accuracy,StackingClassifier (Balanced + MEC),StackingClassifier (SMOTE + STD),-0.6963778924453763,-61.591293217839386,9.46679309498365e-81,True,Worse
+accuracy,StackingClassifier (Balanced + STD),StackingClassifier (Balanced + MEC),0.6320035475288237,44.452925600013415,3.193916158507176e-67,True,Better
+accuracy,StackingClassifier (Balanced + STD),StackingClassifier (Baseline),-0.08377650568410877,-5.843036056497766,6.566659945211286e-08,True,Worse
+accuracy,StackingClassifier (Balanced + STD),StackingClassifier (Cost-sensitive + MEC),0.6374143352414738,53.1454152026684,1.3569745712639263e-74,True,Better
+accuracy,StackingClassifier (Balanced + STD),StackingClassifier (Cost-sensitive + STD),0.06997016850761906,3.7317356092151734,0.00031743158767247326,True,Better
+accuracy,StackingClassifier (Balanced + STD),StackingClassifier (SMOTE + MEC),0.186692735628477,6.689606184849821,1.3477509691514115e-09,True,Better
+accuracy,StackingClassifier (Balanced + STD),StackingClassifier (SMOTE + STD),-0.06437434491655258,-4.211670136769504,5.593642905804278e-05,True,Worse
+accuracy,StackingClassifier (Baseline),StackingClassifier (Balanced + MEC),0.7157800532129324,66.91091793060308,3.142181202862623e-84,True,Better
+accuracy,StackingClassifier (Baseline),StackingClassifier (Balanced + STD),0.08377650568410877,5.843036056497766,6.566659945211286e-08,True,Better
+accuracy,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + MEC),0.7211908409255826,113.63632380140398,1.0671094744901023e-106,True,Better
+accuracy,StackingClassifier (Baseline),StackingClassifier (Cost-sensitive + STD),0.15374667419172783,8.451915196107022,2.5578618060255485e-13,True,Better
+accuracy,StackingClassifier (Baseline),StackingClassifier (SMOTE + MEC),0.27046924131258576,9.442983604412818,1.7957448777230238e-15,True,Better
+accuracy,StackingClassifier (Baseline),StackingClassifier (SMOTE + STD),0.019402160767556187,1.94053344171845,0.05515949245464448,False,No Diff
+accuracy,StackingClassifier (Cost-sensitive + MEC),StackingClassifier (Balanced + MEC),-0.005410787712650161,-0.6220812854924226,0.5353184986680426,False,No Diff
+accuracy,StackingClassifier (Cost-sensitive + MEC),StackingClassifier (Balanced + STD),-0.6374143352414738,-53.1454152026684,1.3569745712639263e-74,True,Worse
+accuracy,StackingClassifier (Cost-sensitive + MEC),StackingClassifier (Baseline),-0.7211908409255826,-113.63632380140398,1.0671094744901023e-106,True,Worse
+accuracy,StackingClassifier (Cost-sensitive + MEC),StackingClassifier (Cost-sensitive + STD),-0.5674441667338548,-32.24248785677528,2.608277373981582e-54,True,Worse
+accuracy,StackingClassifier (Cost-sensitive + MEC),StackingClassifier (SMOTE + MEC),-0.45072159961299685,-16.910964469476266,5.899473469639187e-31,True,Worse
+accuracy,StackingClassifier (Cost-sensitive + MEC),StackingClassifier (SMOTE + STD),-0.7017886801580264,-77.55017196031226,1.8652946666336386e-90,True,Worse
+accuracy,StackingClassifier (Cost-sensitive + STD),StackingClassifier (Balanced + MEC),0.5620333790212046,28.407674239592918,2.156848254190337e-49,True,Better
+accuracy,StackingClassifier (Cost-sensitive + STD),StackingClassifier (Balanced + STD),-0.06997016850761906,-3.7317356092151734,0.00031743158767247326,True,Worse
+accuracy,StackingClassifier (Cost-sensitive + STD),StackingClassifier (Baseline),-0.15374667419172783,-8.451915196107022,2.5578618060255485e-13,True,Worse
+accuracy,StackingClassifier (Cost-sensitive + STD),StackingClassifier (Cost-sensitive + MEC),0.5674441667338548,32.24248785677528,2.608277373981582e-54,True,Better
+accuracy,StackingClassifier (Cost-sensitive + STD),StackingClassifier (SMOTE + MEC),0.11672256712085793,3.556176807494879,0.0005790611512664232,True,Better
+accuracy,StackingClassifier (Cost-sensitive + STD),StackingClassifier (SMOTE + STD),-0.13434451342417164,-6.844406426393708,6.488614110424881e-10,True,Worse
+accuracy,StackingClassifier (SMOTE + MEC),StackingClassifier (Balanced + MEC),0.44531081190034666,15.607366717731143,1.94068296174164e-28,True,Better
+accuracy,StackingClassifier (SMOTE + MEC),StackingClassifier (Balanced + STD),-0.186692735628477,-6.689606184849821,1.3477509691514115e-09,True,Worse
+accuracy,StackingClassifier (SMOTE + MEC),StackingClassifier (Baseline),-0.27046924131258576,-9.442983604412818,1.7957448777230238e-15,True,Worse
+accuracy,StackingClassifier (SMOTE + MEC),StackingClassifier (Cost-sensitive + MEC),0.45072159961299685,16.910964469476266,5.899473469639187e-31,True,Better
+accuracy,StackingClassifier (SMOTE + MEC),StackingClassifier (Cost-sensitive + STD),-0.11672256712085793,-3.556176807494879,0.0005790611512664232,True,Worse
+accuracy,StackingClassifier (SMOTE + MEC),StackingClassifier (SMOTE + STD),-0.2510670805450296,-8.66805871989368,8.711713316683211e-14,True,Worse
+accuracy,StackingClassifier (SMOTE + STD),StackingClassifier (Balanced + MEC),0.6963778924453763,61.591293217839386,9.46679309498365e-81,True,Better
+accuracy,StackingClassifier (SMOTE + STD),StackingClassifier (Balanced + STD),0.06437434491655258,4.211670136769504,5.593642905804278e-05,True,Better
+accuracy,StackingClassifier (SMOTE + STD),StackingClassifier (Baseline),-0.019402160767556187,-1.94053344171845,0.05515949245464448,False,No Diff
+accuracy,StackingClassifier (SMOTE + STD),StackingClassifier (Cost-sensitive + MEC),0.7017886801580264,77.55017196031226,1.8652946666336386e-90,True,Better
+accuracy,StackingClassifier (SMOTE + STD),StackingClassifier (Cost-sensitive + STD),0.13434451342417164,6.844406426393708,6.488614110424881e-10,True,Better
+accuracy,StackingClassifier (SMOTE + STD),StackingClassifier (SMOTE + MEC),0.2510670805450296,8.66805871989368,8.711713316683211e-14,True,Better

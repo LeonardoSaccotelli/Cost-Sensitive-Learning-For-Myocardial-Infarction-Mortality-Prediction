@@ -1,21 +1,43 @@
 Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
-precision,XGBClassifier (Baseline),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.49485176788169094,13.689886630340844,1.431138494749534e-24,True,Better
-precision,XGBClassifier (Baseline),XGBClassifier (Cost-sensitive + Standard Threshold),0.30177995693221626,7.341792761444197,5.98904829300691e-11,True,Better
-precision,XGBClassifier (Baseline),XGBClassifier (SMOTE + Minimum Expected Cost),0.412798108895542,9.130277245836457,8.624577025169928e-15,True,Better
-precision,XGBClassifier (Baseline),XGBClassifier (SMOTE + Standard Threshold),0.12268406574862711,1.951457190063817,0.05382875417363506,False,No Diff
-precision,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Baseline),-0.49485176788169094,-13.689886630340844,1.431138494749534e-24,True,Worse
-precision,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),-0.19307181094947465,-8.38593151106171,3.551146441012434e-13,True,Worse
-precision,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Minimum Expected Cost),-0.08205365898614889,-2.595685232138384,0.010875448712637504,True,Worse
-precision,XGBClassifier (Cost-sensitive + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.3721677021330638,-7.316925793001341,6.75421443348337e-11,True,Worse
-precision,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Baseline),-0.30177995693221626,-7.341792761444197,5.98904829300691e-11,True,Worse
-precision,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.19307181094947465,8.38593151106171,3.551146441012434e-13,True,Better
-precision,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),0.11101815196332576,3.1383046549582727,0.0022391603262229944,True,Better
-precision,XGBClassifier (Cost-sensitive + Standard Threshold),XGBClassifier (SMOTE + Standard Threshold),-0.17909589118358915,-3.0965954441666153,0.0025466981553389986,True,Worse
-precision,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Baseline),-0.412798108895542,-9.130277245836457,8.624577025169928e-15,True,Worse
-precision,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.08205365898614889,2.595685232138384,0.010875448712637504,True,Better
-precision,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (Cost-sensitive + Standard Threshold),-0.11101815196332576,-3.1383046549582727,0.0022391603262229944,True,Worse
-precision,XGBClassifier (SMOTE + Minimum Expected Cost),XGBClassifier (SMOTE + Standard Threshold),-0.2901140431469149,-4.610505635230427,1.201439022799208e-05,True,Worse
-precision,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (Baseline),-0.12268406574862711,-1.951457190063817,0.05382875417363506,False,No Diff
-precision,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Minimum Expected Cost),0.3721677021330638,7.316925793001341,6.75421443348337e-11,True,Better
-precision,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (Cost-sensitive + Standard Threshold),0.17909589118358915,3.0965954441666153,0.0025466981553389986,True,Better
-precision,XGBClassifier (SMOTE + Standard Threshold),XGBClassifier (SMOTE + Minimum Expected Cost),0.2901140431469149,4.610505635230427,1.201439022799208e-05,True,Better
+precision,XGBClassifier (Balanced + MEC),XGBClassifier (Balanced + STD),-0.25893324961117825,-12.065420785606547,3.718868486195314e-21,True,Worse
+precision,XGBClassifier (Balanced + MEC),XGBClassifier (Baseline),-0.4652274190437533,-12.067299199219686,3.684683474742809e-21,True,Worse
+precision,XGBClassifier (Balanced + MEC),XGBClassifier (Cost-sensitive + MEC),0.02962434883793752,2.240365737338325,0.02730245214463422,True,Better
+precision,XGBClassifier (Balanced + MEC),XGBClassifier (Cost-sensitive + STD),-0.16344746211153713,-6.581145714641445,2.241679695769548e-09,True,Worse
+precision,XGBClassifier (Balanced + MEC),XGBClassifier (SMOTE + MEC),-0.05242931014821142,-1.684414646380406,0.09525186174131083,False,No Diff
+precision,XGBClassifier (Balanced + MEC),XGBClassifier (SMOTE + STD),-0.3425433532951263,-6.679687388066545,1.4121091424474853e-09,True,Worse
+precision,XGBClassifier (Balanced + STD),XGBClassifier (Balanced + MEC),0.25893324961117825,12.065420785606547,3.718868486195314e-21,True,Better
+precision,XGBClassifier (Balanced + STD),XGBClassifier (Baseline),-0.20629416943257506,-5.07142997673577,1.8443194008452486e-06,True,Worse
+precision,XGBClassifier (Balanced + STD),XGBClassifier (Cost-sensitive + MEC),0.28855759844911577,13.45603555974537,4.365712219137913e-24,True,Better
+precision,XGBClassifier (Balanced + STD),XGBClassifier (Cost-sensitive + STD),0.0954857874996411,3.3287046808902185,0.001226182152280379,True,Better
+precision,XGBClassifier (Balanced + STD),XGBClassifier (SMOTE + MEC),0.2065039394629668,6.024958140146085,2.899779658174842e-08,True,Better
+precision,XGBClassifier (Balanced + STD),XGBClassifier (SMOTE + STD),-0.08361010368394806,-1.5190584179696454,0.13193501789391646,False,No Diff
+precision,XGBClassifier (Baseline),XGBClassifier (Balanced + MEC),0.4652274190437533,12.067299199219686,3.684683474742809e-21,True,Better
+precision,XGBClassifier (Baseline),XGBClassifier (Balanced + STD),0.20629416943257506,5.07142997673577,1.8443194008452486e-06,True,Better
+precision,XGBClassifier (Baseline),XGBClassifier (Cost-sensitive + MEC),0.49485176788169083,12.890261023396713,6.643265227186907e-23,True,Better
+precision,XGBClassifier (Baseline),XGBClassifier (Cost-sensitive + STD),0.30177995693221615,7.116377533835536,1.7738973928095118e-10,True,Better
+precision,XGBClassifier (Baseline),XGBClassifier (SMOTE + MEC),0.41279810889554186,9.580042086530032,9.021518454340742e-16,True,Better
+precision,XGBClassifier (Baseline),XGBClassifier (SMOTE + STD),0.122684065748627,1.8470500899069946,0.06772653761177903,False,No Diff
+precision,XGBClassifier (Cost-sensitive + MEC),XGBClassifier (Balanced + MEC),-0.02962434883793752,-2.240365737338325,0.02730245214463422,True,Worse
+precision,XGBClassifier (Cost-sensitive + MEC),XGBClassifier (Balanced + STD),-0.28855759844911577,-13.45603555974537,4.365712219137913e-24,True,Worse
+precision,XGBClassifier (Cost-sensitive + MEC),XGBClassifier (Baseline),-0.49485176788169083,-12.890261023396713,6.643265227186907e-23,True,Worse
+precision,XGBClassifier (Cost-sensitive + MEC),XGBClassifier (Cost-sensitive + STD),-0.19307181094947465,-8.804804190386488,4.400109843814146e-14,True,Worse
+precision,XGBClassifier (Cost-sensitive + MEC),XGBClassifier (SMOTE + MEC),-0.08205365898614894,-2.6337682681615733,0.009799877803870417,True,Worse
+precision,XGBClassifier (Cost-sensitive + MEC),XGBClassifier (SMOTE + STD),-0.3721677021330638,-7.12593485546333,1.6944077972746516e-10,True,Worse
+precision,XGBClassifier (Cost-sensitive + STD),XGBClassifier (Balanced + MEC),0.16344746211153713,6.581145714641445,2.241679695769548e-09,True,Better
+precision,XGBClassifier (Cost-sensitive + STD),XGBClassifier (Balanced + STD),-0.0954857874996411,-3.3287046808902185,0.001226182152280379,True,Worse
+precision,XGBClassifier (Cost-sensitive + STD),XGBClassifier (Baseline),-0.30177995693221615,-7.116377533835536,1.7738973928095118e-10,True,Worse
+precision,XGBClassifier (Cost-sensitive + STD),XGBClassifier (Cost-sensitive + MEC),0.19307181094947465,8.804804190386488,4.400109843814146e-14,True,Better
+precision,XGBClassifier (Cost-sensitive + STD),XGBClassifier (SMOTE + MEC),0.1110181519633257,3.3873814443072994,0.0010136315473733947,True,Better
+precision,XGBClassifier (Cost-sensitive + STD),XGBClassifier (SMOTE + STD),-0.17909589118358915,-3.089700880822432,0.002601162366962919,True,Worse
+precision,XGBClassifier (SMOTE + MEC),XGBClassifier (Balanced + MEC),0.05242931014821142,1.684414646380406,0.09525186174131083,False,No Diff
+precision,XGBClassifier (SMOTE + MEC),XGBClassifier (Balanced + STD),-0.2065039394629668,-6.024958140146085,2.899779658174842e-08,True,Worse
+precision,XGBClassifier (SMOTE + MEC),XGBClassifier (Baseline),-0.41279810889554186,-9.580042086530032,9.021518454340742e-16,True,Worse
+precision,XGBClassifier (SMOTE + MEC),XGBClassifier (Cost-sensitive + MEC),0.08205365898614894,2.6337682681615733,0.009799877803870417,True,Better
+precision,XGBClassifier (SMOTE + MEC),XGBClassifier (Cost-sensitive + STD),-0.1110181519633257,-3.3873814443072994,0.0010136315473733947,True,Worse
+precision,XGBClassifier (SMOTE + MEC),XGBClassifier (SMOTE + STD),-0.29011404314691486,-4.661311057551446,9.819905723727242e-06,True,Worse
+precision,XGBClassifier (SMOTE + STD),XGBClassifier (Balanced + MEC),0.3425433532951263,6.679687388066545,1.4121091424474853e-09,True,Better
+precision,XGBClassifier (SMOTE + STD),XGBClassifier (Balanced + STD),0.08361010368394806,1.5190584179696454,0.13193501789391646,False,No Diff
+precision,XGBClassifier (SMOTE + STD),XGBClassifier (Baseline),-0.122684065748627,-1.8470500899069946,0.06772653761177903,False,No Diff
+precision,XGBClassifier (SMOTE + STD),XGBClassifier (Cost-sensitive + MEC),0.3721677021330638,7.12593485546333,1.6944077972746516e-10,True,Better
+precision,XGBClassifier (SMOTE + STD),XGBClassifier (Cost-sensitive + STD),0.17909589118358915,3.089700880822432,0.002601162366962919,True,Better
+precision,XGBClassifier (SMOTE + STD),XGBClassifier (SMOTE + MEC),0.29011404314691486,4.661311057551446,9.819905723727242e-06,True,Better

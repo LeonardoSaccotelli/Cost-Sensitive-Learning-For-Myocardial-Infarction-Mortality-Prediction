@@ -1,21 +1,43 @@
 Metric,Model_A,Model_B,Mean_Diff,t-stat,p-value,is_significant,result
-precision,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.4370881131842359,9.582983754135892,8.889185280409004e-16,True,Better
-precision,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + Standard Threshold),0.29895073996654314,6.616945517626158,1.8957332795371314e-09,True,Better
-precision,LogisticRegression (Baseline),LogisticRegression (SMOTE + Minimum Expected Cost),0.42583462245835907,9.387716482332152,2.370082775379605e-15,True,Better
-precision,LogisticRegression (Baseline),LogisticRegression (SMOTE + Standard Threshold),0.2308322166122177,4.732449583630794,7.3883677915672436e-06,True,Better
-precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Baseline),-0.4370881131842359,-9.582983754135892,8.889185280409004e-16,True,Worse
-precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.13813737321769276,-10.003980729757565,1.0723198383478659e-16,True,Worse
-precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Minimum Expected Cost),-0.011253490725876836,-1.5169768375335426,0.1324593250574799,False,No Diff
-precision,LogisticRegression (Cost-sensitive + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.2062558965720182,-11.564047025119264,4.417954824278577e-20,True,Worse
-precision,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Baseline),-0.29895073996654314,-6.616945517626158,1.8957332795371314e-09,True,Worse
-precision,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.13813737321769276,10.003980729757565,1.0723198383478659e-16,True,Better
-precision,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.12688388249181592,8.153058137947104,1.126969138912473e-12,True,Better
-precision,LogisticRegression (Cost-sensitive + Standard Threshold),LogisticRegression (SMOTE + Standard Threshold),-0.06811852335432544,-2.9479644742769358,0.003990052012376963,True,Worse
-precision,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Baseline),-0.42583462245835907,-9.387716482332152,2.370082775379605e-15,True,Worse
-precision,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.011253490725876836,1.5169768375335426,0.1324593250574799,False,No Diff
-precision,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (Cost-sensitive + Standard Threshold),-0.12688388249181592,-8.153058137947104,1.126969138912473e-12,True,Worse
-precision,LogisticRegression (SMOTE + Minimum Expected Cost),LogisticRegression (SMOTE + Standard Threshold),-0.19500240584614137,-10.681816444492673,3.58061872767204e-18,True,Worse
-precision,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Baseline),-0.2308322166122177,-4.732449583630794,7.3883677915672436e-06,True,Worse
-precision,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Minimum Expected Cost),0.2062558965720182,11.564047025119264,4.417954824278577e-20,True,Better
-precision,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (Cost-sensitive + Standard Threshold),0.06811852335432544,2.9479644742769358,0.003990052012376963,True,Better
-precision,LogisticRegression (SMOTE + Standard Threshold),LogisticRegression (SMOTE + Minimum Expected Cost),0.19500240584614137,10.681816444492673,3.58061872767204e-18,True,Better
+precision,LogisticRegression (Balanced + MEC),LogisticRegression (Balanced + STD),-0.20171293475444527,-10.95154346386365,9.299083005522758e-19,True,Worse
+precision,LogisticRegression (Balanced + MEC),LogisticRegression (Baseline),-0.42924018603167957,-9.253330970009541,4.6525927056176004e-15,True,Worse
+precision,LogisticRegression (Balanced + MEC),LogisticRegression (Cost-sensitive + MEC),0.007847927152556305,1.269406109866935,0.20727228946326495,False,No Diff
+precision,LogisticRegression (Balanced + MEC),LogisticRegression (Cost-sensitive + STD),-0.1302894460651364,-8.759788422052281,5.510221163198272e-14,True,Worse
+precision,LogisticRegression (Balanced + MEC),LogisticRegression (SMOTE + MEC),-0.003405563573320558,-0.3960867833696425,0.6928933784768974,False,No Diff
+precision,LogisticRegression (Balanced + MEC),LogisticRegression (SMOTE + STD),-0.1984079694194619,-11.457946845338475,7.476542292578943e-20,True,Worse
+precision,LogisticRegression (Balanced + STD),LogisticRegression (Balanced + MEC),0.20171293475444527,10.95154346386365,9.299083005522758e-19,True,Better
+precision,LogisticRegression (Balanced + STD),LogisticRegression (Baseline),-0.22752725127723433,-4.58177680965693,1.345833083393122e-05,True,Worse
+precision,LogisticRegression (Balanced + STD),LogisticRegression (Cost-sensitive + MEC),0.20956086190700157,11.923012476504868,7.496080785652995e-21,True,Better
+precision,LogisticRegression (Balanced + STD),LogisticRegression (Cost-sensitive + STD),0.07142348868930887,3.1995541911797374,0.001849653394071243,True,Better
+precision,LogisticRegression (Balanced + STD),LogisticRegression (SMOTE + MEC),0.1983073711811247,10.338724142255083,1.9978249531949773e-17,True,Better
+precision,LogisticRegression (Balanced + STD),LogisticRegression (SMOTE + STD),0.0033049653349833674,0.13571060799157658,0.8923256254449558,False,No Diff
+precision,LogisticRegression (Baseline),LogisticRegression (Balanced + MEC),0.42924018603167957,9.253330970009541,4.6525927056176004e-15,True,Better
+precision,LogisticRegression (Baseline),LogisticRegression (Balanced + STD),0.22752725127723433,4.58177680965693,1.345833083393122e-05,True,Better
+precision,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + MEC),0.4370881131842359,9.487857468501105,1.433420048273132e-15,True,Better
+precision,LogisticRegression (Baseline),LogisticRegression (Cost-sensitive + STD),0.2989507399665432,6.373947133774956,5.876328574965832e-09,True,Better
+precision,LogisticRegression (Baseline),LogisticRegression (SMOTE + MEC),0.425834622458359,9.159268065557658,7.457738546732578e-15,True,Better
+precision,LogisticRegression (Baseline),LogisticRegression (SMOTE + STD),0.2308322166122177,4.720857795180434,7.740223857501745e-06,True,Better
+precision,LogisticRegression (Cost-sensitive + MEC),LogisticRegression (Balanced + MEC),-0.007847927152556305,-1.269406109866935,0.20727228946326495,False,No Diff
+precision,LogisticRegression (Cost-sensitive + MEC),LogisticRegression (Balanced + STD),-0.20956086190700157,-11.923012476504868,7.496080785652995e-21,True,Worse
+precision,LogisticRegression (Cost-sensitive + MEC),LogisticRegression (Baseline),-0.4370881131842359,-9.487857468501105,1.433420048273132e-15,True,Worse
+precision,LogisticRegression (Cost-sensitive + MEC),LogisticRegression (Cost-sensitive + STD),-0.1381373732176927,-10.10428497132966,6.479736903292729e-17,True,Worse
+precision,LogisticRegression (Cost-sensitive + MEC),LogisticRegression (SMOTE + MEC),-0.011253490725876863,-1.453181677982803,0.1493358311440224,False,No Diff
+precision,LogisticRegression (Cost-sensitive + MEC),LogisticRegression (SMOTE + STD),-0.2062558965720182,-11.803656756730552,1.3505761420649937e-20,True,Worse
+precision,LogisticRegression (Cost-sensitive + STD),LogisticRegression (Balanced + MEC),0.1302894460651364,8.759788422052281,5.510221163198272e-14,True,Better
+precision,LogisticRegression (Cost-sensitive + STD),LogisticRegression (Balanced + STD),-0.07142348868930887,-3.1995541911797374,0.001849653394071243,True,Worse
+precision,LogisticRegression (Cost-sensitive + STD),LogisticRegression (Baseline),-0.2989507399665432,-6.373947133774956,5.876328574965832e-09,True,Worse
+precision,LogisticRegression (Cost-sensitive + STD),LogisticRegression (Cost-sensitive + MEC),0.1381373732176927,10.10428497132966,6.479736903292729e-17,True,Better
+precision,LogisticRegression (Cost-sensitive + STD),LogisticRegression (SMOTE + MEC),0.12688388249181584,8.229989798675485,7.699622794460954e-13,True,Better
+precision,LogisticRegression (Cost-sensitive + STD),LogisticRegression (SMOTE + STD),-0.0681185233543255,-3.037313109502284,0.003051686086559974,True,Worse
+precision,LogisticRegression (SMOTE + MEC),LogisticRegression (Balanced + MEC),0.003405563573320558,0.3960867833696425,0.6928933784768974,False,No Diff
+precision,LogisticRegression (SMOTE + MEC),LogisticRegression (Balanced + STD),-0.1983073711811247,-10.338724142255083,1.9978249531949773e-17,True,Worse
+precision,LogisticRegression (SMOTE + MEC),LogisticRegression (Baseline),-0.425834622458359,-9.159268065557658,7.457738546732578e-15,True,Worse
+precision,LogisticRegression (SMOTE + MEC),LogisticRegression (Cost-sensitive + MEC),0.011253490725876863,1.453181677982803,0.1493358311440224,False,No Diff
+precision,LogisticRegression (SMOTE + MEC),LogisticRegression (Cost-sensitive + STD),-0.12688388249181584,-8.229989798675485,7.699622794460954e-13,True,Worse
+precision,LogisticRegression (SMOTE + MEC),LogisticRegression (SMOTE + STD),-0.19500240584614134,-10.674964827897414,3.7055238706883225e-18,True,Worse
+precision,LogisticRegression (SMOTE + STD),LogisticRegression (Balanced + MEC),0.1984079694194619,11.457946845338475,7.476542292578943e-20,True,Better
+precision,LogisticRegression (SMOTE + STD),LogisticRegression (Balanced + STD),-0.0033049653349833674,-0.13571060799157658,0.8923256254449558,False,No Diff
+precision,LogisticRegression (SMOTE + STD),LogisticRegression (Baseline),-0.2308322166122177,-4.720857795180434,7.740223857501745e-06,True,Worse
+precision,LogisticRegression (SMOTE + STD),LogisticRegression (Cost-sensitive + MEC),0.2062558965720182,11.803656756730552,1.3505761420649937e-20,True,Better
+precision,LogisticRegression (SMOTE + STD),LogisticRegression (Cost-sensitive + STD),0.0681185233543255,3.037313109502284,0.003051686086559974,True,Better
+precision,LogisticRegression (SMOTE + STD),LogisticRegression (SMOTE + MEC),0.19500240584614134,10.674964827897414,3.7055238706883225e-18,True,Better
