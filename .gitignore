@@ -199,6 +199,11 @@ models_to_pass
 *.drawio
 *.out
 *.err
+*.aux
+*.bbl
+*.blg
+
 
 predict.py
 plots.py
+
