@@ -192,7 +192,7 @@ Under this rule, each prediction is not chosen solely on the basis of the highes
 It is important to emphasize that the MEC rule was treated as a post-hoc cost-sensitive prediction strategy and was therefore kept conceptually distinct from learning-level imbalance handling. In other words, while SMOTE, class-frequency-based weighting, and cost-sensitive learning modify the training process itself, MEC only changes the final decision rule applied to model outputs. This distinction was maintained to preserve methodological clarity and to isolate the respective effects of training-level and decision-level strategies during evaluation.
 
 \subsection{Predictive Models}
-To evaluate predictive performance on the ICU admission-time mortality task, we considered a set of predictive models spanning a simple non-ensemble baseline together with several static and dynamic ensemble paradigms. This design enables the comparison of progressively more expressive approaches, ranging from a linear probabilistic classifier to ensemble methods that combine multiple base learners through either fixed aggregation mechanisms or adaptive selection strategies. The hyperparameter search spaces associated with the considered models and tuned model components are summarized in Table~\ref{tab:model-search-space}.
+To evaluate predictive performance on the ICU admission-time mortality task, we considered a set of predictive models spanning a simple non-ensemble baseline as well as several static and dynamic ensemble paradigms. This design enables the comparison of progressively more expressive approaches, ranging from a linear probabilistic classifier to ensemble methods that combine multiple base learners through either fixed aggregation mechanisms or adaptive selection strategies. The hyperparameter search spaces associated with the considered models and tuned model components are summarized in Table~\ref{tab:model-search-space}.
 
 \subsubsection{Baseline Non-Ensemble Model}
 
@@ -211,10 +211,12 @@ We considered four static ensemble models, each representing a different aggrega
 We considered a heterogeneous static ensemble based on \texttt{VotingClassifier} (Voting), combining RF, XGB, and \texttt{SGDClassifier} (SGD) as base learners. Predictions were aggregated using soft voting, meaning the final class prediction was based on the average predicted probabilities produced by the individual models. Uniform weights were assigned to all base learners. Importantly, the constituent learners were re-instantiated and optimized within the ensemble-specific pipeline, preserving the same fixed settings and hyperparameter search spaces defined for their standalone counterparts.
 
 \item \textbf{Stacking Classifier.}  
-We also considered a heterogeneous \texttt{StackingClassifier} (Stacking) combining RF, XGB, and SGD as first-level learners. Their outputs were then combined by a LR meta-estimator. The meta-model was trained using cross-validated predictions of the base learners with \texttt{cv=3}, allowing the second-level learner to exploit complementary predictive patterns captured by the first-level models. As with the Voting ensemble, the constituent learners were independently re-instantiated and optimized within the pipeline.
+We also considered a heterogeneous \texttt{StackingClassifier} (Stacking) combining RF, XGB, and SGD as first-level learners. Their outputs were then combined by a LR meta-estimator. The meta-model was trained using cross-validated predictions of the base learners with \texttt{cv=3}, allowing the second-level learner to exploit complementary predictive patterns captured by the first-level models. As with the Voting ensemble, the constituent learners were re-instantiated and optimized within the ensemble-specific pipeline, while preserving the same fixed settings and hyperparameter search spaces defined for their standalone counterparts.
 \end{itemize}
 
-\subsubsection{Dynamic Ensemble Selection} Dynamic Ensemble Selection (DES) methods select, for each query sample, the subset of classifiers that is estimated to be the most competent in its local context, rather than relying on a fixed ensemble for all instances. According to the taxonomy proposed in \cite{CRUZ2018195}, a DES system typically involves three key elements: the definition of a region of competence around the query sample, the estimation of the local competence of the classifiers in the pool, and the dynamic selection of the ensemble used for the final prediction. 
+\subsubsection{Dynamic Ensemble Selection}
+
+Dynamic Ensemble Selection (DES) methods select, for each query sample, the subset of classifiers that is estimated to be the most competent in its local context, rather than relying on a fixed ensemble for all instances. According to the taxonomy proposed in \cite{CRUZ2018195}, a DES system typically involves three key elements: the definition of a region of competence around the query sample, the estimation of the local competence of the classifiers in the pool, and the dynamic selection of the ensemble used for the final prediction. 
 
 In our setting, the DES models operated on a classifier pool generated by a \texttt{BaggingClassifier} with \texttt{DecisionTreeClassifier} as the base estimator, while competence estimation was performed on a dedicated dynamic selection dataset (DSEL). We considered three representative DES approaches spanning different competence estimation paradigms identified in the literature: an oracle-based method (\texttt{KNORAE}), a probabilistic method (\texttt{DESKL}), and a meta-learning-based method (\texttt{METADES}). All DES models were configured with a neighborhood size of \texttt{k=8}, using a k-nearest neighbors search with Minkowski distance for competence estimation. In addition, all methods used \textit{soft voting} to aggregate the predictions of the selected classifiers. To improve robustness in borderline regions, we adopted an instance hardness threshold of \texttt{IH\_rate=0.3}. These shared settings ensured a comparable experimental configuration across the considered DES techniques, while allowing each method to preserve its own distinct competence estimation mechanism. 
 
@@ -228,8 +230,7 @@ In our setting, the DES models operated on a classifier pool generated by a \tex
 
 \begin{table*}[t]
 \centering
-\caption{Predictive models and their respective hyperparameter search spaces.}
-\label{tab:model-search-space}
+\caption{Considered models and tuned model components with their associated hyperparameter search spaces.}\label{tab:model-search-space}
 \begin{threeparttable}
 \begin{tabular}{p{4.5cm} p{12.8cm}}
 
@@ -415,7 +416,7 @@ To assess whether the observed differences in AvgCost were statistically meaning
 \begin{figure*}[h]
     \centering
     \includegraphics[width=\textwidth]{figures/corrected_resampled_ttest_average_cost_heatmap.png}
-    \caption{Pairwise p-value heatmap of the corrected resampled t-test on Average Cost across all evaluated configurations.}
+\caption{Pairwise p-value heatmap of the corrected resampled t-test on AvgCost across all evaluated configurations.}
     \label{fig:heatmap-pvalue-all}
 \end{figure*}
 
