@@ -5,32 +5,32 @@
 </a>
 
 ## 📖 Project Description
-This project addresses the critical challenge of predict mortality outcomes due to myocardial infarction within highly **unbalanced dataset**. In the context of myocardial infarction mortality prediction, non-deadly outcomes vastly outnumber deadly outcomes, making standard machine learning approaches biased toward the majority class.
+This project addresses the critical challenge of predicting intensive care unit (ICU) admission-time mortality in myocardial infarction (MI) patients using highly **imbalanced tabular data**. In the context of MI mortality prediction, survival outcomes vastly outnumber lethal outcomes (approx. 84% vs. 16%), making standard machine learning approaches biased toward the majority class.
 
-The core of this research is a comparative analysis between **Static Ensemble Learning** and **Dynamic Ensemble Selection (DES)** under **Cost-Sensitive-Learning** and **Cost-Sensitive-Evaluation** schemas. By evaluating how these models behave when the "cost" of misclassification is high, this project aims to identify the most robust architecture for myocardial infarction mortality.
+The core of this research is a unified comparative analysis between **Static Ensemble Learning** (e.g., Stacking, XGBoost) and **Dynamic Ensemble Selection (DES)** methods. By evaluating how these models behave under severe class imbalance and asymmetric misclassification costs (where predicting a false negative carries severe clinical consequences), this project aims to identify the most robust architecture for early risk stratification.
 
 ### 🧪 Handling Class Imbalance
+#### Learning-Level Strategies (Training Phase)
 The framework implements and compare three main strategies to handle the class distribution during the training phase:
-* **Baseline:** No Cost-Sensitive-Learning (algorithm-level) or Resampling (data-level), using the original imbalanced dataset. It serves as a standard cost-unaware benchmark approach.
+* **Baseline:** A standard, cost-insensitive benchmark utilizing the original imbalanced dataset with no resampling or class weighting.
+* **Algorithm-Level (Class-Frequency-Based Weighting):** Implements internal weighting mechanisms (e.g., `class_weight="balanced"`) to automatically adjust weights inversely proportional to class frequencies.
+* **Cost-Sensitive Learning (Cost-Matrix-Driven):** Explicitly guides the training algorithm using an asymmetric business cost matrix, applying a heavy penalty to false negatives (`{0:1, 1:10`} where predicting ALIVE when the true class is DEAD costs 10x more than a false alarm).
 * **Cost-Sensitive Learning:** Implementation of the `class_weight` parameter across models to assign a higher penalty to **DEAD** misclassifications, forcing the algorithms to prioritize the minority class.
-   * _balanced_ : uses the values of y to automatically adjust weights inversely proportional to class frequencies in the input data as `n_samples / (n_classes * np.bincount(y))`
-   * _cost_sensitive_cost_matrix_ : use the business cost matrix following the rule `FN=10:FP=1 → DEAD=10, ALIVE=1` to adjust the class weights.
-* **Resampling:** Fully support to `imbalanced-learn` resampling method to undersample the majority class or oversample the minority class.
+* **Data-Level (Resampling):** Utilizes `imbalanced-learn` oversampling techniques, specifically `SMOTE`, to synthetically increase the representation of the minority (DEAD) class.
 
+#### Decision-Level Rules (Evaluation Phase)
 The framework implements two main strategies to handle the class distribution during the evaluation phase:
-* **Standard Threshold:** Models use a fixed 0.5 probability threshold.
-* **Minimum Expected Cost (MEC):** The optimal threshold is determined based on the misclassification costs. For each prediction, we choose the class that minimizes the expected financial loss.
+* **Standard Threshold:** Models output predictions using the default 0.5 probability threshold.
+* **Minimum Expected Cost (MEC):** A strictly post-hoc decision mechanism. For each prediction, it selects the class that minimizes the expected misclassification cost based on the defined asymmetric cost matrix.
 
-In addition to the standard classification metrics, the framework supports also the `Average Cost per Prediction` metric, which directly quantifies the real-world economic impact of the model's predictions.
-
-Finally, the framework supports a combination between one training strategy and one evaluation strategy.
+In addition to standard classification metrics (ROC-AUC, F1-score, etc.), the framework utilizes a domain-specific **Average Cost per Prediction (AvgCost)** metric. This directly quantifies the asymmetric clinical objective of the model, serving as the primary criterion for overall model evaluation.
 
 ---
 
 ## 🔬 Core Objectives
-1.  **Benchmarking:** Comparing the predictive power of static ensembles (fixed at training) against dynamic ensembles (which adaptively select the best model for each specific transaction) under **Cost-Sensitive-Learning** and **Cost-Sensitive-Evaluation** schemas.
-2.  **Strategy Comparison:** Evaluating the trade-offs between "Cost-Sensitive-Learning" approaches vs. "Cost-Sensitive-Evaluation" approaches.
-3.  **Modular Scalability:** Providing a codebase that can easily swap different techniques to find the optimal configuration for any imbalanced dataset.
+1.  **Benchmarking:** Comparing the predictive power of static ensembles (fixed at training) against dynamic ensembles (which adaptively tailor the classifier subset for each specific query instance) for admission-time MI mortality.
+2.  **Strategy Comparison:** Evaluating the distinct impacts and trade-offs of modifying the underlying training objective (learning-level strategies) versus applying post-hoc thresholding mechanisms (decision-level rules like MEC).
+3.  **Modular Scalability:** Providing a reproducible, pipelined codebase that explicitly prevents data leakage and can easily swap different techniques to find the optimal configuration for any clinically imbalanced dataset.
 
 ---
 
