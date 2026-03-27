@@ -76,49 +76,73 @@ make requirements
 ## 📁 Directory Structure
 
 ```text
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
+├── .gitignore         <- Files and directories to be ignored by Git.
+├── LICENSE            <- Open-source license file.
+├── Makefile           <- Makefile with convenience commands like `make data` or `make train`.
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump (UCI Myocardial Infarction Complications).
+│   ├── external       <- The original, immutable data dump (UCI Myocardial Infarction Complications).
+│   ├── interim        <- The cleaned time-slot-specific RAW dataset (filtered missingness, pruned extra targets).
+│   ├── processed      <- The final, canonical data sets ready for modeling.
+│   └── raw            <- The time-slot-specific dataset (e.g., admission, 24h, 48h, 72h at the ICU).
 │
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
+├── docs               <- A default mkdocs project; see www.mkdocs.org for details.
 │
-├── models             <- Trained and serialized models (e.g., StackingClassifier, DESKL, etc.)
+├── models             <- Trained and serialized models (e.g., StackingClassifier, DESKL) and predictions.
 │
-├── notebooks          <- Jupyter notebooks for EDA, data cleaning, and preliminary modeling.
+├── notebooks          <- Jupyter notebooks for data quality inspection, EDA, and model evaluation.
 │
 ├── pyproject.toml     <- Project configuration file with package metadata and tool configs.
 │
 ├── references         <- Data dictionaries, clinical manuals, and explanatory materials.
 │
 ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics (e.g., Class_imbalance.png, correlation_matrix.png).
+│   ├── figures        <- Generated graphics (e.g., Class_imbalance.png, correlation_matrix.png).
+│   ├── latex          <- LaTeX source files for documentation.
+│   │   ├── presentation
+│   │   └── report
+│   └── CRISP_DM_Process-Reports.pdf <- Compiled report following the CRISP-DM methodology.
 │
 ├── requirements.txt   <- The requirements file for reproducing the analysis environment.
-│                         Generated with `pip freeze > requirements.txt` (includes scikit-learn, DESlib, etc.)
+│                         Generated with `pip freeze > requirements.txt` (includes scikit-learn, DESlib).
 │
-├── setup.cfg          <- Configuration file for flake8
 │
-└── src                <- Source code for use in this project.
+└── myocardial_infarction_mortality  <- Source code for use in this project.
     │
-    ├── __init__.py             <- Makes src a Python module
+    ├── __init__.py
+    ├── cleaning.py                  <- CLI script to clean the RAW dataset (filters missingness/targets, removes duplicates).
+    ├── config.py                    <- Stores paths, feature schemas, cost matrices (FP=1, FN=10), and hyperparameter grids.
+    ├── dataset.py                   <- CLI script to fetch the UCI dataset via `ucimlrepo` and save it to external.
+    ├── dataset_time_split.py        <- CLI script to drop future features for specific ICU time slots and create the binary target.
+    ├── features.py                  <- CLI script to finalize the PROCESSED dataset by standardizing the target name to `CLASS`.
     │
-    ├── config.py               <- Store useful variables (e.g., hyperparameter search spaces, cost matrix)
+    ├── data_preparation             <- Modules for data transformations.
+    │   ├── __init__.py
+    │   ├── data_clean.py            <- Helper functions for data cleaning (e.g., `remove_duplicates`).
+    │   ├── data_construct.py        <- Builds ColumnTransformer preprocessing pipelines (imputation, log1p, scaling, OHE, ZSN_A mapping).
+    │   ├── feature_selection.py     <- Factory for filter-based SelectKBest (e.g., mutual_info_classif).
+    │   └── sampling.py              <- Factory for imblearn resampling strategies (SMOTE, SMOTEENN, etc.).
     │
-    ├── dataset.py              <- Scripts to process data (e.g., missing value imputation, log1p scaling)
+    ├── evaluation                   <- Modules for model evaluation and metrics.
+    │   ├── __init__.py
+    │   ├── metrics_evaluation.py    <- Computes standard metrics and applies the MEC decision policy using the cost matrix.
+    │   ├── statistical_test_evaluation.py <- Implements the Nadeau-Bengio corrected resampled t-test.
+    │   └── visual_evaluation.py     <- Generates pairwise significance heatmaps, ROC stability plots, and ranking charts.
     │
-    ├── features.py             <- Code to create/transform features (e.g., SelectKBest, ZSN_A custom mapping)
+    ├── modeling                     <- Modules for model building, dynamic selection, and training.
+    │   ├── __init__.py
+    │   ├── train.py                 <- Main Typer CLI script to execute the 10x10 repeated cross-validation experiments.
+    │   └── utils
+    │       ├── __init__.py
+    │       ├── models.py            <- Defines static models, static ensembles (Stacking/Voting), and DES configurations.
+    │       ├── pipeline.py          <- Assembles the leakage-safe `imblearn` pipelines (preprocessing -> selection -> resampling -> model).
+    │       └── training.py          <- Training loops, RandomizedSearchCV optimization, and fold evaluation logic.
     │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference (including the MEC decision rule mechanism)
-    │   └── train.py            <- Code to train models (Static Ensembles, DES, nested 10x10 CV pipeline)
-    │
-    └── plots.py                <- Code to create visualizations (e.g., pairwise t-test significance heatmap)
+    └── utils                        <- General utility functions.
+        ├── __init__.py
+        ├── general_utils.py         <- Helpers like `subset_features_by_time_slot`.
+        └── io_utils.py              <- File I/O helpers, including `load_dataset_with_schema` for robust dtype enforcement.
+   
 ```
 ---
 
