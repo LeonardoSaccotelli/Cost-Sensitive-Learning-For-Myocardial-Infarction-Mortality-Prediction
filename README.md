@@ -73,7 +73,54 @@ make requirements
 ```
 
 ---
+## 📁 Directory Structure
 
+```text
+├── LICENSE            <- Open-source license if one is chosen
+├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
+├── README.md          <- The top-level README for developers using this project.
+├── data
+│   ├── external       <- Data from third party sources.
+│   ├── interim        <- Intermediate data that has been transformed.
+│   ├── processed      <- The final, canonical data sets for modeling.
+│   └── raw            <- The original, immutable data dump (UCI Myocardial Infarction Complications).
+│
+├── docs               <- A default mkdocs project; see www.mkdocs.org for details
+│
+├── models             <- Trained and serialized models (e.g., StackingClassifier, DESKL, etc.)
+│
+├── notebooks          <- Jupyter notebooks for EDA, data cleaning, and preliminary modeling.
+│
+├── pyproject.toml     <- Project configuration file with package metadata and tool configs.
+│
+├── references         <- Data dictionaries, clinical manuals, and explanatory materials.
+│
+├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+│   └── figures        <- Generated graphics (e.g., Class_imbalance.png, correlation_matrix.png).
+│
+├── requirements.txt   <- The requirements file for reproducing the analysis environment.
+│                         Generated with `pip freeze > requirements.txt` (includes scikit-learn, DESlib, etc.)
+│
+├── setup.cfg          <- Configuration file for flake8
+│
+└── src                <- Source code for use in this project.
+    │
+    ├── __init__.py             <- Makes src a Python module
+    │
+    ├── config.py               <- Store useful variables (e.g., hyperparameter search spaces, cost matrix)
+    │
+    ├── dataset.py              <- Scripts to process data (e.g., missing value imputation, log1p scaling)
+    │
+    ├── features.py             <- Code to create/transform features (e.g., SelectKBest, ZSN_A custom mapping)
+    │
+    ├── modeling                
+    │   ├── __init__.py 
+    │   ├── predict.py          <- Code to run model inference (including the MEC decision rule mechanism)
+    │   └── train.py            <- Code to train models (Static Ensembles, DES, nested 10x10 CV pipeline)
+    │
+    └── plots.py                <- Code to create visualizations (e.g., pairwise t-test significance heatmap)
+```
+---
 
 ## 🧹 Maintenance Commands
 
