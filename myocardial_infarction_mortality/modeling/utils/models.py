@@ -879,7 +879,7 @@ def get_des_model(
         "APriori": {
             "model_class": APriori,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "selection_method": "best",
@@ -892,7 +892,7 @@ def get_des_model(
         "APosteriori": {
             "model_class": APosteriori,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "selection_method": "best",
@@ -905,7 +905,7 @@ def get_des_model(
         "LCA": {
             "model_class": LCA,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "selection_method": "best",
@@ -918,7 +918,7 @@ def get_des_model(
         "MLA": {
             "model_class": MLA,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "selection_method": "best",
@@ -931,7 +931,7 @@ def get_des_model(
         "OLA": {
             "model_class": OLA,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "selection_method": "best",
@@ -944,7 +944,7 @@ def get_des_model(
         "KNORAE": {
             "model_class": KNORAE,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "knn_classifier": "knn",
@@ -957,7 +957,7 @@ def get_des_model(
         "KNORAU": {
             "model_class": KNORAU,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "knn_classifier": "knn",
@@ -970,7 +970,7 @@ def get_des_model(
         "DESP": {
             "model_class": DESP,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "knn_classifier": "knn",
@@ -983,7 +983,7 @@ def get_des_model(
         "DESKNN": {
             "model_class": DESKNN,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "pct_accuracy": 0.5,
@@ -1011,7 +1011,7 @@ def get_des_model(
         "KNOP": {
             "model_class": KNOP,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "knn_classifier": "knn",
@@ -1023,7 +1023,7 @@ def get_des_model(
         "DESKL": {
             "model_class": DESKL,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "IH_rate": 0.3,
                 "mode": "selection",
                 "knn_classifier": "knn",
@@ -1035,7 +1035,7 @@ def get_des_model(
         "Exponential": {
             "model_class": Exponential,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "mode": "selection",
@@ -1048,7 +1048,7 @@ def get_des_model(
         "Logarithmic": {
             "model_class": Logarithmic,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "mode": "selection",
@@ -1061,7 +1061,7 @@ def get_des_model(
         "RRC": {
             "model_class": RRC,
             "model_args": {
-                "k": 8,
+                "k": 7,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "mode": "selection",
@@ -1074,8 +1074,8 @@ def get_des_model(
         "METADES": {
             "model_class": METADES,
             "model_args": {
-                "k": 8,
-                "Kp": 8,
+                "k": 7,
+                "Kp": 5,
                 "DFP": True,
                 "IH_rate": 0.3,
                 "mode": "selection",
