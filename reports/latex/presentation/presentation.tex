@@ -71,6 +71,7 @@
 %========================================================================================
 
 \begin{frame}
+
 \frametitle{The Core Challenge in Clinical Prognosis}
 
     \begin{block}{Predicting Myocardial Infarction Outcome}
@@ -173,7 +174,7 @@ The real-world clinical cost of prediction errors is not equal:
 %----------------------------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Data Cleaning \& Preprocessing (1/2)}
+\frametitle{Data Cleaning \& Preprocessing}
 
     \begin{customexampleblock}{Missing Data Handling}
 		\begin{itemize}
@@ -205,7 +206,7 @@ The real-world clinical cost of prediction errors is not equal:
 %----------------------------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Data Cleaning \& Preprocessing (2/2)}   
+\frametitle{Data Cleaning \& Preprocessing}   
 
 	\begin{customexampleblock}{Custom Mapping (\texttt{ZSN\_A} - Chronic Heart Failure)}
         \begin{itemize}
@@ -394,30 +395,15 @@ The real-world clinical cost of prediction errors is not equal:
 %----------------------------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Predictive Models: Dynamic Ensemble Selection (1/4)}
+\frametitle{Predictive Models: Dynamic Ensemble Selection}
 
 	\begin{block}{The Dynamic Paradigm \cite{CRUZ2018195}}
-		Unlike static models that rely on a fixed ensemble for all instances, DES selects the most competent subset of classifiers for \textit{each specific query sample} based on its local context.
+		Unlike static models that rely on a fixed ensemble for all instances, DES selects the most competent subset of classifiers $C' \subseteq C$ for \textit{each specific query sample $x_j$} based on its local context. The selected ensemble $C'$ is finally integrated to produce the decision for $x_j$.
+
 	\end{block}
 	
-	\begin{block}{The 3-Phase Architecture}
-		\begin{enumerate}
-			\item \textbf{Generation:} A diverse pool of classifiers is built.
-			\item \textbf{Selection (Competence Estimation):} For a new query, a local "region of competence" is defined using a dedicated dataset (\textbf{DSEL}). The system evaluates and selects the local experts.
-			\item \textbf{Integration:} The predictions of the dynamically selected subset are aggregated to form the final decision.
-        	\end{enumerate}
-	\end{block}
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-
-\begin{frame}
-\frametitle{Predictive Models: Dynamic Ensemble Selection (2/4)}
-
+	\vspace{1em}
 	\begin{center}		
-		\vspace{0.3em}			\includegraphics[width=0.95\textwidth,height=0.4\textheight,keepaspectratio]{figures/des1.png}
-        
-        \vspace{0.5em}
 		\includegraphics[width=0.95\textwidth,height=0.4\textheight,keepaspectratio]{figures/des2.png}
 	\end{center}
 
@@ -426,7 +412,26 @@ The real-world clinical cost of prediction errors is not equal:
 %----------------------------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Predictive Models: Dynamic Ensemble Selection (3/4)}
+\frametitle{Predictive Models: Dynamic Ensemble Selection}
+	\begin{block}{The 3-Phase Architecture}
+		\begin{enumerate}
+			\item \textbf{Generation:} A diverse pool of classifiers is built.
+			\item \textbf{Selection:} For a new query, a local "region of competence" is defined using a dedicated dataset (\textbf{DSEL}). The system evaluates and selects the local experts.
+			\item \textbf{Integration:} The predictions of the dynamically selected subset are aggregated to form the final decision.
+        	\end{enumerate}
+	\end{block}
+	
+	\vspace{1em}
+	\begin{center}		
+		\includegraphics[width=0.95\textwidth,height=0.4\textheight,keepaspectratio]{figures/des1.png}
+	\end{center}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Predictive Models: Dynamic Ensemble Selection}
 
 \begin{block}{1. KNORA-E (Oracle-Based)}
         \begin{itemize}
@@ -447,7 +452,7 @@ The real-world clinical cost of prediction errors is not equal:
 %----------------------------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Predictive Models: Dynamic Ensemble Selection (4/4)}
+\frametitle{Predictive Models: Dynamic Ensemble Selection}
 
 \begin{block}{3. META-DES (Meta-Learning)}
         \begin{itemize}
@@ -475,7 +480,7 @@ The real-world clinical cost of prediction errors is not equal:
 %----------------------------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Imbalance-Aware: Learning-Level Strategies (1/3)}
+\frametitle{Imbalance-Aware: Learning-Level Strategies}
 
     \begin{block}{Data-Level Strategy: SMOTE \cite{Araf2024}}
 \begin{itemize}
@@ -494,7 +499,7 @@ The real-world clinical cost of prediction errors is not equal:
 %----------------------------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Imbalance-Aware: Learning-Level Strategies (2/3)}
+\frametitle{Imbalance-Aware: Learning-Level Strategies}
 
 \begin{block}{Algorithm-Level Strategy: Class-Frequency Weighting \cite{Araf2024}}
         \begin{itemize}
@@ -528,7 +533,7 @@ The real-world clinical cost of prediction errors is not equal:
 %----------------------------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Imbalance-Aware: Learning-Level Strategies (3/3)}
+\frametitle{Imbalance-Aware: Learning-Level Strategies}
 
 \begin{block}{Algorithm-Level Strategy: Cost-Sensitive Learning \cite{Araf2024}}
         \begin{itemize}
@@ -631,7 +636,7 @@ The real-world clinical cost of prediction errors is not equal:
 %----------------------------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Learning Pipeline (1/2): Baselines \& Static Ensembles}
+\frametitle{Learning Pipeline: Logistic Regression \& Static Ensembles}
 
     % ================= TOP SECTION: Two Columns =================
     \begin{columns} % [c] vertically centers the content in the columns
@@ -665,7 +670,7 @@ The real-world clinical cost of prediction errors is not equal:
 %----------------------------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Learning Pipeline (2/2): Dynamic Ensembles}
+\frametitle{Learning Pipeline: Dynamic Ensembles}
 
     % ================= TOP SECTION: Two Columns =================
     \begin{columns} % [c] vertically centers the content in the columns
@@ -722,7 +727,144 @@ The real-world clinical cost of prediction errors is not equal:
 
 \end{frame}
 
+%========================================================================================
+\section{Results and Discussion}
+%========================================================================================
+\begin{frame}
+\frametitle{Results: Baseline \& Imbalance Bottleneck}
 
+    \begin{center}
+        \includegraphics[width=\textwidth, height=0.7\textheight,keepaspectratio]{figures/slide1_baseline_std_settings_f1_average_cost.png}
+    \end{center}
+    
+    \begin{itemize}
+    	\item \textbf{Baseline} setting yields unacceptable \textbf{AvgCost} due to extreme class imbalance.
+        \item Introducing \textbf{Imbalance-Aware} methods drastically reduces the  \textbf{AvgCost}.
+		\end{itemize}
+  
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Results: The MEC Performance}
+
+    \begin{center}
+        \includegraphics[width=\textwidth, height=0.7\textheight,keepaspectratio]{figures/slide2_baseline_mec_settings_f1_average_cost.png}
+    \end{center}
+    
+    \begin{itemize}
+    	\item Applying the \textbf{MEC} threshold successfully drives the \textbf{AvgCost} down.
+		\item The overall \textbf{F1-Score stalls} or even degrades across all architectures.
+	\end{itemize}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Results: The Precision-Recall Trade-off}
+
+    \begin{center}
+        \includegraphics[width=\textwidth,keepaspectratio]{figures/slide2_baseline_mec_settings_precision_recall_average_cost.png}
+    \end{center}
+    
+    \begin{itemize}
+    	\item To minimize the expected cost, the model pushes \textbf{Recall} near 1.0, eliminating FN.
+    	\item Consequently, this extreme sensitivity causes \textbf{Precision} to drop. The model over-predicts the minority class, generating numerous FP that penalize the F1-Score.
+	\end{itemize}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Results: Imbalance-Aware Settings + Standard Threshold}
+
+    \begin{center}
+        \includegraphics[width=\textwidth,keepaspectratio]{figures/slide4_std_settings_static_des_average_cost.png}
+    \end{center}
+    
+    \begin{itemize}
+    	\item Linear models struggle with the dataset's non-linearity and imbalance.
+    	\item Static and Dynamic Ensembles consistently reduce the AvgCost, proving their necessity for modeling complex clinical data.
+    \end{itemize}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Results: Imbalance-Aware Settings + MEC}
+
+    \begin{center}
+        \includegraphics[width=\textwidth,keepaspectratio]{figures/slide4_mec_settings_static_des_average_cost.png}
+    \end{center}
+    
+    \begin{itemize}
+    	\item The aggressive MEC threshold compresses the performance gap across all families.
+    	\item \textbf{Stacking} (Static) maintains the absolute minimum AvgCost, slightly outperforming the local $k$-NN competence regions relied upon by DES.
+    \end{itemize}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Results: Global Benchmarking (The Top 10 Models)}
+
+    % ================= TOP SECTION: Two Columns =================
+    \begin{columns}
+        \begin{column}{0.68\textwidth}
+        	\centering
+   			\includegraphics[width=\textwidth,keepaspectratio]{figures/slide5_final_table_metrics.png}
+        \end{column}
+        
+        \begin{column}{0.40\textwidth}
+        -- The \textbf{Top 10} features 5 different architectures (Stacking, XGBoost, RF, LogReg, DES). \\
+        \vspace{0.5em}
+        -- \textbf{Stacking (Rank 1)} reaches the minimum AvgCost (0.502). \\
+        \vspace{0.5em}
+        -- \textbf{XGBoost (Rank 9)} reaches an higher AvgCost (0.597) with a superior F1-Score (0.570).
+
+        \end{column}        
+    \end{columns}
+
+    % ================= BOTTOM SECTION: Full Width =================
+    \vspace{0.5em}
+	Rank 1 wins on strict cost, but Rank 9 offers a much better diagnostic balance: \\ \textbf{is the cost difference between 0.502 and 0.597 actually statistically significant?}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Results: Global Benchmarking (The Top 10 Models)}
+
+    % ================= TOP SECTION: Two Columns =================
+    \begin{columns}
+        \begin{column}{0.60\textwidth}
+        	\centering
+   			\includegraphics[width=\textwidth,height=0.80\textheight,keepaspectratio]{figures/slide5_top10_corrected_resampled_ttest_average_cost_barplot_significance.png}
+        \end{column}
+        
+        \begin{column}{0.40\textwidth}
+        -- T-test confirms that Top 10 models are statistically superior to the linear baseline in AvgCost. \\
+        
+        \vspace{0.5em}
+        -- However, these 10 models are not statistically different from one another in AvgCost. \\
+        
+        \vspace{0.5em}
+        -- We must pivot to secondary metrics (\textbf{ROC-AUC} and \textbf{F1-Score}) to make a final decision.
+
+        \end{column}        
+    \end{columns}
+
+    % ================= BOTTOM SECTION: Full Width =================
+    \vspace{0.3em}
+	\textbf{XGBoost (Balanced + STD)} at Rank 9 keeps the same statistical cost as the Rank 1 model, reaching an \textbf{F1-Score of 0.570} and a highly robust \textbf{ROC-AUC of 0.869}.
+
+\end{frame}
 
 %========================================================================================
 \section{Conclusions \& Future Directions}
@@ -732,23 +874,38 @@ The real-world clinical cost of prediction errors is not equal:
 \frametitle{Conclusions \& Future Directions}
 
 	\textbf{Key Findings}
-	\begin{itemize}
-		\item \textbf{Core Necessity:} Addressing class imbalance via cost-sensitive learning is crucial.
-        \item \textbf{Optimal Setup:} Cost-sensitive learning combined with a standard decision threshold yielded the most reliable performance.
-        \item \textbf{Top Architectures:} Static ensembles (\texttt{StackingClassifier}, \texttt{XGBClassifier}) robustly outperformed the best dynamic method (\texttt{DES-KL}).
-    \end{itemize}
+\begin{itemize}
+            \setlength{\itemsep}{0.5em}
+            \item Explicitly addressing class imbalance is crucial. \textbf{Cost-sensitive learning combined with a standard decision threshold} emerged statistically as the most reliable overall strategy, significantly beating raw baselines.
+            
+            \item The Minimum Expected Cost (MEC) rule does not provide a uniform advantage. Instead, it drives different models toward a converging operating behavior characterized by extremely high recall and collapsing precision.
+            
+            \item Static ensemble models, particularly \texttt{StackingClassifier} and \texttt{XGBClassifier}, proved to be the most robust architectures. They systematically outperformed the most competitive dynamic method (\texttt{DESKL}) in this specific context.
+            
+            \item The statistical equivalence among the top static ensembles allows clinicians to safely select models like \texttt{XGBoost} that balance the lowest clinical penalty with superior diagnostic precision (F1-Score).
+        \end{itemize}
+\end{frame}
 
-	\vspace{0.8em}
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Conclusions \& Future Directions}
 
 	\textbf{Limitations \& Future Works}
 	\begin{itemize}
-		\item \textbf{Data Validation:} Validate the framework on modern, large-scale clinical datasets.
-        \item \textbf{Algorithmic Exploration:} Investigate alternative DES pool-generation and threshold calibration techniques to further optimize the FP vs. FN trade-off.
+	    \setlength{\itemsep}{0.5em}
+
+		\item The current dataset originates from an older, relatively limited clinical context. Future work must extend this analysis to contemporary, large-scale dataset to guarantee modern clinical applicability.
+            
+            \item The current framework predicts binary mortality strictly at admission time. Subsequent research should expand this pipeline to predict specific causes of death, non-lethal complications, and dynamic risks at later hospitalization stages.
+            
+            \item The evaluated DES methods do not exhaust the dynamic selection literature. Future studies should investigate alternative pool-generation strategies and conduct \textbf{dedicated threshold calibration} (beyond MEC) to optimally manage the FP vs. FN trade-off in intensive care.
     \end{itemize}
 
 \end{frame}
 
 %----------------------------------------------------------------------------------------
+
 
 \begin{frame}{References}
     \footnotesize
@@ -769,6 +926,70 @@ The real-world clinical cost of prediction errors is not equal:
 		\normalsize{Università degli Studi di Bari Aldo Moro}
 	\end{center}
 		
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Appendix: The Top 10 Models (p-values matrix)}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.85\textheight,keepaspectratio]{figures/slide5_top10_corrected_resampled_ttest_average_cost_heatmap.png}
+	\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Appendix: Global Benchmarking (The Top 20 Models)}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.85\textheight,keepaspectratio]{figures/slide5_top20_corrected_resampled_ttest_average_cost_barplot_significance.png}
+	\end{center}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Appendix: The Top 20 Models (p-values matrix)}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.85\textheight,keepaspectratio]{figures/slide5_top20_corrected_resampled_ttest_average_cost_heatmap.png}
+	\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Appendix: Logistic Regression (p-values matrix)}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.85\textheight,keepaspectratio]{figures/average_cost_pvalue_heatmap_lr.png}
+	\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Appendix: Static Ensemble Models (p-values matrix)}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.85\textheight,keepaspectratio]{figures/average_cost_pvalue_heatmap_static.png}
+	\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Appendix: Dynamic Ensemble Models (p-values matrix)}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.85\textheight,keepaspectratio]{figures/average_cost_pvalue_heatmap_des.png}
+	\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Appendix: All Models (p-values matrix)}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=0.85\textheight,keepaspectratio]{figures/average_cost_pvalue_heatmap_all.png}
+	\end{center}
 \end{frame}
 
 %----------------------------------------------------------------------------------------
