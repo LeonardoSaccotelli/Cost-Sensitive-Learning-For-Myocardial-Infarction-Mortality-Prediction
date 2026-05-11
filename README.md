@@ -15,7 +15,6 @@ The framework implements and compare three main strategies to handle the class d
 * **Baseline:** A standard, cost-insensitive benchmark utilizing the original imbalanced dataset with no resampling or class weighting.
 * **Algorithm-Level (Class-Frequency-Based Weighting):** Implements internal weighting mechanisms (e.g., `class_weight="balanced"`) to automatically adjust weights inversely proportional to class frequencies.
 * **Cost-Sensitive Learning (Cost-Matrix-Driven):** Explicitly guides the training algorithm using an asymmetric business cost matrix, applying a heavy penalty to false negatives (`{0:1, 1:10`} where predicting ALIVE when the true class is DEAD costs 10x more than a false alarm).
-* **Cost-Sensitive Learning:** Implementation of the `class_weight` parameter across models to assign a higher penalty to **DEAD** misclassifications, forcing the algorithms to prioritize the minority class.
 * **Data-Level (Resampling):** Utilizes `imbalanced-learn` oversampling techniques, specifically `SMOTE`, to synthetically increase the representation of the minority (DEAD) class.
 
 #### Decision-Level Rules (Evaluation Phase)
@@ -378,17 +377,21 @@ The pipeline trains three model families: static single models, static ensemble 
 - `LogisticRegression`
 - `SGDClassifier`
 - `DecisionTreeClassifier`
+
+#### Static ensemble models (homogeneous)
+
 - `RandomForestClassifier`
 - `XGBClassifier`
 
-#### Static ensemble models
+#### Static ensemble models (heterogeneous)
 
 - `VotingClassifier`
 - `StackingClassifier`
 
-#### Static ensemble pool members
 
-These models are used as the base pool for static ensembles:
+##### Heterogeneous static ensemble pool members
+
+These models are used as the base pool for heterogeneous static ensembles:
 
 - `SGDClassifier`
 - `RandomForestClassifier`
