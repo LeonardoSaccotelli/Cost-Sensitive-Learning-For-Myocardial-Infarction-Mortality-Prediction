@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Dict, Iterable, Sequence, Tuple
+from typing import Any, Dict, Sequence, Tuple
 
 from deslib.dcs import LCA, MLA, OLA, APosteriori, APriori
 from deslib.des import DESKNN, DESP, KNOP, KNORAE, KNORAU, METADES, DESClustering
@@ -492,8 +492,8 @@ def get_static_model_and_search_space(
             },
             "param_dist": {
                 "classifier__max_features": ["sqrt", "log2"],
-                **_tree_common_param_space()
-            }
+                **_tree_common_param_space(),
+            },
         },
         "RandomForestClassifier": {
             "model_class": RandomForestClassifier,
@@ -529,7 +529,7 @@ def get_static_model_and_search_space(
                 ),
                 "bootstrap": True,
                 "bootstrap_features": False,
-                "max_features": 1.0
+                "max_features": 1.0,
             },
             "param_dist": {
                 # --- Bagging-level hyperparameters ---
