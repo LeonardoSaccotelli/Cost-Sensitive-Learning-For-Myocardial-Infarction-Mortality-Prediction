@@ -35,11 +35,16 @@ In addition to standard classification metrics (ROC-AUC, F1-score, etc.), the fr
 
 ## 🛠 Installation & Environment Setup
 
-This project uses a `Makefile` to automate the setup process. Ensure you have **Python 3.10** installed on your system before proceeding.
+Before installing the project, make sure that the following tools are installed and available from your terminal:
+
+- **Python 3.10.x**
+- **GNU Make**
+
+This project uses a `Makefile` to automate the setup process. 
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/YourUsername/Cost-Sensitive-Learning-For-Myocardial-Infarction-Mortality-Prediction.git](https://github.com/YourUsername/Cost-Sensitive-Learning-For-Myocardial-Infarction-Mortality-Prediction.git)
+git clone https://github.com/YourUsername/Cost-Sensitive-Learning-For-Myocardial-Infarction-Mortality-Prediction.git
 cd Cost-Sensitive-Learning-For-Myocardial-Infarction-Mortality-Prediction
 ```
 
